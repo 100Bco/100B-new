@@ -1,0 +1,482 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, MapPin, Globe, Users, TrendingUp, Handshake, ChevronRight, Check } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import kalotoysPhoto from "@assets/image_1776951072843.png";
+import num01 from "@assets/01_1776952354216.png";
+import num02 from "@assets/02_1776952354217.png";
+import num03 from "@assets/03_1776952354218.png";
+
+const testimonials = [
+  {
+    name: "Sandy Phuong Nguyen",
+    title: "FOUNDER",
+    company: "CỎ CÂY HOA LÁ",
+    desc: "Rising Vietnamese wellness brand, 4.3 million products sold in 6 years",
+    quote: "When we started in 2017 with only ~3,500 USD, we never imagined selling millions of products—let alone dreaming about going global. But meeting Minh and 100B gave us courage. We dared to leave our comfort zone and dream bigger. I truly believe: TOGETHER, with 100B, we'll empower more Vietnamese brands to succeed globally.",
+    headline: "VIETNAMESE SPIRIT, GLOBAL ASPIRATION",
+    photo: null,
+    initial: "CỎ"
+  },
+  {
+    name: "Long Lu",
+    title: "FOUNDER",
+    company: "MISA",
+    desc: "Leading accounting software company, 80%+ market share",
+    quote: "Congratulations to Minh and the 100B team for their outstanding work in bringing Vietnamese brands and products to the global market. Your efforts are helping elevate the value of Vietnam in the eyes of the world and driving the country's development.",
+    headline: "ELEVATING VIETNAM'S GLOBAL VALUE",
+    photo: null,
+    initial: "M"
+  },
+  {
+    name: "Vinh Ha",
+    title: "FOUNDER",
+    company: "QUANG VINH CERAMICS",
+    desc: "Heritage ceramics maker, exporting to 20+ countries",
+    quote: "Huge thanks to 100B for helping Quang Vinh Ceramics see the world with a new perspective—alongside a strong and global-minded community of Vietnamese entrepreneurs. 100B has been a launchpad and a support system, opening opportunities for our manufacturing team to access global markets.",
+    headline: "A LAUNCHPAD TO GLOBAL MARKETS",
+    photo: null,
+    initial: "QV"
+  },
+  {
+    name: "Thang Luu",
+    title: "CO-FOUNDER",
+    company: "HEXAGON",
+    desc: "Top interior firm with 4 factories and 5,000+ completed projects",
+    quote: "It's been a joy working with 100B. The direction and vision of 100B deeply aligns with Hexagon's values. We're excited for this partnership and the connections it brings.",
+    headline: "ALIGNMENT IN VISION AND VALUES",
+    photo: null,
+    initial: "HX"
+  },
+  {
+    name: "Thanh Dong",
+    title: "CO-FOUNDER",
+    company: "KALOTOYS",
+    desc: "Rising toy brand, 8,000+ orders/day, 98% export revenue",
+    quote: "Born from the love of two fathers, Kalotoys has touched the hearts of millions of children and parents around the world. With 100B as a launchpad, we hope Kalotoys—and millions of other Vietnamese brands—can win the trust of global customers.",
+    headline: "STEPPING ONTO THE GLOBAL STAGE",
+    photo: kalotoysPhoto,
+    initial: "KT"
+  },
+  {
+    name: "Nguyen Thi Huong Lien",
+    title: "CO-FOUNDER",
+    company: "SAO THÁI DƯƠNG",
+    desc: "Herbal care pioneer, 240M+ products sold worldwide",
+    quote: "Congratulations to 100B on such an inspiring and impactful mission for Vietnam's economic future.",
+    headline: "AN INSPIRING & IMPACTFUL MISSION",
+    photo: null,
+    initial: "STD"
+  }
+];
+
+export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="flex flex-col">
+      {/* 1. HERO */}
+      <section className="relative bg-bg-dark overflow-hidden h-screen flex flex-col justify-center border-b border-border-subtle">
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: 'radial-gradient(circle at 50% 50%, rgba(195, 163, 116, 0.1) 0%, transparent 60%)'
+        }}></div>
+        <div className="absolute inset-0 pointer-events-none opacity-20" style={{
+          backgroundImage: `repeating-linear-gradient(rgba(255,255,255,0.05) 0 1px, transparent 1px 100%), repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 100%)`,
+          backgroundSize: '40px 40px'
+        }}></div>
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-start gap-6">
+          <h1 className="text-[40px] md:text-7xl lg:text-[108px] font-serif leading-[0.85] tracking-tight">
+            <span className="block">The operating partner</span>
+            <span className="block text-text-muted">for serious deals</span>
+            <span className="block"><em className="font-serif italic text-gradient-gold">between two worlds.</em></span>
+          </h1>
+          
+          <p className="text-base lg:text-lg font-light leading-relaxed max-w-2xl text-text-body">
+            We connect elite operators, capital, and builders across the US-Vietnam corridor. The deals worth doing are getting bigger and more complex. We are in those rooms.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+            <Link to="/build" className="btn-silver-gradient rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold w-full sm:w-auto text-center">
+              Explore Build
+            </Link>
+            <Link to="/trade" className="bg-white hover:bg-brand-gold text-bg-dark rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold transition-colors duration-300 w-full sm:w-auto text-center border border-transparent">
+              Explore Trade
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. WHY VIETNAM */}
+      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-16">
+            WHY VIETNAM. <em className="font-display italic text-gradient-gold">WHY NOW?</em>
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-16">
+            <div className="flex flex-col gap-6">
+              <h3 className="text-2xl font-serif text-text-heading">Your smartest bet in Asia</h3>
+              <p className="text-lg font-light text-text-muted italic border-l border-brand-gold/30 pl-4 mb-8">
+                "Vietnam isn't the next China. It's the next Vietnam."
+              </p>
+              <div className="w-full max-w-md mx-auto">
+                <img src="/globe.png" alt="Vietnam on the globe" className="w-full object-contain" />
+              </div>
+            </div>
+            
+            <div className="flex flex-col gap-8 justify-center">
+              <div className="flex gap-4 items-start">
+                <div className="mt-1 bg-brand-gold/10 p-2 rounded-full border border-brand-gold/20">
+                  <MapPin size={20} className="text-brand-gold" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold font-sans text-text-heading">Strategic Location</h4>
+                  <p className="text-text-muted font-light mt-1">Gateway to ASEAN and direct maritime routes to the US.</p>
+                </div>
+              </div>
+              <div className="flex gap-4 items-start">
+                <div className="mt-1 bg-brand-gold/10 p-2 rounded-full border border-brand-gold/20">
+                  <Handshake size={20} className="text-brand-gold" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold font-sans text-text-heading">Trade Agreements</h4>
+                  <p className="text-text-muted font-light mt-1">Deep integration via EU, UK, and CPTPP frameworks.</p>
+                </div>
+              </div>
+              <div className="flex gap-4 items-start">
+                <div className="mt-1 bg-brand-gold/10 p-2 rounded-full border border-brand-gold/20">
+                  <Users size={20} className="text-brand-gold" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold font-sans text-text-heading">Young Dynamic Workforce</h4>
+                  <p className="text-text-muted font-light mt-1">Highly educated, tech-literate, and highly adaptable labor pool.</p>
+                </div>
+              </div>
+              <div className="flex gap-4 items-start">
+                <div className="mt-1 bg-brand-gold/10 p-2 rounded-full border border-brand-gold/20">
+                  <TrendingUp size={20} className="text-brand-gold" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold font-sans text-text-heading">Competitive Operational Costs</h4>
+                  <p className="text-text-muted font-light mt-1">Attractive margins for manufacturing and scaling operations.</p>
+                </div>
+              </div>
+              <div className="flex gap-4 items-start">
+                <div className="mt-1 bg-brand-gold/10 p-2 rounded-full border border-brand-gold/20">
+                  <Check size={20} className="text-brand-gold" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold font-sans text-text-heading">Stable Pro-Business Government</h4>
+                  <p className="text-text-muted font-light mt-1">Consistent policies prioritizing FDI and infrastructure development.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-bg-card rounded-3xl p-8 md:p-12 border border-border-subtle grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div className="flex flex-col gap-2">
+              <span className="text-4xl md:text-5xl font-display text-gradient-gold">100M</span>
+              <span className="text-sm font-light text-text-body">People. 70% Under 35</span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-4xl md:text-5xl font-display text-gradient-gold">15+</span>
+              <span className="text-sm font-light text-text-body">Free Trade Agreements</span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-4xl md:text-5xl font-display text-gradient-gold">$405B</span>
+              <span className="text-sm font-light text-text-body">In Exports</span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-4xl md:text-5xl font-display text-gradient-gold">$38B</span>
+              <span className="text-sm font-light text-text-body">In FDI</span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-4xl md:text-5xl font-display text-gradient-gold">#1</span>
+              <span className="text-sm font-light text-text-body">Manufacturing in SEA</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. THREE MODES */}
+      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-8">
+            THREE WAYS 100B <em className="font-display italic text-gradient-gold">BUILDS WITH YOU.</em>
+          </h2>
+          <p className="text-lg lg:text-xl font-light leading-relaxed max-w-2xl text-text-muted mb-16">
+            Every deal we take fits one of these three modes. If it does not fit any of them, we pass.
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            {[
+              {
+                img: num01,
+                imgOpacity: 1,
+                mode: "BUILD",
+                title: "CO-BUILD BRANDS FROM SCRATCH",
+                items: [
+                  "End-to-end US brand creation",
+                  "Market entry strategy & distribution",
+                  "Vietnam manufacturing network access",
+                  "Shared equity model"
+                ]
+              },
+              {
+                img: num02,
+                imgOpacity: 0.65,
+                mode: "ACCELERATE",
+                title: "COME IN AS THE OPERATING PARTNER",
+                items: [
+                  "Operations gap analysis",
+                  "Workflow redesign & restructuring",
+                  "Hands-on execution management",
+                  "Equity stake partnership"
+                ]
+              },
+              {
+                img: num03,
+                imgOpacity: 0.65,
+                mode: "CONNECT",
+                title: "BRIDGE CAPITAL ACROSS BORDERS",
+                items: [
+                  "Cross-border capital introductions",
+                  "Founder-to-founder network access",
+                  "Bilateral deal flow facilitation",
+                  "Trusted corridor navigation"
+                ]
+              }
+            ].map((item) => (
+              <div key={item.mode} className="bg-bg-card rounded-2xl border border-border-subtle hover:border-brand-gold/40 transition-colors duration-500 overflow-hidden group">
+                {/* Header: number image + mode word side by side */}
+                <div className="flex items-center gap-4 px-7 pt-7 pb-4">
+                  <img
+                    src={item.img}
+                    alt=""
+                    className="h-[80px] w-auto shrink-0"
+                    style={{ opacity: item.imgOpacity }}
+                  />
+                  <span className="font-display uppercase text-[27px] lg:text-[32px] text-brand-gold font-bold tracking-wider leading-none">
+                    {item.mode}
+                  </span>
+                </div>
+                {/* Title below header */}
+                <div className="px-7 pb-3">
+                  <h3 className="font-display uppercase text-text-heading leading-snug text-sm lg:text-base">
+                    {item.title}
+                  </h3>
+                </div>
+                {/* Checklist */}
+                <div className="mx-7 pb-7 pt-4 border-t border-border-subtle space-y-0">
+                  {item.items.map((bullet, i) => (
+                    <div key={i} className="flex items-start gap-3 pt-4">
+                      <div className="w-5 h-5 icon-silver-gradient shrink-0 mt-0.5">
+                        <Check className="w-2.5 h-2.5 text-[#111]" strokeWidth={2.5} />
+                      </div>
+                      <p className="text-text-muted text-sm leading-relaxed">{bullet}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. TWO PLATFORMS */}
+      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-16">
+            TWO PLATFORMS. <em className="font-display italic text-gradient-gold">ONE CORRIDOR.</em>
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+            <div className="bg-gold-gradient rounded-3xl p-8 lg:p-10 text-black flex flex-col min-h-[500px]">
+              <div className="text-[11px] uppercase tracking-[0.2em] font-bold mb-8">Trade</div>
+              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-black mb-6">Direct-to-factory sourcing across Asia</h3>
+              <p className="text-black/80 font-medium mb-12">We organize direct-sourcing delegations and maintain the vetted trade network for builders who are serious about controlling material costs.</p>
+              
+              <div className="flex flex-col gap-4 mt-auto mb-12">
+                <Link to="/trade" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
+                  Build Better Series <ArrowRight size={16} />
+                </Link>
+                <Link to="/trade" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
+                  Vietnam Direct 2026 <ArrowRight size={16} />
+                </Link>
+                <Link to="/cc" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
+                  Container Club <ArrowRight size={16} />
+                </Link>
+              </div>
+              
+              <Link to="/trade" className="border border-black hover:bg-black hover:text-brand-gold rounded-full px-8 py-4 text-xs uppercase tracking-widest font-bold transition-colors w-fit">
+                Explore Trade
+              </Link>
+            </div>
+
+            <div className="bg-silver-gradient rounded-3xl p-8 lg:p-10 text-black flex flex-col min-h-[500px]">
+              <div className="text-[11px] uppercase tracking-[0.2em] font-bold mb-8">Build</div>
+              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-black mb-6">Capital and partnerships across borders</h3>
+              <p className="text-black/80 font-medium mb-12">The gateway for capital seeking exposure. For founders ready for institutional backing. For operators building something that crosses borders.</p>
+              
+              <div className="flex flex-col gap-4 mt-auto mb-12">
+                <Link to="/build" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
+                  Access Vietnam 2026 <ArrowRight size={16} />
+                </Link>
+                <Link to="/build" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
+                  Advisory & Equity Stakes <ArrowRight size={16} />
+                </Link>
+                <Link to="/build" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
+                  Cross-Border Deal Flow <ArrowRight size={16} />
+                </Link>
+              </div>
+              
+              <Link to="/build" className="border border-black hover:bg-black hover:text-white rounded-full px-8 py-4 text-xs uppercase tracking-widest font-bold transition-colors w-fit">
+                Explore Build
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. THE MOAT */}
+      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-12">
+            ONE PERSON FLUENT IN <em className="font-display italic text-gradient-gold">BOTH WORLDS.</em>
+          </h2>
+
+          {/* 2-col: bio left | 2 stats right */}
+          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-0 items-center mb-16">
+
+            {/* Left: bio */}
+            <div className="lg:border-r border-border-subtle lg:pr-16 py-6">
+              <p className="text-base lg:text-xl font-light leading-relaxed text-text-body">
+                Minh Mac left Vietnam at 17. Spent a decade building across the US — private equity covering a $65B portfolio, real estate, and a 1.6M-user tech startup in SEA. This cross-border identity opens rooms in both markets that most can only access from one side.
+              </p>
+            </div>
+
+            {/* Right: both stats side by side */}
+            <div className="grid grid-cols-2 lg:pl-16 py-6">
+              <div className="flex flex-col border-r border-border-subtle pr-8">
+                <span className="text-[64px] lg:text-[80px] font-display leading-none mb-2">
+                  <span className="text-brand-gold">$</span>65B
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.25em] text-text-muted font-semibold">AUM Coverage</span>
+              </div>
+              <div className="flex flex-col pl-8">
+                <span className="text-[64px] lg:text-[80px] font-display leading-none mb-2">1.6M</span>
+                <span className="text-[10px] uppercase tracking-[0.25em] text-text-muted font-semibold">Startup Users</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Private Equity Lens", points: ["Institutional deal structuring", "Leverage & risk modeling", "Clear exit timelines"] },
+              { title: "Operator Record", points: ["Hands-on business building", "Agency vetting & replacement", "Go-to-market execution"] },
+              { title: "In Both Rooms", points: ["Austin local boardrooms", "Hanoi business networks", "Immediate trust bridges"] },
+              { title: "Selective By Design", points: ["High rejection rate", "Strict 100B fit criteria", "Preserved partner value"] }
+            ].map((card) => (
+              <div key={card.title} className="bg-[#111111] p-6 lg:p-8 rounded-2xl flex flex-col border border-white/5">
+                <h3 className="font-display italic text-gradient-gold uppercase tracking-wide text-xl mb-6">{card.title}</h3>
+                <ul className="flex flex-col gap-4 mt-auto">
+                  {card.points.map((pt, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="mt-1 flex-shrink-0 w-4 h-4 icon-silver-gradient">
+                        <Check size={9} className="text-[#111]" strokeWidth={2.5} />
+                      </div>
+                      <span className="text-sm font-light text-text-muted leading-tight">{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. FOUNDERS SPEAK */}
+      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-16">
+            THE PEOPLE WHO <em className="font-display italic text-gradient-gold">CHOSE US.</em>
+          </h2>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -24 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-10 lg:gap-16 items-center"
+            >
+              {/* Left — quote content */}
+              <div className="relative flex flex-col justify-center">
+                <div className="absolute -top-8 -left-4 text-[160px] leading-none font-serif select-none pointer-events-none text-white/5">"</div>
+                <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-gradient-gold mb-8 relative z-10 leading-tight">
+                  "{testimonials[currentSlide].headline}"
+                </h3>
+                <p className="text-base md:text-lg font-light font-serif leading-relaxed text-text-body mb-10 relative z-10">
+                  {testimonials[currentSlide].quote}
+                </p>
+                <div className="w-10 h-px bg-brand-gold/50 mb-6"></div>
+                <div className="flex flex-col gap-1">
+                  <span className="font-serif italic text-xl md:text-2xl text-text-heading">
+                    {testimonials[currentSlide].name}
+                  </span>
+                  <span className="text-[11px] uppercase tracking-widest text-brand-gold font-semibold mt-1">
+                    {testimonials[currentSlide].title} · <span className="font-bold">{testimonials[currentSlide].company}</span>
+                  </span>
+                  <span className="text-xs text-text-muted italic mt-1">{testimonials[currentSlide].desc}</span>
+                </div>
+              </div>
+
+              {/* Right — photo */}
+              <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden bg-bg-card border border-border-subtle flex items-center justify-center">
+                {testimonials[currentSlide].photo ? (
+                  <img
+                    src={testimonials[currentSlide].photo!}
+                    alt={testimonials[currentSlide].company}
+                    className="w-full h-full object-cover grayscale"
+                  />
+                ) : (
+                  <div className="flex flex-col items-center justify-center gap-4 w-full h-full bg-[#111111]">
+                    <span className="text-7xl font-display text-gradient-gold opacity-30 leading-none">
+                      {testimonials[currentSlide].initial}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-text-muted">
+                      {testimonials[currentSlide].company}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="flex justify-center gap-3 mt-12">
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`h-1.5 transition-all duration-300 rounded-full ${
+                  idx === currentSlide ? "w-8 bg-brand-gold" : "w-2 bg-white/15 hover:bg-white/30"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
