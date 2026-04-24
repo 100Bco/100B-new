@@ -14,6 +14,7 @@
 
   --color-bg-dark:        #000000;
   --color-bg-alt:         #161513;
+  --color-bg-warm:        #1C1611;   /* amber-shifted dark — dusk / private-club mood */
   --color-bg-card:        #201E1B;
   --color-bg-card-hover:  #2B2824;
 
@@ -142,5 +143,42 @@
     opacity: 0.35;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23g)'/></svg>");
+  }
+
+  /* Stronger grain — use on statement sections (waitlist CTA, hero video
+     placeholder) where texture IS the finish, not just a film patina. */
+  .grain-heavy::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.7;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.8 0'/></filter><rect width='100%25' height='100%25' filter='url(%23g)'/></svg>");
+  }
+
+  /* Ambient warm glow at the edge of a section. Use to hint at light coming
+     from outside the frame — fireplace-through-doorway energy. */
+  .glow-warm-top::before,
+  .glow-warm-bottom::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glow-warm-top::before {
+    background: radial-gradient(ellipse 90% 45% at 50% 0%, rgba(195,163,116,0.08) 0%, transparent 65%);
+  }
+  .glow-warm-bottom::before {
+    background: radial-gradient(ellipse 90% 45% at 50% 100%, rgba(195,163,116,0.08) 0%, transparent 65%);
+  }
+  .glow-warm-center::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(195,163,116,0.10) 0%, transparent 70%);
   }
 }

@@ -335,7 +335,7 @@ export default function Build() {
                   {item.details.map((detail, i) => (
                     <div key={i} className="flex items-start gap-2">
                       <span className="text-brand-gold font-bold mt-0.5">—</span>
-                      <span className="text-sm font-light text-text-muted">{detail}</span>
+                      <span className="text-sm text-text-heading">{detail}</span>
                     </div>
                   ))}
                 </div>

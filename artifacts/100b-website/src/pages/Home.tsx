@@ -241,9 +241,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. THREE MODES */}
-      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* 3. THREE MODES — warm-dark surface with ambient amber glow; reads as
+          "the curated room" where the three offerings live. */}
+      <section className="relative py-20 lg:py-28 bg-bg-warm border-b border-border-subtle grain-overlay glow-warm-top overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-8">
             THREE WAYS 100B <em className="font-display italic text-gradient-gold">BUILDS WITH YOU.</em>
           </h2>
@@ -290,35 +291,47 @@ export default function Home() {
                 ]
               }
             ].map((item) => (
-              <div key={item.mode} className="bg-bg-card rounded-2xl border border-border-subtle hover:border-brand-gold/40 transition-colors duration-500 overflow-hidden group">
-                {/* Header: number image + mode word side by side */}
-                <div className="flex items-center gap-4 px-7 pt-7 pb-4">
-                  <img
-                    src={item.img}
-                    alt=""
-                    className="h-[80px] w-auto shrink-0"
-                    style={{ opacity: item.imgOpacity }}
-                  />
-                  <span className="font-display uppercase text-[22px] lg:text-[26px] text-brand-gold font-bold tracking-wide leading-none">
-                    {item.mode}
-                  </span>
-                </div>
-                {/* Title below header */}
-                <div className="px-7 pb-3">
-                  <h3 className="font-display uppercase text-text-heading leading-snug text-sm lg:text-base">
-                    {item.title}
-                  </h3>
-                </div>
-                {/* Checklist */}
-                <div className="mx-7 pb-7 pt-4 border-t border-border-subtle space-y-0">
-                  {item.items.map((bullet, i) => (
-                    <div key={i} className="flex items-start gap-3 pt-4">
-                      <div className="w-5 h-5 icon-silver-gradient shrink-0 mt-0.5">
-                        <Check className="w-2.5 h-2.5 text-[#111]" strokeWidth={2.5} />
+              <div key={item.mode} className="relative bg-bg-card rounded-2xl border border-border-subtle hover:border-brand-gold/50 transition-all duration-500 overflow-hidden group">
+                {/* Hover glow — warm amber swells from the bottom edge, like a
+                    fireplace flaring as the user leans in. */}
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse 85% 55% at 50% 100%, rgba(195,163,116,0.18) 0%, transparent 70%)",
+                  }}
+                  aria-hidden
+                />
+                <div className="relative z-10">
+                  {/* Header: number image + mode word side by side */}
+                  <div className="flex items-center gap-4 px-7 pt-7 pb-4">
+                    <img
+                      src={item.img}
+                      alt=""
+                      className="h-[80px] w-auto shrink-0"
+                      style={{ opacity: item.imgOpacity }}
+                    />
+                    <span className="font-display uppercase text-[22px] lg:text-[26px] text-brand-gold font-bold tracking-wide leading-none">
+                      {item.mode}
+                    </span>
+                  </div>
+                  {/* Title below header */}
+                  <div className="px-7 pb-3">
+                    <h3 className="font-display uppercase text-text-heading leading-snug text-sm lg:text-base">
+                      {item.title}
+                    </h3>
+                  </div>
+                  {/* Checklist */}
+                  <div className="mx-7 pb-7 pt-4 border-t border-border-subtle space-y-0">
+                    {item.items.map((bullet, i) => (
+                      <div key={i} className="flex items-start gap-3 pt-4">
+                        <div className="w-5 h-5 icon-silver-gradient shrink-0 mt-0.5">
+                          <Check className="w-2.5 h-2.5 text-[#111]" strokeWidth={2.5} />
+                        </div>
+                        <p className="text-text-heading text-sm leading-relaxed">{bullet}</p>
                       </div>
-                      <p className="text-text-muted text-sm leading-relaxed">{bullet}</p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -400,6 +413,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 4B. WAITLIST TRANSITION — single-statement moment between the programs
+          and the founder. Heavy grain + warm center glow = "the room" mood. */}
+      <section className="relative bg-bg-warm border-b border-border-subtle grain-heavy glow-warm-center overflow-hidden py-28 lg:py-40">
+        <div className="relative z-10 max-w-5xl mx-auto text-center px-6 lg:px-8">
+          <h2 className="font-display uppercase leading-[1.05] tracking-wide text-gradient-gold text-[30px] md:text-5xl lg:text-[58px] mb-10 lg:mb-12">
+            Become the global brand<br />in your industry.
+          </h2>
+          <a
+            href="#contact-footer"
+            onClick={(e) => {
+              e.preventDefault();
+              document.querySelector("#contact-footer")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="btn-silver-gradient rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold inline-flex items-center gap-3"
+          >
+            Join the Waitlist
+            <ArrowRight size={14} />
+          </a>
+        </div>
+      </section>
+
       {/* 5. THE MOAT */}
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -448,7 +482,7 @@ export default function Home() {
                       <div className="mt-1 flex-shrink-0 w-4 h-4 icon-silver-gradient">
                         <Check size={9} className="text-[#111]" strokeWidth={2.5} />
                       </div>
-                      <span className="text-sm font-light text-text-muted leading-tight">{pt}</span>
+                      <span className="text-sm text-text-heading leading-tight">{pt}</span>
                     </li>
                   ))}
                 </ul>
