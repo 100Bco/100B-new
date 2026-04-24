@@ -442,10 +442,6 @@ export default function Home() {
       {/* 6. FOUNDERS SPEAK — constrained to a single viewport height. */}
       <section className="min-h-screen h-screen flex flex-col bg-bg-alt border-b border-border-subtle overflow-hidden py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-8 lg:mb-10 shrink-0">
-            THE PEOPLE WHO <em className="font-display italic text-gradient-gold">CHOSE US.</em>
-          </h2>
-
           <div className="flex-1 min-h-0 flex items-center">
             <AnimatePresence mode="wait">
               <motion.div
@@ -459,10 +455,10 @@ export default function Home() {
                 {/* Left — quote content */}
                 <div className="relative flex flex-col justify-center">
                   <div className="absolute -top-6 -left-4 text-[140px] leading-none font-serif select-none pointer-events-none text-white/5">"</div>
-                  <h3 className="text-xl md:text-2xl lg:text-[28px] font-bold uppercase tracking-wide text-gradient-gold mb-5 lg:mb-6 relative z-10 leading-tight">
+                  <h3 className="font-display uppercase tracking-wide text-gradient-gold mb-5 lg:mb-6 relative z-10 leading-[1.05] text-[22px] md:text-[28px] lg:text-[34px]">
                     "{testimonials[currentSlide].headline}"
                   </h3>
-                  <p className="text-base lg:text-lg font-light font-serif leading-relaxed text-text-body mb-6 lg:mb-8 relative z-10 line-clamp-6 lg:line-clamp-none">
+                  <p className="text-lg md:text-xl lg:text-[22px] font-normal font-serif italic leading-[1.55] text-text-body mb-6 lg:mb-8 relative z-10 line-clamp-6 lg:line-clamp-none">
                     {testimonials[currentSlide].quote}
                   </p>
                   <div className="w-10 h-px bg-brand-gold/50 mb-4"></div>
@@ -477,16 +473,17 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Right — photo, height-constrained so the whole section stays in one viewport */}
-                <div className="w-full aspect-[4/5] max-h-[min(58vh,500px)] mx-auto rounded-2xl overflow-hidden bg-bg-card border border-border-subtle flex items-center justify-center">
+                {/* Right — photo, height-constrained so the whole section stays in one viewport.
+                    Thick dark bezel around the image sells it as a framed portrait / editorial plate. */}
+                <div className="w-full aspect-[4/5] max-h-[min(58vh,500px)] mx-auto rounded-[28px] bg-[#0D0C0A] border-[14px] lg:border-[18px] border-[#0D0C0A] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] overflow-hidden flex items-center justify-center">
                   {testimonials[currentSlide].photo ? (
                     <img
                       src={testimonials[currentSlide].photo!}
                       alt={testimonials[currentSlide].company}
-                      className="w-full h-full object-cover grayscale"
+                      className="w-full h-full object-cover grayscale rounded-[12px]"
                     />
                   ) : (
-                    <div className="flex flex-col items-center justify-center gap-4 w-full h-full bg-[#111111]">
+                    <div className="flex flex-col items-center justify-center gap-4 w-full h-full bg-[#111111] rounded-[12px]">
                       <span className="text-6xl lg:text-7xl font-display text-gradient-gold opacity-30 leading-none">
                         {testimonials[currentSlide].initial}
                       </span>
