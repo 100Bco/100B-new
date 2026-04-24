@@ -413,11 +413,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4B. WAITLIST TRANSITION — single-statement moment between the programs
-          and the founder. Heavy grain + warm center glow = "the room" mood. */}
+      {/* 4B. WAITLIST TRANSITION — muted tonal gold, engraved feel, heavy grain
+          to match the reference. No bright gradient — single antique-gold tone. */}
       <section className="relative bg-bg-warm border-b border-border-subtle grain-heavy glow-warm-center overflow-hidden py-28 lg:py-40">
         <div className="relative z-10 max-w-5xl mx-auto text-center px-6 lg:px-8">
-          <h2 className="font-display uppercase leading-[1.05] tracking-wide text-gradient-gold text-[30px] md:text-5xl lg:text-[58px] mb-10 lg:mb-12">
+          <h2
+            className="font-display uppercase leading-[1.05] tracking-wide text-[30px] md:text-5xl lg:text-[58px] mb-10 lg:mb-12"
+            style={{ color: "#937C54" }}
+          >
             Become the global brand<br />in your industry.
           </h2>
           <a
