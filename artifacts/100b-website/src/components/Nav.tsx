@@ -2,40 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
-function TimezoneStrip({ className = "" }: { className?: string }) {
-  const [now, setNow] = useState(() => new Date());
-
-  useEffect(() => {
-    const id = setInterval(() => setNow(new Date()), 30_000);
-    return () => clearInterval(id);
-  }, []);
-
-  const fmt = (tz: string) =>
-    new Intl.DateTimeFormat("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-      timeZone: tz,
-    }).format(now);
-
-  return (
-    <div
-      className={`hidden lg:flex items-center gap-3 font-sans text-[10px] uppercase tracking-[0.28em] text-text-muted ${className}`}
-      aria-label="Local time — Austin and Hanoi"
-    >
-      <span className="flex items-baseline gap-1.5">
-        <span className="text-text-muted/70">AUS</span>
-        <span className="text-brand-gold tabular-nums">{fmt("America/Chicago")}</span>
-      </span>
-      <span className="w-px h-3 bg-border-subtle" aria-hidden />
-      <span className="flex items-baseline gap-1.5">
-        <span className="text-text-muted/70">HAN</span>
-        <span className="text-brand-gold tabular-nums">{fmt("Asia/Ho_Chi_Minh")}</span>
-      </span>
-    </div>
-  );
-}
-
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -96,7 +62,6 @@ export default function Nav() {
                 );
               })}
             </div>
-            <TimezoneStrip />
             <a
               href="#contact-footer"
               className="btn-silver-gradient rounded-full px-6 py-3 text-[11px] uppercase tracking-widest font-semibold flex items-center justify-center whitespace-nowrap"
@@ -143,7 +108,6 @@ export default function Nav() {
                 </Link>
               ))}
             </div>
-            <MobileTimezoneStrip />
             <a
               href="#contact-footer"
               className="btn-silver-gradient rounded-full px-8 py-4 text-sm uppercase tracking-widest font-semibold w-full text-center"
@@ -159,33 +123,5 @@ export default function Nav() {
         </div>
       )}
     </>
-  );
-}
-
-function MobileTimezoneStrip() {
-  const [now, setNow] = useState(() => new Date());
-  useEffect(() => {
-    const id = setInterval(() => setNow(new Date()), 30_000);
-    return () => clearInterval(id);
-  }, []);
-  const fmt = (tz: string) =>
-    new Intl.DateTimeFormat("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-      timeZone: tz,
-    }).format(now);
-  return (
-    <div className="flex items-center gap-6 font-sans text-xs uppercase tracking-[0.25em] text-text-muted">
-      <span className="flex items-baseline gap-2">
-        <span>AUS</span>
-        <span className="text-brand-gold tabular-nums text-sm">{fmt("America/Chicago")}</span>
-      </span>
-      <span className="w-px h-4 bg-border-subtle" aria-hidden />
-      <span className="flex items-baseline gap-2">
-        <span>HAN</span>
-        <span className="text-brand-gold tabular-nums text-sm">{fmt("Asia/Ho_Chi_Minh")}</span>
-      </span>
-    </div>
   );
 }
