@@ -153,7 +153,7 @@ export default function Home() {
           </h1>
 
           <p className="text-base lg:text-lg font-normal leading-relaxed max-w-2xl text-text-body">
-            We connect elite operators, capital, and builders between Vietnam and the US. The deals worth doing are getting bigger and more complex. We are in those rooms.
+            We connect elite operators, capital, and builders across the US-Vietnam corridor. The deals worth doing are getting bigger and more complex. We are in those rooms.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
