@@ -242,9 +242,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. THREE MODES — warm-dark surface with ambient amber glow; reads as
-          "the curated room" where the three offerings live. */}
-      <section className="relative py-20 lg:py-28 bg-bg-warm border-b border-border-subtle grain-overlay glow-warm-top overflow-hidden">
+      {/* 3. THREE MODES — black surface; warm amber glow only at the top edge
+          so the section starts lit and fades to clean black by mid-page. */}
+      <section className="relative py-20 lg:py-28 bg-bg-dark border-b border-border-subtle grain-overlay glow-warm-top overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-8">
             THREE WAYS 100B <em className="font-display italic text-gradient-gold">BUILDS WITH YOU.</em>
@@ -414,28 +414,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4B. WAITLIST TRANSITION — uses the Lien he.png backdrop (the textured
-          dark surface art directed for this moment). A subtle darken overlay
-          keeps the headline readable without killing the grain in the art. */}
+      {/* 4B. WAITLIST TRANSITION — slim transitional bar, not a full section.
+          Delicate pause between the programs and the founder — art backdrop,
+          modest type, compact CTA. */}
       <section
-        className="relative border-b border-border-subtle overflow-hidden py-28 lg:py-40 bg-bg-warm bg-center bg-cover"
+        className="relative border-y border-border-subtle overflow-hidden py-12 lg:py-16 bg-bg-warm bg-center bg-cover"
         style={{ backgroundImage: `url(${waitlistBg})` }}
       >
-        {/* readability veil — soft inner vignette so text sits clean */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 60% 55% at 50% 50%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 85%)",
+              "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.28) 85%)",
           }}
           aria-hidden
         />
-        <div className="relative z-10 max-w-5xl mx-auto text-center px-6 lg:px-8">
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-6 lg:px-8 flex flex-col items-center gap-5 lg:gap-6">
           <h2
-            className="font-display uppercase leading-[1.05] tracking-wide text-[30px] md:text-5xl lg:text-[58px] mb-10 lg:mb-12"
+            className="font-display uppercase leading-[1.15] tracking-[0.04em] text-[20px] md:text-[26px] lg:text-[30px]"
             style={{ color: "#937C54" }}
           >
-            Become the global brand<br />in your industry.
+            Become the global brand<br className="sm:hidden" /> in your industry.
           </h2>
           <a
             href="#contact-footer"
@@ -443,10 +442,10 @@ export default function Home() {
               e.preventDefault();
               document.querySelector("#contact-footer")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="btn-silver-gradient rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold inline-flex items-center gap-3"
+            className="btn-silver-gradient rounded-full px-6 py-3 text-[10px] uppercase tracking-[0.22em] font-semibold inline-flex items-center gap-2"
           >
             Join the Waitlist
-            <ArrowRight size={14} />
+            <ArrowRight size={12} />
           </a>
         </div>
       </section>
