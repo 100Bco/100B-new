@@ -413,9 +413,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4B. WAITLIST TRANSITION — muted tonal gold, engraved feel, heavy grain
-          to match the reference. No bright gradient — single antique-gold tone. */}
+      {/* 4B. WAITLIST TRANSITION — muted tonal gold, engraved feel, leather /
+          felt texture. Two grain layers (coarse overlay + fine soft-light) give
+          the dark fabric feel from the reference, not plain film grain. */}
       <section className="relative bg-bg-warm border-b border-border-subtle grain-heavy glow-warm-center overflow-hidden py-28 lg:py-40">
+        <div className="grain-fine" aria-hidden />
         <div className="relative z-10 max-w-5xl mx-auto text-center px-6 lg:px-8">
           <h2
             className="font-display uppercase leading-[1.05] tracking-wide text-[30px] md:text-5xl lg:text-[58px] mb-10 lg:mb-12"
