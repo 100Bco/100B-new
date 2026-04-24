@@ -434,66 +434,68 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. FOUNDERS SPEAK */}
-      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-16">
+      {/* 6. FOUNDERS SPEAK — constrained to a single viewport height. */}
+      <section className="min-h-screen h-screen flex flex-col bg-bg-alt border-b border-border-subtle overflow-hidden py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-8 lg:mb-10 shrink-0">
             THE PEOPLE WHO <em className="font-display italic text-gradient-gold">CHOSE US.</em>
           </h2>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -24 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-10 lg:gap-16 items-center"
-            >
-              {/* Left — quote content */}
-              <div className="relative flex flex-col justify-center">
-                <div className="absolute -top-8 -left-4 text-[160px] leading-none font-serif select-none pointer-events-none text-white/5">"</div>
-                <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-gradient-gold mb-8 relative z-10 leading-tight">
-                  "{testimonials[currentSlide].headline}"
-                </h3>
-                <p className="text-base md:text-lg font-light font-serif leading-relaxed text-text-body mb-10 relative z-10">
-                  {testimonials[currentSlide].quote}
-                </p>
-                <div className="w-10 h-px bg-brand-gold/50 mb-6"></div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-serif italic text-xl md:text-2xl text-text-heading">
-                    {testimonials[currentSlide].name}
-                  </span>
-                  <span className="text-[11px] uppercase tracking-widest text-brand-gold font-semibold mt-1">
-                    {testimonials[currentSlide].title} · <span className="font-bold">{testimonials[currentSlide].company}</span>
-                  </span>
-                  <span className="text-xs text-text-muted italic mt-1">{testimonials[currentSlide].desc}</span>
-                </div>
-              </div>
-
-              {/* Right — photo */}
-              <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden bg-bg-card border border-border-subtle flex items-center justify-center">
-                {testimonials[currentSlide].photo ? (
-                  <img
-                    src={testimonials[currentSlide].photo!}
-                    alt={testimonials[currentSlide].company}
-                    className="w-full h-full object-cover grayscale"
-                  />
-                ) : (
-                  <div className="flex flex-col items-center justify-center gap-4 w-full h-full bg-[#111111]">
-                    <span className="text-7xl font-display text-gradient-gold opacity-30 leading-none">
-                      {testimonials[currentSlide].initial}
+          <div className="flex-1 min-h-0 flex items-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -24 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="w-full grid grid-cols-1 lg:grid-cols-[1fr_minmax(280px,420px)] gap-8 lg:gap-14 items-center"
+              >
+                {/* Left — quote content */}
+                <div className="relative flex flex-col justify-center">
+                  <div className="absolute -top-6 -left-4 text-[140px] leading-none font-serif select-none pointer-events-none text-white/5">"</div>
+                  <h3 className="text-xl md:text-2xl lg:text-[28px] font-bold uppercase tracking-wide text-gradient-gold mb-5 lg:mb-6 relative z-10 leading-tight">
+                    "{testimonials[currentSlide].headline}"
+                  </h3>
+                  <p className="text-base lg:text-lg font-light font-serif leading-relaxed text-text-body mb-6 lg:mb-8 relative z-10 line-clamp-6 lg:line-clamp-none">
+                    {testimonials[currentSlide].quote}
+                  </p>
+                  <div className="w-10 h-px bg-brand-gold/50 mb-4"></div>
+                  <div className="flex flex-col gap-1">
+                    <span className="font-serif italic text-lg md:text-xl text-text-heading">
+                      {testimonials[currentSlide].name}
                     </span>
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-text-muted">
-                      {testimonials[currentSlide].company}
+                    <span className="text-[11px] uppercase tracking-widest text-brand-gold font-semibold mt-1">
+                      {testimonials[currentSlide].title} · <span className="font-bold">{testimonials[currentSlide].company}</span>
                     </span>
+                    <span className="text-xs text-text-muted italic mt-1">{testimonials[currentSlide].desc}</span>
                   </div>
-                )}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                </div>
 
-          <div className="flex justify-center gap-3 mt-12">
+                {/* Right — photo, height-constrained so the whole section stays in one viewport */}
+                <div className="w-full aspect-[4/5] max-h-[min(58vh,500px)] mx-auto rounded-2xl overflow-hidden bg-bg-card border border-border-subtle flex items-center justify-center">
+                  {testimonials[currentSlide].photo ? (
+                    <img
+                      src={testimonials[currentSlide].photo!}
+                      alt={testimonials[currentSlide].company}
+                      className="w-full h-full object-cover grayscale"
+                    />
+                  ) : (
+                    <div className="flex flex-col items-center justify-center gap-4 w-full h-full bg-[#111111]">
+                      <span className="text-6xl lg:text-7xl font-display text-gradient-gold opacity-30 leading-none">
+                        {testimonials[currentSlide].initial}
+                      </span>
+                      <span className="text-[10px] uppercase tracking-[0.3em] text-text-muted">
+                        {testimonials[currentSlide].company}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="flex justify-center gap-3 mt-8 shrink-0">
             {testimonials.map((_, idx) => (
               <button
                 key={idx}
