@@ -89,7 +89,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* 1. HERO */}
-      <section className="relative bg-bg-dark overflow-hidden h-screen min-h-[720px] flex flex-col justify-end border-b border-border-subtle">
+      <section className="relative bg-bg-dark overflow-hidden h-screen min-h-[720px] flex flex-col justify-center border-b border-border-subtle">
         {/* Video layer — replace the <div> with a <video> when footage is delivered.
             Keep grain-overlay so the placeholder never looks like a missing asset. */}
         <div
@@ -118,7 +118,7 @@ export default function Home() {
           aria-hidden
         />
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-start gap-6 pb-16 lg:pb-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-start gap-6 pt-24 lg:pt-28">
           <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-semibold text-brand-gold">
             <span className="w-10 h-px bg-brand-gold/60" />
             <span>Cross-Border Capital &amp; Brand Platform</span>
