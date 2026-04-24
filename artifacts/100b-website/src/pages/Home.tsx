@@ -192,7 +192,7 @@ export default function Home() {
               </p>
               {/* Bỏ mx-auto, thêm -translate-x để dịch trái */}
               <div className="w-full max-w-2xl lg:-translate-x-12"> {/* Thêm mt-8 để tạo khoảng cách với chữ phía trên */}
-                <img src="/globe.png" alt="Vietnam on the globe" className="w-full h-auto max-w-[140%] lg:scale-125 origin-center object-contain"/>
+                <img src="/Globe.png" alt="Vietnam on the globe" className="w-full h-auto max-w-[140%] lg:scale-125 origin-center object-contain"/>
               </div>
             </div>
             
