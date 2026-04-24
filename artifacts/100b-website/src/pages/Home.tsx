@@ -92,30 +92,45 @@ export default function Home() {
     <div className="flex flex-col">
       {/* 1. HERO */}
       <section className="relative bg-bg-dark overflow-hidden h-screen min-h-[720px] flex flex-col justify-center border-b border-border-subtle">
-        {/* Video layer — replace the <div> with a <video> when footage is delivered.
-            Keep grain-overlay so the placeholder never looks like a missing asset. */}
-        <div
-          className="absolute inset-0 grain-overlay"
-          style={{
-            background: `
-              radial-gradient(ellipse 80% 60% at 70% 85%, rgba(195,163,116,0.10) 0%, transparent 65%),
-              radial-gradient(ellipse 50% 45% at 10% 15%, rgba(255,255,255,0.025) 0%, transparent 55%),
-              linear-gradient(180deg, #08070A 0%, #000000 55%, #000000 100%)
-            `,
-          }}
-          aria-hidden
-        />
-        {/*
-          When ready, replace the div above with:
-          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-            <source src="/hero-corridor.mp4" type="video/mp4" />
-          </video>
-          And keep the readability overlay below.
-        */}
+        {/* Wistia video background — scales to cover the viewport.
+            The embed mounts at 16:9; the wrapper scales/crops so wide and tall
+            viewports both get a clean fill. */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{
+              // cover-fit for 16:9 inside any viewport: max of viewport/16*9 vs viewport
+              width: "max(100vw, 177.78vh)",
+              height: "max(56.25vw, 100vh)",
+            }}
+          >
+            <wistia-player
+              media-id="9hbymhvynw"
+              aspect="1.7777777777777777"
+              autoplay="true"
+              muted="true"
+              end-video-behavior="loop"
+              controls-visible-on-load="false"
+              play-button="false"
+              playbar="false"
+              small-play-button="false"
+              fullscreen-button="false"
+              volume-control="false"
+              settings-control="false"
+              quality-control="false"
+              silent-auto-play="allow"
+              style={{ width: "100%", height: "100%", display: "block" }}
+            />
+          </div>
+        </div>
+
+        {/* Readability overlays — top + bottom dark fades so headline and
+            proof strip stay legible over any video frame. */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.85) 100%)",
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 25%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.85) 100%)",
           }}
           aria-hidden
         />
@@ -346,15 +361,10 @@ export default function Home() {
           mirrored on the right (Hanoi). Content unchanged; presentation new. */}
       <section className="relative py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Section header */}
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-8 h-px bg-white/15" />
-            <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-              Two Worlds, One Corridor
-            </p>
-          </div>
-          <h2 className="font-serif font-light text-[36px] md:text-[44px] lg:text-[56px] leading-[1.1] tracking-tight text-text-heading max-w-3xl mb-4">
-            Where capital meets <em className="italic text-gradient-gold">craft</em>, across two hemispheres.
+          {/* Section header — matches the UTM/caps pattern used by every other
+              section title on this page */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-8">
+            TWO WORLDS, <em className="font-display italic text-gradient-gold">ONE CORRIDOR.</em>
           </h2>
           <p className="text-base lg:text-lg font-light text-white/85 leading-relaxed max-w-2xl mb-12">
             One operator. Two rooms. One corridor between them. Choose the side you need — or walk through both.
@@ -379,17 +389,16 @@ export default function Home() {
               aria-hidden
             />
 
-            {/* 100B emblem on the corridor */}
+            {/* 100B emblem on the corridor — no ring; emblem fills the plate */}
             <div
               className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[3] items-center justify-center w-16 h-16 rounded-full transition-shadow duration-300 hover:shadow-[0_0_60px_rgba(195,163,116,0.35)]"
               style={{
                 background: "#2F2C28",
-                border: "1px solid rgba(195,163,116,0.5)",
                 boxShadow: "0 0 40px rgba(195,163,116,0.2)",
               }}
               aria-label="100B"
             >
-              <img src={corridorEmblem} alt="100B" className="w-9 h-9 object-contain" />
+              <img src={corridorEmblem} alt="100B" className="w-16 h-16 object-contain" />
             </div>
 
             {/* LEFT — BUILD (Austin) */}
