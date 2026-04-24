@@ -1,21 +1,43 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md mx-4">
-        <CardContent className="pt-6">
-          <div className="flex mb-4 gap-2">
-            <AlertCircle className="h-8 w-8 text-red-500" />
-            <h1 className="text-2xl font-bold text-gray-900">404 Page Not Found</h1>
-          </div>
+    <div className="relative min-h-screen w-full bg-bg-dark flex items-center justify-center overflow-hidden px-6">
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(195,163,116,0.08) 0%, transparent 70%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none opacity-15"
+        style={{
+          backgroundImage: `repeating-linear-gradient(rgba(255,255,255,0.05) 0 1px, transparent 1px 100%), repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 100%)`,
+          backgroundSize: "40px 40px",
+        }}
+      />
 
-          <p className="mt-4 text-sm text-gray-600">
-            Did you forget to add the page to the router?
-          </p>
-        </CardContent>
-      </Card>
+      <div className="relative z-10 text-center max-w-2xl">
+        <div className="text-[10px] uppercase tracking-[0.35em] font-semibold text-brand-gold mb-10">
+          404 · No such stop on the route
+        </div>
+
+        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] text-text-heading mb-8">
+          Off the <em className="font-serif italic text-gradient-gold">corridor.</em>
+        </h1>
+
+        <p className="text-base lg:text-lg font-light text-text-body max-w-md mx-auto mb-12">
+          This page isn't on the manifest. The rest of 100B is waiting where it should be.
+        </p>
+
+        <Link
+          to="/"
+          className="btn-silver-gradient rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold inline-block"
+        >
+          Return to Home
+        </Link>
+      </div>
     </div>
   );
 }

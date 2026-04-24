@@ -2,6 +2,40 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
+function TimezoneStrip({ className = "" }: { className?: string }) {
+  const [now, setNow] = useState(() => new Date());
+
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 30_000);
+    return () => clearInterval(id);
+  }, []);
+
+  const fmt = (tz: string) =>
+    new Intl.DateTimeFormat("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: tz,
+    }).format(now);
+
+  return (
+    <div
+      className={`hidden lg:flex items-center gap-3 font-sans text-[10px] uppercase tracking-[0.28em] text-text-muted ${className}`}
+      aria-label="Local time — Austin and Hanoi"
+    >
+      <span className="flex items-baseline gap-1.5">
+        <span className="text-text-muted/70">AUS</span>
+        <span className="text-brand-gold tabular-nums">{fmt("America/Chicago")}</span>
+      </span>
+      <span className="w-px h-3 bg-border-subtle" aria-hidden />
+      <span className="flex items-baseline gap-1.5">
+        <span className="text-text-muted/70">HAN</span>
+        <span className="text-brand-gold tabular-nums">{fmt("Asia/Ho_Chi_Minh")}</span>
+      </span>
+    </div>
+  );
+}
+
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -15,7 +49,6 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
@@ -35,7 +68,7 @@ export default function Nav() {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between gap-6">
           <Link to="/" className="flex items-center group relative z-50">
             <img
               src="/logo-100b.png"
@@ -44,7 +77,6 @@ export default function Nav() {
             />
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-10">
             <div className="flex items-center gap-8">
               {links.map((link) => {
@@ -64,6 +96,7 @@ export default function Nav() {
                 );
               })}
             </div>
+            <TimezoneStrip />
             <a
               href="#contact-footer"
               className="btn-silver-gradient rounded-full px-6 py-3 text-[11px] uppercase tracking-widest font-semibold flex items-center justify-center whitespace-nowrap"
@@ -76,7 +109,6 @@ export default function Nav() {
             </a>
           </div>
 
-          {/* Mobile Toggle */}
           <button
             className="md:hidden relative z-50 p-2 text-text-heading"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -87,7 +119,6 @@ export default function Nav() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-bg-dark bg-opacity-95 backdrop-blur-xl flex flex-col items-center justify-center pt-24 px-6 pb-6 h-screen">
           <div className="flex flex-col items-center gap-12 w-full max-w-sm">
@@ -112,6 +143,7 @@ export default function Nav() {
                 </Link>
               ))}
             </div>
+            <MobileTimezoneStrip />
             <a
               href="#contact-footer"
               className="btn-silver-gradient rounded-full px-8 py-4 text-sm uppercase tracking-widest font-semibold w-full text-center"
@@ -127,5 +159,33 @@ export default function Nav() {
         </div>
       )}
     </>
+  );
+}
+
+function MobileTimezoneStrip() {
+  const [now, setNow] = useState(() => new Date());
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 30_000);
+    return () => clearInterval(id);
+  }, []);
+  const fmt = (tz: string) =>
+    new Intl.DateTimeFormat("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: tz,
+    }).format(now);
+  return (
+    <div className="flex items-center gap-6 font-sans text-xs uppercase tracking-[0.25em] text-text-muted">
+      <span className="flex items-baseline gap-2">
+        <span>AUS</span>
+        <span className="text-brand-gold tabular-nums text-sm">{fmt("America/Chicago")}</span>
+      </span>
+      <span className="w-px h-4 bg-border-subtle" aria-hidden />
+      <span className="flex items-baseline gap-2">
+        <span>HAN</span>
+        <span className="text-brand-gold tabular-nums text-sm">{fmt("Asia/Ho_Chi_Minh")}</span>
+      </span>
+    </div>
   );
 }
