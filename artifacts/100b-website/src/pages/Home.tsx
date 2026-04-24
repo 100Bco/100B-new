@@ -185,8 +185,8 @@ export default function Home() {
               <p className="text-lg font-light text-text-muted italic border-l border-brand-gold/30 pl-4 mb-8">
                 "Vietnam isn't the next China. It's the next Vietnam."
               </p>
-              <div className="w-full max-w-2xl mx-auto">
-                <img src="/globe.png" alt="Vietnam on the globe" className="w-full object-contain" />
+              <div className="w-full flex justify-center mt-8"> {/* Thêm mt-8 để tạo khoảng cách với chữ phía trên */}
+                <img src="/globe.png" alt="Vietnam on the globe" className="w-full h-auto max-w-[140%] lg:scale-125 origin-center object-contain"/>
               </div>
             </div>
             
