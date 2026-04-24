@@ -474,9 +474,17 @@ export default function Home() {
                 </div>
 
                 {/* Right — photo with a brushed-silver bezel, matched to the brand's
-                    silver CTA treatment. Reads as a framed editorial plate. */}
-                <div className="w-full aspect-[4/5] max-h-[min(58vh,500px)] mx-auto rounded-[28px] bg-silver-gradient p-[14px] lg:p-[18px] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] flex items-center justify-center">
-                  <div className="w-full h-full rounded-[14px] overflow-hidden ring-1 ring-black/20">
+                    silver CTA treatment. Reads as a framed editorial plate.
+                    Uses padding + gradient background instead of border-image so
+                    the rounded corners survive (border-image breaks radius). */}
+                <div
+                  className="w-full aspect-[4/5] max-h-[min(58vh,500px)] mx-auto rounded-[28px] p-[12px] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] flex items-center justify-center"
+                  style={{
+                    background:
+                      "linear-gradient(105.42deg, #EAEAEA 0%, #C9C9C9 36%, #FFFFFF 49%, #EAEAEA 69%, #6A6A6A 94%)",
+                  }}
+                >
+                  <div className="w-full h-full rounded-[18px] overflow-hidden ring-1 ring-black/20">
                     {testimonials[currentSlide].photo ? (
                       <img
                         src={testimonials[currentSlide].photo!}
