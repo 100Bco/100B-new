@@ -22,7 +22,6 @@ export default function Nav() {
   const links = [
     { name: "Trade", path: "/trade" },
     { name: "Build", path: "/build" },
-    { name: "Container Club", path: "/cc" },
   ];
 
   return (

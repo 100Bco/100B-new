@@ -84,9 +84,14 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
+    }, 12000);
     return () => clearInterval(timer);
   }, []);
+
+  const goPrev = () =>
+    setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const goNext = () =>
+    setCurrentSlide((prev) => (prev + 1) % testimonials.length);
 
   return (
     <div className="flex flex-col">
@@ -596,7 +601,7 @@ export default function Home() {
             {[
               { title: "Private Equity Lens", points: ["Institutional deal structuring", "Leverage & risk modeling", "Clear exit timelines"] },
               { title: "Operator Record", points: ["Hands-on business building", "Agency vetting & replacement", "Go-to-market execution"] },
-              { title: "In Both Rooms", points: ["Austin local boardrooms", "Hanoi business networks", "Immediate trust bridges"] },
+              { title: "In Both Rooms", points: ["Texas local boardrooms", "Vietnam business networks", "Immediate trust bridges"] },
               { title: "Selective By Design", points: ["High rejection rate", "Strict 100B fit criteria", "Preserved partner value"] }
             ].map((card) => (
               <div key={card.title} className="bg-[#111111] p-6 lg:p-8 rounded-2xl flex flex-col border border-white/5">
@@ -617,9 +622,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. FOUNDERS SPEAK — constrained to a single viewport height. */}
-      <section className="min-h-screen h-screen flex flex-col bg-bg-alt border-b border-border-subtle overflow-hidden py-20 lg:py-24">
+      {/* 6. WHAT OUR FRIENDS SAY — constrained to a single viewport height. */}
+      <section className="min-h-screen h-screen flex flex-col bg-bg-alt border-b border-border-subtle overflow-hidden py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-8 lg:mb-10 shrink-0">
+            WHAT OUR <em className="font-display italic text-gradient-gold">FRIENDS SAY.</em>
+          </h2>
           <div className="flex-1 min-h-0 flex items-center">
             <AnimatePresence mode="wait">
               <motion.div
@@ -682,17 +690,35 @@ export default function Home() {
             </AnimatePresence>
           </div>
 
-          <div className="flex justify-center gap-3 mt-8 shrink-0">
-            {testimonials.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`h-1.5 transition-all duration-300 rounded-full ${
-                  idx === currentSlide ? "w-8 bg-brand-gold" : "w-2 bg-white/15 hover:bg-white/30"
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
+          <div className="flex items-center justify-center gap-6 mt-8 shrink-0">
+            <button
+              onClick={goPrev}
+              aria-label="Previous testimonial"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors"
+            >
+              <ArrowRight size={16} className="rotate-180" />
+            </button>
+
+            <div className="flex items-center gap-3">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`h-1.5 transition-all duration-300 rounded-full ${
+                    idx === currentSlide ? "w-8 bg-brand-gold" : "w-2 bg-white/15 hover:bg-white/30"
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={goNext}
+              aria-label="Next testimonial"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors"
+            >
+              <ArrowRight size={16} />
+            </button>
           </div>
         </div>
       </section>
