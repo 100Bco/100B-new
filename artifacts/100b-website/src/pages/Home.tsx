@@ -92,30 +92,45 @@ export default function Home() {
     <div className="flex flex-col">
       {/* 1. HERO */}
       <section className="relative bg-bg-dark overflow-hidden h-screen min-h-[720px] flex flex-col justify-center border-b border-border-subtle">
-        {/* Video layer — replace the <div> with a <video> when footage is delivered.
-            Keep grain-overlay so the placeholder never looks like a missing asset. */}
-        <div
-          className="absolute inset-0 grain-overlay"
-          style={{
-            background: `
-              radial-gradient(ellipse 80% 60% at 70% 85%, rgba(195,163,116,0.10) 0%, transparent 65%),
-              radial-gradient(ellipse 50% 45% at 10% 15%, rgba(255,255,255,0.025) 0%, transparent 55%),
-              linear-gradient(180deg, #08070A 0%, #000000 55%, #000000 100%)
-            `,
-          }}
-          aria-hidden
-        />
-        {/*
-          When ready, replace the div above with:
-          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-            <source src="/hero-corridor.mp4" type="video/mp4" />
-          </video>
-          And keep the readability overlay below.
-        */}
+        {/* Wistia video background — scales to cover the viewport.
+            The embed mounts at 16:9; the wrapper scales/crops so wide and tall
+            viewports both get a clean fill. */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{
+              // cover-fit for 16:9 inside any viewport: max of viewport/16*9 vs viewport
+              width: "max(100vw, 177.78vh)",
+              height: "max(56.25vw, 100vh)",
+            }}
+          >
+            <wistia-player
+              media-id="9hbymhvynw"
+              aspect="1.7777777777777777"
+              autoplay="true"
+              muted="true"
+              end-video-behavior="loop"
+              controls-visible-on-load="false"
+              play-button="false"
+              playbar="false"
+              small-play-button="false"
+              fullscreen-button="false"
+              volume-control="false"
+              settings-control="false"
+              quality-control="false"
+              silent-auto-play="allow"
+              style={{ width: "100%", height: "100%", display: "block" }}
+            />
+          </div>
+        </div>
+
+        {/* Readability overlays — top + bottom dark fades so headline and
+            proof strip stay legible over any video frame. */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.85) 100%)",
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 25%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.85) 100%)",
           }}
           aria-hidden
         />
