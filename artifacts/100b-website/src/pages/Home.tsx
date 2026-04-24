@@ -219,7 +219,7 @@ export default function Home() {
                     className="h-[80px] w-auto shrink-0"
                     style={{ opacity: item.imgOpacity }}
                   />
-                  <span className="font-display uppercase text-[27px] lg:text-[32px] text-brand-gold font-bold tracking-wider leading-none">
+                  <span className="font-display uppercase text-[22px] lg:text-[26px] text-brand-gold font-bold tracking-wide leading-none">
                     {item.mode}
                   </span>
                 </div>
