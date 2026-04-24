@@ -89,7 +89,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* 1. HERO */}
-      <section className="relative bg-bg-dark overflow-hidden h-screen min-h-[720px] flex flex-col justify-end border-b border-border-subtle">
+      <section className="relative bg-bg-dark overflow-hidden h-screen min-h-[720px] flex flex-col justify-center border-b border-border-subtle">
         {/* Video layer — replace the <div> with a <video> when footage is delivered.
             Keep grain-overlay so the placeholder never looks like a missing asset. */}
         <div
@@ -118,7 +118,7 @@ export default function Home() {
           aria-hidden
         />
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-start gap-6 pb-16 lg:pb-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-start gap-6 pt-24 lg:pt-28">
           <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-semibold text-brand-gold">
             <span className="w-10 h-px bg-brand-gold/60" />
             <span>Cross-Border Capital &amp; Brand Platform</span>
@@ -334,48 +334,73 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-            <div className="bg-gold-gradient rounded-3xl p-8 lg:p-10 text-black flex flex-col min-h-[500px]">
-              <div className="text-[11px] uppercase tracking-[0.2em] font-bold mb-8">Trade</div>
-              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-black mb-6">Direct-to-factory sourcing across Asia</h3>
-              <p className="text-black/80 font-medium mb-12">We organize direct-sourcing delegations and maintain the vetted trade network for builders who are serious about controlling material costs.</p>
-              
-              <div className="flex flex-col gap-4 mt-auto mb-12">
-                <Link to="/trade" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
-                  Build Better Series <ArrowRight size={16} />
-                </Link>
-                <Link to="/trade" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
-                  Vietnam Direct 2026 <ArrowRight size={16} />
-                </Link>
-                <Link to="/cc" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
-                  Container Club <ArrowRight size={16} />
+            {/* Build — silver gradient frame, dark interior. Sits on the left. */}
+            <div
+              className="rounded-3xl p-[3px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]"
+              style={{
+                background:
+                  "linear-gradient(105.42deg, #EAEAEA 0%, #C9C9C9 36%, #FFFFFF 49%, #EAEAEA 69%, #6A6A6A 94%)",
+              }}
+            >
+              <div className="bg-bg-card rounded-[22px] p-8 lg:p-10 flex flex-col min-h-[500px] h-full">
+                <div className="text-[11px] uppercase tracking-[0.25em] font-semibold text-text-heading mb-8">Build</div>
+                <h3 className="text-3xl lg:text-4xl font-serif font-light text-text-heading leading-tight mb-6">Capital and partnerships across borders</h3>
+                <p className="text-text-body font-light leading-relaxed mb-12">The gateway for capital seeking exposure. For founders ready for institutional backing. For operators building something that crosses borders.</p>
+
+                <div className="flex flex-col mt-auto mb-10 border-t border-border-subtle">
+                  <Link to="/build" className="group flex items-center justify-between py-4 border-b border-border-subtle text-text-heading hover:text-brand-gold transition-colors">
+                    <span className="font-serif italic text-lg">Access Vietnam 2026</span>
+                    <ArrowRight size={16} className="text-brand-gold group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <Link to="/build" className="group flex items-center justify-between py-4 border-b border-border-subtle text-text-heading hover:text-brand-gold transition-colors">
+                    <span className="font-serif italic text-lg">Advisory &amp; Equity Stakes</span>
+                    <ArrowRight size={16} className="text-brand-gold group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <Link to="/build" className="group flex items-center justify-between py-4 text-text-heading hover:text-brand-gold transition-colors">
+                    <span className="font-serif italic text-lg">Cross-Border Deal Flow</span>
+                    <ArrowRight size={16} className="text-brand-gold group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+
+                <Link to="/build" className="btn-silver-gradient rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold w-fit">
+                  Explore Build
                 </Link>
               </div>
-              
-              <Link to="/trade" className="border border-black hover:bg-black hover:text-brand-gold rounded-full px-8 py-4 text-xs uppercase tracking-widest font-bold transition-colors w-fit">
-                Explore Trade
-              </Link>
             </div>
 
-            <div className="bg-silver-gradient rounded-3xl p-8 lg:p-10 text-black flex flex-col min-h-[500px]">
-              <div className="text-[11px] uppercase tracking-[0.2em] font-bold mb-8">Build</div>
-              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-black mb-6">Capital and partnerships across borders</h3>
-              <p className="text-black/80 font-medium mb-12">The gateway for capital seeking exposure. For founders ready for institutional backing. For operators building something that crosses borders.</p>
-              
-              <div className="flex flex-col gap-4 mt-auto mb-12">
-                <Link to="/build" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
-                  Access Vietnam 2026 <ArrowRight size={16} />
-                </Link>
-                <Link to="/build" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
-                  Advisory & Equity Stakes <ArrowRight size={16} />
-                </Link>
-                <Link to="/build" className="flex items-center gap-3 font-semibold hover:translate-x-2 transition-transform">
-                  Cross-Border Deal Flow <ArrowRight size={16} />
+            {/* Trade — antique-brass gold frame (brand-palette gradient, same spec
+                format as silver so both frames feel like the same family). */}
+            <div
+              className="rounded-3xl p-[3px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]"
+              style={{
+                background:
+                  "linear-gradient(105.42deg, #C3A374 0%, #8A7049 36%, #EACB99 49%, #C3A374 69%, #3E2A0D 94%)",
+              }}
+            >
+              <div className="bg-bg-card rounded-[22px] p-8 lg:p-10 flex flex-col min-h-[500px] h-full">
+                <div className="text-[11px] uppercase tracking-[0.25em] font-semibold text-brand-gold mb-8">Trade</div>
+                <h3 className="text-3xl lg:text-4xl font-serif font-light text-text-heading leading-tight mb-6">Direct-to-factory sourcing across Asia</h3>
+                <p className="text-text-body font-light leading-relaxed mb-12">We organize direct-sourcing delegations and maintain the vetted trade network for builders who are serious about controlling material costs.</p>
+
+                <div className="flex flex-col mt-auto mb-10 border-t border-border-subtle">
+                  <Link to="/trade" className="group flex items-center justify-between py-4 border-b border-border-subtle text-text-heading hover:text-brand-gold transition-colors">
+                    <span className="font-serif italic text-lg">Build Better Series</span>
+                    <ArrowRight size={16} className="text-brand-gold group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <Link to="/trade" className="group flex items-center justify-between py-4 border-b border-border-subtle text-text-heading hover:text-brand-gold transition-colors">
+                    <span className="font-serif italic text-lg">Vietnam Direct 2026</span>
+                    <ArrowRight size={16} className="text-brand-gold group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <Link to="/cc" className="group flex items-center justify-between py-4 text-text-heading hover:text-brand-gold transition-colors">
+                    <span className="font-serif italic text-lg">Container Club</span>
+                    <ArrowRight size={16} className="text-brand-gold group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+
+                <Link to="/trade" className="btn-silver-gradient rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold w-fit">
+                  Explore Trade
                 </Link>
               </div>
-              
-              <Link to="/build" className="border border-black hover:bg-black hover:text-white rounded-full px-8 py-4 text-xs uppercase tracking-widest font-bold transition-colors w-fit">
-                Explore Build
-              </Link>
             </div>
           </div>
         </div>
@@ -473,24 +498,32 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Right — photo, height-constrained so the whole section stays in one viewport */}
-                <div className="w-full aspect-[4/5] max-h-[min(58vh,500px)] mx-auto rounded-[28px] overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] flex items-center justify-center">
-                  {testimonials[currentSlide].photo ? (
-                    <img
-                      src={testimonials[currentSlide].photo!}
-                      alt={testimonials[currentSlide].company}
-                      className="w-full h-full object-cover grayscale"
-                    />
-                  ) : (
-                    <div className="flex flex-col items-center justify-center gap-4 w-full h-full bg-[#111111]">
-                      <span className="text-6xl lg:text-7xl font-display text-gradient-gold opacity-30 leading-none">
-                        {testimonials[currentSlide].initial}
-                      </span>
-                      <span className="text-[10px] uppercase tracking-[0.3em] text-text-muted">
-                        {testimonials[currentSlide].company}
-                      </span>
-                    </div>
-                  )}
+                {/* Right — photo with silver gradient frame matched to the Build card frame */}
+                <div
+                  className="w-full aspect-[4/5] max-h-[min(58vh,500px)] mx-auto rounded-[28px] p-[12px] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] flex items-center justify-center"
+                  style={{
+                    background:
+                      "linear-gradient(105.42deg, #EAEAEA 0%, #C9C9C9 36%, #FFFFFF 49%, #EAEAEA 69%, #6A6A6A 94%)",
+                  }}
+                >
+                  <div className="w-full h-full rounded-[18px] overflow-hidden ring-1 ring-black/20">
+                    {testimonials[currentSlide].photo ? (
+                      <img
+                        src={testimonials[currentSlide].photo!}
+                        alt={testimonials[currentSlide].company}
+                        className="w-full h-full object-cover grayscale"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center gap-4 w-full h-full bg-[#111111]">
+                        <span className="text-6xl lg:text-7xl font-display text-gradient-gold opacity-30 leading-none">
+                          {testimonials[currentSlide].initial}
+                        </span>
+                        <span className="text-[10px] uppercase tracking-[0.3em] text-text-muted">
+                          {testimonials[currentSlide].company}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>
