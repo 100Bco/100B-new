@@ -4,6 +4,7 @@ import { ArrowRight, MapPin, Users, TrendingUp, Handshake, Check } from "lucide-
 import { motion, AnimatePresence } from "motion/react";
 import { CountUp } from "@/components/CountUp";
 import waitlistBg from "@assets/Lien he.png";
+import corridorEmblem from "@assets/100B Emblem.png";
 import cchlPhoto from "@assets/CCHL.webp";
 import misaPhoto from "@assets/MISA.webp";
 import quangVinhPhoto from "@assets/Gom Quang Vinh.webp";
@@ -340,76 +341,178 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. TWO PLATFORMS */}
-      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
+      {/* 4. TWO WORLDS, ONE CORRIDOR — split layout with a vertical gold rule
+          and the 100B emblem sitting on it. Build on the left (Austin), Trade
+          mirrored on the right (Hanoi). Content unchanged; presentation new. */}
+      <section className="relative py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-16">
-            TWO PLATFORMS. <em className="font-display italic text-gradient-gold">ONE CORRIDOR.</em>
+          {/* Section header */}
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-8 h-px bg-white/15" />
+            <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
+              Two Worlds, One Corridor
+            </p>
+          </div>
+          <h2 className="font-serif font-light text-[36px] md:text-[44px] lg:text-[56px] leading-[1.1] tracking-tight text-text-heading max-w-3xl mb-4">
+            Where capital meets <em className="italic text-gradient-gold">craft</em>, across two hemispheres.
           </h2>
+          <p className="text-base lg:text-lg font-light text-white/85 leading-relaxed max-w-2xl mb-12">
+            One operator. Two rooms. One corridor between them. Choose the side you need — or walk through both.
+          </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-            {/* Build — mid-silver brushed gradient. Dark text for readable contrast;
-                cards that read as metallic need ink-on-foil typography, not white. */}
+          {/* Split container — lifted surface, rounded, with a gold vertical
+              rule and emblem centered on the divider. */}
+          <div
+            className="relative grid grid-cols-1 md:grid-cols-2 rounded-3xl overflow-hidden border border-white/10"
+            style={{
+              background: "#2F2C28",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06)",
+            }}
+          >
+            {/* Vertical divider — only on md+ */}
             <div
-              className="rounded-3xl p-7 lg:p-9 flex flex-col min-h-[440px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)] text-[#0E0D0B]"
+              className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 z-[2] pointer-events-none"
               style={{
-                background: "linear-gradient(135deg, #CFCFCF 0%, #8A8A8A 100%)",
+                background:
+                  "linear-gradient(to bottom, transparent 0%, rgba(195,163,116,0.5) 20%, rgba(195,163,116,0.5) 80%, transparent 100%)",
               }}
-            >
-              <div className="text-[11px] uppercase tracking-[0.25em] font-bold mb-6">Build</div>
-              <h3 className="text-3xl lg:text-4xl font-serif font-medium leading-tight mb-5">Capital and partnerships across borders</h3>
-              <p className="leading-relaxed mb-8 font-medium">The gateway for capital seeking exposure. For founders ready for institutional backing. For operators building something that crosses borders.</p>
+              aria-hidden
+            />
 
-              <div className="flex flex-col border-t border-black/25">
-                <Link to="/build" className="group flex items-center justify-between py-3 border-b border-black/25 hover:opacity-70 transition-opacity">
-                  <span className="font-serif text-xl">Access Vietnam 2026</span>
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link to="/build" className="group flex items-center justify-between py-3 border-b border-black/25 hover:opacity-70 transition-opacity">
-                  <span className="font-serif text-xl">Advisory &amp; Equity Stakes</span>
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link to="/build" className="group flex items-center justify-between py-3 hover:opacity-70 transition-opacity">
-                  <span className="font-serif text-xl">Cross-Border Deal Flow</span>
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
+            {/* 100B emblem on the corridor */}
+            <div
+              className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[3] items-center justify-center w-16 h-16 rounded-full transition-shadow duration-300 hover:shadow-[0_0_60px_rgba(195,163,116,0.35)]"
+              style={{
+                background: "#2F2C28",
+                border: "1px solid rgba(195,163,116,0.5)",
+                boxShadow: "0 0 40px rgba(195,163,116,0.2)",
+              }}
+              aria-label="100B"
+            >
+              <img src={corridorEmblem} alt="100B" className="w-9 h-9 object-contain" />
+            </div>
+
+            {/* LEFT — BUILD (Austin) */}
+            <div
+              className="relative p-8 lg:p-12 flex flex-col min-h-[440px]"
+              style={{ background: "#2F2C28" }}
+            >
+              <div className="flex items-center gap-3 mb-8 relative z-[1]">
+                <div className="w-6 h-px bg-brand-gold" />
+                <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
+                  Build — Austin
+                </p>
               </div>
 
-              <Link to="/build" className="mt-8 bg-black text-white hover:bg-white hover:text-black rounded-full px-8 py-4 text-xs uppercase tracking-widest font-bold transition-colors w-fit border border-black">
-                Explore Build
+              <h3 className="font-serif font-light text-[28px] lg:text-[32px] leading-[1.2] tracking-tight text-text-heading mb-4 relative z-[1]">
+                Capital and <em className="italic text-gradient-gold">partnerships</em> across borders
+              </h3>
+
+              <p className="text-sm lg:text-[15px] font-light leading-[1.7] text-white/85 mb-8 max-w-[90%] relative z-[1]">
+                The gateway for capital seeking exposure. For founders ready for institutional backing. For operators building something that crosses borders.
+              </p>
+
+              <div className="flex flex-col mb-8 relative z-[1]">
+                {[
+                  { num: "01", name: "Access Vietnam 2026", to: "/build" },
+                  { num: "02", name: "Advisory & Equity Stakes", to: "/build" },
+                  { num: "03", name: "Cross-Border Deal Flow", to: "/build" },
+                ].map((s, i, arr) => (
+                  <Link
+                    key={s.num}
+                    to={s.to}
+                    className={`group flex items-center justify-between py-4 border-t border-white/12 hover:pl-2 transition-[padding] duration-300 ${
+                      i === arr.length - 1 ? "border-b border-white/12" : ""
+                    }`}
+                  >
+                    <div className="flex items-baseline gap-[18px]">
+                      <span className="font-serif text-sm font-medium text-brand-gold min-w-[20px]">{s.num}</span>
+                      <span className="font-serif text-[17px] lg:text-lg text-text-heading">{s.name}</span>
+                    </div>
+                    <span className="text-brand-gold transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </Link>
+                ))}
+              </div>
+
+              <Link
+                to="/build"
+                className="group inline-flex items-center gap-[10px] self-start mt-auto pb-[4px] font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-text-heading border-b border-transparent hover:text-brand-gold hover:border-brand-gold transition-colors duration-300 relative z-[1]"
+              >
+                <span>Explore Build</span>
+                <span className="text-brand-gold transition-transform duration-300 group-hover:translate-x-1">→</span>
               </Link>
             </div>
 
-            {/* Trade — brand-gold gradient (#C3A374 → #8A7049). Dark text. */}
+            {/* RIGHT — TRADE (Hà Nội), mirrored */}
             <div
-              className="rounded-3xl p-7 lg:p-9 flex flex-col min-h-[440px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)] text-[#0E0D0B]"
-              style={{
-                background: "linear-gradient(135deg, #C3A374 0%, #8A7049 100%)",
-              }}
+              className="relative p-8 lg:p-12 flex flex-col min-h-[440px]"
+              style={{ background: "#35312C" }}
             >
-              <div className="text-[11px] uppercase tracking-[0.25em] font-bold mb-6">Trade</div>
-              <h3 className="text-3xl lg:text-4xl font-serif font-medium leading-tight mb-5">Direct-to-factory sourcing across Asia</h3>
-              <p className="leading-relaxed mb-8 font-medium">We organize direct-sourcing delegations and maintain the vetted trade network for builders who are serious about controlling material costs.</p>
+              {/* warm gold glow in the top-right of the Trade panel */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 75% 30%, rgba(195,163,116,0.15) 0%, rgba(147,124,84,0.05) 40%, transparent 70%)",
+                }}
+                aria-hidden
+              />
 
-              <div className="flex flex-col border-t border-black/30">
-                <Link to="/trade" className="group flex items-center justify-between py-3 border-b border-black/30 hover:opacity-70 transition-opacity">
-                  <span className="font-serif text-xl">Build Better Series</span>
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link to="/trade" className="group flex items-center justify-between py-3 border-b border-black/30 hover:opacity-70 transition-opacity">
-                  <span className="font-serif text-xl">Vietnam Direct 2026</span>
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link to="/cc" className="group flex items-center justify-between py-3 hover:opacity-70 transition-opacity">
-                  <span className="font-serif text-xl">Container Club</span>
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
+              <div className="flex items-center justify-end gap-3 mb-8 relative z-[1]">
+                <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
+                  Hà Nội — Trade
+                </p>
+                <div className="w-6 h-px bg-brand-gold" />
               </div>
 
-              <Link to="/trade" className="mt-8 bg-black text-white hover:bg-white hover:text-black rounded-full px-8 py-4 text-xs uppercase tracking-widest font-bold transition-colors w-fit border border-black">
-                Explore Trade
+              <h3 className="font-serif font-light text-[28px] lg:text-[32px] leading-[1.2] tracking-tight text-text-heading mb-4 text-right relative z-[1]">
+                Direct-to-factory <em className="italic text-gradient-gold">sourcing</em> across Asia
+              </h3>
+
+              <p className="text-sm lg:text-[15px] font-light leading-[1.7] text-white/85 mb-8 max-w-[90%] ml-auto text-right relative z-[1]">
+                We organize direct-sourcing delegations and maintain the vetted trade network for builders who are serious about controlling material costs.
+              </p>
+
+              <div className="flex flex-col mb-8 relative z-[1]">
+                {[
+                  { num: "01", name: "Build Better Series", to: "/trade" },
+                  { num: "02", name: "Vietnam Direct 2026", to: "/trade" },
+                  { num: "03", name: "Container Club", to: "/cc" },
+                ].map((s, i, arr) => (
+                  <Link
+                    key={s.num}
+                    to={s.to}
+                    className={`group flex items-center justify-between py-4 border-t hover:pr-2 transition-[padding] duration-300 ${
+                      i === arr.length - 1 ? "border-b" : ""
+                    }`}
+                    style={{
+                      borderTopColor: "rgba(195,163,116,0.3)",
+                      ...(i === arr.length - 1 ? { borderBottomColor: "rgba(195,163,116,0.3)" } : {}),
+                    }}
+                  >
+                    <span className="text-brand-gold transition-transform duration-300 group-hover:-translate-x-1">←</span>
+                    <div className="flex items-baseline gap-[18px]">
+                      <span className="font-serif text-[17px] lg:text-lg text-text-heading">{s.name}</span>
+                      <span className="font-serif text-sm font-medium text-brand-gold min-w-[20px] text-right">{s.num}</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              <Link
+                to="/trade"
+                className="group inline-flex items-center gap-[10px] self-end mt-auto pb-[4px] font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-text-heading border-b border-transparent hover:text-brand-gold hover:border-brand-gold transition-colors duration-300 relative z-[1]"
+              >
+                <span className="text-brand-gold transition-transform duration-300 group-hover:-translate-x-1">←</span>
+                <span>Explore Trade</span>
               </Link>
             </div>
+          </div>
+
+          {/* Section footer */}
+          <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-3 sm:gap-0 mt-8 pt-5 border-t border-white/8 text-[10px] uppercase tracking-[0.2em] font-medium text-white/50 text-center sm:text-left">
+            <span>One Operator · Two Markets</span>
+            <span>Same Corridor · 12 Hours Apart</span>
           </div>
         </div>
       </section>
