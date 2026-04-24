@@ -185,7 +185,7 @@ export default function Home() {
               <p className="text-lg font-light text-text-muted italic border-l border-brand-gold/30 pl-4 mb-8">
                 "Vietnam isn't the next China. It's the next Vietnam."
               </p>
-              <div className="w-full max-w-md mx-auto">
+              <div className="w-full max-w-2xl mx-auto">
                 <img src="/globe.png" alt="Vietnam on the globe" className="w-full object-contain" />
               </div>
             </div>
