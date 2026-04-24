@@ -334,27 +334,27 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-            {/* Build — darker brushed gunmetal so white text has real contrast. */}
+            {/* Build — darker brushed gunmetal. Uses brand text tokens. */}
             <div
-              className="rounded-3xl p-7 lg:p-9 text-white flex flex-col min-h-[440px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]"
+              className="rounded-3xl p-7 lg:p-9 flex flex-col min-h-[440px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]"
               style={{
                 background: "linear-gradient(135deg, #6B6B6B 0%, #262626 100%)",
               }}
             >
-              <div className="text-[11px] uppercase tracking-[0.25em] font-bold mb-6 text-white">Build</div>
-              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-white leading-tight mb-5">Capital and partnerships across borders</h3>
-              <p className="text-white/85 font-normal leading-relaxed mb-8">The gateway for capital seeking exposure. For founders ready for institutional backing. For operators building something that crosses borders.</p>
+              <div className="text-[11px] uppercase tracking-[0.25em] font-semibold text-text-heading mb-6">Build</div>
+              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-text-heading leading-tight mb-5">Capital and partnerships across borders</h3>
+              <p className="text-text-body leading-relaxed mb-8">The gateway for capital seeking exposure. For founders ready for institutional backing. For operators building something that crosses borders.</p>
 
               <div className="flex flex-col border-t border-white/20">
-                <Link to="/build" className="group flex items-center justify-between py-3 border-b border-white/20 text-white hover:text-brand-gold transition-colors">
+                <Link to="/build" className="group flex items-center justify-between py-3 border-b border-white/20 text-text-heading hover:text-brand-gold transition-colors">
                   <span className="font-serif text-xl">Access Vietnam 2026</span>
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/build" className="group flex items-center justify-between py-3 border-b border-white/20 text-white hover:text-brand-gold transition-colors">
+                <Link to="/build" className="group flex items-center justify-between py-3 border-b border-white/20 text-text-heading hover:text-brand-gold transition-colors">
                   <span className="font-serif text-xl">Advisory &amp; Equity Stakes</span>
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/build" className="group flex items-center justify-between py-3 text-white hover:text-brand-gold transition-colors">
+                <Link to="/build" className="group flex items-center justify-between py-3 text-text-heading hover:text-brand-gold transition-colors">
                   <span className="font-serif text-xl">Cross-Border Deal Flow</span>
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -365,28 +365,27 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Trade — dark antique brass, brand-gold palette ending deep so white
-                text sits cleanly on it. */}
+            {/* Trade — dark antique brass, brand-gold palette. Brand text tokens. */}
             <div
-              className="rounded-3xl p-7 lg:p-9 text-white flex flex-col min-h-[440px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]"
+              className="rounded-3xl p-7 lg:p-9 flex flex-col min-h-[440px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]"
               style={{
                 background: "linear-gradient(135deg, #7C6542 0%, #2A1D0B 100%)",
               }}
             >
-              <div className="text-[11px] uppercase tracking-[0.25em] font-bold mb-6 text-white">Trade</div>
-              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-white leading-tight mb-5">Direct-to-factory sourcing across Asia</h3>
-              <p className="text-white/85 font-normal leading-relaxed mb-8">We organize direct-sourcing delegations and maintain the vetted trade network for builders who are serious about controlling material costs.</p>
+              <div className="text-[11px] uppercase tracking-[0.25em] font-semibold text-text-heading mb-6">Trade</div>
+              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-text-heading leading-tight mb-5">Direct-to-factory sourcing across Asia</h3>
+              <p className="text-text-body leading-relaxed mb-8">We organize direct-sourcing delegations and maintain the vetted trade network for builders who are serious about controlling material costs.</p>
 
               <div className="flex flex-col border-t border-white/20">
-                <Link to="/trade" className="group flex items-center justify-between py-3 border-b border-white/20 text-white hover:text-brand-gold transition-colors">
+                <Link to="/trade" className="group flex items-center justify-between py-3 border-b border-white/20 text-text-heading hover:text-brand-gold transition-colors">
                   <span className="font-serif text-xl">Build Better Series</span>
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/trade" className="group flex items-center justify-between py-3 border-b border-white/20 text-white hover:text-brand-gold transition-colors">
+                <Link to="/trade" className="group flex items-center justify-between py-3 border-b border-white/20 text-text-heading hover:text-brand-gold transition-colors">
                   <span className="font-serif text-xl">Vietnam Direct 2026</span>
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/cc" className="group flex items-center justify-between py-3 text-white hover:text-brand-gold transition-colors">
+                <Link to="/cc" className="group flex items-center justify-between py-3 text-text-heading hover:text-brand-gold transition-colors">
                   <span className="font-serif text-xl">Container Club</span>
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
