@@ -67,7 +67,17 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 border-t border-border-subtle flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[10px] uppercase tracking-[0.2em] text-text-muted/70">
         <p>© 2026 100B Beyond Borders. All rights reserved.</p>
-        <p>Powered by 100Bold</p>
+        <p>
+          Powered by{" "}
+          <a
+            href="https://100bold.co"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-muted hover:text-brand-gold transition-colors"
+          >
+            100Bold
+          </a>
+        </p>
       </div>
     </footer>
   );
