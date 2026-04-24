@@ -1,105 +1,55 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin, Globe, Users, TrendingUp, Handshake, ChevronRight, Check } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
-import kalotoysPhoto from "@assets/image_1776951072843.png";
+import { ArrowRight, MapPin, Users, TrendingUp, Handshake, Check } from "lucide-react";
 import num01 from "@assets/01_1776952354216.png";
 import num02 from "@assets/02_1776952354217.png";
 import num03 from "@assets/03_1776952354218.png";
 
-const testimonials = [
-  {
-    name: "Sandy Phuong Nguyen",
-    title: "FOUNDER",
-    company: "CỎ CÂY HOA LÁ",
-    desc: "Rising Vietnamese wellness brand, 4.3 million products sold in 6 years",
-    quote: "When we started in 2017 with only ~3,500 USD, we never imagined selling millions of products—let alone dreaming about going global. But meeting Minh and 100B gave us courage. We dared to leave our comfort zone and dream bigger. I truly believe: TOGETHER, with 100B, we'll empower more Vietnamese brands to succeed globally.",
-    headline: "VIETNAMESE SPIRIT, GLOBAL ASPIRATION",
-    photo: null,
-    initial: "CỎ"
-  },
-  {
-    name: "Long Lu",
-    title: "FOUNDER",
-    company: "MISA",
-    desc: "Leading accounting software company, 80%+ market share",
-    quote: "Congratulations to Minh and the 100B team for their outstanding work in bringing Vietnamese brands and products to the global market. Your efforts are helping elevate the value of Vietnam in the eyes of the world and driving the country's development.",
-    headline: "ELEVATING VIETNAM'S GLOBAL VALUE",
-    photo: null,
-    initial: "M"
-  },
-  {
-    name: "Vinh Ha",
-    title: "FOUNDER",
-    company: "QUANG VINH CERAMICS",
-    desc: "Heritage ceramics maker, exporting to 20+ countries",
-    quote: "Huge thanks to 100B for helping Quang Vinh Ceramics see the world with a new perspective—alongside a strong and global-minded community of Vietnamese entrepreneurs. 100B has been a launchpad and a support system, opening opportunities for our manufacturing team to access global markets.",
-    headline: "A LAUNCHPAD TO GLOBAL MARKETS",
-    photo: null,
-    initial: "QV"
-  },
-  {
-    name: "Thang Luu",
-    title: "CO-FOUNDER",
-    company: "HEXAGON",
-    desc: "Top interior firm with 4 factories and 5,000+ completed projects",
-    quote: "It's been a joy working with 100B. The direction and vision of 100B deeply aligns with Hexagon's values. We're excited for this partnership and the connections it brings.",
-    headline: "ALIGNMENT IN VISION AND VALUES",
-    photo: null,
-    initial: "HX"
-  },
-  {
-    name: "Thanh Dong",
-    title: "CO-FOUNDER",
-    company: "KALOTOYS",
-    desc: "Rising toy brand, 8,000+ orders/day, 98% export revenue",
-    quote: "Born from the love of two fathers, Kalotoys has touched the hearts of millions of children and parents around the world. With 100B as a launchpad, we hope Kalotoys—and millions of other Vietnamese brands—can win the trust of global customers.",
-    headline: "STEPPING ONTO THE GLOBAL STAGE",
-    photo: kalotoysPhoto,
-    initial: "KT"
-  },
-  {
-    name: "Nguyen Thi Huong Lien",
-    title: "CO-FOUNDER",
-    company: "SAO THÁI DƯƠNG",
-    desc: "Herbal care pioneer, 240M+ products sold worldwide",
-    quote: "Congratulations to 100B on such an inspiring and impactful mission for Vietnam's economic future.",
-    headline: "AN INSPIRING & IMPACTFUL MISSION",
-    photo: null,
-    initial: "STD"
-  }
-];
-
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="flex flex-col">
       {/* 1. HERO */}
-      <section className="relative bg-bg-dark overflow-hidden h-screen flex flex-col justify-center border-b border-border-subtle">
-        <div className="absolute inset-0 pointer-events-none" style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(195, 163, 116, 0.1) 0%, transparent 60%)'
-        }}></div>
-        <div className="absolute inset-0 pointer-events-none opacity-20" style={{
-          backgroundImage: `repeating-linear-gradient(rgba(255,255,255,0.05) 0 1px, transparent 1px 100%), repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 100%)`,
-          backgroundSize: '40px 40px'
-        }}></div>
+      <section className="relative bg-bg-dark overflow-hidden h-screen min-h-[720px] flex flex-col justify-end border-b border-border-subtle">
+        {/* Video layer — replace the <div> with a <video> when footage is delivered.
+            Keep grain-overlay so the placeholder never looks like a missing asset. */}
+        <div
+          className="absolute inset-0 grain-overlay"
+          style={{
+            background: `
+              radial-gradient(ellipse 80% 60% at 70% 85%, rgba(195,163,116,0.10) 0%, transparent 65%),
+              radial-gradient(ellipse 50% 45% at 10% 15%, rgba(255,255,255,0.025) 0%, transparent 55%),
+              linear-gradient(180deg, #08070A 0%, #000000 55%, #000000 100%)
+            `,
+          }}
+          aria-hidden
+        />
+        {/*
+          When ready, replace the div above with:
+          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+            <source src="/hero-corridor.mp4" type="video/mp4" />
+          </video>
+          And keep the readability overlay below.
+        */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.85) 100%)",
+          }}
+          aria-hidden
+        />
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-start gap-6">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-start gap-6 pb-16 lg:pb-24">
+          <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-semibold text-brand-gold">
+            <span className="w-10 h-px bg-brand-gold/60" />
+            <span>Cross-Border Capital &amp; Brand Platform</span>
+          </div>
+
           <h1 className="text-[40px] md:text-7xl lg:text-[108px] font-serif leading-[0.85] tracking-tight">
             <span className="block">The operating partner</span>
             <span className="block text-text-muted">for serious deals</span>
             <span className="block"><em className="font-serif italic text-gradient-gold">between two worlds.</em></span>
           </h1>
-          
-          <p className="text-base lg:text-lg font-light leading-relaxed max-w-2xl text-text-body">
+
+          <p className="text-base lg:text-lg font-normal leading-relaxed max-w-2xl text-text-body">
             We connect elite operators, capital, and builders across the US-Vietnam corridor. The deals worth doing are getting bigger and more complex. We are in those rooms.
           </p>
 
@@ -110,6 +60,16 @@ export default function Home() {
             <Link to="/trade" className="bg-white hover:bg-brand-gold text-bg-dark rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold transition-colors duration-300 w-full sm:w-auto text-center border border-transparent">
               Explore Trade
             </Link>
+          </div>
+
+          {/* Proof strip — answers "who / where / proof" within 3 seconds.
+              Reads as a credit line on a film poster, not a marketing bullet list. */}
+          <div className="mt-6 pt-6 border-t border-white/10 w-full flex flex-wrap items-baseline gap-x-8 gap-y-3 text-[10px] uppercase tracking-[0.25em] text-text-muted">
+            <span>Austin · Ho Chi Minh · Hanoi</span>
+            <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
+            <span>Est. 2023</span>
+            <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
+            <span>By introduction only</span>
           </div>
         </div>
       </section>
@@ -346,134 +306,260 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. THE MOAT */}
-      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-12">
-            ONE PERSON FLUENT IN <em className="font-display italic text-gradient-gold">BOTH WORLDS.</em>
-          </h2>
+      {/* 5. LETTER FROM THE FOUNDER
+          Full-width cream archival surface — the single typographic break in the
+          page flow, engineered to read as a printed document, not marketing copy.
+          Portrait placeholder on the left accepts a real headshot later. */}
+      <section className="surface-paper relative overflow-hidden border-y border-paper-rule/40">
+        {/* Aged paper corner shadows */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `
+              radial-gradient(ellipse 70% 50% at 0% 0%, rgba(26,21,16,0.10) 0%, transparent 55%),
+              radial-gradient(ellipse 70% 50% at 100% 100%, rgba(26,21,16,0.12) 0%, transparent 55%)
+            `,
+          }}
+          aria-hidden
+        />
 
-          {/* 2-col: bio left | 2 stats right */}
-          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-0 items-center mb-16">
-
-            {/* Left: bio */}
-            <div className="lg:border-r border-border-subtle lg:pr-16 py-6">
-              <p className="text-base lg:text-xl font-light leading-relaxed text-text-body">
-                Minh Mac left Vietnam at 17. Spent a decade building across the US — private equity covering a $65B portfolio, real estate, and a 1.6M-user tech startup in SEA. This cross-border identity opens rooms in both markets that most can only access from one side.
-              </p>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28 relative">
+          {/* Letterhead row */}
+          <div className="flex items-center justify-between border-b border-paper-rule/60 pb-6 mb-12">
+            <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-semibold" style={{ color: "var(--color-paper-ink)" }}>
+              <span>100B · Founder's Letter</span>
+              <span className="hidden sm:inline-block w-px h-3" style={{ background: "var(--color-paper-rule)" }} aria-hidden />
+              <span className="hidden sm:inline opacity-60">No. 001</span>
             </div>
-
-            {/* Right: both stats side by side */}
-            <div className="grid grid-cols-2 lg:pl-16 py-6">
-              <div className="flex flex-col border-r border-border-subtle pr-8">
-                <span className="text-[64px] lg:text-[80px] font-display leading-none mb-2">
-                  <span className="text-brand-gold">$</span>65B
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.25em] text-text-muted font-semibold">AUM Coverage</span>
-              </div>
-              <div className="flex flex-col pl-8">
-                <span className="text-[64px] lg:text-[80px] font-display leading-none mb-2">1.6M</span>
-                <span className="text-[10px] uppercase tracking-[0.25em] text-text-muted font-semibold">Startup Users</span>
-              </div>
+            <div className="text-[10px] uppercase tracking-[0.3em] font-semibold opacity-60" style={{ color: "var(--color-paper-ink)" }}>
+              Austin · Hanoi
             </div>
-
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Private Equity Lens", points: ["Institutional deal structuring", "Leverage & risk modeling", "Clear exit timelines"] },
-              { title: "Operator Record", points: ["Hands-on business building", "Agency vetting & replacement", "Go-to-market execution"] },
-              { title: "In Both Rooms", points: ["Austin local boardrooms", "Hanoi business networks", "Immediate trust bridges"] },
-              { title: "Selective By Design", points: ["High rejection rate", "Strict 100B fit criteria", "Preserved partner value"] }
-            ].map((card) => (
-              <div key={card.title} className="bg-[#111111] p-6 lg:p-8 rounded-2xl flex flex-col border border-white/5">
-                <h3 className="font-display italic text-gradient-gold uppercase tracking-wide text-xl mb-6">{card.title}</h3>
-                <ul className="flex flex-col gap-4 mt-auto">
-                  {card.points.map((pt, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <div className="mt-1 flex-shrink-0 w-4 h-4 icon-silver-gradient">
-                        <Check size={9} className="text-[#111]" strokeWidth={2.5} />
-                      </div>
-                      <span className="text-sm font-light text-text-muted leading-tight">{pt}</span>
-                    </li>
-                  ))}
-                </ul>
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr] gap-12 lg:gap-20 items-start">
+            {/* Portrait + caption */}
+            <div className="flex flex-col gap-5">
+              <div
+                className="aspect-[4/5] w-full overflow-hidden border relative"
+                style={{ borderColor: "var(--color-paper-rule)", background: "rgba(26,21,16,0.04)" }}
+              >
+                {/*
+                  Portrait slot — drop in Minh's real headshot.
+                  Suggested treatment: duotone in paper-ink / paper-cream for consistency
+                  with the archival surface.
+                  <img src="/minh-mac-portrait.jpg" alt="Minh Mac, Founder" className="w-full h-full object-cover" />
+                */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center" style={{ color: "rgba(26,21,16,0.35)" }}>
+                    <div className="font-serif italic text-5xl leading-none mb-3">MM</div>
+                    <div className="text-[9px] uppercase tracking-[0.3em]">Portrait · Placeholder</div>
+                  </div>
+                </div>
               </div>
-            ))}
+              <div className="flex flex-col gap-1" style={{ color: "var(--color-paper-ink)" }}>
+                <div className="font-serif text-xl italic leading-none">Minh Mac</div>
+                <div className="text-[11px] uppercase tracking-[0.2em] font-semibold opacity-70 mt-1">
+                  Founder &amp; Managing Partner
+                </div>
+              </div>
+            </div>
+
+            {/* Letter body */}
+            <article className="flex flex-col gap-6" style={{ color: "var(--color-paper-ink)" }}>
+              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] tracking-tight">
+                I left Vietnam at 17.
+                <br />
+                <em
+                  className="italic"
+                  style={{
+                    background: "linear-gradient(135deg, #6E4E18 0%, #937C54 60%, #3A2A10 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  I have been building between two worlds ever since.
+                </em>
+              </h2>
+
+              <div className="prose-body flex flex-col gap-5 max-w-[62ch] mt-4">
+                <p>
+                  The next decade was a private equity desk in New York covering roughly
+                  <strong className="font-semibold"> $65B in AUM</strong>, a run in U.S. real estate, and co-founding a
+                  Southeast Asia consumer tech company that reached{" "}
+                  <strong className="font-semibold">1.6 million users</strong>. Different rooms, same thesis: capital
+                  moves faster than relationships, and the highest-value deals are the
+                  ones where both sides have already been translated.
+                </p>
+                <p>
+                  100B exists for a specific reason. The U.S.–Vietnam corridor is getting
+                  bigger, more complex, and more regulated — and there is a short list of
+                  people who can stand in both rooms and actually be trusted. I spent
+                  fifteen years getting onto that list. 100B is what we are building with it.
+                </p>
+                <p>
+                  We are selective by design. We say no to most things. The deals we take,
+                  we stay in — through structuring, through operations, through the hand-off.
+                  If any of this is relevant to you, the door is open.
+                </p>
+              </div>
+
+              {/* Signature row */}
+              <div className="mt-8 pt-8 border-t" style={{ borderColor: "var(--color-paper-rule)" }}>
+                <div
+                  className="font-serif italic text-3xl md:text-4xl leading-none mb-4"
+                  style={{ color: "var(--color-paper-ink)" }}
+                >
+                  Minh Mac
+                </div>
+                <div className="flex flex-wrap items-baseline gap-x-8 gap-y-2 text-[10px] uppercase tracking-[0.25em] font-semibold opacity-70">
+                  <span>Founder, 100B</span>
+                  <span className="w-px h-3" style={{ background: "var(--color-paper-rule)" }} aria-hidden />
+                  <span>Prev. Neuberger Berman · 15+ years US / Vietnam</span>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* 6. FOUNDERS SPEAK */}
+      {/* 6. FOUNDERS SPEAK — static editorial grid, not a carousel.
+          One lead quote full-width (FT Lex treatment), five supporting quotes in a
+          3/2 mosaic. Every quote is visible at once — readers this age want to
+          read, not wait for content to rotate in. */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-16">
-            THE PEOPLE WHO <em className="font-display italic text-gradient-gold">CHOSE US.</em>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-8 h-px bg-border-subtle" />
+            <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
+              Founders Who Chose Us
+            </p>
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-16 max-w-4xl">
+            In the rooms we already{" "}
+            <em className="font-display italic text-gradient-gold">stand in.</em>
           </h2>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -24 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-10 lg:gap-16 items-center"
+          {/* Lead quote — full width, FT Lex column */}
+          <figure className="relative border-t border-b border-brand-gold/20 py-12 lg:py-16 mb-16">
+            <div
+              className="absolute -top-8 left-0 text-[140px] leading-none font-serif select-none pointer-events-none"
+              style={{ color: "rgba(195,163,116,0.12)" }}
+              aria-hidden
             >
-              {/* Left — quote content */}
-              <div className="relative flex flex-col justify-center">
-                <div className="absolute -top-8 -left-4 text-[160px] leading-none font-serif select-none pointer-events-none text-white/5">"</div>
-                <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-gradient-gold mb-8 relative z-10 leading-tight">
-                  "{testimonials[currentSlide].headline}"
-                </h3>
-                <p className="text-base md:text-lg font-light font-serif leading-relaxed text-text-body mb-10 relative z-10">
-                  {testimonials[currentSlide].quote}
-                </p>
-                <div className="w-10 h-px bg-brand-gold/50 mb-6"></div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-serif italic text-xl md:text-2xl text-text-heading">
-                    {testimonials[currentSlide].name}
-                  </span>
-                  <span className="text-[11px] uppercase tracking-widest text-brand-gold font-semibold mt-1">
-                    {testimonials[currentSlide].title} · <span className="font-bold">{testimonials[currentSlide].company}</span>
-                  </span>
-                  <span className="text-xs text-text-muted italic mt-1">{testimonials[currentSlide].desc}</span>
-                </div>
-              </div>
+              &ldquo;
+            </div>
+            <blockquote className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-end">
+              <p className="font-serif text-2xl md:text-3xl lg:text-[34px] italic leading-[1.3] text-text-heading max-w-[42ch]">
+                When we started in 2017 with only about $3,500, we never imagined
+                selling millions of products — let alone going global. Meeting Minh
+                and 100B gave us the courage to leave our comfort zone.
+              </p>
+              <figcaption className="flex flex-col gap-1 lg:min-w-[200px] lg:text-right">
+                <span className="text-[10px] uppercase tracking-[0.25em] text-brand-gold font-semibold">
+                  Founder
+                </span>
+                <span className="font-serif italic text-xl text-text-heading mt-1">
+                  Sandy Phuong Nguyen
+                </span>
+                <span className="text-xs text-text-body uppercase tracking-widest font-semibold">
+                  Cỏ Cây Hoa Lá
+                </span>
+                <span className="text-[11px] text-text-muted italic mt-2 max-w-[26ch] lg:ml-auto">
+                  Vietnamese wellness brand · 4.3M products sold
+                </span>
+              </figcaption>
+            </blockquote>
+          </figure>
 
-              {/* Right — photo */}
-              <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden bg-bg-card border border-border-subtle flex items-center justify-center">
-                {testimonials[currentSlide].photo ? (
-                  <img
-                    src={testimonials[currentSlide].photo!}
-                    alt={testimonials[currentSlide].company}
-                    className="w-full h-full object-cover grayscale"
-                  />
-                ) : (
-                  <div className="flex flex-col items-center justify-center gap-4 w-full h-full bg-[#111111]">
-                    <span className="text-7xl font-display text-gradient-gold opacity-30 leading-none">
-                      {testimonials[currentSlide].initial}
-                    </span>
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-text-muted">
-                      {testimonials[currentSlide].company}
-                    </span>
+          {/* Supporting quotes mosaic */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border-subtle">
+            {[
+              {
+                name: "Long Lu",
+                title: "Founder",
+                company: "MISA",
+                desc: "Leading accounting software, 80%+ market share",
+                quote:
+                  "Your efforts are elevating the value of Vietnam in the eyes of the world and driving the country's development.",
+              },
+              {
+                name: "Vinh Ha",
+                title: "Founder",
+                company: "Quang Vinh Ceramics",
+                desc: "Heritage ceramics exporting to 20+ countries",
+                quote:
+                  "100B has been a launchpad — opening opportunities for our manufacturing team to access global markets.",
+              },
+              {
+                name: "Thang Luu",
+                title: "Co-Founder",
+                company: "Hexagon",
+                desc: "Interior firm · 4 factories · 5,000+ projects",
+                quote:
+                  "The direction and vision of 100B deeply aligns with Hexagon's values. We're excited for the partnership.",
+              },
+              {
+                name: "Thanh Dong",
+                title: "Co-Founder",
+                company: "Kalotoys",
+                desc: "Rising toy brand · 8,000+ orders/day · 98% export",
+                quote:
+                  "With 100B as a launchpad, we hope Kalotoys — and millions of other Vietnamese brands — can win the trust of global customers.",
+              },
+              {
+                name: "Nguyen Thi Huong Lien",
+                title: "Co-Founder",
+                company: "Sao Thái Dương",
+                desc: "Herbal care · 240M+ products sold worldwide",
+                quote:
+                  "Congratulations to 100B on such an inspiring and impactful mission for Vietnam's economic future.",
+              },
+              {
+                name: null,
+                title: null,
+                company: null,
+                desc: null,
+                quote: null,
+              },
+            ].map((q, idx) =>
+              q.name ? (
+                <figure
+                  key={idx}
+                  className="bg-bg-alt p-8 lg:p-10 flex flex-col justify-between min-h-[280px] hover:bg-bg-card-hover transition-colors duration-300"
+                >
+                  <blockquote className="font-serif italic text-lg lg:text-xl leading-[1.45] text-text-body">
+                    &ldquo;{q.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-6 pt-6 border-t border-border-subtle">
+                    <div className="font-serif italic text-lg text-text-heading leading-tight">
+                      {q.name}
+                    </div>
+                    <div className="text-[10px] uppercase tracking-[0.25em] text-brand-gold font-semibold mt-2">
+                      {q.title} · <span className="font-bold">{q.company}</span>
+                    </div>
+                    <div className="text-[11px] text-text-muted italic mt-1">
+                      {q.desc}
+                    </div>
+                  </figcaption>
+                </figure>
+              ) : (
+                <div
+                  key={idx}
+                  className="bg-bg-alt p-8 lg:p-10 flex flex-col items-start justify-end min-h-[280px]"
+                >
+                  <div className="text-[10px] uppercase tracking-[0.25em] text-brand-gold font-semibold mb-3">
+                    Selective by design
                   </div>
-                )}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          <div className="flex justify-center gap-3 mt-12">
-            {testimonials.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`h-1.5 transition-all duration-300 rounded-full ${
-                  idx === currentSlide ? "w-8 bg-brand-gold" : "w-2 bg-white/15 hover:bg-white/30"
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
+                  <div className="font-serif italic text-2xl lg:text-3xl text-text-heading leading-tight max-w-[20ch]">
+                    We say no to most things.
+                  </div>
+                  <p className="text-sm text-text-muted font-normal leading-relaxed mt-4 max-w-[28ch]">
+                    The partners we take on stay with us for years. That is what makes this page short.
+                  </p>
+                </div>
+              ),
+            )}
           </div>
         </div>
       </section>
