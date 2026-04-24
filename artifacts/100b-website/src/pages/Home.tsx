@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Users, TrendingUp, Handshake, Check } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { CountUp } from "@/components/CountUp";
-import kalotoysPhoto from "@assets/image_1776951072843.png";
+import cchlPhoto from "@assets/CCHL.webp";
+import misaPhoto from "@assets/MISA.webp";
+import quangVinhPhoto from "@assets/Gom Quang Vinh.webp";
+import hexagonPhoto from "@assets/Hexagon.webp";
+import kalotoysPhoto from "@assets/Kalotoys.jpg";
+import saoThaiDuongPhoto from "@assets/Sao Thai Duong.webp";
 import num01 from "@assets/01_1776952354216.png";
 import num02 from "@assets/02_1776952354217.png";
 import num03 from "@assets/03_1776952354218.png";
@@ -16,7 +21,7 @@ const testimonials = [
     desc: "Rising Vietnamese wellness brand, 4.3 million products sold in 6 years",
     quote: "When we started in 2017 with only ~3,500 USD, we never imagined selling millions of products—let alone dreaming about going global. But meeting Minh and 100B gave us courage. We dared to leave our comfort zone and dream bigger. I truly believe: TOGETHER, with 100B, we'll empower more Vietnamese brands to succeed globally.",
     headline: "VIETNAMESE SPIRIT, GLOBAL ASPIRATION",
-    photo: null as string | null,
+    photo: cchlPhoto as string | null,
     initial: "CỎ"
   },
   {
@@ -26,7 +31,7 @@ const testimonials = [
     desc: "Leading accounting software company, 80%+ market share",
     quote: "Congratulations to Minh and the 100B team for their outstanding work in bringing Vietnamese brands and products to the global market. Your efforts are helping elevate the value of Vietnam in the eyes of the world and driving the country's development.",
     headline: "ELEVATING VIETNAM'S GLOBAL VALUE",
-    photo: null as string | null,
+    photo: misaPhoto as string | null,
     initial: "M"
   },
   {
@@ -36,7 +41,7 @@ const testimonials = [
     desc: "Heritage ceramics maker, exporting to 20+ countries",
     quote: "Huge thanks to 100B for helping Quang Vinh Ceramics see the world with a new perspective—alongside a strong and global-minded community of Vietnamese entrepreneurs. 100B has been a launchpad and a support system, opening opportunities for our manufacturing team to access global markets.",
     headline: "A LAUNCHPAD TO GLOBAL MARKETS",
-    photo: null as string | null,
+    photo: quangVinhPhoto as string | null,
     initial: "QV"
   },
   {
@@ -46,7 +51,7 @@ const testimonials = [
     desc: "Top interior firm with 4 factories and 5,000+ completed projects",
     quote: "It's been a joy working with 100B. The direction and vision of 100B deeply aligns with Hexagon's values. We're excited for this partnership and the connections it brings.",
     headline: "ALIGNMENT IN VISION AND VALUES",
-    photo: null as string | null,
+    photo: hexagonPhoto as string | null,
     initial: "HX"
   },
   {
@@ -66,7 +71,7 @@ const testimonials = [
     desc: "Herbal care pioneer, 240M+ products sold worldwide",
     quote: "Congratulations to 100B on such an inspiring and impactful mission for Vietnam's economic future.",
     headline: "AN INSPIRING & IMPACTFUL MISSION",
-    photo: null as string | null,
+    photo: saoThaiDuongPhoto as string | null,
     initial: "STD"
   }
 ];
