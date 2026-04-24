@@ -122,7 +122,7 @@ export default function ContainerClub() {
               {
                 num: "03",
                 title: "Asia-first focus",
-                desc: "Built around the US-Vietnam corridor with the broader Asian trade network in view. The people in this room know how goods actually move across these borders."
+                desc: "Built around the Vietnam–US corridor with the broader Asian trade network in view. The people in this room know how goods actually move across these borders."
               }
             ].map((pillar) => (
               <div key={pillar.num} className="flex flex-col items-center text-center gap-6">
