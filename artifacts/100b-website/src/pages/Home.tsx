@@ -334,66 +334,66 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-            {/* Build — silver gradient fill, sits on the left. */}
+            {/* Build — brushed silver, 2-stop gradient so there is no visible
+                diagonal seam across the card. Sits on the left. */}
             <div
-              className="rounded-3xl p-8 lg:p-10 text-black flex flex-col min-h-[500px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]"
+              className="rounded-3xl p-7 lg:p-9 text-black flex flex-col min-h-[440px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]"
               style={{
-                background:
-                  "linear-gradient(105.42deg, #EAEAEA 0%, #C9C9C9 36%, #FFFFFF 49%, #EAEAEA 69%, #6A6A6A 94%)",
+                background: "linear-gradient(135deg, #DDDDDD 0%, #A8A8A8 100%)",
               }}
             >
-              <div className="text-[11px] uppercase tracking-[0.25em] font-bold mb-8">Build</div>
-              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-black leading-tight mb-6">Capital and partnerships across borders</h3>
-              <p className="text-black/80 font-medium leading-relaxed mb-12">The gateway for capital seeking exposure. For founders ready for institutional backing. For operators building something that crosses borders.</p>
+              <div className="text-[11px] uppercase tracking-[0.25em] font-bold mb-6">Build</div>
+              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-black leading-tight mb-5">Capital and partnerships across borders</h3>
+              <p className="text-black/75 font-medium leading-relaxed mb-8">The gateway for capital seeking exposure. For founders ready for institutional backing. For operators building something that crosses borders.</p>
 
-              <div className="flex flex-col mt-auto mb-10 border-t border-black/20">
-                <Link to="/build" className="group flex items-center justify-between py-4 border-b border-black/20 text-black hover:text-black/60 transition-colors">
-                  <span className="font-serif italic text-lg">Access Vietnam 2026</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <div className="flex flex-col border-t border-black/25">
+                <Link to="/build" className="group flex items-center justify-between py-3 border-b border-black/25 text-black hover:text-black/60 transition-colors">
+                  <span className="font-serif text-xl">Access Vietnam 2026</span>
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/build" className="group flex items-center justify-between py-4 border-b border-black/20 text-black hover:text-black/60 transition-colors">
-                  <span className="font-serif italic text-lg">Advisory &amp; Equity Stakes</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <Link to="/build" className="group flex items-center justify-between py-3 border-b border-black/25 text-black hover:text-black/60 transition-colors">
+                  <span className="font-serif text-xl">Advisory &amp; Equity Stakes</span>
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/build" className="group flex items-center justify-between py-4 text-black hover:text-black/60 transition-colors">
-                  <span className="font-serif italic text-lg">Cross-Border Deal Flow</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <Link to="/build" className="group flex items-center justify-between py-3 text-black hover:text-black/60 transition-colors">
+                  <span className="font-serif text-xl">Cross-Border Deal Flow</span>
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
 
-              <Link to="/build" className="bg-black text-white hover:bg-white hover:text-black rounded-full px-8 py-4 text-xs uppercase tracking-widest font-bold transition-colors w-fit border border-black">
+              <Link to="/build" className="mt-8 bg-black text-white hover:bg-white hover:text-black rounded-full px-8 py-4 text-xs uppercase tracking-widest font-bold transition-colors w-fit border border-black">
                 Explore Build
               </Link>
             </div>
 
-            {/* Trade — antique-brass gold gradient fill, on the right. */}
+            {/* Trade — brand antique-brass gold, 2-stop gradient matched to
+                text-gradient-gold so it reads as the same gold used elsewhere. */}
             <div
-              className="rounded-3xl p-8 lg:p-10 text-black flex flex-col min-h-[500px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]"
+              className="rounded-3xl p-7 lg:p-9 text-black flex flex-col min-h-[440px] shadow-[0_20px_60px_-25px_rgba(0,0,0,0.9)]"
               style={{
-                background:
-                  "linear-gradient(105.42deg, #C3A374 0%, #8A7049 36%, #EACB99 49%, #C3A374 69%, #3E2A0D 94%)",
+                background: "linear-gradient(135deg, #C3A374 0%, #7C6542 100%)",
               }}
             >
-              <div className="text-[11px] uppercase tracking-[0.25em] font-bold mb-8">Trade</div>
-              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-black leading-tight mb-6">Direct-to-factory sourcing across Asia</h3>
-              <p className="text-black/80 font-medium leading-relaxed mb-12">We organize direct-sourcing delegations and maintain the vetted trade network for builders who are serious about controlling material costs.</p>
+              <div className="text-[11px] uppercase tracking-[0.25em] font-bold mb-6">Trade</div>
+              <h3 className="text-3xl lg:text-4xl font-serif font-medium text-black leading-tight mb-5">Direct-to-factory sourcing across Asia</h3>
+              <p className="text-black/75 font-medium leading-relaxed mb-8">We organize direct-sourcing delegations and maintain the vetted trade network for builders who are serious about controlling material costs.</p>
 
-              <div className="flex flex-col mt-auto mb-10 border-t border-black/25">
-                <Link to="/trade" className="group flex items-center justify-between py-4 border-b border-black/25 text-black hover:text-black/60 transition-colors">
-                  <span className="font-serif italic text-lg">Build Better Series</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <div className="flex flex-col border-t border-black/30">
+                <Link to="/trade" className="group flex items-center justify-between py-3 border-b border-black/30 text-black hover:text-black/60 transition-colors">
+                  <span className="font-serif text-xl">Build Better Series</span>
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/trade" className="group flex items-center justify-between py-4 border-b border-black/25 text-black hover:text-black/60 transition-colors">
-                  <span className="font-serif italic text-lg">Vietnam Direct 2026</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <Link to="/trade" className="group flex items-center justify-between py-3 border-b border-black/30 text-black hover:text-black/60 transition-colors">
+                  <span className="font-serif text-xl">Vietnam Direct 2026</span>
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/cc" className="group flex items-center justify-between py-4 text-black hover:text-black/60 transition-colors">
-                  <span className="font-serif italic text-lg">Container Club</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <Link to="/cc" className="group flex items-center justify-between py-3 text-black hover:text-black/60 transition-colors">
+                  <span className="font-serif text-xl">Container Club</span>
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
 
-              <Link to="/trade" className="bg-black text-white hover:bg-white hover:text-black rounded-full px-8 py-4 text-xs uppercase tracking-widest font-bold transition-colors w-fit border border-black">
+              <Link to="/trade" className="mt-8 bg-black text-white hover:bg-white hover:text-black rounded-full px-8 py-4 text-xs uppercase tracking-widest font-bold transition-colors w-fit border border-black">
                 Explore Trade
               </Link>
             </div>
