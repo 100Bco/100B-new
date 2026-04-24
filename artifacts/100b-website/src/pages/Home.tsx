@@ -346,15 +346,10 @@ export default function Home() {
           mirrored on the right (Hanoi). Content unchanged; presentation new. */}
       <section className="relative py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Section header */}
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-8 h-px bg-white/15" />
-            <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-              Two Worlds, One Corridor
-            </p>
-          </div>
-          <h2 className="font-serif font-light text-[36px] md:text-[44px] lg:text-[56px] leading-[1.1] tracking-tight text-text-heading max-w-3xl mb-4">
-            Where capital meets <em className="italic text-gradient-gold">craft</em>, across two hemispheres.
+          {/* Section header — matches the UTM/caps pattern used by every other
+              section title on this page */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-8">
+            TWO WORLDS, <em className="font-display italic text-gradient-gold">ONE CORRIDOR.</em>
           </h2>
           <p className="text-base lg:text-lg font-light text-white/85 leading-relaxed max-w-2xl mb-12">
             One operator. Two rooms. One corridor between them. Choose the side you need — or walk through both.
@@ -379,17 +374,16 @@ export default function Home() {
               aria-hidden
             />
 
-            {/* 100B emblem on the corridor */}
+            {/* 100B emblem on the corridor — no ring; emblem fills the plate */}
             <div
               className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[3] items-center justify-center w-16 h-16 rounded-full transition-shadow duration-300 hover:shadow-[0_0_60px_rgba(195,163,116,0.35)]"
               style={{
                 background: "#2F2C28",
-                border: "1px solid rgba(195,163,116,0.5)",
                 boxShadow: "0 0 40px rgba(195,163,116,0.2)",
               }}
               aria-label="100B"
             >
-              <img src={corridorEmblem} alt="100B" className="w-9 h-9 object-contain" />
+              <img src={corridorEmblem} alt="100B" className="w-16 h-16 object-contain" />
             </div>
 
             {/* LEFT — BUILD (Austin) */}
