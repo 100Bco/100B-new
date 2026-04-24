@@ -389,17 +389,13 @@ export default function Home() {
               aria-hidden
             />
 
-            {/* 100B emblem on the corridor — no ring; emblem fills the plate */}
-            <div
-              className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[3] items-center justify-center w-16 h-16 rounded-full transition-shadow duration-300 hover:shadow-[0_0_60px_rgba(195,163,116,0.35)]"
-              style={{
-                background: "#2F2C28",
-                boxShadow: "0 0 40px rgba(195,163,116,0.2)",
-              }}
+            {/* 100B emblem on the corridor — bare image, no plate / glow */}
+            <img
+              src={corridorEmblem}
+              alt="100B"
+              className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[3] w-32 h-32 object-contain pointer-events-none"
               aria-label="100B"
-            >
-              <img src={corridorEmblem} alt="100B" className="w-16 h-16 object-contain" />
-            </div>
+            />
 
             {/* LEFT — BUILD (Austin) */}
             <div
