@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Users, TrendingUp, Handshake, Check } from "lucide-react";
+import { CountUp } from "@/components/CountUp";
 import num01 from "@assets/01_1776952354216.png";
 import num02 from "@assets/02_1776952354217.png";
 import num03 from "@assets/03_1776952354218.png";
@@ -142,26 +143,20 @@ export default function Home() {
           </div>
 
           <div className="bg-bg-card rounded-3xl p-8 md:p-12 border border-border-subtle grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-            <div className="flex flex-col gap-2">
-              <span className="text-4xl md:text-5xl font-display text-gradient-gold">100M</span>
-              <span className="text-sm font-light text-text-body">People. 70% Under 35</span>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-4xl md:text-5xl font-display text-gradient-gold">15+</span>
-              <span className="text-sm font-light text-text-body">Free Trade Agreements</span>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-4xl md:text-5xl font-display text-gradient-gold">$405B</span>
-              <span className="text-sm font-light text-text-body">In Exports</span>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-4xl md:text-5xl font-display text-gradient-gold">$38B</span>
-              <span className="text-sm font-light text-text-body">In FDI</span>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-4xl md:text-5xl font-display text-gradient-gold">#1</span>
-              <span className="text-sm font-light text-text-body">Manufacturing in SEA</span>
-            </div>
+            {[
+              { to: 100, suffix: "M", label: "People. 70% Under 35" },
+              { to: 15, suffix: "+", label: "Free Trade Agreements" },
+              { to: 405, prefix: "$", suffix: "B", label: "In Exports" },
+              { to: 38, prefix: "$", suffix: "B", label: "In FDI" },
+              { to: 1, prefix: "#", label: "Manufacturing in SEA" },
+            ].map((stat) => (
+              <div key={stat.label} className="flex flex-col gap-2">
+                <span className="text-4xl md:text-5xl font-display text-gradient-gold">
+                  <CountUp to={stat.to} prefix={stat.prefix} suffix={stat.suffix} />
+                </span>
+                <span className="text-sm font-light text-text-body">{stat.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -224,7 +219,7 @@ export default function Home() {
                     className="h-[80px] w-auto shrink-0"
                     style={{ opacity: item.imgOpacity }}
                   />
-                  <span className="font-display uppercase text-[27px] lg:text-[32px] text-brand-gold font-bold tracking-wider leading-none">
+                  <span className="font-display uppercase text-[22px] lg:text-[26px] text-brand-gold font-bold tracking-wide leading-none">
                     {item.mode}
                   </span>
                 </div>
