@@ -9,11 +9,14 @@ export default function Footer() {
         className="max-w-4xl mx-auto text-center px-6 lg:px-8 pt-24 pb-20"
       >
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light leading-tight mb-8">
-          Capital. Founders. Operators. If that is you,{" "}
+          Capital. Founders. Operators.
+          <br />
+          If that is you,{" "}
           <em className="font-serif italic text-gradient-gold">let's talk.</em>
         </h2>
-        <p className="text-sm text-text-muted font-light max-w-xl mx-auto mb-8">
-          Inquiries are reviewed personally by Minh Mac and the 100B partner team.
+        <p className="text-sm text-text-muted font-light max-w-xl mx-auto mb-8 leading-relaxed">
+          Inquiries are reviewed personally by our Founding Team.
+          <br />
           We respond within 48 hours.
         </p>
         <a
@@ -52,12 +55,6 @@ export default function Footer() {
             className="text-[11px] uppercase tracking-[0.2em] font-semibold text-text-muted hover:text-white transition-colors"
           >
             Build
-          </Link>
-          <Link
-            to="/cc"
-            className="text-[11px] uppercase tracking-[0.2em] font-semibold text-text-muted hover:text-white transition-colors"
-          >
-            Container Club
           </Link>
           <a
             href="mailto:global@100b.co"
