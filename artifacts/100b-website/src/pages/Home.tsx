@@ -418,7 +418,7 @@ export default function Home() {
           Delicate pause between the programs and the founder — art backdrop,
           modest type, compact CTA. */}
       <section
-        className="relative border-y border-border-subtle overflow-hidden py-12 lg:py-16 bg-bg-warm bg-center bg-cover"
+        className="relative border-y border-border-subtle overflow-hidden py-[72px] lg:py-[96px] bg-bg-warm bg-center bg-cover"
         style={{ backgroundImage: `url(${waitlistBg})` }}
       >
         <div
@@ -429,9 +429,9 @@ export default function Home() {
           }}
           aria-hidden
         />
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-6 lg:px-8 flex flex-col items-center gap-5 lg:gap-6">
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-6 lg:px-8 flex flex-col items-center gap-7 lg:gap-9">
           <h2
-            className="font-display uppercase leading-[1.15] tracking-[0.04em] text-[20px] md:text-[26px] lg:text-[30px]"
+            className="font-display uppercase leading-[1.1] tracking-[0.04em] text-[30px] md:text-[38px] lg:text-[44px]"
             style={{ color: "#937C54" }}
           >
             Become the global brand<br className="sm:hidden" /> in your industry.
@@ -442,10 +442,10 @@ export default function Home() {
               e.preventDefault();
               document.querySelector("#contact-footer")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="btn-silver-gradient rounded-full px-6 py-3 text-[10px] uppercase tracking-[0.22em] font-semibold inline-flex items-center gap-2"
+            className="btn-silver-gradient rounded-full px-7 py-3.5 text-[11px] uppercase tracking-[0.22em] font-semibold inline-flex items-center gap-2"
           >
             Join the Waitlist
-            <ArrowRight size={12} />
+            <ArrowRight size={13} />
           </a>
         </div>
       </section>
