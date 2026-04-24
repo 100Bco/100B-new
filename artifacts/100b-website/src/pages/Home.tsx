@@ -473,25 +473,27 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Right — photo, height-constrained so the whole section stays in one viewport.
-                    Thick dark bezel around the image sells it as a framed portrait / editorial plate. */}
-                <div className="w-full aspect-[4/5] max-h-[min(58vh,500px)] mx-auto rounded-[28px] bg-[#0D0C0A] border-[14px] lg:border-[18px] border-[#0D0C0A] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] overflow-hidden flex items-center justify-center">
-                  {testimonials[currentSlide].photo ? (
-                    <img
-                      src={testimonials[currentSlide].photo!}
-                      alt={testimonials[currentSlide].company}
-                      className="w-full h-full object-cover grayscale rounded-[12px]"
-                    />
-                  ) : (
-                    <div className="flex flex-col items-center justify-center gap-4 w-full h-full bg-[#111111] rounded-[12px]">
-                      <span className="text-6xl lg:text-7xl font-display text-gradient-gold opacity-30 leading-none">
-                        {testimonials[currentSlide].initial}
-                      </span>
-                      <span className="text-[10px] uppercase tracking-[0.3em] text-text-muted">
-                        {testimonials[currentSlide].company}
-                      </span>
-                    </div>
-                  )}
+                {/* Right — photo with a brushed-silver bezel, matched to the brand's
+                    silver CTA treatment. Reads as a framed editorial plate. */}
+                <div className="w-full aspect-[4/5] max-h-[min(58vh,500px)] mx-auto rounded-[28px] bg-silver-gradient p-[14px] lg:p-[18px] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] flex items-center justify-center">
+                  <div className="w-full h-full rounded-[14px] overflow-hidden ring-1 ring-black/20">
+                    {testimonials[currentSlide].photo ? (
+                      <img
+                        src={testimonials[currentSlide].photo!}
+                        alt={testimonials[currentSlide].company}
+                        className="w-full h-full object-cover grayscale"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center gap-4 w-full h-full bg-[#111111]">
+                        <span className="text-6xl lg:text-7xl font-display text-gradient-gold opacity-30 leading-none">
+                          {testimonials[currentSlide].initial}
+                        </span>
+                        <span className="text-[10px] uppercase tracking-[0.3em] text-text-muted">
+                          {testimonials[currentSlide].company}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>
