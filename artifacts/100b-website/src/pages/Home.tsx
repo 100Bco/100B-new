@@ -316,7 +316,7 @@ export default function Home() {
                       <div className="w-5 h-5 icon-silver-gradient shrink-0 mt-0.5">
                         <Check className="w-2.5 h-2.5 text-[#111]" strokeWidth={2.5} />
                       </div>
-                      <p className="text-text-muted text-sm leading-relaxed">{bullet}</p>
+                      <p className="text-text-heading text-sm leading-relaxed">{bullet}</p>
                     </div>
                   ))}
                 </div>
@@ -448,7 +448,7 @@ export default function Home() {
                       <div className="mt-1 flex-shrink-0 w-4 h-4 icon-silver-gradient">
                         <Check size={9} className="text-[#111]" strokeWidth={2.5} />
                       </div>
-                      <span className="text-sm font-light text-text-muted leading-tight">{pt}</span>
+                      <span className="text-sm text-text-heading leading-tight">{pt}</span>
                     </li>
                   ))}
                 </ul>
