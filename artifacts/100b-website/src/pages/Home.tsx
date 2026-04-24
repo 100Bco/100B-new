@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Users, TrendingUp, Handshake, Check } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { CountUp } from "@/components/CountUp";
+import waitlistBg from "@assets/Lien he.png";
 import cchlPhoto from "@assets/CCHL.webp";
 import misaPhoto from "@assets/MISA.webp";
 import quangVinhPhoto from "@assets/Gom Quang Vinh.webp";
@@ -413,11 +414,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4B. WAITLIST TRANSITION — muted tonal gold, engraved feel, leather /
-          felt texture. Two grain layers (coarse overlay + fine soft-light) give
-          the dark fabric feel from the reference, not plain film grain. */}
-      <section className="relative bg-bg-warm border-b border-border-subtle grain-heavy glow-warm-center overflow-hidden py-28 lg:py-40">
-        <div className="grain-fine" aria-hidden />
+      {/* 4B. WAITLIST TRANSITION — uses the Lien he.png backdrop (the textured
+          dark surface art directed for this moment). A subtle darken overlay
+          keeps the headline readable without killing the grain in the art. */}
+      <section
+        className="relative border-b border-border-subtle overflow-hidden py-28 lg:py-40 bg-bg-warm bg-center bg-cover"
+        style={{ backgroundImage: `url(${waitlistBg})` }}
+      >
+        {/* readability veil — soft inner vignette so text sits clean */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 55% at 50% 50%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 85%)",
+          }}
+          aria-hidden
+        />
         <div className="relative z-10 max-w-5xl mx-auto text-center px-6 lg:px-8">
           <h2
             className="font-display uppercase leading-[1.05] tracking-wide text-[30px] md:text-5xl lg:text-[58px] mb-10 lg:mb-12"
