@@ -183,10 +183,12 @@
     z-index: 0;
   }
   .glow-warm-top::before {
-    background: radial-gradient(ellipse 90% 45% at 50% 0%, rgba(195,163,116,0.08) 0%, transparent 65%);
+    /* shorter ellipse + faster falloff — stays in the top ~25% of the section
+       so the rest reads as clean black, not amber */
+    background: radial-gradient(ellipse 70% 22% at 50% 0%, rgba(195,163,116,0.12) 0%, transparent 70%);
   }
   .glow-warm-bottom::before {
-    background: radial-gradient(ellipse 90% 45% at 50% 100%, rgba(195,163,116,0.08) 0%, transparent 65%);
+    background: radial-gradient(ellipse 70% 22% at 50% 100%, rgba(195,163,116,0.12) 0%, transparent 70%);
   }
   .glow-warm-center::before {
     content: "";

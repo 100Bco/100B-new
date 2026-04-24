@@ -242,9 +242,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. THREE MODES — warm-dark surface with ambient amber glow; reads as
-          "the curated room" where the three offerings live. */}
-      <section className="relative py-20 lg:py-28 bg-bg-warm border-b border-border-subtle grain-overlay glow-warm-top overflow-hidden">
+      {/* 3. THREE MODES — black surface; warm amber glow only at the top edge
+          so the section starts lit and fades to clean black by mid-page. */}
+      <section className="relative py-20 lg:py-28 bg-bg-dark border-b border-border-subtle grain-overlay glow-warm-top overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-8">
             THREE WAYS 100B <em className="font-display italic text-gradient-gold">BUILDS WITH YOU.</em>
