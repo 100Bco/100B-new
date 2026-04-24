@@ -462,7 +462,7 @@ export default function Home() {
                   <h3 className="text-xl md:text-2xl lg:text-[28px] font-bold uppercase tracking-wide text-gradient-gold mb-5 lg:mb-6 relative z-10 leading-tight">
                     "{testimonials[currentSlide].headline}"
                   </h3>
-                  <p className="text-base lg:text-lg font-light font-serif leading-relaxed text-text-body mb-6 lg:mb-8 relative z-10 line-clamp-6 lg:line-clamp-none">
+                  <p className="text-lg md:text-xl lg:text-[22px] font-normal font-serif italic leading-[1.55] text-text-body mb-6 lg:mb-8 relative z-10 line-clamp-6 lg:line-clamp-none">
                     {testimonials[currentSlide].quote}
                   </p>
                   <div className="w-10 h-px bg-brand-gold/50 mb-4"></div>
