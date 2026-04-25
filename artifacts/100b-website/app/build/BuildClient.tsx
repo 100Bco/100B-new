@@ -185,7 +185,7 @@ export default function Build() {
           </div>
 
           <div className="bg-bg-card p-8 lg:p-12 border border-brand-gold/20 rounded-3xl mb-16">
-            <h3 className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold mb-10 text-center lg:text-left">
+            <h3 className="font-display uppercase text-base md:text-lg lg:text-[20px] tracking-[0.12em] text-brand-gold mb-10 text-center lg:text-left">
               The Route — May 30 to June 19, 2026
             </h3>
             
@@ -272,16 +272,16 @@ export default function Build() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col gap-4 border-t border-brand-gold/30 pt-8">
-              <span className="text-5xl md:text-6xl font-display text-white">$37B</span>
-              <p className="text-sm font-light text-text-muted leading-relaxed">Samsung Taylor expansion anchoring regional tech manufacturing cluster</p>
+              <span className="text-5xl md:text-6xl font-display text-text-heading">$37B</span>
+              <p className="text-sm text-text-body leading-relaxed">Samsung Taylor expansion anchoring regional tech manufacturing cluster</p>
             </div>
             <div className="flex flex-col gap-4 border-t border-brand-gold/30 pt-8">
-              <span className="text-5xl md:text-6xl font-display text-white">6</span>
-              <p className="text-sm font-light text-text-muted leading-relaxed">Asian nations actively investing: Taiwan, Korea, Japan, Singapore, India, Vietnam</p>
+              <span className="text-5xl md:text-6xl font-display text-text-heading">6</span>
+              <p className="text-sm text-text-body leading-relaxed">Asian nations actively investing: Taiwan, Korea, Japan, Singapore, India, Vietnam</p>
             </div>
             <div className="flex flex-col gap-4 border-t border-brand-gold/30 pt-8">
-              <span className="text-5xl md:text-6xl font-display text-white">100M</span>
-              <p className="text-sm font-light text-text-muted leading-relaxed">Population in Vietnam's high-growth market</p>
+              <span className="text-5xl md:text-6xl font-display text-text-heading">100M</span>
+              <p className="text-sm text-text-body leading-relaxed">Population in Vietnam's high-growth market</p>
             </div>
           </div>
         </div>
@@ -297,7 +297,7 @@ export default function Build() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight mb-8">
             THREE MODES. <em className="font-display italic text-gradient-gold">EVERY DEAL FITS ONE OF THEM.</em>
           </h2>
-          <p className="text-lg lg:text-xl font-light leading-relaxed max-w-2xl text-text-muted mb-16">
+          <p className="text-lg lg:text-xl font-light leading-relaxed max-w-2xl text-text-body mb-16">
             If it does not fit, we pass. That selectivity is what makes the deals we take worth something.
           </p>
 

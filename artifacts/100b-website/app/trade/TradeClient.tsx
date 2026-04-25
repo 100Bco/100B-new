@@ -67,7 +67,7 @@ export default function Trade() {
                 Active — May 30 to June 5, 2026
               </div>
               <h3 className="text-3xl font-serif text-white mb-6 relative z-10">Vietnam Direct 2026</h3>
-              <p className="text-text-muted font-light leading-relaxed mb-12 relative z-10 flex-1">
+              <p className="text-text-body font-normal leading-relaxed mb-12 relative z-10 flex-1">
                 Ho Chi Minh City to Hanoi. 7 days. 10+ vetted factories across construction and finishing materials — engineered wood, aluminum windows, steel structures, porcelain tile, composite panels and more. By invitation only.
               </p>
               <button 
@@ -85,8 +85,8 @@ export default function Trade() {
               <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-3 py-1 text-xs text-text-muted w-fit mb-8">
                 Coming 2027
               </div>
-              <h3 className="text-3xl font-serif text-white/70 mb-6">Next Chapter — Asia</h3>
-              <p className="text-text-muted font-light leading-relaxed mb-12 flex-1">
+              <h3 className="text-3xl font-serif text-text-heading/70 mb-6">Next Chapter — Asia</h3>
+              <p className="text-text-body/70 font-normal leading-relaxed mb-12 flex-1">
                 The Build Better Series continues. Location to be announced. If you want to be on the early list when the next trip opens, get in touch now.
               </p>
               <button 
