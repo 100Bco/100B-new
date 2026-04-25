@@ -185,7 +185,7 @@ export default function Build() {
           </div>
 
           <div className="bg-bg-card p-8 lg:p-12 border border-brand-gold/20 rounded-3xl mb-16">
-            <h3 className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold mb-10 text-center lg:text-left">
+            <h3 className="font-display uppercase text-base md:text-lg lg:text-[20px] tracking-[0.12em] text-brand-gold mb-10 text-center lg:text-left">
               The Route — May 30 to June 19, 2026
             </h3>
             
