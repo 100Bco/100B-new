@@ -10,7 +10,7 @@ const SITE_URL =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "100B | Made In Vietnam, Consumed Worldwide.",
+    default: "100B | Beyond Borders",
     template: "%s | 100B Beyond Borders",
   },
   description:
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "100B Beyond Borders",
-    title: "100B | Made In Vietnam, Consumed Worldwide.",
+    title: "100B | Beyond Borders",
     description:
       "The operating partner for serious deals between two worlds. Capital, founders, and operators across the Vietnam–US corridor.",
     url: SITE_URL,
@@ -44,13 +44,13 @@ export const metadata: Metadata = {
         url: "/opengraph.jpg",
         width: 1200,
         height: 630,
-        alt: "100B Beyond Borders — Made In Vietnam, Consumed Worldwide.",
+        alt: "100B Beyond Borders",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "100B | Made In Vietnam, Consumed Worldwide.",
+    title: "100B | Beyond Borders",
     description:
       "The operating partner for serious deals between two worlds.",
     images: ["/opengraph.jpg"],
