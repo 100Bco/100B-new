@@ -4,7 +4,12 @@ node_modules/
 
 # Build outputs
 dist/
-build/
+# Don't shadow the Next.js /app/build route — this rule was matching
+# artifacts/100b-website/app/build/ and silently dropping the route
+# from commits, which made Vercel return 404 for /build. Use a precise
+# anchor instead.
+/build/
+artifacts/api-server/build/
 .vite/
 .turbo/
 .next/
