@@ -5,9 +5,9 @@ node_modules
 .next
 out
 
-# production
-build
-dist
+# production output (root-only — don't shadow /app/build route)
+/build
+/dist
 
 # misc
 .DS_Store
