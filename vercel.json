@@ -1,7 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "pnpm install",
-  "buildCommand": "pnpm --filter @workspace/100b-website run build",
-  "framework": "nextjs",
-  "outputDirectory": "artifacts/100b-website/.next"
-}
