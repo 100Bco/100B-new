@@ -17,6 +17,87 @@ import num01 from "@assets/01_1776952354216.png";
 import num02 from "@assets/02_1776952354217.png";
 import num03 from "@assets/03_1776952354218.png";
 
+// Press / media coverage. Drop files into `attached_assets/press/` and wire
+// them up via the `image` field. When `image` is null we fall back to a
+// gradient placeholder tile so the layout never breaks.
+type PressItem = {
+  tag: string;
+  title: string;
+  description: string;
+  link: string;
+  image: string | null;
+};
+
+const pressCommunity: PressItem[] = [
+  {
+    tag: "Bộ Khoa học Công nghệ",
+    title: "KẾT NỐI DOANH NHÂN VIỆT KIỀU VỚI DOANH NHÂN TRONG NƯỚC",
+    description:
+      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
+    link: "#",
+    image: null,
+  },
+  {
+    tag: "VnExpress",
+    title: "100B VÀ HÀNH TRÌNH ĐƯA THƯƠNG HIỆU VIỆT RA THẾ GIỚI",
+    description:
+      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
+    link: "#",
+    image: null,
+  },
+  {
+    tag: "Diễn đàn Doanh nghiệp",
+    title: "CỘNG ĐỒNG DOANH NHÂN VIỆT KIỀU – CẦU NỐI HAI BỜ",
+    description:
+      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
+    link: "#",
+    image: null,
+  },
+  {
+    tag: "Báo Đầu tư",
+    title: "100B SUMMIT: HỘI TỤ TINH HOA DOANH NHÂN VIỆT TOÀN CẦU",
+    description:
+      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
+    link: "#",
+    image: null,
+  },
+];
+
+const pressBusiness: PressItem[] = [
+  {
+    tag: "Forbes Vietnam",
+    title: "100B – ĐỐI TÁC VẬN HÀNH CHO NHỮNG THƯƠNG VỤ NGHIÊM TÚC",
+    description:
+      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
+    link: "#",
+    image: null,
+  },
+  {
+    tag: "CafeF",
+    title: "DÒNG VỐN MỸ – VIỆT VÀ CƠ HỘI CHO DOANH NGHIỆP NỘI",
+    description:
+      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
+    link: "#",
+    image: null,
+  },
+  {
+    tag: "VietnamNet",
+    title: "100B BẮT TAY HEXAGON, MỞ RỘNG MẠNG LƯỚI SẢN XUẤT",
+    description:
+      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
+    link: "#",
+    image: null,
+  },
+  {
+    tag: "Báo Đầu tư",
+    title: "VIỆT NAM TRONG CHIẾN LƯỢC PE XUYÊN BIÊN GIỚI",
+    description:
+      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
+    link: "#",
+    image: null,
+  },
+];
+
 const testimonials = [
   {
     name: "Sandy Phuong Nguyen",
@@ -94,6 +175,19 @@ export default function Home() {
     setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   const goNext = () =>
     setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+
+  const [pressTab, setPressTab] = useState<"community" | "business">("community");
+  const [pressIndex, setPressIndex] = useState(0);
+  const pressItems = pressTab === "community" ? pressCommunity : pressBusiness;
+  const pressPrev = () =>
+    setPressIndex((prev) => (prev - 1 + pressItems.length) % pressItems.length);
+  const pressNext = () =>
+    setPressIndex((prev) => (prev + 1) % pressItems.length);
+  const pressVisible: PressItem[] = pressItems.length
+    ? Array.from({ length: Math.min(3, pressItems.length) }, (_, i) =>
+        pressItems[(pressIndex + i) % pressItems.length]
+      )
+    : [];
 
   return (
     <div className="flex flex-col">
@@ -717,6 +811,128 @@ export default function Home() {
             <button
               onClick={goNext}
               aria-label="Next testimonial"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors"
+            >
+              <ArrowRight size={16} />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. PRESS — Báo và Phóng sự. Tabs switch between community and
+          business coverage; carousel shows three cards at a time. */}
+      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight text-center mb-10 lg:mb-12">
+            <em className="font-display italic text-gradient-gold">BÁO VÀ PHÓNG SỰ</em>
+          </h2>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-12 lg:mb-14">
+            {[
+              { id: "community" as const, label: "Hoạt động Cộng đồng" },
+              { id: "business" as const, label: "Hoạt động Kinh doanh" },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  setPressTab(tab.id);
+                  setPressIndex(0);
+                }}
+                className={`px-7 lg:px-10 py-3.5 rounded-full text-sm font-medium transition-all border ${
+                  pressTab === tab.id
+                    ? "bg-bg-card text-text-heading border-white/20"
+                    : "bg-transparent text-text-muted border-white/10 hover:border-white/25 hover:text-text-heading"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="relative">
+            <button
+              onClick={pressPrev}
+              aria-label="Previous press article"
+              className="hidden md:flex absolute -left-4 lg:-left-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors bg-bg-dark/80 backdrop-blur"
+            >
+              <ArrowRight size={16} className="rotate-180" />
+            </button>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={pressTab + ":" + pressIndex}
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -16 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
+                {pressVisible.map((item, idx) => (
+                  <article
+                    key={pressTab + ":" + pressIndex + ":" + idx}
+                    className="bg-bg-card rounded-2xl overflow-hidden border border-white/5 flex flex-col"
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      {item.image ? (
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div
+                          className="w-full h-full"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #2A2520 0%, #1A1714 60%, #0D0B09 100%)",
+                          }}
+                          aria-hidden
+                        />
+                      )}
+                      <span className="absolute bottom-4 left-4 bg-brand-gold/90 text-bg-dark text-[11px] font-semibold px-3 py-1.5 rounded">
+                        {item.tag}
+                      </span>
+                    </div>
+                    <div className="p-6 flex flex-col flex-1">
+                      <h3 className="font-display text-gradient-gold uppercase leading-[1.15] text-lg lg:text-xl mb-3 line-clamp-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-text-muted leading-relaxed mb-5 line-clamp-2">
+                        {item.description}
+                      </p>
+                      <a
+                        href={item.link}
+                        className="mt-auto self-start text-sm text-text-heading underline underline-offset-4 decoration-white/30 hover:decoration-brand-gold hover:text-brand-gold transition-colors"
+                      >
+                        Xem thêm
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+
+            <button
+              onClick={pressNext}
+              aria-label="Next press article"
+              className="hidden md:flex absolute -right-4 lg:-right-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors bg-bg-dark/80 backdrop-blur"
+            >
+              <ArrowRight size={16} />
+            </button>
+          </div>
+
+          {/* Mobile prev/next — buttons hidden on desktop above land here. */}
+          <div className="md:hidden flex items-center justify-center gap-6 mt-8">
+            <button
+              onClick={pressPrev}
+              aria-label="Previous press article"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors"
+            >
+              <ArrowRight size={16} className="rotate-180" />
+            </button>
+            <button
+              onClick={pressNext}
+              aria-label="Next press article"
               className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors"
             >
               <ArrowRight size={16} />
