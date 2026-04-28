@@ -23,6 +23,7 @@ import socialPress4 from "@assets/press/Social Press 4.jpg";
 import businessPress1 from "@assets/press/Business Press 1.jpg";
 import businessPress2 from "@assets/press/Business Press 2.jpg";
 import businessPress3 from "@assets/press/Business Press 3.jpg";
+import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
 
 // Press / media coverage. Drop files into `attached_assets/press/` and wire
 // them up via the `image` field. When `image` is null we fall back to a
@@ -37,7 +38,7 @@ type PressItem = {
 
 const pressCommunity: PressItem[] = [
   {
-    tag: "Ủy ban Nhà nước về NVNONN",
+    tag: "State Committee for Overseas Vietnamese",
     title: "Deputy Foreign Minister Le Thi Thu Hang receives the Association of Vietnamese Overseas Businessmen delegation",
     description:
       "Strengthening ties between overseas Vietnamese entrepreneurs and domestic businesses, enhancing coordination and regular information exchange, supporting economic development and stronger global Vietnamese business connections.",
@@ -53,7 +54,7 @@ const pressCommunity: PressItem[] = [
     image: socialPress2.src,
   },
   {
-    tag: "Ủy ban Mặt Trận",
+    tag: "Vietnam Fatherland Front",
     title: "Association of Vietnamese Overseas Businessmen donates 21 solidarity houses to poor households in Dien Bien and Northwest provinces",
     description:
       "The Association of Vietnamese Overseas Businessmen donated funding for 21 solidarity houses to support poor households in Dien Bien and Northwest provinces.",
@@ -72,7 +73,7 @@ const pressCommunity: PressItem[] = [
 
 const pressBusiness: PressItem[] = [
   {
-    tag: "Báo Tin Tức",
+    tag: "Tin Tuc News",
     title: "Positioning Vietnamese business brands in international media",
     description:
       "A seminar in Ho Chi Minh City discussed strategies for positioning Vietnamese business brands on global media platforms.",
@@ -80,7 +81,7 @@ const pressBusiness: PressItem[] = [
     image: businessPress1.src,
   },
   {
-    tag: "VCCI Đà Nẵng",
+    tag: "VCCI Da Nang",
     title: "Overseas Vietnamese entrepreneurs aim to contribute to national development",
     description:
       "Overseas Vietnamese business leaders expressed their commitment to supporting Vietnam's economic growth through stronger collaboration and investment initiatives.",
@@ -88,7 +89,7 @@ const pressBusiness: PressItem[] = [
     image: businessPress2.src,
   },
   {
-    tag: "Báo Công Thương",
+    tag: "Cong Thuong News",
     title: "Effective communication starts with a strong product, experts say",
     description:
       "At a seminar in Ho Chi Minh City, experts emphasized that product quality is the foundation for effective brand communication and global positioning of Vietnamese businesses.",
@@ -178,15 +179,17 @@ export default function Home() {
   const [pressTab, setPressTab] = useState<"community" | "business">("community");
   const [pressIndex, setPressIndex] = useState(0);
   const pressItems = pressTab === "community" ? pressCommunity : pressBusiness;
-  const pressPrev = () =>
-    setPressIndex((prev) => (prev - 1 + pressItems.length) % pressItems.length);
-  const pressNext = () =>
-    setPressIndex((prev) => (prev + 1) % pressItems.length);
-  const pressVisible: PressItem[] = pressItems.length
-    ? Array.from({ length: Math.min(3, pressItems.length) }, (_, i) =>
-        pressItems[(pressIndex + i) % pressItems.length]
-      )
-    : [];
+  const pressVisibleCount = 3;
+  const pressMaxIndex = Math.max(0, pressItems.length - pressVisibleCount);
+  const pressCanPrev = pressIndex > 0;
+  const pressCanNext = pressIndex < pressMaxIndex;
+  const pressShowNav = pressMaxIndex > 0;
+  const pressPrev = () => setPressIndex((prev) => Math.max(0, prev - 1));
+  const pressNext = () => setPressIndex((prev) => Math.min(pressMaxIndex, prev + 1));
+  const pressVisible: PressItem[] = pressItems.slice(
+    pressIndex,
+    pressIndex + pressVisibleCount
+  );
 
   return (
     <div className="flex flex-col">
@@ -823,13 +826,13 @@ export default function Home() {
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight text-center mb-10 lg:mb-12">
-            <em className="font-display italic text-gradient-gold">BÁO VÀ PHÓNG SỰ</em>
+            IN THE <em className="font-display italic text-gradient-gold">PRESS.</em>
           </h2>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-12 lg:mb-14">
             {[
-              { id: "community" as const, label: "Hoạt động Cộng đồng" },
-              { id: "business" as const, label: "Hoạt động Kinh doanh" },
+              { id: "community" as const, label: "Community" },
+              { id: "business" as const, label: "Business" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -849,13 +852,16 @@ export default function Home() {
           </div>
 
           <div className="relative">
-            <button
-              onClick={pressPrev}
-              aria-label="Previous press article"
-              className="hidden md:flex absolute -left-4 lg:-left-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors bg-bg-dark/80 backdrop-blur"
-            >
-              <ArrowRight size={16} className="rotate-180" />
-            </button>
+            {pressShowNav && (
+              <button
+                onClick={pressPrev}
+                disabled={!pressCanPrev}
+                aria-label="Previous press article"
+                className="hidden md:flex absolute -left-4 lg:-left-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105 disabled:opacity-25 disabled:cursor-not-allowed disabled:hover:scale-100"
+              >
+                <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
+              </button>
+            )}
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -905,7 +911,7 @@ export default function Home() {
                         rel="noopener noreferrer"
                         className="mt-auto self-start text-sm text-text-heading underline underline-offset-4 decoration-white/30 hover:decoration-brand-gold hover:text-brand-gold transition-colors"
                       >
-                        Xem thêm
+                        Read more
                       </a>
                     </div>
                   </article>
@@ -913,32 +919,39 @@ export default function Home() {
               </motion.div>
             </AnimatePresence>
 
-            <button
-              onClick={pressNext}
-              aria-label="Next press article"
-              className="hidden md:flex absolute -right-4 lg:-right-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors bg-bg-dark/80 backdrop-blur"
-            >
-              <ArrowRight size={16} />
-            </button>
+            {pressShowNav && (
+              <button
+                onClick={pressNext}
+                disabled={!pressCanNext}
+                aria-label="Next press article"
+                className="hidden md:flex absolute -right-4 lg:-right-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105 disabled:opacity-25 disabled:cursor-not-allowed disabled:hover:scale-100"
+              >
+                <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
+              </button>
+            )}
           </div>
 
           {/* Mobile prev/next — buttons hidden on desktop above land here. */}
-          <div className="md:hidden flex items-center justify-center gap-6 mt-8">
-            <button
-              onClick={pressPrev}
-              aria-label="Previous press article"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors"
-            >
-              <ArrowRight size={16} className="rotate-180" />
-            </button>
-            <button
-              onClick={pressNext}
-              aria-label="Next press article"
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors"
-            >
-              <ArrowRight size={16} />
-            </button>
-          </div>
+          {pressShowNav && (
+            <div className="md:hidden flex items-center justify-center gap-6 mt-8">
+              <button
+                onClick={pressPrev}
+                disabled={!pressCanPrev}
+                aria-label="Previous press article"
+                className="w-11 h-11 flex items-center justify-center transition-all hover:scale-105 disabled:opacity-25 disabled:cursor-not-allowed disabled:hover:scale-100"
+              >
+                <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
+              </button>
+              <button
+                onClick={pressNext}
+                disabled={!pressCanNext}
+                aria-label="Next press article"
+                className="w-11 h-11 flex items-center justify-center transition-all hover:scale-105 disabled:opacity-25 disabled:cursor-not-allowed disabled:hover:scale-100"
+              >
+                <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </div>
