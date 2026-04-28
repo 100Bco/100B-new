@@ -37,7 +37,7 @@ type PressItem = {
 
 const pressCommunity: PressItem[] = [
   {
-    tag: "Ủy ban Nhà nước về NVNONN",
+    tag: "State Committee for Overseas Vietnamese",
     title: "Deputy Foreign Minister Le Thi Thu Hang receives the Association of Vietnamese Overseas Businessmen delegation",
     description:
       "Strengthening ties between overseas Vietnamese entrepreneurs and domestic businesses, enhancing coordination and regular information exchange, supporting economic development and stronger global Vietnamese business connections.",
@@ -53,7 +53,7 @@ const pressCommunity: PressItem[] = [
     image: socialPress2.src,
   },
   {
-    tag: "Ủy ban Mặt Trận",
+    tag: "Vietnam Fatherland Front",
     title: "Association of Vietnamese Overseas Businessmen donates 21 solidarity houses to poor households in Dien Bien and Northwest provinces",
     description:
       "The Association of Vietnamese Overseas Businessmen donated funding for 21 solidarity houses to support poor households in Dien Bien and Northwest provinces.",
@@ -72,7 +72,7 @@ const pressCommunity: PressItem[] = [
 
 const pressBusiness: PressItem[] = [
   {
-    tag: "Báo Tin Tức",
+    tag: "Tin Tuc News",
     title: "Positioning Vietnamese business brands in international media",
     description:
       "A seminar in Ho Chi Minh City discussed strategies for positioning Vietnamese business brands on global media platforms.",
@@ -80,7 +80,7 @@ const pressBusiness: PressItem[] = [
     image: businessPress1.src,
   },
   {
-    tag: "VCCI Đà Nẵng",
+    tag: "VCCI Da Nang",
     title: "Overseas Vietnamese entrepreneurs aim to contribute to national development",
     description:
       "Overseas Vietnamese business leaders expressed their commitment to supporting Vietnam's economic growth through stronger collaboration and investment initiatives.",
@@ -88,7 +88,7 @@ const pressBusiness: PressItem[] = [
     image: businessPress2.src,
   },
   {
-    tag: "Báo Công Thương",
+    tag: "Cong Thuong News",
     title: "Effective communication starts with a strong product, experts say",
     description:
       "At a seminar in Ho Chi Minh City, experts emphasized that product quality is the foundation for effective brand communication and global positioning of Vietnamese businesses.",
@@ -823,13 +823,13 @@ export default function Home() {
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight text-center mb-10 lg:mb-12">
-            <em className="font-display italic text-gradient-gold">BÁO VÀ PHÓNG SỰ</em>
+            IN THE <em className="font-display italic text-gradient-gold">PRESS.</em>
           </h2>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-12 lg:mb-14">
             {[
-              { id: "community" as const, label: "Hoạt động Cộng đồng" },
-              { id: "business" as const, label: "Hoạt động Kinh doanh" },
+              { id: "community" as const, label: "Community" },
+              { id: "business" as const, label: "Business" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -905,7 +905,7 @@ export default function Home() {
                         rel="noopener noreferrer"
                         className="mt-auto self-start text-sm text-text-heading underline underline-offset-4 decoration-white/30 hover:decoration-brand-gold hover:text-brand-gold transition-colors"
                       >
-                        Xem thêm
+                        Read more
                       </a>
                     </div>
                   </article>
