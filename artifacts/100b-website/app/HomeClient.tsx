@@ -821,15 +821,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. PRESS — Báo và Phóng sự. Tabs switch between community and
-          business coverage; carousel shows three cards at a time. */}
-      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight text-center mb-10 lg:mb-12">
+      {/* 7. PRESS — In the Press. Tabs switch between community and
+          business coverage; constrained to a single viewport height like
+          the FRIENDS SAY block above. */}
+      <section className="min-h-screen h-screen flex flex-col bg-bg-dark border-b border-border-subtle overflow-hidden py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex-1 flex flex-col">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight text-center mb-6 lg:mb-8 shrink-0">
             IN THE <em className="font-display italic text-gradient-gold">PRESS.</em>
           </h2>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-12 lg:mb-14">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 lg:mb-10 shrink-0">
             {[
               { id: "community" as const, label: "Community" },
               { id: "business" as const, label: "Business" },
@@ -840,7 +841,7 @@ export default function Home() {
                   setPressTab(tab.id);
                   setPressIndex(0);
                 }}
-                className={`px-7 lg:px-10 py-3.5 rounded-full text-sm font-medium transition-all border ${
+                className={`px-7 lg:px-9 py-3 rounded-full text-sm font-medium transition-all border ${
                   pressTab === tab.id
                     ? "bg-bg-card text-text-heading border-white/20"
                     : "bg-transparent text-text-muted border-white/10 hover:border-white/25 hover:text-text-heading"
@@ -851,7 +852,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="relative">
+          <div className="relative flex-1 min-h-0 flex items-center">
             {pressShowNav && (
               <button
                 onClick={pressPrev}
@@ -870,14 +871,14 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -16 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full"
               >
                 {pressVisible.map((item, idx) => (
                   <article
                     key={pressTab + ":" + pressIndex + ":" + idx}
                     className="bg-bg-card rounded-2xl overflow-hidden border border-white/5 flex flex-col"
                   >
-                    <div className="relative aspect-[4/3] overflow-hidden">
+                    <div className="relative aspect-[16/10] overflow-hidden shrink-0">
                       {item.image ? (
                         <img
                           src={item.image}
@@ -894,15 +895,15 @@ export default function Home() {
                           aria-hidden
                         />
                       )}
-                      <span className="absolute bottom-4 left-4 bg-brand-gold/90 text-bg-dark text-[11px] font-semibold px-3 py-1.5 rounded">
+                      <span className="absolute bottom-3 left-3 bg-brand-gold/90 text-bg-dark text-[10px] font-semibold px-2.5 py-1 rounded">
                         {item.tag}
                       </span>
                     </div>
-                    <div className="p-6 flex flex-col flex-1">
-                      <h3 className="font-display text-gradient-gold uppercase leading-[1.15] text-lg lg:text-xl mb-3 line-clamp-3">
+                    <div className="p-5 flex flex-col flex-1 min-h-0">
+                      <h3 className="font-display text-gradient-gold uppercase leading-[1.15] text-base lg:text-lg mb-2 line-clamp-2">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-text-muted leading-relaxed mb-5 line-clamp-3">
+                      <p className="text-[13px] text-text-muted leading-relaxed mb-3 line-clamp-2">
                         {item.description}
                       </p>
                       <a
@@ -933,7 +934,7 @@ export default function Home() {
 
           {/* Mobile prev/next — buttons hidden on desktop above land here. */}
           {pressShowNav && (
-            <div className="md:hidden flex items-center justify-center gap-6 mt-8">
+            <div className="md:hidden flex items-center justify-center gap-6 mt-6 shrink-0">
               <button
                 onClick={pressPrev}
                 disabled={!pressCanPrev}
