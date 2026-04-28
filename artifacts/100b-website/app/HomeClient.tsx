@@ -16,6 +16,13 @@ import saoThaiDuongPhoto from "@assets/Sao Thai Duong.webp";
 import num01 from "@assets/01_1776952354216.png";
 import num02 from "@assets/02_1776952354217.png";
 import num03 from "@assets/03_1776952354218.png";
+import socialPress1 from "@assets/press/Social Press 1.jpg";
+import socialPress2 from "@assets/press/Social Press 2.jpeg";
+import socialPress3 from "@assets/press/Social Press 3.webp";
+import socialPress4 from "@assets/press/Social Press 4.jpg";
+import businessPress1 from "@assets/press/Business Press 1.jpg";
+import businessPress2 from "@assets/press/Business Press 2.jpg";
+import businessPress3 from "@assets/press/Business Press 3.jpg";
 
 // Press / media coverage. Drop files into `attached_assets/press/` and wire
 // them up via the `image` field. When `image` is null we fall back to a
@@ -30,71 +37,63 @@ type PressItem = {
 
 const pressCommunity: PressItem[] = [
   {
-    tag: "Bộ Khoa học Công nghệ",
-    title: "KẾT NỐI DOANH NHÂN VIỆT KIỀU VỚI DOANH NHÂN TRONG NƯỚC",
+    tag: "Ủy ban Nhà nước về NVNONN",
+    title: "Deputy Foreign Minister Le Thi Thu Hang receives the Association of Vietnamese Overseas Businessmen delegation",
     description:
-      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
-    link: "#",
-    image: null,
+      "Strengthening ties between overseas Vietnamese entrepreneurs and domestic businesses, enhancing coordination and regular information exchange, supporting economic development and stronger global Vietnamese business connections.",
+    link: "https://scov.gov.vn/cong-tac-ve-nvnonn/tin-tuc/thu-truong-le-thi-thu-hang-tiep-dai-dien-hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai.html",
+    image: socialPress1.src,
   },
   {
-    tag: "VnExpress",
-    title: "100B VÀ HÀNH TRÌNH ĐƯA THƯƠNG HIỆU VIỆT RA THẾ GIỚI",
+    tag: "Vietnam.vn",
+    title: "Global Vietnamese Ancestors' Day and the stories of overseas Vietnamese communities",
     description:
-      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
-    link: "#",
-    image: null,
+      "The event connects overseas Vietnamese with the homeland and promotes national cultural values worldwide, strengthening pride and unity across generations.",
+    link: "https://www.vietnam.vn/ngay-quoc-to-viet-nam-toan-cau-va-chuyen-cua-nhung-nguoi-con-xa-xu",
+    image: socialPress2.src,
   },
   {
-    tag: "Diễn đàn Doanh nghiệp",
-    title: "CỘNG ĐỒNG DOANH NHÂN VIỆT KIỀU – CẦU NỐI HAI BỜ",
+    tag: "Ủy ban Mặt Trận",
+    title: "Association of Vietnamese Overseas Businessmen donates 21 solidarity houses to poor households in Dien Bien and Northwest provinces",
     description:
-      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
-    link: "#",
-    image: null,
+      "The Association of Vietnamese Overseas Businessmen donated funding for 21 solidarity houses to support poor households in Dien Bien and Northwest provinces.",
+    link: "https://m.mattran.org.vn/hoat-dong/hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai-trao-tang-21-can-nha-dai-doan-ket-cho-ho-ngheo-cua-tinh-dien-bien-va-cac-tinh-tay-bac-54522.html",
+    image: socialPress3.src,
   },
   {
-    tag: "Báo Đầu tư",
-    title: "100B SUMMIT: HỘI TỤ TINH HOA DOANH NHÂN VIỆT TOÀN CẦU",
+    tag: "VNREA",
+    title: "Spring meeting held between VNREA, VITA and BAOOV in Hanoi",
     description:
-      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
-    link: "#",
-    image: null,
+      "Leaders of VNREA, VITA and BAOOV met in Hanoi to discuss cooperation and shared challenges across real estate, tourism and overseas business sectors.",
+    link: "https://vnrea.vn/gap-mat-tan-xuan-giua-ba-hiep-hoi-vnrea-vita-va-baoov-20240229112855902.html",
+    image: socialPress4.src,
   },
 ];
 
 const pressBusiness: PressItem[] = [
   {
-    tag: "Forbes Vietnam",
-    title: "100B – ĐỐI TÁC VẬN HÀNH CHO NHỮNG THƯƠNG VỤ NGHIÊM TÚC",
+    tag: "Báo Tin Tức",
+    title: "Positioning Vietnamese business brands in international media",
     description:
-      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
-    link: "#",
-    image: null,
+      "A seminar in Ho Chi Minh City discussed strategies for positioning Vietnamese business brands on global media platforms.",
+    link: "https://baotintuc.vn/kinh-te/dinh-vi-thuong-hieu-doanh-nghiep-viet-tren-truyen-thong-quoc-te-20240127214011094.htm",
+    image: businessPress1.src,
   },
   {
-    tag: "CafeF",
-    title: "DÒNG VỐN MỸ – VIỆT VÀ CƠ HỘI CHO DOANH NGHIỆP NỘI",
+    tag: "VCCI Đà Nẵng",
+    title: "Overseas Vietnamese entrepreneurs aim to contribute to national development",
     description:
-      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
-    link: "#",
-    image: null,
+      "Overseas Vietnamese business leaders expressed their commitment to supporting Vietnam's economic growth through stronger collaboration and investment initiatives.",
+    link: "https://vccidanang.com.vn/tin-tuc/kieu-bao-doanh-nhan-viet-mong-gop-suc-phat-trien-dat-nuoc/",
+    image: businessPress2.src,
   },
   {
-    tag: "VietnamNet",
-    title: "100B BẮT TAY HEXAGON, MỞ RỘNG MẠNG LƯỚI SẢN XUẤT",
+    tag: "Báo Công Thương",
+    title: "Effective communication starts with a strong product, experts say",
     description:
-      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
-    link: "#",
-    image: null,
-  },
-  {
-    tag: "Báo Đầu tư",
-    title: "VIỆT NAM TRONG CHIẾN LƯỢC PE XUYÊN BIÊN GIỚI",
-    description:
-      "There's a beauty and complexity to typography. Some people devote their entire careers to type....",
-    link: "#",
-    image: null,
+      "At a seminar in Ho Chi Minh City, experts emphasized that product quality is the foundation for effective brand communication and global positioning of Vietnamese businesses.",
+    link: "https://congthuong.vn/doanh-nghiep-muon-truyen-thong-hieu-qua-truoc-het-can-co-san-pham-tot-300633.html",
+    image: businessPress3.src,
   },
 ];
 
@@ -894,14 +893,16 @@ export default function Home() {
                       </span>
                     </div>
                     <div className="p-6 flex flex-col flex-1">
-                      <h3 className="font-display text-gradient-gold uppercase leading-[1.15] text-lg lg:text-xl mb-3 line-clamp-2">
+                      <h3 className="font-display text-gradient-gold uppercase leading-[1.15] text-lg lg:text-xl mb-3 line-clamp-3">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-text-muted leading-relaxed mb-5 line-clamp-2">
+                      <p className="text-sm text-text-muted leading-relaxed mb-5 line-clamp-3">
                         {item.description}
                       </p>
                       <a
                         href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="mt-auto self-start text-sm text-text-heading underline underline-offset-4 decoration-white/30 hover:decoration-brand-gold hover:text-brand-gold transition-colors"
                       >
                         Xem thêm
