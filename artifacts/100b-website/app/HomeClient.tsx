@@ -173,16 +173,18 @@ export default function Home() {
   const goNext = () =>
     setCurrentSlide((prev) => (prev + 1) % testimonials.length);
 
-  const [pressIndex, setPressIndex] = useState(0);
+  const [pressPage, setPressPage] = useState(0);
   const pressVisibleCount = 3;
-  const pressShowNav = pressArticles.length > pressVisibleCount;
+  const pressPageCount = Math.max(1, Math.ceil(pressArticles.length / pressVisibleCount));
+  const pressShowNav = pressPageCount > 1;
   const pressPrev = () =>
-    setPressIndex((prev) => (prev - 1 + pressArticles.length) % pressArticles.length);
-  const pressNext = () =>
-    setPressIndex((prev) => (prev + 1) % pressArticles.length);
+    setPressPage((p) => (p - 1 + pressPageCount) % pressPageCount);
+  const pressNext = () => setPressPage((p) => (p + 1) % pressPageCount);
+  // Each page advances cleanly by pressVisibleCount; the last page wraps
+  // around to fill any leftover slots so the user always sees three cards.
   const pressVisible: PressItem[] = pressArticles.length
-    ? Array.from({ length: Math.min(pressVisibleCount, pressArticles.length) }, (_, i) =>
-        pressArticles[(pressIndex + i) % pressArticles.length]
+    ? Array.from({ length: pressVisibleCount }, (_, i) =>
+        pressArticles[(pressPage * pressVisibleCount + i) % pressArticles.length]
       )
     : [];
 
@@ -838,7 +840,7 @@ export default function Home() {
 
             <AnimatePresence mode="wait">
               <motion.div
-                key={pressIndex}
+                key={pressPage}
                 initial={{ opacity: 0, x: 16 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -16 }}
@@ -847,7 +849,7 @@ export default function Home() {
               >
                 {pressVisible.map((item, idx) => (
                   <article
-                    key={pressIndex + ":" + idx}
+                    key={pressPage + ":" + idx}
                     className="bg-bg-card rounded-2xl overflow-hidden border border-white/5 flex flex-col"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden shrink-0">
