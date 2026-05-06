@@ -62,7 +62,7 @@ const pressArticles: PressItem[] = [
     image: socialPress3.src,
   },
   {
-    tag: "Vietnam Fatherland Front",
+    tag: "Vietnam Public Affairs",
     title: "21 solidarity homes delivered to families in Vietnam's Northwest provinces",
     description:
       "In partnership with the Vietnam Fatherland Front, the global Vietnamese business community channeled philanthropic capital to support underserved households in Dien Bien.",
