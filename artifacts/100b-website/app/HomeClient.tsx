@@ -36,7 +36,7 @@ type PressItem = {
   image: string | null;
 };
 
-const pressCommunity: PressItem[] = [
+const pressArticles: PressItem[] = [
   {
     tag: "State Committee for Overseas Vietnamese",
     title: "Deputy Foreign Minister Le Thi Thu Hang receives the Association of Vietnamese Overseas Businessmen delegation",
@@ -69,9 +69,6 @@ const pressCommunity: PressItem[] = [
     link: "https://vnrea.vn/gap-mat-tan-xuan-giua-ba-hiep-hoi-vnrea-vita-va-baoov-20240229112855902.html",
     image: socialPress4.src,
   },
-];
-
-const pressBusiness: PressItem[] = [
   {
     tag: "Tin Tuc News",
     title: "Positioning Vietnamese business brands in international media",
@@ -176,20 +173,18 @@ export default function Home() {
   const goNext = () =>
     setCurrentSlide((prev) => (prev + 1) % testimonials.length);
 
-  const [pressTab, setPressTab] = useState<"community" | "business">("community");
   const [pressIndex, setPressIndex] = useState(0);
-  const pressItems = pressTab === "community" ? pressCommunity : pressBusiness;
   const pressVisibleCount = 3;
-  const pressMaxIndex = Math.max(0, pressItems.length - pressVisibleCount);
-  const pressCanPrev = pressIndex > 0;
-  const pressCanNext = pressIndex < pressMaxIndex;
-  const pressShowNav = pressMaxIndex > 0;
-  const pressPrev = () => setPressIndex((prev) => Math.max(0, prev - 1));
-  const pressNext = () => setPressIndex((prev) => Math.min(pressMaxIndex, prev + 1));
-  const pressVisible: PressItem[] = pressItems.slice(
-    pressIndex,
-    pressIndex + pressVisibleCount
-  );
+  const pressShowNav = pressArticles.length > pressVisibleCount;
+  const pressPrev = () =>
+    setPressIndex((prev) => (prev - 1 + pressArticles.length) % pressArticles.length);
+  const pressNext = () =>
+    setPressIndex((prev) => (prev + 1) % pressArticles.length);
+  const pressVisible: PressItem[] = pressArticles.length
+    ? Array.from({ length: Math.min(pressVisibleCount, pressArticles.length) }, (_, i) =>
+        pressArticles[(pressIndex + i) % pressArticles.length]
+      )
+    : [];
 
   return (
     <div className="flex flex-col">
@@ -821,44 +816,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. PRESS — In the Press. Tabs switch between community and
-          business coverage; constrained to a single viewport height like
-          the FRIENDS SAY block above. */}
-      <section className="min-h-screen h-screen flex flex-col bg-bg-dark border-b border-border-subtle overflow-hidden py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex-1 flex flex-col">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight text-center mb-6 lg:mb-8 shrink-0">
+      {/* 7. PRESS — single combined carousel of all media coverage. Section
+          sizes to its content so the layout doesn't pop a giant black gap
+          on tall viewports. */}
+      <section className="py-20 lg:py-24 bg-bg-dark border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight text-center mb-10 lg:mb-12">
             IN THE <em className="font-display italic text-gradient-gold">PRESS.</em>
           </h2>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 lg:mb-10 shrink-0">
-            {[
-              { id: "community" as const, label: "Community" },
-              { id: "business" as const, label: "Business" },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => {
-                  setPressTab(tab.id);
-                  setPressIndex(0);
-                }}
-                className={`px-7 lg:px-9 py-3 rounded-full text-sm font-medium transition-all border ${
-                  pressTab === tab.id
-                    ? "bg-bg-card text-text-heading border-white/20"
-                    : "bg-transparent text-text-muted border-white/10 hover:border-white/25 hover:text-text-heading"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="relative flex-1 min-h-0 flex items-center">
+          <div className="relative">
             {pressShowNav && (
               <button
                 onClick={pressPrev}
-                disabled={!pressCanPrev}
                 aria-label="Previous press article"
-                className="hidden md:flex absolute -left-4 lg:-left-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105 disabled:opacity-25 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="hidden md:flex absolute -left-4 lg:-left-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105"
               >
                 <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
               </button>
@@ -866,7 +838,7 @@ export default function Home() {
 
             <AnimatePresence mode="wait">
               <motion.div
-                key={pressTab + ":" + pressIndex}
+                key={pressIndex}
                 initial={{ opacity: 0, x: 16 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -16 }}
@@ -875,7 +847,7 @@ export default function Home() {
               >
                 {pressVisible.map((item, idx) => (
                   <article
-                    key={pressTab + ":" + pressIndex + ":" + idx}
+                    key={pressIndex + ":" + idx}
                     className="bg-bg-card rounded-2xl overflow-hidden border border-white/5 flex flex-col"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden shrink-0">
@@ -899,7 +871,7 @@ export default function Home() {
                         {item.tag}
                       </span>
                     </div>
-                    <div className="p-5 flex flex-col flex-1 min-h-0">
+                    <div className="p-5 flex flex-col flex-1">
                       <h3 className="font-display text-gradient-gold uppercase leading-[1.15] text-base lg:text-lg mb-2 line-clamp-2">
                         {item.title}
                       </h3>
@@ -923,9 +895,8 @@ export default function Home() {
             {pressShowNav && (
               <button
                 onClick={pressNext}
-                disabled={!pressCanNext}
                 aria-label="Next press article"
-                className="hidden md:flex absolute -right-4 lg:-right-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105 disabled:opacity-25 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="hidden md:flex absolute -right-4 lg:-right-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105"
               >
                 <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
               </button>
@@ -934,20 +905,18 @@ export default function Home() {
 
           {/* Mobile prev/next — buttons hidden on desktop above land here. */}
           {pressShowNav && (
-            <div className="md:hidden flex items-center justify-center gap-6 mt-6 shrink-0">
+            <div className="md:hidden flex items-center justify-center gap-6 mt-8">
               <button
                 onClick={pressPrev}
-                disabled={!pressCanPrev}
                 aria-label="Previous press article"
-                className="w-11 h-11 flex items-center justify-center transition-all hover:scale-105 disabled:opacity-25 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-11 h-11 flex items-center justify-center transition-all hover:scale-105"
               >
                 <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
               </button>
               <button
                 onClick={pressNext}
-                disabled={!pressCanNext}
                 aria-label="Next press article"
-                className="w-11 h-11 flex items-center justify-center transition-all hover:scale-105 disabled:opacity-25 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-11 h-11 flex items-center justify-center transition-all hover:scale-105"
               >
                 <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
               </button>
