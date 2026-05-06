@@ -38,58 +38,58 @@ type PressItem = {
 
 const pressArticles: PressItem[] = [
   {
-    tag: "State Committee for Overseas Vietnamese",
-    title: "Deputy Foreign Minister Le Thi Thu Hang receives the Association of Vietnamese Overseas Businessmen delegation",
+    tag: "Ministry of Foreign Affairs",
+    title: "Vietnamese diaspora business delegation received at Vietnam's Ministry of Foreign Affairs",
     description:
-      "Strengthening ties between overseas Vietnamese entrepreneurs and domestic businesses, enhancing coordination and regular information exchange, supporting economic development and stronger global Vietnamese business connections.",
+      "Deputy Minister Le Thi Thu Hang welcomed a delegation of overseas Vietnamese business leaders to deepen cross-border investment ties and strengthen institutional bridges with the homeland.",
     link: "https://scov.gov.vn/cong-tac-ve-nvnonn/tin-tuc/thu-truong-le-thi-thu-hang-tiep-dai-dien-hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai.html",
     image: socialPress1.src,
   },
   {
-    tag: "Vietnam.vn",
-    title: "Global Vietnamese Ancestors' Day and the stories of overseas Vietnamese communities",
+    tag: "Ministry of Culture, Sports and Tourism",
+    title: "Carrying Vietnamese identity onto the global stage",
     description:
-      "The event connects overseas Vietnamese with the homeland and promotes national cultural values worldwide, strengthening pride and unity across generations.",
+      "A national event recognized the next generation of overseas Vietnamese entrepreneurs as cultural ambassadors and a strategic bridge between the homeland and global markets.",
     link: "https://www.vietnam.vn/ngay-quoc-to-viet-nam-toan-cau-va-chuyen-cua-nhung-nguoi-con-xa-xu",
     image: socialPress2.src,
   },
   {
-    tag: "Vietnam Fatherland Front",
-    title: "Association of Vietnamese Overseas Businessmen donates 21 solidarity houses to poor households in Dien Bien and Northwest provinces",
+    tag: "Vietnam Real Estate Association",
+    title: "Three associations align across real estate, tourism and overseas business",
     description:
-      "The Association of Vietnamese Overseas Businessmen donated funding for 21 solidarity houses to support poor households in Dien Bien and Northwest provinces.",
-    link: "https://m.mattran.org.vn/hoat-dong/hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai-trao-tang-21-can-nha-dai-doan-ket-cho-ho-ngheo-cua-tinh-dien-bien-va-cac-tinh-tay-bac-54522.html",
+      "Leadership from VNREA, VITA and the global Vietnamese business community convened in Hanoi to coordinate cross-sector capital flows between Vietnam and its diaspora.",
+    link: "https://vnrea.vn/gap-mat-tan-xuan-giua-ba-hiep-hoi-vnrea-vita-va-baoov-20240229112855902.html",
     image: socialPress3.src,
   },
   {
-    tag: "VNREA",
-    title: "Spring meeting held between VNREA, VITA and BAOOV in Hanoi",
+    tag: "Vietnam Fatherland Front",
+    title: "21 solidarity homes delivered to families in Vietnam's Northwest provinces",
     description:
-      "Leaders of VNREA, VITA and BAOOV met in Hanoi to discuss cooperation and shared challenges across real estate, tourism and overseas business sectors.",
-    link: "https://vnrea.vn/gap-mat-tan-xuan-giua-ba-hiep-hoi-vnrea-vita-va-baoov-20240229112855902.html",
+      "In partnership with the Vietnam Fatherland Front, the global Vietnamese business community channeled philanthropic capital to support underserved households in Dien Bien.",
+    link: "https://m.mattran.org.vn/hoat-dong/hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai-trao-tang-21-can-nha-dai-doan-ket-cho-ho-ngheo-cua-tinh-dien-bien-va-cac-tinh-tay-bac-54522.html",
     image: socialPress4.src,
   },
   {
-    tag: "Tin Tuc News",
-    title: "Positioning Vietnamese business brands in international media",
+    tag: "Vietnam News Agency",
+    title: "Positioning Vietnamese brands on international media",
     description:
-      "A seminar in Ho Chi Minh City discussed strategies for positioning Vietnamese business brands on global media platforms.",
+      "A national symposium in Ho Chi Minh City explored how to elevate Vietnamese companies onto global media platforms — a strategic priority for the next wave of cross-border deals.",
     link: "https://baotintuc.vn/kinh-te/dinh-vi-thuong-hieu-doanh-nghiep-viet-tren-truyen-thong-quoc-te-20240127214011094.htm",
     image: businessPress1.src,
   },
   {
-    tag: "VCCI Da Nang",
-    title: "Overseas Vietnamese entrepreneurs aim to contribute to national development",
+    tag: "Vietnam Chamber of Commerce and Industry",
+    title: "Overseas Vietnamese entrepreneurs pledge investment in national development",
     description:
-      "Overseas Vietnamese business leaders expressed their commitment to supporting Vietnam's economic growth through stronger collaboration and investment initiatives.",
+      "Diaspora business leaders committed to deeper collaboration and capital partnership to support Vietnam's growth — signaling a new chapter for cross-border investment.",
     link: "https://vccidanang.com.vn/tin-tuc/kieu-bao-doanh-nhan-viet-mong-gop-suc-phat-trien-dat-nuoc/",
     image: businessPress2.src,
   },
   {
-    tag: "Cong Thuong News",
-    title: "Effective communication starts with a strong product, experts say",
+    tag: "Industry & Trade Journal",
+    title: "Strong products come first: experts on building global Vietnamese brands",
     description:
-      "At a seminar in Ho Chi Minh City, experts emphasized that product quality is the foundation for effective brand communication and global positioning of Vietnamese businesses.",
+      "At a Ho Chi Minh City symposium, industry leaders agreed that operational excellence is the foundation of effective communication and lasting global positioning.",
     link: "https://congthuong.vn/doanh-nghiep-muon-truyen-thong-hieu-qua-truoc-het-can-co-san-pham-tot-300633.html",
     image: businessPress3.src,
   },
