@@ -173,20 +173,23 @@ export default function Home() {
   const goNext = () =>
     setCurrentSlide((prev) => (prev + 1) % testimonials.length);
 
-  const [pressIndex, setPressIndex] = useState(0);
+  const [pressPage, setPressPage] = useState(0);
   const pressVisibleCount = 3;
-  const pressShowNav = pressArticles.length > pressVisibleCount;
+  const pressPageCount = Math.max(1, Math.ceil(pressArticles.length / pressVisibleCount));
+  const pressShowNav = pressPageCount > 1;
   const pressPrev = () =>
-    setPressIndex(
-      (prev) => (prev - pressVisibleCount + pressArticles.length) % pressArticles.length
-    );
-  const pressNext = () =>
-    setPressIndex((prev) => (prev + pressVisibleCount) % pressArticles.length);
-  const pressVisible: PressItem[] = pressArticles.length
-    ? Array.from({ length: Math.min(pressVisibleCount, pressArticles.length) }, (_, i) =>
-        pressArticles[(pressIndex + i) % pressArticles.length]
-      )
-    : [];
+    setPressPage((p) => (p - 1 + pressPageCount) % pressPageCount);
+  const pressNext = () => setPressPage((p) => (p + 1) % pressPageCount);
+  // Last page clamps to the final pressVisibleCount items so we never show
+  // a half-empty page or wrap back to the start mid-page.
+  const pressStartIndex = Math.min(
+    pressPage * pressVisibleCount,
+    Math.max(0, pressArticles.length - pressVisibleCount)
+  );
+  const pressVisible: PressItem[] = pressArticles.slice(
+    pressStartIndex,
+    pressStartIndex + pressVisibleCount
+  );
 
   return (
     <div className="flex flex-col">
@@ -840,7 +843,7 @@ export default function Home() {
 
             <AnimatePresence mode="wait">
               <motion.div
-                key={pressIndex}
+                key={pressPage}
                 initial={{ opacity: 0, x: 16 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -16 }}
@@ -849,7 +852,7 @@ export default function Home() {
               >
                 {pressVisible.map((item, idx) => (
                   <article
-                    key={pressIndex + ":" + idx}
+                    key={pressPage + ":" + idx}
                     className="bg-bg-card rounded-2xl overflow-hidden border border-white/5 flex flex-col"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden shrink-0">
