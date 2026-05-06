@@ -177,9 +177,11 @@ export default function Home() {
   const pressVisibleCount = 3;
   const pressShowNav = pressArticles.length > pressVisibleCount;
   const pressPrev = () =>
-    setPressIndex((prev) => (prev - 1 + pressArticles.length) % pressArticles.length);
+    setPressIndex(
+      (prev) => (prev - pressVisibleCount + pressArticles.length) % pressArticles.length
+    );
   const pressNext = () =>
-    setPressIndex((prev) => (prev + 1) % pressArticles.length);
+    setPressIndex((prev) => (prev + pressVisibleCount) % pressArticles.length);
   const pressVisible: PressItem[] = pressArticles.length
     ? Array.from({ length: Math.min(pressVisibleCount, pressArticles.length) }, (_, i) =>
         pressArticles[(pressIndex + i) % pressArticles.length]
