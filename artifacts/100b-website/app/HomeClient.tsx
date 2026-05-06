@@ -180,16 +180,13 @@ export default function Home() {
   const pressPrev = () =>
     setPressPage((p) => (p - 1 + pressPageCount) % pressPageCount);
   const pressNext = () => setPressPage((p) => (p + 1) % pressPageCount);
-  // Last page clamps to the final pressVisibleCount items so we never show
-  // a half-empty page or wrap back to the start mid-page.
-  const pressStartIndex = Math.min(
-    pressPage * pressVisibleCount,
-    Math.max(0, pressArticles.length - pressVisibleCount)
-  );
-  const pressVisible: PressItem[] = pressArticles.slice(
-    pressStartIndex,
-    pressStartIndex + pressVisibleCount
-  );
+  // Each page advances cleanly by pressVisibleCount; the last page wraps
+  // around to fill any leftover slots so the user always sees three cards.
+  const pressVisible: PressItem[] = pressArticles.length
+    ? Array.from({ length: pressVisibleCount }, (_, i) =>
+        pressArticles[(pressPage * pressVisibleCount + i) % pressArticles.length]
+      )
+    : [];
 
   return (
     <div className="flex flex-col">
