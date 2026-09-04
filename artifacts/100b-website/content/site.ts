@@ -7,6 +7,13 @@ import quangVinhPhoto from "@assets/Gom Quang Vinh.webp";
 import hexagonPhoto from "@assets/Hexagon.webp";
 import kalotoysPhoto from "@assets/Kalotoys.jpg";
 import saoThaiDuongPhoto from "@assets/Sao Thai Duong.webp";
+import markDuvalPhoto from "@assets/Mark Duval Profile.jpg";
+import hectorPhoto from "@assets/1-Hector Quintanar.jpg";
+import ahmedPhoto from "@assets/Ahmed.jpeg";
+import minhPhoto from "@assets/Minh Mac CEO.jpeg";
+import tungPhoto from "@assets/Tung Cao Photo.png";
+import tuPhoto from "@assets/Tu Mac Photo.jpg";
+import accessVietnamPhoto from "@assets/Access VN 2026.jpeg";
 import socialPress1 from "@assets/press/Social Press 1.jpg";
 import socialPress2 from "@assets/press/Social Press 2.jpeg";
 import socialPress3 from "@assets/press/Social Press 3.webp";
@@ -68,6 +75,8 @@ export type Testimonial = {
   company: string;
   credential: string;
   photo: string | null;
+  /** object-position for the portrait when a centred crop cuts the subject. */
+  photoPosition?: string;
 };
 
 // Vietnamese founder wall. Used on Home and Go Global. Never merge with the
@@ -127,7 +136,8 @@ export const partnerTestimonials: Testimonial[] = [
     name: "Mark Duval",
     company: "Greater Austin Asian Chamber of Commerce",
     credential: "CEO",
-    photo: null,
+    photo: markDuvalPhoto.src,
+    photoPosition: "30% center",
   },
   {
     quote:
@@ -135,7 +145,7 @@ export const partnerTestimonials: Testimonial[] = [
     name: "Hector Quintanar",
     company: "Trade Management Solutions",
     credential: "",
-    photo: null,
+    photo: hectorPhoto.src,
   },
   {
     quote:
@@ -143,7 +153,7 @@ export const partnerTestimonials: Testimonial[] = [
     name: "Ahmed Moledina",
     company: "SOAL Technologies",
     credential: "",
-    photo: null,
+    photo: ahmedPhoto.src,
   },
 ];
 
@@ -236,12 +246,14 @@ export type Founder = {
   title: string;
   short: string;
   long: string;
+  photo: string | null;
 };
 
 export const founders: Founder[] = [
   {
     name: "Minh Mac",
     title: "Founder & CEO",
+    photo: minhPhoto.src,
     short:
       "Left Vietnam at 17. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users.",
     long:
@@ -250,6 +262,7 @@ export const founders: Founder[] = [
   {
     name: "Tung Cao",
     title: "Co-Founder & Head of International Trade",
+    photo: tungPhoto.src,
     short:
       "Runs the trade side. Buyers, freight, customs, and the network that moves goods.",
     long:
@@ -258,6 +271,7 @@ export const founders: Founder[] = [
   {
     name: "Tu Mac",
     title: "Co-Founder & Head of Factory Ops",
+    photo: tuPhoto.src,
     short:
       "Construction and interior materials. Factory vetting and quality control on the ground.",
     long:
@@ -360,19 +374,25 @@ export const communities = [
 
 export const programs = [
   {
+    // Delegation group shot, Hanoi, June 2026.
+    image: accessVietnamPhoto.src as string | null,
     name: "Access Vietnam",
     when: "June 2026",
     where: "Hanoi and Ho Chi Minh City",
     line: "18 delegates. Government officials and business leaders into Vietnam's ministries, innovation centers, and funds. Organized with the Greater Austin Asian Chamber of Commerce.",
     href: "/enter-vietnam",
     cta: "Enter Vietnam",
+    site: "https://austin2vietnam.100b.co/",
   },
   {
+    // Awaiting a web-readable file; the tile falls back to a dark plate.
+    image: null as string | null,
     name: "Vietnam Direct",
     when: "May-June 2026",
     where: "Ho Chi Minh City to Hanoi",
     line: "13 vetted factories in construction and finishing materials, for buyers sourcing direct.",
     href: "/container-club",
     cta: "Container Club",
+    site: "https://vietnamdirect2026factory.100b.co/",
   },
 ];

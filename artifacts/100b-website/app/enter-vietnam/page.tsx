@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   Accent,
+  ArrowLink,
   Eyebrow,
   Lead,
   PrimaryButton,
@@ -8,6 +9,7 @@ import {
 } from "@/components/Section";
 import { StatGrid, type Stat } from "@/components/StatGrid";
 import { PhotoTile } from "@/components/PhotoTile";
+import { programs } from "@/content/site";
 import { TestimonialWall } from "@/components/TestimonialWall";
 import { ContactCTA } from "@/components/ContactCTA";
 import { delegateTestimonials } from "@/content/site";
@@ -53,13 +55,6 @@ const whoWeMet = [
   "BCA and BNI Vietnam",
 ];
 
-const gallery = [
-  { label: "Hanoi · Day 1", caption: "Ministries and national agencies", tone: "warm" as const },
-  { label: "Hanoi · Day 3", caption: "National Innovation Center", tone: "neutral" as const },
-  { label: "Ho Chi Minh City · Day 6", caption: "Funds and founders", tone: "cool" as const },
-  { label: "Ho Chi Minh City · Day 8", caption: "Closing dinner", tone: "warm" as const },
-];
-
 const whoThisIsFor = [
   { title: "Chambers and trade associations", line: "bringing members into a new market" },
   { title: "Funds and investors", line: "looking for Vietnam exposure and deal flow" },
@@ -69,6 +64,8 @@ const whoThisIsFor = [
     line: "building bilateral ties",
   },
 ];
+
+const accessVietnam = programs.find((p) => p.name === "Access Vietnam");
 
 export default function EnterVietnamPage() {
   return (
@@ -177,17 +174,21 @@ export default function EnterVietnamPage() {
             </div>
           </div>
 
-          {/* Photo gallery. Carried by photography once the selected gallery lands. */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-14">
-            {gallery.map((g, i) => (
-              <PhotoTile
-                key={g.label}
-                label={g.label}
-                caption={g.caption}
-                tone={g.tone}
-                aspect={i % 3 === 0 ? "aspect-[4/5]" : "aspect-[4/5]"}
-              />
-            ))}
+          {/* The trip, carried by photography. */}
+          <div className="mb-8">
+            <PhotoTile
+              src={accessVietnam?.image}
+              alt="The Access Vietnam 2026 delegation in Hanoi"
+              aspect="aspect-[16/9]"
+              position="center 62%"
+              label="June 2026 · Hanoi"
+              caption="The delegation"
+            />
+          </div>
+          <div className="mb-14">
+            <ArrowLink href="https://austin2vietnam.100b.co/" external>
+              See the full programme
+            </ArrowLink>
           </div>
 
           <div>

@@ -50,6 +50,7 @@ export function TestimonialWall({
                       <img
                         src={t.photo}
                         alt={t.name}
+                        style={{ objectPosition: t.photoPosition ?? "center" }}
                         className="w-full h-full object-cover grayscale"
                       />
                     ) : (

@@ -278,7 +278,10 @@ export default function HomePage() {
             {programs.map((p, i) => (
               <div key={p.name} className="flex flex-col gap-6">
                 <PhotoTile
-                  aspect="aspect-[16/10]"
+                  src={p.image}
+                  alt={p.name}
+                  aspect="aspect-[3/2]"
+                  position="center 62%"
                   tone={i === 0 ? "warm" : "cool"}
                   label={`${p.when} · ${p.where}`}
                   caption={p.name}
@@ -286,7 +289,12 @@ export default function HomePage() {
                 <p className="text-sm lg:text-base font-light leading-relaxed text-text-body">
                   {p.line}
                 </p>
-                <ArrowLink href={p.href}>{p.cta}</ArrowLink>
+                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                  <ArrowLink href={p.href}>{p.cta}</ArrowLink>
+                  <ArrowLink href={p.site} external>
+                    Event site
+                  </ArrowLink>
+                </div>
               </div>
             ))}
           </div>

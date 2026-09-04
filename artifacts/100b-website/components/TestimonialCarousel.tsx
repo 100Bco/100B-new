@@ -116,6 +116,7 @@ export function TestimonialCarousel({
                   <img
                     src={slide.photo}
                     alt={slide.name}
+                    style={{ objectPosition: slide.photoPosition ?? "center" }}
                     className="w-full h-full object-cover grayscale"
                   />
                 ) : (
