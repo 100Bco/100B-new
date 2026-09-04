@@ -211,6 +211,8 @@ export type Company = {
   detail?: string;
   links: { label: string; href: string; external?: boolean }[];
   accent: string; // brand colour used on Ecosystem cards
+  /** Drop a logo file in here and the orbit node uses it instead of the wordmark. */
+  logo?: string | null;
 };
 
 export const companies: Company[] = [

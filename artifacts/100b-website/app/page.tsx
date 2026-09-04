@@ -8,9 +8,8 @@ import { PhotoTile } from "@/components/PhotoTile";
 import { Founders } from "@/components/Founders";
 import { PressCarousel } from "@/components/PressCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
-import emblem from "@assets/100B Emblem.png";
+import { EcosystemOrbit } from "@/components/EcosystemOrbit";
 import {
-  companies,
   communities,
   founderTestimonials,
   partnerTestimonials,
@@ -53,9 +52,6 @@ const doors = [
     ],
   },
 ];
-
-// Vertical offsets that place the five nodes on a shallow arc.
-const orbitOffsets = ["lg:translate-y-10", "lg:translate-y-3", "", "lg:translate-y-3", "lg:translate-y-10"];
 
 export default function HomePage() {
   return (
@@ -175,83 +171,18 @@ export default function HomePage() {
       {/* 1.3 THE NAME */}
       <TheName />
 
-      {/* 1.4 ECOSYSTEM */}
+      {/* 1.4 ECOSYSTEM — 100B at the centre, the five companies in orbit */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Eyebrow>Ecosystem</Eyebrow>
-          <SectionTitle className="mb-16 lg:mb-20">
+          <SectionTitle className="mb-12 lg:mb-16">
             Five companies. <Accent>One corridor.</Accent>
           </SectionTitle>
 
-          {/* Orbit: the emblem is the hub, five companies on the curve below */}
-          <div className="relative mb-12 lg:mb-16">
-            <div className="flex justify-center -mb-2 lg:-mb-4">
-              <img
-                src={emblem.src}
-                alt="100B"
-                className="w-44 h-44 lg:w-52 lg:h-52 object-contain drop-shadow-[0_14px_40px_rgba(0,0,0,0.7)]"
-              />
-            </div>
-            <svg
-              className="hidden lg:block absolute inset-x-0 top-[38px] w-full h-[80px] pointer-events-none"
-              viewBox="0 0 1000 80"
-              preserveAspectRatio="none"
-              aria-hidden
-            >
-              <path
-                d="M0 70 Q 500 -40 1000 70"
-                fill="none"
-                stroke="rgba(195,163,116,0.35)"
-                strokeWidth="1"
-                strokeDasharray="4 6"
-              />
-            </svg>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6 relative">
-              {companies.map((c, i) => (
-                <div
-                  key={c.name}
-                  className={`flex flex-col items-center text-center gap-3 transition-transform ${orbitOffsets[i]}`}
-                >
-                  <div className="w-24 h-24 rounded-full bg-bg-dark border border-brand-gold/40 flex items-center justify-center shadow-[0_0_30px_rgba(195,163,116,0.12)] text-center">
-                    <span
-                      className={`font-display text-gradient-gold tracking-wide px-2 ${
-                        c.name.length > 6 ? "text-[13px] leading-[1.1]" : "text-xl leading-none"
-                      }`}
-                    >
-                      {c.name}
-                    </span>
-                  </div>
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-text-muted">
-                    {c.role}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <EcosystemOrbit />
 
-          <div className="border-t border-border-subtle">
-            {companies.map((c) => (
-              <div
-                key={c.name}
-                className="grid grid-cols-[120px_1fr] md:grid-cols-[180px_200px_1fr] gap-x-6 gap-y-1 py-5 border-b border-border-subtle items-baseline"
-              >
-                <span className="font-display text-xl text-text-heading">{c.name}</span>
-                <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-                  {c.role}
-                </span>
-                <span className="col-span-2 md:col-span-1 text-sm lg:text-base font-light text-text-body">
-                  {c.line}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-10 font-serif text-2xl lg:text-3xl text-text-heading max-w-3xl leading-snug">
-            A brand at $5M uses two of them. A brand at $50M uses{" "}
-            <em className="italic text-gradient-gold">all five.</em>
-          </p>
-          <div className="mt-8">
-            <ArrowLink href="/ecosystem">Ecosystem</ArrowLink>
+          <div className="mt-14 lg:mt-16 pt-8 border-t border-border-subtle">
+            <ArrowLink href="/ecosystem">All five companies</ArrowLink>
           </div>
         </div>
       </section>
