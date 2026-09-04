@@ -64,9 +64,12 @@ export function TestimonialWall({
                       {t.name}
                     </span>
                     <span className="text-[11px] uppercase tracking-[0.15em] text-brand-gold font-semibold">
-                      {t.credential ? `${t.credential} · ` : ""}
+                      {t.title ? `${t.title} · ` : ""}
                       {t.company}
                     </span>
+                    {t.credential && (
+                      <span className="text-xs text-text-muted italic">{t.credential}</span>
+                    )}
                   </div>
                 </figcaption>
               </figure>

@@ -19,9 +19,10 @@ function initials(name: string) {
 }
 
 /**
- * Quote carousel, one voice at a time. Quote on the left, portrait in a
- * silver frame on the right, arrows and dots below. Groups stay labelled
- * so the founder voices and the partner voices never read as one list.
+ * Client quote carousel, as on the previous site. One voice at a time:
+ * headline, quote and signature on the left, portrait in the silver frame
+ * on the right, silver arrows flanking the slide and dots underneath.
+ * Advances on its own every 12 seconds.
  */
 export function TestimonialCarousel({
   groups,
@@ -36,7 +37,6 @@ export function TestimonialCarousel({
 
   const [current, setCurrent] = useState(0);
 
-  // Runs on its own, exactly as on the previous site: no pause on hover.
   useEffect(() => {
     if (slides.length < 2) return;
     const timer = setInterval(
@@ -54,7 +54,16 @@ export function TestimonialCarousel({
 
   return (
     <div className="flex flex-col flex-1 min-h-0">
-      <div className="flex-1 min-h-0 flex items-center">
+      <div className="relative flex-1 min-h-0 flex items-center">
+        {/* Silver arrows, one each side of the slide */}
+        <button
+          onClick={goPrev}
+          aria-label="Previous testimonial"
+          className="hidden md:flex absolute -left-4 lg:-left-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105"
+        >
+          <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
+        </button>
+
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
@@ -62,27 +71,20 @@ export function TestimonialCarousel({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -24 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full grid grid-cols-1 lg:grid-cols-[1fr_minmax(280px,420px)] gap-10 lg:gap-14 items-center"
+            className="w-full grid grid-cols-1 lg:grid-cols-[1fr_minmax(280px,420px)] gap-8 lg:gap-14 items-center"
           >
-            {/* Left — the quote */}
+            {/* Left — headline, quote, signature */}
             <div className="relative flex flex-col justify-center">
-              <div className="absolute -top-8 -left-4 text-[140px] leading-none font-serif select-none pointer-events-none text-white/5">
+              <div className="absolute -top-6 -left-4 text-[140px] leading-none font-serif select-none pointer-events-none text-white/5">
                 “
               </div>
 
-              <div className="flex items-center gap-4 mb-5 relative z-10">
-                <div className="w-8 h-px bg-brand-gold/40" />
-                <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-text-muted">
-                  {slide.group}
-                </span>
-              </div>
-
               <h3 className="font-display uppercase tracking-wide text-gradient-gold mb-5 lg:mb-6 relative z-10 leading-[1.05] text-[22px] md:text-[28px] lg:text-[34px]">
-                {slide.company}
+                “{slide.headline ?? slide.company}”
               </h3>
 
-              <p className="text-xl md:text-2xl lg:text-[30px] font-normal font-serif italic leading-[1.45] text-text-body mb-6 lg:mb-8 relative z-10">
-                “{slide.quote}”
+              <p className="text-lg md:text-xl lg:text-[22px] font-normal font-serif italic leading-[1.55] text-text-body mb-6 lg:mb-8 relative z-10">
+                {slide.quote}
               </p>
 
               <div className="w-10 h-px bg-brand-gold/50 mb-4" />
@@ -91,8 +93,12 @@ export function TestimonialCarousel({
                 <span className="font-serif italic text-lg md:text-xl text-text-heading">
                   {slide.name}
                 </span>
+                <span className="text-[11px] uppercase tracking-widest text-brand-gold font-semibold mt-1">
+                  {slide.title ? `${slide.title} · ` : ""}
+                  <span className="font-bold">{slide.company}</span>
+                </span>
                 {slide.credential && (
-                  <span className="text-[11px] uppercase tracking-widest text-brand-gold font-semibold mt-1">
+                  <span className="text-xs text-text-muted italic mt-1">
                     {slide.credential}
                   </span>
                 )}
@@ -129,14 +135,22 @@ export function TestimonialCarousel({
             </div>
           </motion.div>
         </AnimatePresence>
+
+        <button
+          onClick={goNext}
+          aria-label="Next testimonial"
+          className="hidden md:flex absolute -right-4 lg:-right-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105"
+        >
+          <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
+        </button>
       </div>
 
-      {/* Prev · dots · next */}
+      {/* Dots, with the arrows joining them on mobile */}
       <div className="flex items-center justify-center gap-6 mt-8 shrink-0">
         <button
           onClick={goPrev}
           aria-label="Previous testimonial"
-          className="w-11 h-11 lg:w-12 lg:h-12 flex items-center justify-center transition-all hover:scale-105"
+          className="md:hidden w-11 h-11 flex items-center justify-center transition-all hover:scale-105"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
         </button>
@@ -157,7 +171,7 @@ export function TestimonialCarousel({
         <button
           onClick={goNext}
           aria-label="Next testimonial"
-          className="w-11 h-11 lg:w-12 lg:h-12 flex items-center justify-center transition-all hover:scale-105"
+          className="md:hidden w-11 h-11 flex items-center justify-center transition-all hover:scale-105"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
         </button>

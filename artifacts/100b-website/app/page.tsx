@@ -257,7 +257,7 @@ export default function HomePage() {
       </section>
 
       {/* 1.5 PROOF — one voice at a time, as on the previous site */}
-      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-dark border-b border-border-subtle overflow-hidden pt-28 pb-16 lg:pt-32 lg:pb-20">
+      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-alt border-b border-border-subtle overflow-hidden pt-28 pb-16 lg:pt-32 lg:pb-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
           <div className="shrink-0">
             <Eyebrow>Proof</Eyebrow>
