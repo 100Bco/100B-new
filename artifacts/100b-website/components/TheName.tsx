@@ -71,11 +71,11 @@ export function TheName() {
           Where the name comes from.
         </h2>
 
-        <p className="font-serif text-lg md:text-xl lg:text-2xl font-light leading-[1.5] text-text-body max-w-3xl mb-4">
+        <p className="font-sans text-base md:text-lg lg:text-xl font-light leading-relaxed text-text-body max-w-3xl mb-4">
           Âu Cơ bore one hundred children. Fifty went to the mountains with their mother.
           Fifty went to the sea with their father.
         </p>
-        <p className="font-serif text-lg md:text-xl lg:text-2xl font-light leading-[1.5] text-text-body max-w-3xl">
+        <p className="font-sans text-base md:text-lg lg:text-xl font-light leading-relaxed text-text-body max-w-3xl">
           Vietnam&apos;s oldest story is about going out into the world.
         </p>
 
@@ -84,7 +84,7 @@ export function TheName() {
             <span className="font-display text-4xl lg:text-5xl text-gradient-gold leading-none">
               100
             </span>
-            <span className="font-serif text-base lg:text-lg text-text-body">
+            <span className="font-sans font-light text-sm lg:text-base text-text-body">
               is also a perfect score.
             </span>
           </p>
@@ -92,7 +92,7 @@ export function TheName() {
             <span className="font-display text-4xl lg:text-5xl text-gradient-gold leading-none">
               B
             </span>
-            <span className="font-serif text-base lg:text-lg text-text-body">
+            <span className="font-sans font-light text-sm lg:text-base text-text-body">
               is for Brands. Borders. Billions.
             </span>
           </p>
