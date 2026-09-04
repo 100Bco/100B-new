@@ -144,18 +144,18 @@ export default function HomePage() {
             {doors.map((door) => (
               <div
                 key={door.title}
-                className="group relative bg-bg-card rounded-3xl p-7 lg:p-8 border border-border-subtle hover:border-brand-gold/50 transition-colors flex flex-col gap-6 min-h-[300px]"
+                className="group relative bg-bg-card rounded-3xl px-6 py-8 lg:px-6 lg:py-9 border border-border-subtle hover:border-brand-gold/50 transition-colors flex flex-col items-center text-center gap-5 min-h-[320px]"
               >
-                <div className="w-12 h-12 rounded-full border border-brand-gold/30 bg-brand-gold/5 flex items-center justify-center">
-                  <door.icon size={22} strokeWidth={1.5} className="text-brand-gold" />
+                <div className="icon-sphere w-16 h-16 lg:w-[72px] lg:h-[72px] mb-1">
+                  <door.icon size={26} strokeWidth={1.5} className="text-white/90" />
                 </div>
-                <h3 className="font-serif text-2xl leading-tight text-text-heading">
+                <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading leading-snug">
                   {door.title}
                 </h3>
-                <p className="text-sm lg:text-base font-light text-text-body leading-relaxed">
+                <p className="font-sans font-light text-sm lg:text-base text-text-muted leading-relaxed">
                   {door.line}
                 </p>
-                <div className="mt-auto pt-4 flex flex-wrap gap-x-5 gap-y-2">
+                <div className="mt-auto pt-5 flex flex-wrap justify-center gap-x-5 gap-y-2">
                   {door.links.map((l) => (
                     <ArrowLink key={l.href} href={l.href}>
                       {l.label}
