@@ -10,6 +10,10 @@ import saoThaiDuongPhoto from "@assets/Sao Thai Duong.webp";
 import socialPress1 from "@assets/press/Social Press 1.jpg";
 import socialPress2 from "@assets/press/Social Press 2.jpeg";
 import socialPress3 from "@assets/press/Social Press 3.webp";
+import socialPress4 from "@assets/press/Social Press 4.jpg";
+import businessPress1 from "@assets/press/Business Press 1.jpg";
+import businessPress2 from "@assets/press/Business Press 2.jpg";
+import businessPress3 from "@assets/press/Business Press 3.jpg";
 
 export const CONTACT_EMAIL = "global@100b.co";
 
@@ -264,22 +268,29 @@ export const founders: Founder[] = [
 export type PressItem = {
   outlet: string;
   headline: string;
+  description: string;
   link: string;
   image: string | null;
 };
 
-// Three placements. Logo, headline, link. No body copy.
+// Press / media coverage. Drop files into `attached_assets/press/` and wire
+// them up via the `image` field. When `image` is null the card falls back to
+// a gradient tile so the layout never breaks.
 export const pressItems: PressItem[] = [
   {
     outlet: "Ministry of Foreign Affairs",
     headline:
-      "Vietnamese diaspora business delegation received at the Ministry of Foreign Affairs",
+      "Vietnamese diaspora business delegation received at Vietnam's Ministry of Foreign Affairs",
+    description:
+      "Deputy Minister Le Thi Thu Hang welcomed a delegation of overseas Vietnamese business leaders to deepen cross-border investment ties and strengthen institutional bridges with the homeland.",
     link: "https://scov.gov.vn/cong-tac-ve-nvnonn/tin-tuc/thu-truong-le-thi-thu-hang-tiep-dai-dien-hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai.html",
     image: socialPress1.src,
   },
   {
     outlet: "Ministry of Culture, Sports and Tourism",
     headline: "Carrying Vietnamese identity onto the global stage",
+    description:
+      "A national event recognized the next generation of overseas Vietnamese entrepreneurs as cultural ambassadors and a strategic bridge between the homeland and global markets.",
     link: "https://www.vietnam.vn/ngay-quoc-to-viet-nam-toan-cau-va-chuyen-cua-nhung-nguoi-con-xa-xu",
     image: socialPress2.src,
   },
@@ -287,8 +298,44 @@ export const pressItems: PressItem[] = [
     outlet: "Vietnam Real Estate Association",
     headline:
       "Three associations align across real estate, tourism and overseas business",
+    description:
+      "Leadership from VNREA, VITA and the global Vietnamese business community convened in Hanoi to coordinate cross-sector capital flows between Vietnam and its diaspora.",
     link: "https://vnrea.vn/gap-mat-tan-xuan-giua-ba-hiep-hoi-vnrea-vita-va-baoov-20240229112855902.html",
     image: socialPress3.src,
+  },
+  {
+    outlet: "Vietnam Public Affairs",
+    headline:
+      "21 solidarity homes delivered to families in Vietnam's Northwest provinces",
+    description:
+      "In partnership with the Vietnam Fatherland Front, the global Vietnamese business community channeled philanthropic capital to support underserved households in Dien Bien.",
+    link: "https://m.mattran.org.vn/hoat-dong/hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai-trao-tang-21-can-nha-dai-doan-ket-cho-ho-ngheo-cua-tinh-dien-bien-va-cac-tinh-tay-bac-54522.html",
+    image: socialPress4.src,
+  },
+  {
+    outlet: "Vietnam News Agency",
+    headline: "Positioning Vietnamese brands on international media",
+    description:
+      "A national symposium in Ho Chi Minh City explored how to elevate Vietnamese companies onto global media platforms, a strategic priority for the next wave of cross-border deals.",
+    link: "https://baotintuc.vn/kinh-te/dinh-vi-thuong-hieu-doanh-nghiep-viet-tren-truyen-thong-quoc-te-20240127214011094.htm",
+    image: businessPress1.src,
+  },
+  {
+    outlet: "Vietnam Chamber of Commerce and Industry",
+    headline:
+      "Overseas Vietnamese entrepreneurs pledge investment in national development",
+    description:
+      "Diaspora business leaders committed to deeper collaboration and capital partnership to support Vietnam's growth, signaling a new chapter for cross-border investment.",
+    link: "https://vccidanang.com.vn/tin-tuc/kieu-bao-doanh-nhan-viet-mong-gop-suc-phat-trien-dat-nuoc/",
+    image: businessPress2.src,
+  },
+  {
+    outlet: "Industry & Trade Journal",
+    headline: "Strong products come first: experts on building global Vietnamese brands",
+    description:
+      "At a Ho Chi Minh City symposium, industry leaders agreed that operational excellence is the foundation of effective communication and lasting global positioning.",
+    link: "https://congthuong.vn/doanh-nghiep-muon-truyen-thong-hieu-qua-truoc-het-can-co-san-pham-tot-300633.html",
+    image: businessPress3.src,
   },
 ];
 
