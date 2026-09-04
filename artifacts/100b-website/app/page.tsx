@@ -8,6 +8,7 @@ import { PhotoTile } from "@/components/PhotoTile";
 import { Founders } from "@/components/Founders";
 import { PressCarousel } from "@/components/PressCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
+import emblem from "@assets/100B Emblem.png";
 import {
   companies,
   communities,
@@ -182,8 +183,15 @@ export default function HomePage() {
             Five companies. <Accent>One corridor.</Accent>
           </SectionTitle>
 
-          {/* Orbit: five nodes on a curve */}
+          {/* Orbit: the emblem is the hub, five companies on the curve below */}
           <div className="relative mb-12 lg:mb-16">
+            <div className="flex justify-center -mb-2 lg:-mb-4">
+              <img
+                src={emblem.src}
+                alt="100B"
+                className="w-44 h-44 lg:w-52 lg:h-52 object-contain drop-shadow-[0_14px_40px_rgba(0,0,0,0.7)]"
+              />
+            </div>
             <svg
               className="hidden lg:block absolute inset-x-0 top-[38px] w-full h-[80px] pointer-events-none"
               viewBox="0 0 1000 80"

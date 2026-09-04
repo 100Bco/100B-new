@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import type { Testimonial } from "@/content/site";
+import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
 
 type Group = { label: string; items: Testimonial[] };
 type Slide = Testimonial & { group: string };
@@ -35,16 +35,16 @@ export function TestimonialCarousel({
   );
 
   const [current, setCurrent] = useState(0);
-  const [paused, setPaused] = useState(false);
 
+  // Runs on its own, exactly as on the previous site: no pause on hover.
   useEffect(() => {
-    if (paused || slides.length < 2) return;
+    if (slides.length < 2) return;
     const timer = setInterval(
       () => setCurrent((prev) => (prev + 1) % slides.length),
       interval,
     );
     return () => clearInterval(timer);
-  }, [paused, interval, slides.length]);
+  }, [interval, slides.length]);
 
   if (!slides.length) return null;
   const slide = slides[current];
@@ -53,11 +53,7 @@ export function TestimonialCarousel({
   const goNext = () => setCurrent((p) => (p + 1) % slides.length);
 
   return (
-    <div
-      className="flex flex-col flex-1 min-h-0"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
+    <div className="flex flex-col flex-1 min-h-0">
       <div className="flex-1 min-h-0 flex items-center">
         <AnimatePresence mode="wait">
           <motion.div
@@ -140,9 +136,9 @@ export function TestimonialCarousel({
         <button
           onClick={goPrev}
           aria-label="Previous testimonial"
-          className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors"
+          className="w-11 h-11 lg:w-12 lg:h-12 flex items-center justify-center transition-all hover:scale-105"
         >
-          <ArrowRight size={16} className="rotate-180" />
+          <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
         </button>
 
         <div className="flex items-center gap-3">
@@ -161,9 +157,9 @@ export function TestimonialCarousel({
         <button
           onClick={goNext}
           aria-label="Next testimonial"
-          className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors"
+          className="w-11 h-11 lg:w-12 lg:h-12 flex items-center justify-center transition-all hover:scale-105"
         >
-          <ArrowRight size={16} />
+          <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
         </button>
       </div>
     </div>

@@ -14,6 +14,7 @@ import minhPhoto from "@assets/Minh Mac CEO.jpeg";
 import tungPhoto from "@assets/Tung Cao Photo.png";
 import tuPhoto from "@assets/Tu Mac Photo.jpg";
 import accessVietnamPhoto from "@assets/Access VN 2026.jpeg";
+import vietnamDirectPhoto from "@assets/IMG_9596.jpg";
 import socialPress1 from "@assets/press/Social Press 1.jpg";
 import socialPress2 from "@assets/press/Social Press 2.jpeg";
 import socialPress3 from "@assets/press/Social Press 3.webp";
@@ -385,8 +386,8 @@ export const programs = [
     site: "https://austin2vietnam.100b.co/",
   },
   {
-    // Awaiting a web-readable file; the tile falls back to a dark plate.
-    image: null as string | null,
+    // Factory welcome, Vietnam Direct 2026.
+    image: vietnamDirectPhoto.src as string | null,
     name: "Vietnam Direct",
     when: "May-June 2026",
     where: "Ho Chi Minh City to Hanoi",
