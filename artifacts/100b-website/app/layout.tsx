@@ -14,17 +14,17 @@ export const metadata: Metadata = {
     template: "%s | 100B Beyond Borders",
   },
   description:
-    "100B is the operating partner for serious deals between two worlds. We connect elite operators, capital, and builders across the Vietnam–US corridor — co-building global brands made in Vietnam and consumed worldwide.",
+    "Vietnamese brands go out. The world comes in. 100B works both directions: capital, brands, and goods between Vietnam and the world.",
   keywords: [
     "100B",
     "100B Beyond Borders",
-    "Vietnam US corridor",
-    "cross-border capital",
-    "Vietnam manufacturing",
+    "Vietnamese brands go global",
+    "enter Vietnam",
+    "Vietnam delegation",
     "direct-to-factory sourcing",
-    "Vietnamese brands global",
-    "Austin Vietnam",
-    "Hanoi capital",
+    "Container Club",
+    "Vietnam US entity",
+    "Austin Hanoi Ho Chi Minh City",
   ],
   authors: [{ name: "100B Beyond Borders" }],
   creator: "100B",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "100B Beyond Borders",
     title: "100B | Beyond Borders",
     description:
-      "The operating partner for serious deals between two worlds. Capital, founders, and operators across the Vietnam–US corridor.",
+      "Vietnamese brands go out. The world comes in. We work both directions. Capital, brands, and goods.",
     url: SITE_URL,
     images: [
       {
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "100B | Beyond Borders",
     description:
-      "The operating partner for serious deals between two worlds.",
+      "Vietnamese brands go out. The world comes in.",
     images: ["/opengraph.jpg"],
   },
   icons: {
@@ -86,11 +86,12 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/logo-100b.png`,
   description:
-    "The operating partner for serious deals between two worlds. Cross-border capital & brand platform across the Vietnam–US corridor.",
-  founder: {
-    "@type": "Person",
-    name: "Minh Mac",
-  },
+    "Vietnamese brands go out. The world comes in. 100B works both directions: capital, brands, and goods between Vietnam and the world.",
+  founder: [
+    { "@type": "Person", name: "Minh Mac", jobTitle: "Founder & CEO" },
+    { "@type": "Person", name: "Tung Cao", jobTitle: "Co-Founder & Head of International Trade" },
+    { "@type": "Person", name: "Tu Mac", jobTitle: "Co-Founder & Head of Factory Ops" },
+  ],
   sameAs: ["https://100b.co"],
   address: [
     {

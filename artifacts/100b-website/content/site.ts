@@ -1,0 +1,331 @@
+// Single source of truth for site copy that is reused across pages.
+// Page-specific copy lives inline in each page file.
+
+import cchlPhoto from "@assets/CCHL.webp";
+import misaPhoto from "@assets/MISA.webp";
+import quangVinhPhoto from "@assets/Gom Quang Vinh.webp";
+import hexagonPhoto from "@assets/Hexagon.webp";
+import kalotoysPhoto from "@assets/Kalotoys.jpg";
+import saoThaiDuongPhoto from "@assets/Sao Thai Duong.webp";
+import socialPress1 from "@assets/press/Social Press 1.jpg";
+import socialPress2 from "@assets/press/Social Press 2.jpeg";
+import socialPress3 from "@assets/press/Social Press 3.webp";
+
+export const CONTACT_EMAIL = "global@100b.co";
+
+export type NavLink = {
+  name: string;
+  nameVi: string;
+  path: string;
+  descriptor: string;
+};
+
+export const navLinks: NavLink[] = [
+  {
+    name: "Go Global",
+    nameVi: "Go Global",
+    path: "/go-global",
+    descriptor: "For Vietnamese brands entering the US",
+  },
+  {
+    name: "Enter Vietnam",
+    nameVi: "Vào Việt Nam",
+    path: "/enter-vietnam",
+    descriptor: "For companies, funds, and organizations coming in",
+  },
+  {
+    name: "Container Club",
+    nameVi: "Container Club",
+    path: "/container-club",
+    descriptor: "Sourcing, factories, and the trade network",
+  },
+  {
+    name: "Ecosystem",
+    nameVi: "Hệ Sinh Thái",
+    path: "/ecosystem",
+    descriptor: "The five companies",
+  },
+  {
+    name: "About",
+    nameVi: "Về Chúng Tôi",
+    path: "/about",
+    descriptor: "Who we are",
+  },
+];
+
+export const footerLinks = [
+  ...navLinks.map((l) => ({ name: l.name, path: l.path })),
+  { name: "Communities", path: "/communities" },
+];
+
+export type Testimonial = {
+  quote: string;
+  name: string;
+  company: string;
+  credential: string;
+  photo: string | null;
+};
+
+// Vietnamese founder wall. Used on Home and Go Global. Never merge with the
+// delegate wall on Enter Vietnam, which is about the trip, not the company.
+export const founderTestimonials: Testimonial[] = [
+  {
+    quote: "100B helped us see the world, and take the best of Vietnam into it.",
+    name: "Hà Thị Vinh",
+    company: "Gốm Quang Vinh",
+    credential: "20+ export markets",
+    photo: quangVinhPhoto.src,
+  },
+  {
+    quote:
+      "Meeting Minh and 100B gave us the courage to leave our comfort zone and dream bigger.",
+    name: "Sandy Phương",
+    company: "Cỏ Cây Hoa Lá",
+    credential: "4.3 million products sold",
+    photo: cchlPhoto.src,
+  },
+  {
+    quote: "100B's direction fits Hexagon. We'll be in the US with them soon.",
+    name: "Lưu Việt Thắng",
+    company: "Hexagon",
+    credential: "4 factories, 5,000+ projects",
+    photo: hexagonPhoto.src,
+  },
+  {
+    quote:
+      "With 100B behind us, Kalotoys and millions of Vietnamese brands will earn global trust.",
+    name: "Đồng Đức Thành",
+    company: "Kalotoys",
+    credential: "8,000+ orders a day, 98% export",
+    photo: kalotoysPhoto.src,
+  },
+  {
+    quote:
+      "May 100B take many Vietnamese brands global, and raise the value of Vietnam in the world's eyes.",
+    name: "Lữ Thành Long",
+    company: "MISA",
+    credential: "80%+ of Vietnam's accounting software market",
+    photo: misaPhoto.src,
+  },
+  {
+    quote:
+      "May these three young men go far, and inspire Vietnam's community of good businesses everywhere.",
+    name: "Nguyễn Thị Hương Liên",
+    company: "Sao Thái Dương",
+    credential: "240 million products worldwide",
+    photo: saoThaiDuongPhoto.src,
+  },
+];
+
+export const partnerTestimonials: Testimonial[] = [
+  {
+    quote: "100B plays that bridge. What you're doing is brilliant.",
+    name: "Mark Duval",
+    company: "Greater Austin Asian Chamber of Commerce",
+    credential: "CEO",
+    photo: null,
+  },
+  {
+    quote:
+      "100B can guide companies to not fail, to shorten the learning curve.",
+    name: "Hector Quintanar",
+    company: "Trade Management Solutions",
+    credential: "",
+    photo: null,
+  },
+  {
+    quote:
+      "The connections we made were outstanding. 100B is very well positioned to help.",
+    name: "Ahmed Moledina",
+    company: "SOAL Technologies",
+    credential: "",
+    photo: null,
+  },
+];
+
+export const delegateTestimonials: Testimonial[] = [
+  {
+    quote:
+      "If you're investing in Vietnam, you want Vietnamese partners who can help you navigate it.",
+    name: "Marc Knapper",
+    company: "Former US Ambassador to Vietnam",
+    credential: "",
+    photo: null,
+  },
+  {
+    quote:
+      "Start with business development to find customers, then co-production, then full US production.",
+    name: "Michael Nguyen",
+    company: "Boeing Vietnam",
+    credential: "Managing Director",
+    photo: null,
+  },
+  {
+    quote: "Three words. Inspiring. Productive. Mission accomplished.",
+    name: "Barbara Joe",
+    company: "Asian Chamber of Commerce Houston",
+    credential: "",
+    photo: null,
+  },
+];
+
+export type Company = {
+  name: string;
+  role: string;
+  line: string;
+  detail?: string;
+  links: { label: string; href: string; external?: boolean }[];
+  accent: string; // brand colour used on Ecosystem cards
+};
+
+export const companies: Company[] = [
+  {
+    name: "100B",
+    role: "Strategic advisory",
+    line: "Vietnamese brands $20-100M. Companies entering Vietnam.",
+    detail:
+      "Vietnamese brands at $20-100M going global. Companies entering Vietnam. Equity, 3-20%.",
+    links: [
+      { label: "Go Global", href: "/go-global" },
+      { label: "Enter Vietnam", href: "/enter-vietnam" },
+    ],
+    accent: "#C3A374",
+  },
+  {
+    name: "Container Club",
+    role: "Trade",
+    line: "Sourcing, factories, logistics, network.",
+    detail:
+      "Sourcing, vetting, QC, freight, network. 3-5% commission. Led by Tung Cao and Tu Mac.",
+    links: [{ label: "Container Club", href: "/container-club" }],
+    accent: "#8FA3B8",
+  },
+  {
+    name: "ZAD",
+    role: "Brand identity",
+    line: "1,000+ projects. Google, Viettel, Coc Coc.",
+    detail:
+      "Do It Right. Once. 1,000+ projects, 20+ people, 10 years. Google, Viettel Academy, Coc Coc, VAECO, Eva de Eva, Magonn, Hagoo. Founded by Hai Nguyen.",
+    links: [{ label: "zadagency.co", href: "https://zadagency.co", external: true }],
+    accent: "#E4572E",
+  },
+  {
+    name: "100Bold",
+    role: "US marketing",
+    line: "Brands at $5M to $100M.",
+    detail: "Full-stack, for brands at $5M to $100M.",
+    links: [{ label: "100bold.co", href: "https://100bold.co", external: true }],
+    accent: "#F2F2F2",
+  },
+  {
+    name: "BOND",
+    role: "Gifting and packaging",
+    line: "Where relationships compound.",
+    detail: "Where relationships compound.",
+    links: [{ label: "bond.gift", href: "https://bond.gift", external: true }],
+    accent: "#7A5C3E",
+  },
+];
+
+export type Founder = {
+  name: string;
+  title: string;
+  short: string;
+  long: string;
+};
+
+export const founders: Founder[] = [
+  {
+    name: "Minh Mac",
+    title: "Founder & CEO",
+    short:
+      "Left Vietnam at 17. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users.",
+    long:
+      "Left Vietnam at 17 and spent a decade building in the US. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users. Built a creative agency after being failed by too many marketing vendors.",
+  },
+  {
+    name: "Tung Cao",
+    title: "Co-Founder & Head of International Trade",
+    short:
+      "Runs the trade side. Buyers, freight, customs, and the network that moves goods.",
+    long:
+      "Leads Container Club. Buyers, freight, customs, trade finance, and the network that moves goods.",
+  },
+  {
+    name: "Tu Mac",
+    title: "Co-Founder & Head of Factory Ops",
+    short:
+      "Construction and interior materials. Factory vetting and quality control on the ground.",
+    long:
+      "Construction and interior materials. Factory vetting, quality control, and production oversight in Vietnam. Every factory a buyer visits, he has already been to.",
+  },
+];
+
+export type PressItem = {
+  outlet: string;
+  headline: string;
+  link: string;
+  image: string | null;
+};
+
+// Three placements. Logo, headline, link. No body copy.
+export const pressItems: PressItem[] = [
+  {
+    outlet: "Ministry of Foreign Affairs",
+    headline:
+      "Vietnamese diaspora business delegation received at the Ministry of Foreign Affairs",
+    link: "https://scov.gov.vn/cong-tac-ve-nvnonn/tin-tuc/thu-truong-le-thi-thu-hang-tiep-dai-dien-hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai.html",
+    image: socialPress1.src,
+  },
+  {
+    outlet: "Ministry of Culture, Sports and Tourism",
+    headline: "Carrying Vietnamese identity onto the global stage",
+    link: "https://www.vietnam.vn/ngay-quoc-to-viet-nam-toan-cau-va-chuyen-cua-nhung-nguoi-con-xa-xu",
+    image: socialPress2.src,
+  },
+  {
+    outlet: "Vietnam Real Estate Association",
+    headline:
+      "Three associations align across real estate, tourism and overseas business",
+    link: "https://vnrea.vn/gap-mat-tan-xuan-giua-ba-hiep-hoi-vnrea-vita-va-baoov-20240229112855902.html",
+    image: socialPress3.src,
+  },
+];
+
+export const communities = [
+  {
+    name: "Founders and brand owners",
+    line: "Vietnamese founders taking brands out",
+  },
+  {
+    name: "Factory owners",
+    line: "Manufacturers building past contract work",
+  },
+  {
+    name: "Trade professionals",
+    line: "Freight, customs, 3PL, trade finance",
+  },
+  {
+    name: "Sellers and partners",
+    line: "People who sell what our companies make",
+  },
+];
+
+export const programs = [
+  {
+    name: "Access Vietnam",
+    when: "June 2026",
+    where: "Hanoi and Ho Chi Minh City",
+    line: "18 delegates. Government officials and business leaders into Vietnam's ministries, innovation centers, and funds. Organized with the Greater Austin Asian Chamber of Commerce.",
+    href: "/enter-vietnam",
+    cta: "Enter Vietnam",
+  },
+  {
+    name: "Vietnam Direct",
+    when: "May-June 2026",
+    where: "Ho Chi Minh City to Hanoi",
+    line: "13 vetted factories in construction and finishing materials, for buyers sourcing direct.",
+    href: "/container-club",
+    cta: "Container Club",
+  },
+];

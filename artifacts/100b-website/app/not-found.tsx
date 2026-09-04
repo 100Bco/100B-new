@@ -34,7 +34,7 @@ export default function NotFound() {
         </h1>
 
         <p className="text-base lg:text-lg font-light text-text-body max-w-md mx-auto mb-12">
-          This page isn't on the manifest. The rest of 100B is waiting where it should be.
+          This page isn't on the route. The four doors are back on the home page.
         </p>
 
         <Link

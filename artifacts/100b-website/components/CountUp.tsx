@@ -7,6 +7,7 @@ interface CountUpProps {
   to: number;
   prefix?: string;
   suffix?: string;
+  decimals?: number;
   duration?: number;
   threshold?: number;
   className?: string;
@@ -16,6 +17,7 @@ export function CountUp({
   to,
   prefix = "",
   suffix = "",
+  decimals = 0,
   duration = 1.6,
   threshold = 0.5,
   className,
@@ -37,7 +39,7 @@ export function CountUp({
 
     const tick = (now: number) => {
       const progress = Math.min((now - start) / (duration * 1000), 1);
-      setValue(Math.round(to * easeOutCubic(progress)));
+      setValue(to * easeOutCubic(progress));
       if (progress < 1) frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
@@ -48,7 +50,7 @@ export function CountUp({
   return (
     <span ref={ref} className={`tabular-nums ${className ?? ""}`}>
       {prefix}
-      {value}
+      {value.toFixed(decimals)}
       {suffix}
     </span>
   );

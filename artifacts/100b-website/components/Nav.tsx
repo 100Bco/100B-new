@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { navLinks } from "@/content/site";
 
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,10 +13,9 @@ export default function Nav() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -23,16 +23,26 @@ export default function Nav() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  const links = [
-    { name: "Trade", path: "/trade" },
-    { name: "Build", path: "/build" },
-  ];
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = document.querySelector("#contact-footer");
+    if (!target) return; // let the browser follow the href
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    target.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[88px] md:h-[96px] flex items-center ${
-          isScrolled
+          isScrolled || mobileMenuOpen
             ? "bg-bg-dark/90 backdrop-blur-md border-b border-border-subtle"
             : "bg-transparent"
         }`}
@@ -49,41 +59,44 @@ export default function Nav() {
             />
           </Link>
 
-          <div className="hidden md:flex items-center gap-10">
-            <div className="flex items-center gap-8">
-              {links.map((link) => {
-                const isActive = pathname === link.path;
+          <div className="hidden lg:flex items-center gap-10">
+            <div className="flex items-center gap-7">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.path || pathname.startsWith(link.path + "/");
                 return (
                   <Link
-                    key={link.name}
+                    key={link.path}
                     href={link.path}
-                    className={`font-sans text-[11px] uppercase tracking-[0.2em] font-semibold transition-colors ${
-                      isActive
-                        ? "text-brand-gold"
-                        : "text-text-muted hover:text-white"
+                    className={`group relative font-sans text-[11px] uppercase tracking-[0.2em] font-semibold transition-colors py-2 ${
+                      isActive ? "text-brand-gold" : "text-text-muted hover:text-white"
                     }`}
                   >
                     {link.name}
+                    {/* Hover descriptor */}
+                    <span
+                      className="pointer-events-none absolute left-1/2 top-full -translate-x-1/2 mt-1 whitespace-nowrap rounded-full border border-white/10 bg-bg-card/95 backdrop-blur-md px-3 py-1.5 text-[10px] normal-case tracking-[0.05em] font-normal text-text-body opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0"
+                      aria-hidden
+                    >
+                      {link.descriptor}
+                    </span>
                   </Link>
                 );
               })}
             </div>
             <a
               href="#contact-footer"
+              onClick={scrollToContact}
               className="btn-silver-gradient rounded-full px-6 py-3 text-[11px] uppercase tracking-widest font-semibold flex items-center justify-center whitespace-nowrap"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector("#contact-footer")?.scrollIntoView({ behavior: "smooth" });
-              }}
             >
               Start a Conversation
             </a>
           </div>
 
           <button
-            className="md:hidden relative z-50 p-2 text-text-heading"
+            className="lg:hidden relative z-50 p-2 text-text-heading"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -91,37 +104,47 @@ export default function Nav() {
       </nav>
 
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-bg-dark bg-opacity-95 backdrop-blur-xl flex flex-col items-center justify-center pt-24 px-6 pb-6 h-screen">
-          <div className="flex flex-col items-center gap-12 w-full max-w-sm">
-            <div className="flex flex-col items-center gap-8 w-full">
+        <div className="fixed inset-0 z-40 bg-bg-dark/95 backdrop-blur-xl flex flex-col pt-28 px-6 pb-8 h-screen overflow-y-auto">
+          <div className="flex flex-col w-full max-w-md mx-auto gap-8">
+            <div className="flex flex-col w-full">
+              {[{ name: "Home", path: "/", descriptor: "Vietnam ⇄ The World" }, ...navLinks].map(
+                (link) => (
+                  <Link
+                    key={link.path}
+                    href={link.path}
+                    className="flex flex-col gap-1 py-5 border-b border-border-subtle"
+                  >
+                    <span
+                      className={`text-xl font-sans uppercase tracking-[0.2em] font-semibold ${
+                        pathname === link.path ? "text-brand-gold" : "text-text-heading"
+                      }`}
+                    >
+                      {link.name}
+                    </span>
+                    <span className="text-sm font-light text-text-muted">{link.descriptor}</span>
+                  </Link>
+                ),
+              )}
               <Link
-                href="/"
-                className={`text-2xl font-sans uppercase tracking-[0.2em] font-semibold w-full text-center py-4 border-b border-border-subtle ${
-                  pathname === "/" ? "text-brand-gold" : "text-text-heading"
-                }`}
+                href="/communities"
+                className="flex flex-col gap-1 py-5 border-b border-border-subtle"
               >
-                Home
-              </Link>
-              {links.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.path}
-                  className={`text-2xl font-sans uppercase tracking-[0.2em] font-semibold w-full text-center py-4 border-b border-border-subtle ${
-                    pathname === link.path ? "text-brand-gold" : "text-text-heading"
+                <span
+                  className={`text-xl font-sans uppercase tracking-[0.2em] font-semibold ${
+                    pathname === "/communities" ? "text-brand-gold" : "text-text-heading"
                   }`}
                 >
-                  {link.name}
-                </Link>
-              ))}
+                  Communities
+                </span>
+                <span className="text-sm font-light text-text-muted">
+                  Four networks. Vetted, by introduction.
+                </span>
+              </Link>
             </div>
             <a
               href="#contact-footer"
+              onClick={scrollToContact}
               className="btn-silver-gradient rounded-full px-8 py-4 text-sm uppercase tracking-widest font-semibold w-full text-center"
-              onClick={(e) => {
-                e.preventDefault();
-                setMobileMenuOpen(false);
-                document.querySelector("#contact-footer")?.scrollIntoView({ behavior: "smooth" });
-              }}
             >
               Start a Conversation
             </a>
