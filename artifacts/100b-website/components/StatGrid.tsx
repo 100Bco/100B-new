@@ -31,7 +31,7 @@ export function StatGrid({
   return (
     <div className={`grid ${cols} gap-px bg-white/[0.06] rounded-3xl overflow-hidden border border-white/[0.06]`}>
       {stats.map((s) => (
-        <div key={s.label} className="bg-bg-card p-6 lg:p-8 flex flex-col gap-3">
+        <div key={s.label} className="bg-bg-card p-6 lg:p-8 flex flex-col items-center text-center gap-3">
           <span className={`${num} font-display text-gradient-gold leading-none`}>
             <CountUp
               to={s.value}

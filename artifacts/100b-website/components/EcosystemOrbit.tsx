@@ -30,7 +30,7 @@ export function EcosystemOrbit() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(340px,520px)] gap-12 lg:gap-16 items-center">
       {/* Panel — swaps to the company under the pointer */}
-      <div className="order-2 lg:order-1 flex flex-col justify-center min-h-[220px] lg:min-h-[260px]">
+      <div className="order-2 lg:order-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left min-h-[220px] lg:min-h-[260px]">
         <AnimatePresence mode="wait">
           {company ? (
             <motion.div
@@ -135,9 +135,6 @@ export function EcosystemOrbit() {
             alt="100B"
             className="w-40 h-40 lg:w-48 lg:h-48 object-contain drop-shadow-[0_14px_40px_rgba(0,0,0,0.7)]"
           />
-          <span className="text-[10px] uppercase tracking-[0.28em] font-semibold text-brand-gold -mt-6 lg:-mt-8">
-            Ecosystem
-          </span>
         </div>
 
         {/* Orbiting nodes. The ring drifts; each node spins back so the

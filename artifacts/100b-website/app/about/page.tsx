@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Accent, Eyebrow, SectionTitle } from "@/components/Section";
+import { Accent, SectionTitle } from "@/components/Section";
 import { TheName } from "@/components/TheName";
 import { Founders } from "@/components/Founders";
 import { PressStrip } from "@/components/PressStrip";
@@ -28,11 +28,8 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col">
       {/* 6.1 HERO */}
-      <section className="relative bg-bg-dark min-h-[70vh] flex items-center pt-32 pb-20 lg:pt-48 lg:pb-28 border-b border-border-subtle overflow-hidden glow-warm-center">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-start gap-6">
-          <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-            About · Who we are
-          </p>
+      <section className="relative bg-bg-dark min-h-[70vh] flex items-center py-32 lg:py-40 border-b border-border-subtle overflow-hidden glow-warm-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center text-center gap-6">
           <h1 className="text-[48px] md:text-7xl lg:text-[112px] font-serif leading-[0.9] tracking-tight">
             <span className="block">Between two worlds.</span>
             <span className="block">
@@ -48,7 +45,6 @@ export default function AboutPage() {
       {/* 6.3 FOUNDING TEAM */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Founding Team</Eyebrow>
           <SectionTitle className="mb-12 lg:mb-16">
             Three founders. <Accent>Both sides.</Accent>
           </SectionTitle>
@@ -60,7 +56,6 @@ export default function AboutPage() {
       {team.length > 0 && (
         <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <Eyebrow>The Team</Eyebrow>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 mt-10">
               {team.map((m) => (
                 <div key={m.name} className="flex flex-col gap-3">
@@ -82,14 +77,14 @@ export default function AboutPage() {
           {howWeWork.map((item, i) => (
             <div
               key={item.en}
-              className={`relative min-h-[360px] lg:min-h-[480px] p-8 lg:p-10 flex flex-col justify-between border-b md:border-b-0 border-border-subtle ${
+              className={`relative min-h-[360px] lg:min-h-[480px] p-8 lg:p-10 flex flex-col items-center text-center justify-between border-b md:border-b-0 border-border-subtle ${
                 i > 0 ? "md:border-l" : ""
               } ${i % 2 === 0 ? "bg-bg-dark" : "bg-bg-alt"}`}
             >
               <span className="text-[40px] font-display text-gradient-gold leading-none font-medium">
                 0{i + 1}
               </span>
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col items-center gap-6">
                 <p className="font-display uppercase text-2xl md:text-[26px] lg:text-[30px] leading-[1.15] text-text-heading">
                   {item.en}
                   {item.enSub && (
@@ -99,7 +94,7 @@ export default function AboutPage() {
                     </>
                   )}
                 </p>
-                <p className="font-serif italic text-lg lg:text-xl text-text-muted leading-snug">
+                <p className="font-serif italic text-lg lg:text-xl text-text-body leading-snug">
                   {item.vi}
                   {item.viSub && (
                     <>
@@ -115,9 +110,8 @@ export default function AboutPage() {
       </section>
 
       {/* 6.6 PRESS */}
-      <section className="py-20 lg:py-24 bg-bg-alt">
+      <section className="py-20 lg:py-28 bg-bg-alt">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Press</Eyebrow>
           <PressStrip />
         </div>
       </section>

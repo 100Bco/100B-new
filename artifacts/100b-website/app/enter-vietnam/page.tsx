@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { Landmark, Factory, Banknote, Users } from "lucide-react";
 import {
   Accent,
   ArrowLink,
-  Eyebrow,
   Lead,
   PrimaryButton,
   SectionTitle,
 } from "@/components/Section";
 import { StatGrid, type Stat } from "@/components/StatGrid";
 import { PhotoTile } from "@/components/PhotoTile";
+import { IconCard } from "@/components/IconCard";
 import { programs } from "@/content/site";
 import { TestimonialWall } from "@/components/TestimonialWall";
 import { ContactCTA } from "@/components/ContactCTA";
@@ -31,10 +32,22 @@ const vietnamStats: Stat[] = [
 ];
 
 const whatWeBuild = [
-  { title: "Government.", line: "Ministries, city governments, national agencies." },
-  { title: "Industry.", line: "The companies actually operating, at their own facilities." },
-  { title: "Capital.", line: "The funds writing checks in Vietnam." },
-  { title: "Founders.", line: "The people building, in the room, not on a panel." },
+  {
+    icon: Landmark,
+    title: "Government.",
+    line: "Ministries, city governments, national agencies.",
+  },
+  {
+    icon: Factory,
+    title: "Industry.",
+    line: "The companies actually operating, at their own facilities.",
+  },
+  { icon: Banknote, title: "Capital.", line: "The funds writing checks in Vietnam." },
+  {
+    icon: Users,
+    title: "Founders.",
+    line: "The people building, in the room, not on a panel.",
+  },
 ];
 
 const whoWeMet = [
@@ -71,11 +84,8 @@ export default function EnterVietnamPage() {
   return (
     <div className="flex flex-col">
       {/* 3.1 HERO */}
-      <section className="relative bg-bg-dark pt-32 pb-20 lg:pt-48 lg:pb-28 border-b border-border-subtle overflow-hidden glow-warm-top">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-start gap-8">
-          <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-            Enter Vietnam · For companies, funds, and organizations coming in
-          </p>
+      <section className="relative bg-bg-dark py-32 lg:py-40 border-b border-border-subtle overflow-hidden glow-warm-top">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center text-center gap-8">
           <h1 className="text-[44px] md:text-6xl lg:text-[84px] font-serif leading-[0.9] tracking-tight max-w-6xl">
             <span className="block">Vietnam rewards the people</span>
             <span className="block">
@@ -93,11 +103,10 @@ export default function EnterVietnamPage() {
       {/* 3.2 WHY VIETNAM */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Why Vietnam</Eyebrow>
           <div className="mt-4 mb-10">
             <StatGrid stats={vietnamStats} columns={3} />
           </div>
-          <p className="font-serif text-xl lg:text-2xl text-text-body leading-snug max-w-4xl">
+          <p className="font-serif text-xl lg:text-2xl text-text-body leading-snug max-w-4xl mx-auto text-center">
             690,000 STEM students, growing 10% a year. 4,100+ startups. 4 unicorns. 290+ active
             VC firms.
           </p>
@@ -107,29 +116,24 @@ export default function EnterVietnamPage() {
       {/* 3.3 WHAT WE BUILD */}
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>What We Build</Eyebrow>
           <SectionTitle className="mb-12 lg:mb-16 max-w-4xl">
             A week that would take you <Accent>two years to arrange.</Accent>
           </SectionTitle>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
-            {whatWeBuild.map((item, i) => (
-              <div
+            {whatWeBuild.map((item) => (
+              <IconCard
                 key={item.title}
-                className="bg-bg-card rounded-3xl p-7 lg:p-8 border border-border-subtle flex flex-col gap-4"
+                icon={item.icon}
+                title={item.title}
+                className="min-h-[260px]"
               >
-                <span className="text-[40px] font-display text-gradient-gold leading-none font-medium">
-                  0{i + 1}
-                </span>
-                <h3 className="font-serif text-2xl lg:text-3xl text-text-heading">{item.title}</h3>
-                <p className="text-sm lg:text-base font-light leading-relaxed text-text-body">
-                  {item.line}
-                </p>
-              </div>
+                {item.line}
+              </IconCard>
             ))}
           </div>
 
-          <p className="text-base lg:text-lg font-light leading-relaxed text-text-body max-w-3xl">
+          <p className="text-base lg:text-lg font-light leading-relaxed text-text-body max-w-3xl mx-auto text-center">
             We handle the itinerary, the introductions, the translation, and everything between
             the airport and the airport.
           </p>
@@ -139,7 +143,6 @@ export default function EnterVietnamPage() {
       {/* 3.4 ACCESS VIETNAM 2026 */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Access Vietnam 2026</Eyebrow>
           <SectionTitle className="mb-10">
             What it <Accent>looked like.</Accent>
           </SectionTitle>
@@ -212,7 +215,6 @@ export default function EnterVietnamPage() {
       {/* 3.5 WHAT DELEGATES SAID. About the trip, not the company. */}
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>What Delegates Said</Eyebrow>
           <div className="mt-4">
             <TestimonialWall rows={[{ label: "Access Vietnam 2026", items: delegateTestimonials }]} />
           </div>
@@ -222,7 +224,6 @@ export default function EnterVietnamPage() {
       {/* 3.6 WHO THIS IS FOR */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Who This Is For</Eyebrow>
           <SectionTitle className="mb-12 lg:mb-16 max-w-4xl">
             Access Vietnam was one delegation. <Accent>The model travels.</Accent>
           </SectionTitle>
@@ -236,7 +237,7 @@ export default function EnterVietnamPage() {
             ))}
           </div>
 
-          <p className="font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-3xl mb-10">
+          <p className="font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-3xl mb-10 mx-auto text-center">
             From any country. We've run the US corridor.{" "}
             <em className="italic text-gradient-gold">Europe, Asia, and the Gulf are open.</em>
           </p>
@@ -245,23 +246,21 @@ export default function EnterVietnamPage() {
       </section>
 
       {/* 3.7 BEYOND THE TRIP */}
-      <section className="py-20 lg:py-24 bg-bg-dark">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div>
-            <Eyebrow>Beyond the Trip</Eyebrow>
-            <p className="font-serif text-2xl lg:text-3xl text-text-heading leading-snug">
-              Some people leave with a contact list. Others want an entity, a partner, or a
-              supply chain.
-            </p>
-          </div>
-          <ul className="flex flex-col border-t border-border-subtle">
+      <section className="py-20 lg:py-28 bg-bg-dark">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
+          <SectionTitle className="mb-12">
+            Some people leave with a contact list. Others want{" "}
+            <Accent>an entity, a partner, or a supply chain.</Accent>
+          </SectionTitle>
+
+          <ul className="w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-x-8 border-t border-border-subtle">
             {["Market entry advisory", "Partner and factory matching", "Capital introductions"].map(
               (item) => (
                 <li
                   key={item}
-                  className="py-5 border-b border-border-subtle flex items-center gap-4 font-serif text-xl lg:text-2xl text-text-heading"
+                  className="py-5 border-b border-border-subtle flex items-center gap-3 font-sans text-base font-light text-text-body"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shadow-[0_0_8px_rgba(195,163,116,0.8)]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shadow-[0_0_8px_rgba(195,163,116,0.8)] shrink-0" />
                   {item}
                 </li>
               ),

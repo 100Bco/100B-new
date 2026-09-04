@@ -51,13 +51,7 @@ export function TheName() {
       />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="flex items-center justify-between mb-16 lg:mb-24">
-          <div className="flex items-center gap-4">
-            <div className="w-8 h-px bg-brand-gold/40" />
-            <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-              The Name
-            </p>
-          </div>
+        <div className="flex items-center justify-center mb-12 lg:mb-16">
           <div
             className="inline-flex items-center rounded-full border border-white/15 p-1 text-[10px] uppercase tracking-[0.2em] font-semibold"
             role="group"
@@ -123,29 +117,27 @@ export function TheName() {
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-24 items-end">
-          <div className="flex flex-col gap-8">
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] text-text-heading">
-              {t.title}
-            </h2>
-            {t.lines.map((line) => (
-              <p
-                key={line}
-                className="font-serif text-xl md:text-2xl lg:text-[28px] font-light leading-[1.45] text-text-body max-w-3xl"
-              >
-                {line}
-              </p>
-            ))}
-          </div>
+        <div className="flex flex-col items-center text-center gap-8">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] text-text-heading">
+            {t.title}
+          </h2>
+          {t.lines.map((line) => (
+            <p
+              key={line}
+              className="font-serif text-xl md:text-2xl lg:text-[28px] font-light leading-[1.45] text-text-body max-w-3xl"
+            >
+              {line}
+            </p>
+          ))}
 
-          <div className="flex flex-col gap-6 lg:border-l border-border-subtle lg:pl-12">
-            <p className="flex items-baseline gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 pt-8 mt-4 border-t border-border-subtle w-full max-w-3xl">
+            <p className="flex items-baseline gap-3">
               <span className="font-display text-5xl lg:text-6xl text-gradient-gold leading-none">
                 100
               </span>
               <span className="font-serif text-lg lg:text-xl text-text-body">{t.hundred}</span>
             </p>
-            <p className="flex items-baseline gap-4">
+            <p className="flex items-baseline gap-3">
               <span className="font-display text-5xl lg:text-6xl text-gradient-gold leading-none">
                 B
               </span>

@@ -1,34 +1,18 @@
 import type { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
-/** Gold eyebrow with the short rule. Matches the section header pattern in the brand guidelines. */
-export function Eyebrow({
-  children,
-  center = false,
-  className = "",
-}: {
-  children: ReactNode;
-  center?: boolean;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`flex items-center gap-4 mb-6 ${center ? "justify-center" : ""} ${className}`}
-    >
-      <div className="w-8 h-px bg-brand-gold/40" />
-      <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-        {children}
-      </p>
-      {center && <div className="w-8 h-px bg-brand-gold/40" />}
-    </div>
-  );
-}
-
-/** Italic gold accent inside a display heading. */
+/**
+ * Italic gold accent inside a heading. Serif, per the brand guideline's
+ * titleAccent rule.
+ */
 export function Accent({ children }: { children: ReactNode }) {
-  return <em className="font-display italic text-gradient-gold">{children}</em>;
+  return <em className="font-serif italic text-gradient-gold">{children}</em>;
 }
 
-/** Section H2. UTM display, uppercase, tight leading. */
+/**
+ * Section H2. Cormorant, light, centred. Matches the guideline's H2 spec
+ * and reads far easier than an all-caps display face.
+ */
 export function SectionTitle({
   children,
   className = "",
@@ -40,14 +24,17 @@ export function SectionTitle({
 }) {
   return (
     <Tag
-      className={`text-3xl md:text-4xl lg:text-5xl font-display uppercase leading-tight ${className}`}
+      className={twMerge(
+        "text-3xl md:text-4xl lg:text-5xl font-serif font-light leading-tight text-center mx-auto max-w-4xl",
+        className,
+      )}
     >
       {children}
     </Tag>
   );
 }
 
-/** Lead paragraph under a section title. */
+/** Lead paragraph under a section title. Inter, centred under the heading. */
 export function Lead({
   children,
   className = "",
@@ -57,7 +44,10 @@ export function Lead({
 }) {
   return (
     <p
-      className={`text-lg lg:text-xl font-light leading-relaxed text-text-body max-w-2xl ${className}`}
+      className={twMerge(
+        "text-lg lg:text-xl font-light leading-relaxed text-text-body text-center mx-auto max-w-3xl",
+        className,
+      )}
     >
       {children}
     </p>
@@ -76,7 +66,10 @@ export function ArrowLink({
   external?: boolean;
   className?: string;
 }) {
-  const base = `group inline-flex items-center gap-[10px] font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-text-heading hover:text-brand-gold transition-colors duration-300 ${className}`;
+  const base = twMerge(
+    "group inline-flex items-center gap-[10px] font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-text-heading hover:text-brand-gold transition-colors duration-300",
+    className,
+  );
   const arrow = (
     <span className="text-brand-gold transition-transform duration-300 group-hover:translate-x-1">
       →
@@ -111,7 +104,10 @@ export function PrimaryButton({
   return (
     <a
       href={href}
-      className={`btn-silver-gradient rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold inline-flex items-center justify-center text-center ${className}`}
+      className={twMerge(
+        "btn-silver-gradient rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold inline-flex items-center justify-center text-center",
+        className,
+      )}
     >
       {children}
     </a>
@@ -131,7 +127,10 @@ export function SecondaryButton({
   return (
     <a
       href={href}
-      className={`border border-brand-gold/50 text-brand-gold hover:bg-brand-gold/10 rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold transition-colors inline-flex items-center justify-center text-center ${className}`}
+      className={twMerge(
+        "border border-brand-gold/50 text-brand-gold hover:bg-brand-gold/10 rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold transition-colors inline-flex items-center justify-center text-center",
+        className,
+      )}
     >
       {children}
     </a>

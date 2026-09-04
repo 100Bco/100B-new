@@ -3,7 +3,6 @@ import { X } from "lucide-react";
 import {
   Accent,
   ArrowLink,
-  Eyebrow,
   Lead,
   PrimaryButton,
   SectionTitle,
@@ -53,11 +52,8 @@ export default function GoGlobalPage() {
   return (
     <div className="flex flex-col">
       {/* 2.1 HERO */}
-      <section className="relative bg-bg-dark pt-32 pb-20 lg:pt-48 lg:pb-28 border-b border-border-subtle overflow-hidden glow-warm-top">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-start gap-8">
-          <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-            Go Global · For Vietnamese brands entering the US
-          </p>
+      <section className="relative bg-bg-dark py-32 lg:py-40 border-b border-border-subtle overflow-hidden glow-warm-top">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center text-center gap-8">
           <h1 className="text-[44px] md:text-6xl lg:text-[84px] font-serif leading-[0.9] tracking-tight max-w-6xl">
             <span className="block">You built the brand in Vietnam.</span>
             <span className="block">
@@ -71,14 +67,11 @@ export default function GoGlobalPage() {
 
       {/* 2.2 THE PROBLEM */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
-          <div>
-            <Eyebrow>The Problem</Eyebrow>
-            <SectionTitle>
-              Most Vietnamese brands enter the US <Accent>the expensive way.</Accent>
-            </SectionTitle>
-          </div>
-          <ul className="flex flex-col border-t border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
+          <SectionTitle className="mb-12">
+            Most Vietnamese brands enter the US <Accent>the expensive way.</Accent>
+          </SectionTitle>
+          <ul className="w-full max-w-3xl flex flex-col border-t border-border-subtle">
             {problems.map((p) => (
               <li
                 key={p}
@@ -87,7 +80,7 @@ export default function GoGlobalPage() {
                 <span className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center shrink-0 text-text-muted">
                   <X size={14} strokeWidth={2.5} />
                 </span>
-                <span className="font-serif text-xl lg:text-2xl text-text-muted line-through decoration-brand-gold/60 decoration-1">
+                <span className="font-sans text-base lg:text-lg font-light text-text-muted line-through decoration-brand-gold/60 decoration-1">
                   {p}
                 </span>
               </li>
@@ -99,14 +92,12 @@ export default function GoGlobalPage() {
       {/* 2.3 WHAT WE DO */}
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>What We Do</Eyebrow>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-10">
             {whatWeDo.map((item, i) => (
               <div
                 key={item.title}
-                className="relative bg-bg-card rounded-3xl p-8 lg:p-10 border border-border-subtle flex flex-col gap-5"
+                className="relative bg-bg-card rounded-3xl p-8 lg:p-10 border border-border-subtle flex flex-col items-center text-center gap-5"
               >
-                <span className="absolute top-0 left-0 w-1.5 h-full bg-brand-gold rounded-l-3xl" />
                 <span className="text-[40px] font-display text-gradient-gold leading-none font-medium">
                   0{i + 1}
                 </span>
@@ -125,13 +116,12 @@ export default function GoGlobalPage() {
       {/* 2.4 THE MODEL */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>The Model</Eyebrow>
           <SectionTitle className="mb-12 lg:mb-16">
             We take equity. <Accent>Nothing else.</Accent>
           </SectionTitle>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-            <div className="bg-bg-card rounded-3xl p-8 lg:p-12 border border-brand-gold/30 flex flex-col gap-6">
+            <div className="bg-bg-card rounded-3xl p-8 lg:p-12 border border-brand-gold/30 flex flex-col items-center text-center gap-6">
               <span className="font-display text-[88px] md:text-[120px] lg:text-[140px] leading-none text-gradient-gold">
                 3-20%
               </span>
@@ -143,7 +133,7 @@ export default function GoGlobalPage() {
                 success fees.
               </p>
             </div>
-            <div className="bg-bg-card rounded-3xl p-8 lg:p-12 border border-border-subtle flex flex-col gap-6">
+            <div className="bg-bg-card rounded-3xl p-8 lg:p-12 border border-border-subtle flex flex-col items-center text-center gap-6">
               <span className="font-display text-[88px] md:text-[120px] lg:text-[140px] leading-none text-text-heading">
                 0%
               </span>
@@ -154,7 +144,7 @@ export default function GoGlobalPage() {
             </div>
           </div>
 
-          <p className="mt-12 font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-3xl">
+          <p className="mt-12 font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-3xl mx-auto text-center">
             We make money when your US company is{" "}
             <em className="italic text-gradient-gold">worth something.</em>
           </p>
@@ -163,19 +153,17 @@ export default function GoGlobalPage() {
 
       {/* 2.5 WHO WE WORK WITH */}
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-          <div>
-            <Eyebrow>Who We Work With</Eyebrow>
-            <p className="font-display text-5xl md:text-6xl lg:text-7xl text-gradient-gold leading-none mb-6">
-              $20M to $100M
-            </p>
-            <p className="text-lg lg:text-xl font-light leading-relaxed text-text-body max-w-xl">
-              in revenue. Established in Vietnam. Ready to give up equity in a new entity for a
-              partner who works.
-            </p>
-          </div>
-          <div className="lg:border-l border-border-subtle lg:pl-16 flex flex-col justify-center gap-5">
-            <h3 className="font-serif text-3xl text-text-heading">Under $20M?</h3>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
+          <p className="font-display text-5xl md:text-6xl lg:text-7xl text-gradient-gold leading-none mb-6">
+            $20M to $100M
+          </p>
+          <Lead className="mb-14">
+            in revenue. Established in Vietnam. Ready to give up equity in a new entity for a
+            partner who works.
+          </Lead>
+
+          <div className="w-full max-w-3xl pt-10 border-t border-border-subtle flex flex-col items-center gap-5">
+            <h3 className="font-serif text-2xl lg:text-3xl text-text-heading">Under $20M?</h3>
             <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">
               The equity model doesn't fit yet. Our companies do.
             </p>
@@ -187,7 +175,6 @@ export default function GoGlobalPage() {
       {/* 2.6 THE PATH */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>The Path</Eyebrow>
           <div className="relative mt-10 mb-12">
             <div className="hidden lg:block absolute top-[48px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent" />
             <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4 relative">
@@ -227,7 +214,6 @@ export default function GoGlobalPage() {
       {/* 2.7 PROOF */}
       <section className="py-20 lg:py-28 bg-bg-dark">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Proof</Eyebrow>
           <SectionTitle className="mb-12 lg:mb-16">
             What Vietnamese founders <Accent>say.</Accent>
           </SectionTitle>

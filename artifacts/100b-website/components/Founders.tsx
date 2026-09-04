@@ -11,16 +11,16 @@ function initials(name: string) {
 /** Three founders on near-black. Portrait, name, title, one paragraph. */
 export function Founders({ variant = "short" }: { variant?: "short" | "long" }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl">
       {founders.map((f) => (
-        <div key={f.name} className="flex flex-col gap-6">
-          <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0A0A0A]">
+        <div key={f.name} className="flex flex-col items-center text-center gap-4">
+          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-[#0A0A0A]">
             {f.photo ? (
               <>
                 <img
                   src={f.photo}
                   alt={f.name}
-                  className="absolute inset-0 w-full h-full object-cover grayscale"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
                 {/* Warm floor so the portraits sit in the same light as the page */}
                 <div
@@ -48,14 +48,14 @@ export function Founders({ variant = "short" }: { variant?: "short" | "long" }) 
               </div>
             )}
           </div>
-          <div className="flex flex-col gap-2">
-            <h3 className="font-serif text-2xl lg:text-3xl text-text-heading leading-tight">
+          <div className="flex flex-col items-center gap-1.5">
+            <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading leading-tight">
               {f.name}
             </h3>
             <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
               {f.title}
             </p>
-            <p className="text-sm lg:text-base font-light leading-relaxed text-text-body mt-2">
+            <p className="text-sm font-light leading-relaxed text-text-body mt-1">
               {variant === "long" ? f.long : f.short}
             </p>
           </div>
