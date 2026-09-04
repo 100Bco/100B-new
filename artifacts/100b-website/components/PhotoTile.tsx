@@ -64,7 +64,7 @@ export function PhotoTile({
       )}
 
       {(label || caption) && (
-        <figcaption className="absolute inset-x-0 bottom-0 p-5 lg:p-6 flex flex-col gap-1 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
+        <figcaption className="absolute inset-x-0 bottom-0 p-5 lg:p-6 flex flex-col gap-1 bg-gradient-to-t from-black/95 via-black/55 to-transparent">
           {label && (
             <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-brand-gold">
               {label}

@@ -278,16 +278,16 @@ export default function ContainerClubPage() {
             </div>
           </div>
 
-          {/* Shows as soon as a web-readable trip photo lands in content/site.ts */}
           {vietnamDirect?.image && (
             <div className="mb-8">
               <PhotoTile
                 src={vietnamDirect.image}
-                alt="Vietnam Direct 2026, factory visits from Ho Chi Minh City to Hanoi"
+                alt="The Vietnam Direct 2026 group at a factory welcome"
                 aspect="aspect-[16/9]"
+                position="center 50%"
                 tone="neutral"
                 label="May-June 2026 · Ho Chi Minh City to Hanoi"
-                caption="On the factory floor"
+                caption="At the factory gate"
               />
             </div>
           )}

@@ -35,16 +35,16 @@ export function TestimonialCarousel({
   );
 
   const [current, setCurrent] = useState(0);
-  const [paused, setPaused] = useState(false);
 
+  // Runs on its own, exactly as on the previous site: no pause on hover.
   useEffect(() => {
-    if (paused || slides.length < 2) return;
+    if (slides.length < 2) return;
     const timer = setInterval(
       () => setCurrent((prev) => (prev + 1) % slides.length),
       interval,
     );
     return () => clearInterval(timer);
-  }, [paused, interval, slides.length]);
+  }, [interval, slides.length]);
 
   if (!slides.length) return null;
   const slide = slides[current];
@@ -53,11 +53,7 @@ export function TestimonialCarousel({
   const goNext = () => setCurrent((p) => (p + 1) % slides.length);
 
   return (
-    <div
-      className="flex flex-col flex-1 min-h-0"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
+    <div className="flex flex-col flex-1 min-h-0">
       <div className="flex-1 min-h-0 flex items-center">
         <AnimatePresence mode="wait">
           <motion.div
