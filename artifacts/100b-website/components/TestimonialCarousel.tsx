@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import type { Testimonial } from "@/content/site";
+import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
 
 type Group = { label: string; items: Testimonial[] };
 type Slide = Testimonial & { group: string };
@@ -136,9 +136,9 @@ export function TestimonialCarousel({
         <button
           onClick={goPrev}
           aria-label="Previous testimonial"
-          className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors"
+          className="w-11 h-11 lg:w-12 lg:h-12 flex items-center justify-center transition-all hover:scale-105"
         >
-          <ArrowRight size={16} className="rotate-180" />
+          <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
         </button>
 
         <div className="flex items-center gap-3">
@@ -157,9 +157,9 @@ export function TestimonialCarousel({
         <button
           onClick={goNext}
           aria-label="Next testimonial"
-          className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-brand-gold hover:text-brand-gold transition-colors"
+          className="w-11 h-11 lg:w-12 lg:h-12 flex items-center justify-center transition-all hover:scale-105"
         >
-          <ArrowRight size={16} />
+          <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
         </button>
       </div>
     </div>
