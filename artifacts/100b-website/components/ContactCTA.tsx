@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { CONTACT_EMAIL } from "@/content/site";
-import emblem from "@assets/100B Emblem.png";
+import pattern from "@assets/100B Pattern (1).png";
 
 /**
  * Closing contact block. Every page ends with one, and the nav's
@@ -32,17 +32,12 @@ export function ContactCTA({
         aria-hidden
       />
 
-      {/* The 100B mark, oversized and cropped at the right edge */}
+      {/* The 100B pattern, bleeding off the right corner */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
         <img
-          src={emblem.src}
+          src={pattern.src}
           alt=""
-          className="absolute -right-[18%] top-1/2 -translate-y-1/2 w-[860px] max-w-none opacity-[0.09] select-none"
-        />
-        <img
-          src={emblem.src}
-          alt=""
-          className="absolute -left-[26%] top-1/2 -translate-y-1/2 w-[640px] max-w-none opacity-[0.055] select-none"
+          className="absolute -right-[6%] bottom-[-14%] w-[420px] md:w-[560px] lg:w-[720px] max-w-none opacity-[0.10] select-none"
         />
       </div>
 
