@@ -3,10 +3,10 @@ import Link from "next/link";
 import { Globe, DoorOpen, Container, Layers } from "lucide-react";
 import { Accent, ArrowLink, Eyebrow, SectionTitle, Lead } from "@/components/Section";
 import { TheName } from "@/components/TheName";
-import { TestimonialWall } from "@/components/TestimonialWall";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { PhotoTile } from "@/components/PhotoTile";
 import { Founders } from "@/components/Founders";
-import { PressStrip } from "@/components/PressStrip";
+import { PressCarousel } from "@/components/PressCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
 import {
   companies,
@@ -248,15 +248,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 1.5 PROOF */}
-      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Proof</Eyebrow>
-          <SectionTitle className="mb-12 lg:mb-16">
-            What our <Accent>clients say.</Accent>
-          </SectionTitle>
-          <TestimonialWall
-            rows={[
+      {/* 1.5 PROOF — one voice at a time, as on the previous site */}
+      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-dark border-b border-border-subtle overflow-hidden pt-28 pb-16 lg:pt-32 lg:pb-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
+          <div className="shrink-0">
+            <Eyebrow>Proof</Eyebrow>
+            <SectionTitle className="mb-8 lg:mb-10">
+              What our <Accent>clients say.</Accent>
+            </SectionTitle>
+          </div>
+          <TestimonialCarousel
+            groups={[
               { label: "Vietnamese founders", items: founderTestimonials },
               { label: "International partners", items: partnerTestimonials },
             ]}
@@ -276,7 +278,10 @@ export default function HomePage() {
             {programs.map((p, i) => (
               <div key={p.name} className="flex flex-col gap-6">
                 <PhotoTile
-                  aspect="aspect-[16/10]"
+                  src={p.image}
+                  alt={p.name}
+                  aspect="aspect-[3/2]"
+                  position="center 62%"
                   tone={i === 0 ? "warm" : "cool"}
                   label={`${p.when} · ${p.where}`}
                   caption={p.name}
@@ -284,7 +289,12 @@ export default function HomePage() {
                 <p className="text-sm lg:text-base font-light leading-relaxed text-text-body">
                   {p.line}
                 </p>
-                <ArrowLink href={p.href}>{p.cta}</ArrowLink>
+                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                  <ArrowLink href={p.href}>{p.cta}</ArrowLink>
+                  <ArrowLink href={p.site} external>
+                    Event site
+                  </ArrowLink>
+                </div>
               </div>
             ))}
           </div>
@@ -332,11 +342,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 1.9 PRESS */}
+      {/* 1.9 PRESS — carousel, as on the previous site */}
       <section className="py-20 lg:py-24 bg-bg-dark">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Press</Eyebrow>
-          <PressStrip />
+          <SectionTitle className="text-center mb-10 lg:mb-12">
+            In the <Accent>press.</Accent>
+          </SectionTitle>
+          <PressCarousel />
         </div>
       </section>
 

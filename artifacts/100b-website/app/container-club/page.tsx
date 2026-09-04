@@ -10,6 +10,7 @@ import {
 import { StatGrid, type Stat } from "@/components/StatGrid";
 import { PhotoTile } from "@/components/PhotoTile";
 import { ContactCTA } from "@/components/ContactCTA";
+import { programs } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Container Club",
@@ -73,6 +74,8 @@ const network = [
   "Trade finance",
   "Compliance advisors",
 ];
+
+const vietnamDirect = programs.find((p) => p.name === "Vietnam Direct");
 
 export default function ContainerClubPage() {
   return (
@@ -275,21 +278,23 @@ export default function ContainerClubPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
-            {[
-              { label: "Engineered wood", caption: "Factory floor" },
-              { label: "Aluminum windows", caption: "Production line" },
-              { label: "Steel structures", caption: "Fabrication hall" },
-              { label: "Finishing materials", caption: "Showroom walk" },
-            ].map((g, i) => (
+          {/* Shows as soon as a web-readable trip photo lands in content/site.ts */}
+          {vietnamDirect?.image && (
+            <div className="mb-8">
               <PhotoTile
-                key={g.label}
-                label={g.label}
-                caption={g.caption}
-                tone={i % 2 === 0 ? "neutral" : "warm"}
-                aspect="aspect-[4/5]"
+                src={vietnamDirect.image}
+                alt="Vietnam Direct 2026, factory visits from Ho Chi Minh City to Hanoi"
+                aspect="aspect-[16/9]"
+                tone="neutral"
+                label="May-June 2026 · Ho Chi Minh City to Hanoi"
+                caption="On the factory floor"
               />
-            ))}
+            </div>
+          )}
+          <div className="mb-12">
+            <ArrowLink href="https://vietnamdirect2026factory.100b.co/" external>
+              See the full programme
+            </ArrowLink>
           </div>
 
           <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold mb-6">

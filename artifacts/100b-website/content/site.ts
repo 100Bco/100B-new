@@ -7,9 +7,20 @@ import quangVinhPhoto from "@assets/Gom Quang Vinh.webp";
 import hexagonPhoto from "@assets/Hexagon.webp";
 import kalotoysPhoto from "@assets/Kalotoys.jpg";
 import saoThaiDuongPhoto from "@assets/Sao Thai Duong.webp";
+import markDuvalPhoto from "@assets/Mark Duval Profile.jpg";
+import hectorPhoto from "@assets/1-Hector Quintanar.jpg";
+import ahmedPhoto from "@assets/Ahmed.jpeg";
+import minhPhoto from "@assets/Minh Mac CEO.jpeg";
+import tungPhoto from "@assets/Tung Cao Photo.png";
+import tuPhoto from "@assets/Tu Mac Photo.jpg";
+import accessVietnamPhoto from "@assets/Access VN 2026.jpeg";
 import socialPress1 from "@assets/press/Social Press 1.jpg";
 import socialPress2 from "@assets/press/Social Press 2.jpeg";
 import socialPress3 from "@assets/press/Social Press 3.webp";
+import socialPress4 from "@assets/press/Social Press 4.jpg";
+import businessPress1 from "@assets/press/Business Press 1.jpg";
+import businessPress2 from "@assets/press/Business Press 2.jpg";
+import businessPress3 from "@assets/press/Business Press 3.jpg";
 
 export const CONTACT_EMAIL = "global@100b.co";
 
@@ -64,6 +75,8 @@ export type Testimonial = {
   company: string;
   credential: string;
   photo: string | null;
+  /** object-position for the portrait when a centred crop cuts the subject. */
+  photoPosition?: string;
 };
 
 // Vietnamese founder wall. Used on Home and Go Global. Never merge with the
@@ -123,7 +136,8 @@ export const partnerTestimonials: Testimonial[] = [
     name: "Mark Duval",
     company: "Greater Austin Asian Chamber of Commerce",
     credential: "CEO",
-    photo: null,
+    photo: markDuvalPhoto.src,
+    photoPosition: "30% center",
   },
   {
     quote:
@@ -131,7 +145,7 @@ export const partnerTestimonials: Testimonial[] = [
     name: "Hector Quintanar",
     company: "Trade Management Solutions",
     credential: "",
-    photo: null,
+    photo: hectorPhoto.src,
   },
   {
     quote:
@@ -139,7 +153,7 @@ export const partnerTestimonials: Testimonial[] = [
     name: "Ahmed Moledina",
     company: "SOAL Technologies",
     credential: "",
-    photo: null,
+    photo: ahmedPhoto.src,
   },
 ];
 
@@ -232,12 +246,14 @@ export type Founder = {
   title: string;
   short: string;
   long: string;
+  photo: string | null;
 };
 
 export const founders: Founder[] = [
   {
     name: "Minh Mac",
     title: "Founder & CEO",
+    photo: minhPhoto.src,
     short:
       "Left Vietnam at 17. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users.",
     long:
@@ -246,6 +262,7 @@ export const founders: Founder[] = [
   {
     name: "Tung Cao",
     title: "Co-Founder & Head of International Trade",
+    photo: tungPhoto.src,
     short:
       "Runs the trade side. Buyers, freight, customs, and the network that moves goods.",
     long:
@@ -254,6 +271,7 @@ export const founders: Founder[] = [
   {
     name: "Tu Mac",
     title: "Co-Founder & Head of Factory Ops",
+    photo: tuPhoto.src,
     short:
       "Construction and interior materials. Factory vetting and quality control on the ground.",
     long:
@@ -264,22 +282,29 @@ export const founders: Founder[] = [
 export type PressItem = {
   outlet: string;
   headline: string;
+  description: string;
   link: string;
   image: string | null;
 };
 
-// Three placements. Logo, headline, link. No body copy.
+// Press / media coverage. Drop files into `attached_assets/press/` and wire
+// them up via the `image` field. When `image` is null the card falls back to
+// a gradient tile so the layout never breaks.
 export const pressItems: PressItem[] = [
   {
     outlet: "Ministry of Foreign Affairs",
     headline:
-      "Vietnamese diaspora business delegation received at the Ministry of Foreign Affairs",
+      "Vietnamese diaspora business delegation received at Vietnam's Ministry of Foreign Affairs",
+    description:
+      "Deputy Minister Le Thi Thu Hang welcomed a delegation of overseas Vietnamese business leaders to deepen cross-border investment ties and strengthen institutional bridges with the homeland.",
     link: "https://scov.gov.vn/cong-tac-ve-nvnonn/tin-tuc/thu-truong-le-thi-thu-hang-tiep-dai-dien-hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai.html",
     image: socialPress1.src,
   },
   {
     outlet: "Ministry of Culture, Sports and Tourism",
     headline: "Carrying Vietnamese identity onto the global stage",
+    description:
+      "A national event recognized the next generation of overseas Vietnamese entrepreneurs as cultural ambassadors and a strategic bridge between the homeland and global markets.",
     link: "https://www.vietnam.vn/ngay-quoc-to-viet-nam-toan-cau-va-chuyen-cua-nhung-nguoi-con-xa-xu",
     image: socialPress2.src,
   },
@@ -287,8 +312,44 @@ export const pressItems: PressItem[] = [
     outlet: "Vietnam Real Estate Association",
     headline:
       "Three associations align across real estate, tourism and overseas business",
+    description:
+      "Leadership from VNREA, VITA and the global Vietnamese business community convened in Hanoi to coordinate cross-sector capital flows between Vietnam and its diaspora.",
     link: "https://vnrea.vn/gap-mat-tan-xuan-giua-ba-hiep-hoi-vnrea-vita-va-baoov-20240229112855902.html",
     image: socialPress3.src,
+  },
+  {
+    outlet: "Vietnam Public Affairs",
+    headline:
+      "21 solidarity homes delivered to families in Vietnam's Northwest provinces",
+    description:
+      "In partnership with the Vietnam Fatherland Front, the global Vietnamese business community channeled philanthropic capital to support underserved households in Dien Bien.",
+    link: "https://m.mattran.org.vn/hoat-dong/hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai-trao-tang-21-can-nha-dai-doan-ket-cho-ho-ngheo-cua-tinh-dien-bien-va-cac-tinh-tay-bac-54522.html",
+    image: socialPress4.src,
+  },
+  {
+    outlet: "Vietnam News Agency",
+    headline: "Positioning Vietnamese brands on international media",
+    description:
+      "A national symposium in Ho Chi Minh City explored how to elevate Vietnamese companies onto global media platforms, a strategic priority for the next wave of cross-border deals.",
+    link: "https://baotintuc.vn/kinh-te/dinh-vi-thuong-hieu-doanh-nghiep-viet-tren-truyen-thong-quoc-te-20240127214011094.htm",
+    image: businessPress1.src,
+  },
+  {
+    outlet: "Vietnam Chamber of Commerce and Industry",
+    headline:
+      "Overseas Vietnamese entrepreneurs pledge investment in national development",
+    description:
+      "Diaspora business leaders committed to deeper collaboration and capital partnership to support Vietnam's growth, signaling a new chapter for cross-border investment.",
+    link: "https://vccidanang.com.vn/tin-tuc/kieu-bao-doanh-nhan-viet-mong-gop-suc-phat-trien-dat-nuoc/",
+    image: businessPress2.src,
+  },
+  {
+    outlet: "Industry & Trade Journal",
+    headline: "Strong products come first: experts on building global Vietnamese brands",
+    description:
+      "At a Ho Chi Minh City symposium, industry leaders agreed that operational excellence is the foundation of effective communication and lasting global positioning.",
+    link: "https://congthuong.vn/doanh-nghiep-muon-truyen-thong-hieu-qua-truoc-het-can-co-san-pham-tot-300633.html",
+    image: businessPress3.src,
   },
 ];
 
@@ -313,19 +374,25 @@ export const communities = [
 
 export const programs = [
   {
+    // Delegation group shot, Hanoi, June 2026.
+    image: accessVietnamPhoto.src as string | null,
     name: "Access Vietnam",
     when: "June 2026",
     where: "Hanoi and Ho Chi Minh City",
     line: "18 delegates. Government officials and business leaders into Vietnam's ministries, innovation centers, and funds. Organized with the Greater Austin Asian Chamber of Commerce.",
     href: "/enter-vietnam",
     cta: "Enter Vietnam",
+    site: "https://austin2vietnam.100b.co/",
   },
   {
+    // Awaiting a web-readable file; the tile falls back to a dark plate.
+    image: null as string | null,
     name: "Vietnam Direct",
     when: "May-June 2026",
     where: "Ho Chi Minh City to Hanoi",
     line: "13 vetted factories in construction and finishing materials, for buyers sourcing direct.",
     href: "/container-club",
     cta: "Container Club",
+    site: "https://vietnamdirect2026factory.100b.co/",
   },
 ];

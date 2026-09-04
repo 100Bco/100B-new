@@ -1,10 +1,10 @@
 import { pressItems } from "@/content/site";
 
 /** Three placements. Outlet, headline, link. No body copy. */
-export function PressStrip() {
+export function PressStrip({ limit = 3 }: { limit?: number }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
-      {pressItems.map((item) => (
+      {pressItems.slice(0, limit).map((item) => (
         <a
           key={item.link}
           href={item.link}

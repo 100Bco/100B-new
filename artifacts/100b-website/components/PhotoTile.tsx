@@ -11,6 +11,7 @@ export function PhotoTile({
   aspect = "aspect-[4/3]",
   className = "",
   tone = "warm",
+  position = "center",
 }: {
   src?: string | null;
   alt?: string;
@@ -19,6 +20,7 @@ export function PhotoTile({
   aspect?: string;
   className?: string;
   tone?: "warm" | "cool" | "neutral";
+  position?: string;
 }) {
   const gradients = {
     warm: "linear-gradient(160deg, #2A2520 0%, #1A1714 55%, #0D0B09 100%)",
@@ -31,7 +33,12 @@ export function PhotoTile({
       className={`relative overflow-hidden rounded-3xl border border-white/10 bg-bg-card ${aspect} ${className}`}
     >
       {src ? (
-        <img src={src} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
+        <img
+          src={src}
+          alt={alt}
+          style={{ objectPosition: position }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
       ) : (
         <div
           className="absolute inset-0 grain-overlay"
