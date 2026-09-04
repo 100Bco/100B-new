@@ -50,11 +50,15 @@ export default function EcosystemPage() {
                   style={{ background: c.accent }}
                   aria-hidden
                 />
-                <div className="relative flex items-baseline justify-between gap-4">
-                  <span className="font-display text-3xl lg:text-4xl text-text-heading leading-none">
-                    {c.name}
-                  </span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-brand-gold text-right">
+                <div className="relative flex items-center justify-between gap-4 min-h-[34px]">
+                  {c.logo ? (
+                    <img src={c.logo} alt={c.name} className="h-6 lg:h-7 w-auto object-contain" />
+                  ) : (
+                    <span className="font-sans font-light text-2xl lg:text-[28px] text-text-heading leading-none tracking-wide">
+                      {c.name}
+                    </span>
+                  )}
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-brand-gold text-right shrink-0">
                     {c.role}
                   </span>
                 </div>

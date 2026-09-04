@@ -22,6 +22,12 @@ import socialPress4 from "@assets/press/Social Press 4.jpg";
 import businessPress1 from "@assets/press/Business Press 1.jpg";
 import businessPress2 from "@assets/press/Business Press 2.jpg";
 import businessPress3 from "@assets/press/Business Press 3.jpg";
+// Ecosystem logos, redrawn as white marks on transparent so they read on the
+// dark orbit nodes. Sources are the supplied logos on white.
+import logo100b from "@assets/logo-100b-mono.png";
+import logoContainerClub from "@assets/logo-container-club-mono.png";
+import logoZad from "@assets/logo-zad-mono.png";
+import logoBond from "@assets/logo-bond-mono.png";
 
 export const CONTACT_EMAIL = "global@100b.co";
 
@@ -218,7 +224,7 @@ export type Company = {
   detail?: string;
   links: { label: string; href: string; external?: boolean }[];
   accent: string; // brand colour used on Ecosystem cards
-  /** Drop a logo file in here and the orbit node uses it instead of the wordmark. */
+  /** White-on-transparent mark for the orbit node. Falls back to the wordmark. */
   logo?: string | null;
 };
 
@@ -234,6 +240,7 @@ export const companies: Company[] = [
       { label: "Enter Vietnam", href: "/enter-vietnam" },
     ],
     accent: "#C3A374",
+    logo: logo100b.src,
   },
   {
     name: "Container Club",
@@ -243,6 +250,7 @@ export const companies: Company[] = [
       "Sourcing, vetting, QC, freight, network. 3-5% commission. Led by Tung Cao and Tu Mac.",
     links: [{ label: "Container Club", href: "/container-club" }],
     accent: "#8FA3B8",
+    logo: logoContainerClub.src,
   },
   {
     name: "ZAD",
@@ -252,6 +260,7 @@ export const companies: Company[] = [
       "Do It Right. Once. 1,000+ projects, 20+ people, 10 years. Google, Viettel Academy, Coc Coc, VAECO, Eva de Eva, Magonn, Hagoo. Founded by Hai Nguyen.",
     links: [{ label: "zadagency.co", href: "https://zadagency.co", external: true }],
     accent: "#E4572E",
+    logo: logoZad.src,
   },
   {
     name: "100Bold",
@@ -268,6 +277,7 @@ export const companies: Company[] = [
     detail: "Where relationships compound.",
     links: [{ label: "bond.gift", href: "https://bond.gift", external: true }],
     accent: "#7A5C3E",
+    logo: logoBond.src,
   },
 ];
 

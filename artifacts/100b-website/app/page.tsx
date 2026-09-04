@@ -156,19 +156,7 @@ export default function HomePage() {
       <TheName />
 
       {/* 1.4 ECOSYSTEM — 100B at the centre, the five companies in orbit */}
-      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionTitle className="mb-12 lg:mb-16">
-            Five companies. <Accent>One corridor.</Accent>
-          </SectionTitle>
-
-          <EcosystemOrbit />
-
-          <div className="mt-14 lg:mt-16 pt-8 border-t border-border-subtle flex justify-center">
-            <ArrowLink href="/ecosystem">All five companies</ArrowLink>
-          </div>
-        </div>
-      </section>
+      <EcosystemOrbit />
 
       {/* 1.5 PROOF — one voice at a time, as on the previous site */}
       <section className="min-h-screen lg:h-screen flex flex-col bg-bg-alt border-b border-border-subtle overflow-hidden py-28 lg:py-32">
