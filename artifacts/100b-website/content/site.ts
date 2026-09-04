@@ -71,62 +71,81 @@ export const footerLinks = [
 ];
 
 export type Testimonial = {
+  /** Gold display line above the quote. Falls back to the company name. */
+  headline?: string;
   quote: string;
   name: string;
+  /** Role, shown as "TITLE · COMPANY". */
+  title?: string;
   company: string;
+  /** One credential line under the signature. */
   credential: string;
   photo: string | null;
   /** object-position for the portrait when a centred crop cuts the subject. */
   photoPosition?: string;
 };
 
-// Vietnamese founder wall. Used on Home and Go Global. Never merge with the
-// delegate wall on Enter Vietnam, which is about the trip, not the company.
+// The client quotes, verbatim from the previous site. Used by the carousel
+// on Home and the wall on Go Global.
 export const founderTestimonials: Testimonial[] = [
   {
-    quote: "100B helped us see the world, and take the best of Vietnam into it.",
-    name: "Hà Thị Vinh",
-    company: "Gốm Quang Vinh",
-    credential: "20+ export markets",
-    photo: quangVinhPhoto.src,
-  },
-  {
+    headline: "VIETNAMESE SPIRIT, GLOBAL ASPIRATION",
     quote:
-      "Meeting Minh and 100B gave us the courage to leave our comfort zone and dream bigger.",
-    name: "Sandy Phương",
-    company: "Cỏ Cây Hoa Lá",
-    credential: "4.3 million products sold",
+      "When we started in 2017 with only ~3,500 USD, we never imagined selling millions of products—let alone dreaming about going global. But meeting Minh and 100B gave us courage. We dared to leave our comfort zone and dream bigger. I truly believe: TOGETHER, with 100B, we'll empower more Vietnamese brands to succeed globally.",
+    name: "Sandy Phuong Nguyen",
+    title: "FOUNDER",
+    company: "CỎ CÂY HOA LÁ",
+    credential: "Rising Vietnamese wellness brand, 4.3 million products sold in 6 years",
     photo: cchlPhoto.src,
   },
   {
-    quote: "100B's direction fits Hexagon. We'll be in the US with them soon.",
-    name: "Lưu Việt Thắng",
-    company: "Hexagon",
-    credential: "4 factories, 5,000+ projects",
-    photo: hexagonPhoto.src,
-  },
-  {
+    headline: "ELEVATING VIETNAM'S GLOBAL VALUE",
     quote:
-      "With 100B behind us, Kalotoys and millions of Vietnamese brands will earn global trust.",
-    name: "Đồng Đức Thành",
-    company: "Kalotoys",
-    credential: "8,000+ orders a day, 98% export",
-    photo: kalotoysPhoto.src,
-  },
-  {
-    quote:
-      "May 100B take many Vietnamese brands global, and raise the value of Vietnam in the world's eyes.",
-    name: "Lữ Thành Long",
+      "Congratulations to Minh and the 100B team for their outstanding work in bringing Vietnamese brands and products to the global market. Your efforts are helping elevate the value of Vietnam in the eyes of the world and driving the country's development.",
+    name: "Long Lu",
+    title: "FOUNDER",
     company: "MISA",
-    credential: "80%+ of Vietnam's accounting software market",
+    credential: "Leading accounting software company, 80%+ market share",
     photo: misaPhoto.src,
   },
   {
+    headline: "A LAUNCHPAD TO GLOBAL MARKETS",
     quote:
-      "May these three young men go far, and inspire Vietnam's community of good businesses everywhere.",
-    name: "Nguyễn Thị Hương Liên",
-    company: "Sao Thái Dương",
-    credential: "240 million products worldwide",
+      "Huge thanks to 100B for helping Quang Vinh Ceramics see the world with a new perspective—alongside a strong and global-minded community of Vietnamese entrepreneurs. 100B has been a launchpad and a support system, opening opportunities for our manufacturing team to access global markets.",
+    name: "Vinh Ha",
+    title: "FOUNDER",
+    company: "QUANG VINH CERAMICS",
+    credential: "Heritage ceramics maker, exporting to 20+ countries",
+    photo: quangVinhPhoto.src,
+  },
+  {
+    headline: "ALIGNMENT IN VISION AND VALUES",
+    quote:
+      "It's been a joy working with 100B. The direction and vision of 100B deeply aligns with Hexagon's values. We're excited for this partnership and the connections it brings.",
+    name: "Thang Luu",
+    title: "CO-FOUNDER",
+    company: "HEXAGON",
+    credential: "Top interior firm with 4 factories and 5,000+ completed projects",
+    photo: hexagonPhoto.src,
+  },
+  {
+    headline: "STEPPING ONTO THE GLOBAL STAGE",
+    quote:
+      "Born from the love of two fathers, Kalotoys has touched the hearts of millions of children and parents around the world. With 100B as a launchpad, we hope Kalotoys—and millions of other Vietnamese brands—can win the trust of global customers.",
+    name: "Thanh Dong",
+    title: "CO-FOUNDER",
+    company: "KALOTOYS",
+    credential: "Rising toy brand, 8,000+ orders/day, 98% export revenue",
+    photo: kalotoysPhoto.src,
+  },
+  {
+    headline: "AN INSPIRING & IMPACTFUL MISSION",
+    quote:
+      "Congratulations to 100B on such an inspiring and impactful mission for Vietnam's economic future.",
+    name: "Nguyen Thi Huong Lien",
+    title: "CO-FOUNDER",
+    company: "SAO THÁI DƯƠNG",
+    credential: "Herbal care pioneer, 240M+ products sold worldwide",
     photo: saoThaiDuongPhoto.src,
   },
 ];
@@ -135,25 +154,25 @@ export const partnerTestimonials: Testimonial[] = [
   {
     quote: "100B plays that bridge. What you're doing is brilliant.",
     name: "Mark Duval",
-    company: "Greater Austin Asian Chamber of Commerce",
-    credential: "CEO",
+    title: "CEO",
+    company: "GREATER AUSTIN ASIAN CHAMBER OF COMMERCE",
+    credential: "Former President of AmCham China",
     photo: markDuvalPhoto.src,
     photoPosition: "30% center",
   },
   {
-    quote:
-      "100B can guide companies to not fail, to shorten the learning curve.",
+    quote: "100B can guide companies to not fail, to shorten the learning curve.",
     name: "Hector Quintanar",
-    company: "Trade Management Solutions",
-    credential: "",
+    company: "TRADE MANAGEMENT SOLUTIONS",
+    credential: "Cross-border trade advisory",
     photo: hectorPhoto.src,
   },
   {
     quote:
       "The connections we made were outstanding. 100B is very well positioned to help.",
     name: "Ahmed Moledina",
-    company: "SOAL Technologies",
-    credential: "",
+    company: "SOAL TECHNOLOGIES",
+    credential: "Access Vietnam 2026 delegate",
     photo: ahmedPhoto.src,
   },
 ];
@@ -171,8 +190,9 @@ export const delegateTestimonials: Testimonial[] = [
     quote:
       "Start with business development to find customers, then co-production, then full US production.",
     name: "Michael Nguyen",
+    title: "MANAGING DIRECTOR",
     company: "Boeing Vietnam",
-    credential: "Managing Director",
+    credential: "",
     photo: null,
   },
   {
@@ -191,6 +211,8 @@ export type Company = {
   detail?: string;
   links: { label: string; href: string; external?: boolean }[];
   accent: string; // brand colour used on Ecosystem cards
+  /** Drop a logo file in here and the orbit node uses it instead of the wordmark. */
+  logo?: string | null;
 };
 
 export const companies: Company[] = [
