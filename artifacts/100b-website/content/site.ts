@@ -153,29 +153,33 @@ export const founderTestimonials: Testimonial[] = [
 export const partnerTestimonials: Testimonial[] = [
   {
     headline: "WHAT YOU'RE DOING IS BRILLIANT",
-    quote: "100B plays that bridge. What you're doing is brilliant.",
+    quote:
+      "100B plays that bridge — helping Americans understand Vietnam and Vietnamese entrepreneurs penetrate the U.S. market. What you're doing is brilliant.",
     name: "Mark Duval",
     title: "CEO",
     company: "GREATER AUSTIN ASIAN CHAMBER OF COMMERCE",
-    credential: "Former President of AmCham China",
+    credential: "",
     photo: markDuvalPhoto.src,
     photoPosition: "30% center",
   },
   {
-    headline: "THEY SHORTEN THE LEARNING CURVE",
-    quote: "100B can guide companies to not fail, to shorten the learning curve.",
+    headline: "THAT IS AN AWESOME JOB",
+    quote:
+      "100B can really guide companies to not fail — to shorten the learning curve. That is an awesome job.",
     name: "Hector Quintanar",
+    title: "MANAGING PARTNER",
     company: "TRADE MANAGEMENT SOLUTIONS",
-    credential: "Cross-border trade advisory",
+    credential: "",
     photo: hectorPhoto.src,
   },
   {
     headline: "THE CONNECTIONS WERE OUTSTANDING",
     quote:
-      "The connections we made were outstanding. 100B is very well positioned to help.",
+      "The trip was fantastic — the connections we made were outstanding. 100B is very well positioned to help.",
     name: "Ahmed Moledina",
+    title: "PRESIDENT & CEO",
     company: "SOAL TECHNOLOGIES",
-    credential: "Access Vietnam 2026 delegate",
+    credential: "",
     photo: ahmedPhoto.src,
   },
 ];
