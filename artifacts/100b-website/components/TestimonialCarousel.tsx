@@ -98,7 +98,7 @@ export function TestimonialCarousel({
                   <span className="font-bold">{slide.company}</span>
                 </span>
                 {slide.credential && (
-                  <span className="text-xs text-text-muted italic mt-1">
+                  <span className="text-xs text-text-body italic mt-1">
                     {slide.credential}
                   </span>
                 )}

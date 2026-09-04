@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Globe, DoorOpen, Container, Layers } from "lucide-react";
 import { Accent, ArrowLink, Eyebrow, SectionTitle, Lead } from "@/components/Section";
+import { IconCard } from "@/components/IconCard";
 import { TheName } from "@/components/TheName";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { PhotoTile } from "@/components/PhotoTile";
@@ -142,27 +143,19 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {doors.map((door) => (
-              <div
+              <IconCard
                 key={door.title}
-                className="group relative bg-bg-card rounded-3xl px-6 py-8 lg:px-6 lg:py-9 border border-border-subtle hover:border-brand-gold/50 transition-colors flex flex-col items-center text-center gap-5 min-h-[320px]"
+                icon={door.icon}
+                title={door.title}
+                className="min-h-[320px]"
+                footer={door.links.map((l) => (
+                  <ArrowLink key={l.href} href={l.href}>
+                    {l.label}
+                  </ArrowLink>
+                ))}
               >
-                <div className="icon-sphere w-16 h-16 lg:w-[72px] lg:h-[72px] mb-1">
-                  <door.icon size={26} strokeWidth={1.5} className="text-white/90" />
-                </div>
-                <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading leading-snug">
-                  {door.title}
-                </h3>
-                <p className="font-sans font-light text-sm lg:text-base text-text-muted leading-relaxed">
-                  {door.line}
-                </p>
-                <div className="mt-auto pt-5 flex flex-wrap justify-center gap-x-5 gap-y-2">
-                  {door.links.map((l) => (
-                    <ArrowLink key={l.href} href={l.href}>
-                      {l.label}
-                    </ArrowLink>
-                  ))}
-                </div>
-              </div>
+                {door.line}
+              </IconCard>
             ))}
           </div>
         </div>
@@ -246,10 +239,10 @@ export default function HomePage() {
       </section>
 
       {/* 1.7 FOUNDING TEAM */}
-      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
+      <section className="py-16 lg:py-20 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <Eyebrow>Founding Team</Eyebrow>
-          <SectionTitle className="mb-12 lg:mb-16">
+          <SectionTitle className="mb-10 lg:mb-12">
             Three founders. <Accent>Both sides.</Accent>
           </SectionTitle>
           <Founders variant="short" />

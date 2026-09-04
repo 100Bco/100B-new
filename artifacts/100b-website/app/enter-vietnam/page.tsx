@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Landmark, Factory, Banknote, Users } from "lucide-react";
 import {
   Accent,
   ArrowLink,
@@ -9,6 +10,7 @@ import {
 } from "@/components/Section";
 import { StatGrid, type Stat } from "@/components/StatGrid";
 import { PhotoTile } from "@/components/PhotoTile";
+import { IconCard } from "@/components/IconCard";
 import { programs } from "@/content/site";
 import { TestimonialWall } from "@/components/TestimonialWall";
 import { ContactCTA } from "@/components/ContactCTA";
@@ -31,10 +33,22 @@ const vietnamStats: Stat[] = [
 ];
 
 const whatWeBuild = [
-  { title: "Government.", line: "Ministries, city governments, national agencies." },
-  { title: "Industry.", line: "The companies actually operating, at their own facilities." },
-  { title: "Capital.", line: "The funds writing checks in Vietnam." },
-  { title: "Founders.", line: "The people building, in the room, not on a panel." },
+  {
+    icon: Landmark,
+    title: "Government.",
+    line: "Ministries, city governments, national agencies.",
+  },
+  {
+    icon: Factory,
+    title: "Industry.",
+    line: "The companies actually operating, at their own facilities.",
+  },
+  { icon: Banknote, title: "Capital.", line: "The funds writing checks in Vietnam." },
+  {
+    icon: Users,
+    title: "Founders.",
+    line: "The people building, in the room, not on a panel.",
+  },
 ];
 
 const whoWeMet = [
@@ -113,19 +127,15 @@ export default function EnterVietnamPage() {
           </SectionTitle>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
-            {whatWeBuild.map((item, i) => (
-              <div
+            {whatWeBuild.map((item) => (
+              <IconCard
                 key={item.title}
-                className="bg-bg-card rounded-3xl p-7 lg:p-8 border border-border-subtle flex flex-col gap-4"
+                icon={item.icon}
+                title={item.title}
+                className="min-h-[260px]"
               >
-                <span className="text-[40px] font-display text-gradient-gold leading-none font-medium">
-                  0{i + 1}
-                </span>
-                <h3 className="font-serif text-2xl lg:text-3xl text-text-heading">{item.title}</h3>
-                <p className="text-sm lg:text-base font-light leading-relaxed text-text-body">
-                  {item.line}
-                </p>
-              </div>
+                {item.line}
+              </IconCard>
             ))}
           </div>
 

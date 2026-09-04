@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Rocket, Factory, Ship, Handshake } from "lucide-react";
 import { Accent, Eyebrow, Lead, PrimaryButton, SectionTitle } from "@/components/Section";
+import { IconCard } from "@/components/IconCard";
 import { ContactCTA } from "@/components/ContactCTA";
 import { CONTACT_EMAIL, communities } from "@/content/site";
 
@@ -9,6 +11,9 @@ export const metadata: Metadata = {
     "We build rooms, not lists. Four networks, vetted by introduction: founders, factory owners, trade professionals, sellers and partners.",
   alternates: { canonical: "/communities" },
 };
+
+// One icon per network, in the order they are listed in content/site.ts
+const networkIcons = [Rocket, Factory, Ship, Handshake];
 
 const applyHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Seller network application")}`;
 
@@ -37,18 +42,14 @@ export default function CommunitiesPage() {
           <Eyebrow>The Four</Eyebrow>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-10">
             {communities.map((c, i) => (
-              <div
+              <IconCard
                 key={c.name}
-                className="relative bg-bg-card rounded-3xl p-7 lg:p-8 border border-border-subtle hover:border-brand-gold/40 transition-colors flex flex-col gap-5 min-h-[240px]"
+                icon={networkIcons[i]}
+                title={c.name}
+                className="min-h-[260px]"
               >
-                <span className="text-[40px] font-display text-gradient-gold leading-none font-medium">
-                  0{i + 1}
-                </span>
-                <h3 className="font-serif text-2xl text-text-heading leading-tight">{c.name}</h3>
-                <p className="text-sm lg:text-base font-light leading-relaxed text-text-body mt-auto">
-                  {c.line}
-                </p>
-              </div>
+                {c.line}
+              </IconCard>
             ))}
           </div>
         </div>

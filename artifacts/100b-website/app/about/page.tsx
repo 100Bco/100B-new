@@ -99,7 +99,7 @@ export default function AboutPage() {
                     </>
                   )}
                 </p>
-                <p className="font-serif italic text-lg lg:text-xl text-text-muted leading-snug">
+                <p className="font-serif italic text-lg lg:text-xl text-text-body leading-snug">
                   {item.vi}
                   {item.viSub && (
                     <>

@@ -35,7 +35,7 @@ export function ContactCTA({
             {meta}
           </p>
         )}
-        <p className="text-sm text-text-muted font-light leading-relaxed">{note}</p>
+        <p className="text-sm text-text-body font-light leading-relaxed">{note}</p>
         <a
           href={`mailto:${CONTACT_EMAIL}`}
           className="btn-silver-gradient rounded-full px-10 py-4 text-sm uppercase tracking-widest font-semibold inline-block"

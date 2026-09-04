@@ -78,7 +78,7 @@ export function PressCarousel() {
                   <h3 className="font-display text-gradient-gold uppercase leading-[1.15] text-base lg:text-lg mb-2 line-clamp-2">
                     {item.headline}
                   </h3>
-                  <p className="text-[13px] text-text-muted leading-relaxed mb-3 line-clamp-2">
+                  <p className="text-[13px] font-light text-text-body leading-relaxed mb-3 line-clamp-2">
                     {item.description}
                   </p>
                   <a

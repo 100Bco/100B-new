@@ -37,7 +37,7 @@ export function PressStrip({ limit = 3 }: { limit?: number }) {
             <h3 className="font-serif text-xl lg:text-[22px] leading-snug text-text-heading">
               {item.headline}
             </h3>
-            <span className="mt-auto pt-2 text-[11px] uppercase tracking-[0.2em] font-bold text-text-muted group-hover:text-brand-gold transition-colors">
+            <span className="mt-auto pt-2 text-[11px] uppercase tracking-[0.2em] font-bold text-text-body group-hover:text-brand-gold transition-colors">
               Read <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
             </span>
           </div>

@@ -141,7 +141,7 @@ export default function ContainerClubPage() {
                 <span className="font-display text-6xl lg:text-7xl leading-none text-white/25 blur-[2px] select-none">
                   ??%
                 </span>
-                <span className="text-sm font-light text-text-muted">
+                <span className="text-sm font-light text-text-body">
                   Hidden margin. Their incentive is to widen the spread.
                 </span>
               </div>
@@ -167,7 +167,7 @@ export default function ContainerClubPage() {
             </div>
           </div>
 
-          <p className="text-sm font-light text-text-muted">
+          <p className="text-sm font-light text-text-body">
             Sourcing trips are priced per trip, by approved application.
           </p>
         </div>
@@ -234,7 +234,7 @@ export default function ContainerClubPage() {
                 development partners, architects who spec.
               </p>
               <p>Hosted with LT Commercial Group.</p>
-              <p className="text-sm text-text-muted">
+              <p className="text-sm font-light text-text-body">
                 ASTM, LEED, ISO, FSC certified. Suppliers to California's tallest building and
                 US Marriott properties.
               </p>
