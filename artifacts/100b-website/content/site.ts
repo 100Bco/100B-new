@@ -152,6 +152,7 @@ export const founderTestimonials: Testimonial[] = [
 
 export const partnerTestimonials: Testimonial[] = [
   {
+    headline: "WHAT YOU'RE DOING IS BRILLIANT",
     quote: "100B plays that bridge. What you're doing is brilliant.",
     name: "Mark Duval",
     title: "CEO",
@@ -161,6 +162,7 @@ export const partnerTestimonials: Testimonial[] = [
     photoPosition: "30% center",
   },
   {
+    headline: "THEY SHORTEN THE LEARNING CURVE",
     quote: "100B can guide companies to not fail, to shorten the learning curve.",
     name: "Hector Quintanar",
     company: "TRADE MANAGEMENT SOLUTIONS",
@@ -168,6 +170,7 @@ export const partnerTestimonials: Testimonial[] = [
     photo: hectorPhoto.src,
   },
   {
+    headline: "THE CONNECTIONS WERE OUTSTANDING",
     quote:
       "The connections we made were outstanding. 100B is very well positioned to help.",
     name: "Ahmed Moledina",

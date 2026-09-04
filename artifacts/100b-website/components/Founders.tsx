@@ -11,10 +11,10 @@ function initials(name: string) {
 /** Three founders on near-black. Portrait, name, title, one paragraph. */
 export function Founders({ variant = "short" }: { variant?: "short" | "long" }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
       {founders.map((f) => (
         <div key={f.name} className="flex flex-col items-center text-center gap-4">
-          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-[#0A0A0A]">
+          <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/10 bg-[#0A0A0A]">
             {f.photo ? (
               <>
                 <img

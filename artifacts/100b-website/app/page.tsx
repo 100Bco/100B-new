@@ -33,7 +33,7 @@ const doors = [
   },
   {
     icon: DoorOpen,
-    title: "A company, fund, or organization coming into Vietnam.",
+    title: "A fund or company entering Vietnam.",
     line: "We open the rooms. Government, industry, capital.",
     links: [{ label: "Enter Vietnam", href: "/enter-vietnam" }],
   },
@@ -47,10 +47,7 @@ const doors = [
     icon: Layers,
     title: "Under $20M, or you want to sell with us.",
     line: "Our companies work at every size.",
-    links: [
-      { label: "Ecosystem", href: "/ecosystem" },
-      { label: "Communities", href: "/communities" },
-    ],
+    links: [{ label: "Ecosystem", href: "/ecosystem" }],
   },
 ];
 
@@ -200,23 +197,29 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {programs.map((p, i) => (
               <div key={p.name} className="flex flex-col items-center text-center gap-6">
-                <PhotoTile
-                  src={p.image}
-                  alt={p.name}
-                  aspect="aspect-[3/2]"
-                  position="center 62%"
-                  tone={i === 0 ? "warm" : "cool"}
-                  label={`${p.when} · ${p.where}`}
-                  caption={p.name}
-                />
+                <a
+                  href={p.site}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block w-full"
+                  aria-label={`${p.name} — open the event site`}
+                >
+                  <PhotoTile
+                    src={p.image}
+                    alt={p.name}
+                    aspect="aspect-[3/2]"
+                    position="center 62%"
+                    tone={i === 0 ? "warm" : "cool"}
+                    label={`${p.when} · ${p.where}`}
+                    caption={p.name}
+                    className="transition-transform duration-500 group-hover:scale-[1.01] group-hover:border-brand-gold/50"
+                  />
+                </a>
                 <p className="text-sm lg:text-base font-light leading-relaxed text-text-body">
                   {p.line}
                 </p>
                 <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
                   <ArrowLink href={p.href}>{p.cta}</ArrowLink>
-                  <ArrowLink href={p.site} external>
-                    Event site
-                  </ArrowLink>
                 </div>
               </div>
             ))}
