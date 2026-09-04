@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {
   Accent,
   ArrowLink,
-  Eyebrow,
   Lead,
   PrimaryButton,
   SectionTitle,
@@ -81,7 +80,7 @@ export default function ContainerClubPage() {
   return (
     <div className="flex flex-col">
       {/* 4.1 HERO */}
-      <section className="relative bg-bg-dark pt-32 pb-20 lg:pt-48 lg:pb-28 border-b border-border-subtle overflow-hidden">
+      <section className="relative bg-bg-dark py-32 lg:py-40 border-b border-border-subtle overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none opacity-20"
           style={{
@@ -90,10 +89,7 @@ export default function ContainerClubPage() {
             backgroundSize: "100px 100px",
           }}
         />
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-start gap-8">
-          <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-            Container Club · Sourcing, factories, and the trade network
-          </p>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center text-center gap-8">
           <h1 className="text-[44px] md:text-6xl lg:text-[84px] font-serif leading-[0.9] tracking-tight max-w-6xl">
             <span className="block">Buy from the factory.</span>
             <span className="block">
@@ -115,7 +111,6 @@ export default function ContainerClubPage() {
       {/* 4.2 THE MODEL */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>The Model</Eyebrow>
           <SectionTitle className="mb-6">
             3% to 5% <Accent>commission.</Accent>
           </SectionTitle>
@@ -126,7 +121,7 @@ export default function ContainerClubPage() {
 
           {/* Side by side: hidden spread vs visible commission */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12">
-            <div className="bg-bg-card/60 rounded-3xl p-8 lg:p-10 border border-dashed border-white/15 flex flex-col gap-8">
+            <div className="bg-bg-card/60 rounded-3xl p-8 lg:p-10 border border-dashed border-white/15 flex flex-col items-center text-center gap-8">
               <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-text-muted">
                 Distributor path
               </span>
@@ -146,7 +141,7 @@ export default function ContainerClubPage() {
                 </span>
               </div>
             </div>
-            <div className="bg-bg-card rounded-3xl p-8 lg:p-10 border border-brand-gold/40 flex flex-col gap-8">
+            <div className="bg-bg-card rounded-3xl p-8 lg:p-10 border border-brand-gold/40 flex flex-col items-center text-center gap-8">
               <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
                 Direct path
               </span>
@@ -176,7 +171,6 @@ export default function ContainerClubPage() {
       {/* 4.3 THE OPPORTUNITY */}
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>The Opportunity</Eyebrow>
           <SectionTitle className="mb-6 max-w-4xl">
             Materials are the one cost <Accent>you can control.</Accent>
           </SectionTitle>
@@ -192,12 +186,11 @@ export default function ContainerClubPage() {
       {/* 4.4 WHAT WE DO */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>What We Do</Eyebrow>
           <div className="relative mt-10">
             <div className="hidden lg:block absolute top-[26px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent" />
             <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 relative">
               {whatWeDo.map((item, i) => (
-                <li key={item.title} className="flex flex-col gap-4">
+                <li key={item.title} className="flex flex-col items-center text-center gap-4">
                   <div className="w-[52px] h-[52px] rounded-full bg-bg-dark border border-brand-gold/40 flex items-center justify-center">
                     <span className="font-display text-gradient-gold text-lg leading-none">
                       0{i + 1}
@@ -221,7 +214,6 @@ export default function ContainerClubPage() {
       {/* 4.5 VIETNAM DIRECT 2026 */}
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Vietnam Direct 2026</Eyebrow>
           <SectionTitle className="mb-10">
             What it <Accent>looked like.</Accent>
           </SectionTitle>
@@ -316,7 +308,6 @@ export default function ContainerClubPage() {
       {/* 4.6 THE MODEL REPEATS */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>The Model Repeats</Eyebrow>
           <SectionTitle className="mb-12 lg:mb-16 max-w-4xl">
             Vietnam. Construction materials. Texas buyers.{" "}
             <Accent>That was the first one.</Accent>
@@ -334,7 +325,7 @@ export default function ContainerClubPage() {
       </section>
 
       {/* 4.7 SPECMATE */}
-      <section className="py-16 lg:py-20 bg-bg-dark border-b border-border-subtle">
+      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="relative bg-bg-card rounded-3xl p-8 lg:p-12 border border-border-subtle grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8 lg:gap-16 items-center">
             <span className="absolute top-0 left-0 w-1.5 h-full bg-brand-gold rounded-l-3xl" />
@@ -352,29 +343,30 @@ export default function ContainerClubPage() {
 
       {/* 4.8 THE NETWORK */}
       <section className="py-20 lg:py-28 bg-bg-alt">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          <div>
-            <Eyebrow>The Network</Eyebrow>
-            <SectionTitle className="mb-8">
-              The people who make trade work <Accent>deserve a room of their own.</Accent>
-            </SectionTitle>
-            <p className="text-base lg:text-lg font-light leading-relaxed text-text-body mb-8">
-              <strong className="font-semibold text-text-heading">Vetted, not listed.</strong>{" "}
-              Introduced by someone already in. No cold applications.
-            </p>
-            <ArrowLink href="/communities">Communities</ArrowLink>
-          </div>
-          <ul className="flex flex-col border-t border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
+          <SectionTitle className="mb-6">
+            The people who make trade work <Accent>deserve a room of their own.</Accent>
+          </SectionTitle>
+          <Lead className="mb-12">
+            <strong className="font-semibold text-text-heading">Vetted, not listed.</strong>{" "}
+            Introduced by someone already in. No cold applications.
+          </Lead>
+
+          <ul className="w-full max-w-3xl grid grid-cols-1 sm:grid-cols-2 gap-x-10 border-t border-border-subtle">
             {network.map((item) => (
               <li
                 key={item}
-                className="py-5 border-b border-border-subtle flex items-center gap-4 font-serif text-xl lg:text-2xl text-text-heading"
+                className="py-5 border-b border-border-subtle flex items-center gap-4 font-sans text-base lg:text-lg font-light text-text-body"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shadow-[0_0_8px_rgba(195,163,116,0.8)]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shadow-[0_0_8px_rgba(195,163,116,0.8)] shrink-0" />
                 {item}
               </li>
             ))}
           </ul>
+
+          <div className="mt-12">
+            <ArrowLink href="/communities">Communities</ArrowLink>
+          </div>
         </div>
       </section>
 

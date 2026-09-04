@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Globe, DoorOpen, Container, Layers } from "lucide-react";
-import { Accent, ArrowLink, Eyebrow, SectionTitle, Lead } from "@/components/Section";
+import { Accent, ArrowLink, SectionTitle, Lead } from "@/components/Section";
 import { IconCard } from "@/components/IconCard";
 import { TheName } from "@/components/TheName";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
@@ -93,12 +93,7 @@ export default function HomePage() {
           aria-hidden
         />
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-start gap-7 pt-24 lg:pt-28">
-          <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-semibold text-brand-gold">
-            <span className="w-10 h-px bg-brand-gold/60" />
-            <span>Vietnam ⇄ The World</span>
-          </div>
-
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-center text-center gap-7 pt-24 lg:pt-28">
           <h1 className="text-[44px] md:text-7xl lg:text-[96px] font-serif leading-[0.9] tracking-tight max-w-6xl">
             <span className="block">Vietnamese brands go out.</span>
             <span className="block">
@@ -125,7 +120,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="mt-4 pt-6 border-t border-white/10 w-full flex flex-wrap items-baseline gap-x-8 gap-y-3 text-[10px] uppercase tracking-[0.25em] text-text-muted">
+          <div className="mt-4 pt-6 border-t border-white/10 w-full flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[10px] uppercase tracking-[0.25em] text-text-muted">
             <span>Austin · Hanoi · Ho Chi Minh City</span>
             <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
             <span>Five companies · One corridor</span>
@@ -136,7 +131,6 @@ export default function HomePage() {
       {/* 1.2 FOUR DOORS */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Four Doors</Eyebrow>
           <SectionTitle className="mb-12 lg:mb-16">
             Four ways in. <Accent>Pick yours.</Accent>
           </SectionTitle>
@@ -167,24 +161,22 @@ export default function HomePage() {
       {/* 1.4 ECOSYSTEM — 100B at the centre, the five companies in orbit */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Ecosystem</Eyebrow>
           <SectionTitle className="mb-12 lg:mb-16">
             Five companies. <Accent>One corridor.</Accent>
           </SectionTitle>
 
           <EcosystemOrbit />
 
-          <div className="mt-14 lg:mt-16 pt-8 border-t border-border-subtle">
+          <div className="mt-14 lg:mt-16 pt-8 border-t border-border-subtle flex justify-center">
             <ArrowLink href="/ecosystem">All five companies</ArrowLink>
           </div>
         </div>
       </section>
 
       {/* 1.5 PROOF — one voice at a time, as on the previous site */}
-      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-alt border-b border-border-subtle overflow-hidden pt-28 pb-16 lg:pt-32 lg:pb-20">
+      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-alt border-b border-border-subtle overflow-hidden py-28 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
           <div className="shrink-0">
-            <Eyebrow>Proof</Eyebrow>
             <SectionTitle className="mb-8 lg:mb-10">
               What our <Accent>clients say.</Accent>
             </SectionTitle>
@@ -201,14 +193,13 @@ export default function HomePage() {
       {/* 1.6 WHAT WE'VE RUN */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>What We've Run</Eyebrow>
           <SectionTitle className="mb-12 lg:mb-16">
             Two programs. <Accent>Mid-2026.</Accent>
           </SectionTitle>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {programs.map((p, i) => (
-              <div key={p.name} className="flex flex-col gap-6">
+              <div key={p.name} className="flex flex-col items-center text-center gap-6">
                 <PhotoTile
                   src={p.image}
                   alt={p.name}
@@ -221,7 +212,7 @@ export default function HomePage() {
                 <p className="text-sm lg:text-base font-light leading-relaxed text-text-body">
                   {p.line}
                 </p>
-                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
                   <ArrowLink href={p.href}>{p.cta}</ArrowLink>
                   <ArrowLink href={p.site} external>
                     Event site
@@ -231,7 +222,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <p className="mt-14 font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-4xl">
+          <p className="mt-14 font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-4xl mx-auto text-center">
             Both are repeatable. Different countries, different industries,{" "}
             <em className="italic text-gradient-gold">different buyers.</em>
           </p>
@@ -239,9 +230,8 @@ export default function HomePage() {
       </section>
 
       {/* 1.7 FOUNDING TEAM */}
-      <section className="py-16 lg:py-20 bg-bg-dark border-b border-border-subtle">
+      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Eyebrow>Founding Team</Eyebrow>
           <SectionTitle className="mb-10 lg:mb-12">
             Three founders. <Accent>Both sides.</Accent>
           </SectionTitle>
@@ -250,32 +240,27 @@ export default function HomePage() {
       </section>
 
       {/* 1.8 COMMUNITIES */}
-      <section className="py-20 lg:py-24 bg-bg-alt border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div>
-            <Eyebrow>Communities</Eyebrow>
-            <SectionTitle>
-              We build rooms, <Accent>not lists.</Accent>
-            </SectionTitle>
-          </div>
-          <div className="flex flex-col gap-6">
-            <ul className="flex flex-wrap gap-x-3 gap-y-3">
-              {communities.map((c) => (
-                <li
-                  key={c.name}
-                  className="text-[11px] uppercase tracking-[0.15em] px-4 py-2 border border-white/20 text-white font-medium rounded-full"
-                >
-                  {c.name}
-                </li>
-              ))}
-            </ul>
-            <ArrowLink href="/communities">Communities</ArrowLink>
-          </div>
+      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
+          <SectionTitle className="mb-10">
+            We build rooms, <Accent>not lists.</Accent>
+          </SectionTitle>
+          <ul className="flex flex-wrap justify-center gap-3 mb-10">
+            {communities.map((c) => (
+              <li
+                key={c.name}
+                className="text-[11px] uppercase tracking-[0.15em] px-4 py-2 border border-white/20 text-white font-medium rounded-full"
+              >
+                {c.name}
+              </li>
+            ))}
+          </ul>
+          <ArrowLink href="/communities">Communities</ArrowLink>
         </div>
       </section>
 
       {/* 1.9 PRESS — carousel, as on the previous site */}
-      <section className="py-20 lg:py-24 bg-bg-dark">
+      <section className="py-20 lg:py-28 bg-bg-dark">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionTitle className="text-center mb-10 lg:mb-12">
             In the <Accent>press.</Accent>

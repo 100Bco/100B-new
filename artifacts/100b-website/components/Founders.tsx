@@ -13,8 +13,8 @@ export function Founders({ variant = "short" }: { variant?: "short" | "long" }) 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl">
       {founders.map((f) => (
-        <div key={f.name} className="flex flex-col gap-4">
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-[#0A0A0A]">
+        <div key={f.name} className="flex flex-col items-center text-center gap-4">
+          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-[#0A0A0A]">
             {f.photo ? (
               <>
                 <img
@@ -48,7 +48,7 @@ export function Founders({ variant = "short" }: { variant?: "short" | "long" }) 
               </div>
             )}
           </div>
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col items-center gap-1.5">
             <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading leading-tight">
               {f.name}
             </h3>
