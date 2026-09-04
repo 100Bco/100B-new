@@ -34,6 +34,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-bg-dark text-text-body font-sans antialiased
            selection:bg-brand-gold/30 selection:text-text-heading;
