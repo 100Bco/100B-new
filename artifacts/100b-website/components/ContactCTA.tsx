@@ -19,7 +19,7 @@ export function ContactCTA({
   return (
     <section
       id="contact-footer"
-      className="relative py-24 lg:py-32 border-t border-border-subtle overflow-hidden"
+      className="relative py-28 lg:py-44 border-t border-border-subtle overflow-hidden"
       style={{ backgroundColor: "#1A1917" }}
     >
       {/* Grey ground, lit from the left so the watermark has somewhere to sit */}
@@ -37,7 +37,7 @@ export function ContactCTA({
         <img
           src={pattern.src}
           alt=""
-          className="absolute -right-[6%] bottom-[-14%] w-[420px] md:w-[560px] lg:w-[720px] max-w-none opacity-[0.10] select-none"
+          className="absolute right-0 bottom-0 w-[260px] md:w-[380px] lg:w-[480px] max-w-none opacity-[0.13] select-none"
         />
       </div>
 
