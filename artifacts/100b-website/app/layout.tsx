@@ -138,6 +138,11 @@ export default function RootLayout({
           strategy="afterInteractive"
           type="module"
         />
+        <Script
+          src="https://fast.wistia.com/embed/im4oab6ppu.js"
+          strategy="afterInteractive"
+          type="module"
+        />
 
         {/* Organization structured data for search engines / AI crawlers */}
         <Script
