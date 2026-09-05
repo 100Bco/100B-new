@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { X } from "lucide-react";
+import { Building2, DoorOpen, Handshake, X } from "lucide-react";
 import {
   Accent,
   ArrowLink,
@@ -7,9 +7,17 @@ import {
   PrimaryButton,
   SectionTitle,
 } from "@/components/Section";
-import { TestimonialWall } from "@/components/TestimonialWall";
+import { IconCard } from "@/components/IconCard";
+import { PageHero } from "@/components/PageHero";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
 import { founderTestimonials } from "@/content/site";
+import heroImage from "@assets/go-global-banner-clean.png";
+import logoZad from "@assets/logo-zad-mono.png";
+import logoBond from "@assets/logo-bond-mono.png";
+import logo100bold from "@assets/logo-100bold-mono.png";
+import logoContainerClub from "@assets/logo-container-club-mono.png";
+import logo100bDark from "@assets/logo-100b-dark.png";
 
 export const metadata: Metadata = {
   title: "Go Global",
@@ -27,43 +35,55 @@ const problems = [
 
 const whatWeDo = [
   {
+    icon: Building2,
     title: "We build the US company.",
     line: "Entity, brand, positioning, go-to-market. Built for an American buyer, not translated from a Vietnamese one.",
   },
   {
+    icon: DoorOpen,
     title: "We open the rooms.",
     line: "Distribution, retail, capital, chambers.",
   },
   {
+    icon: Handshake,
     title: "We stay in it.",
     line: "Board seat, operating input, and a call when it breaks.",
   },
 ];
 
 const path = [
-  { name: "ZAD", step: "Identity" },
-  { name: "BOND", step: "Packaging" },
-  { name: "100Bold", step: "US marketing" },
-  { name: "Container Club", step: "Export" },
-  { name: "100B", step: "The US entity" },
+  { name: "ZAD", step: "Identity", logo: logoZad.src },
+  { name: "BOND", step: "Packaging", logo: logoBond.src },
+  { name: "100Bold", step: "US marketing", logo: logo100bold.src },
+  { name: "Container Club", step: "Export", logo: logoContainerClub.src },
+  { name: "100B", step: "The US entity", logo: logo100bDark.src },
 ];
 
 export default function GoGlobalPage() {
   return (
     <div className="flex flex-col">
       {/* 2.1 HERO */}
-      <section className="relative bg-bg-dark py-32 lg:py-40 border-b border-border-subtle overflow-hidden glow-warm-top">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center text-center gap-8">
-          <h1 className="text-[44px] md:text-6xl lg:text-[84px] font-serif leading-[0.9] tracking-tight max-w-6xl">
+      <PageHero
+        image={heroImage.src}
+        imagePosition="center 58%"
+        title={
+          <>
             <span className="block">You built the brand in Vietnam.</span>
             <span className="block">
-              <em className="font-serif italic text-gradient-gold">America is a different job.</em>
+              <Accent>America is a different job.</Accent>
             </span>
-          </h1>
-          <Lead>We build the US entity with you and take equity in it.</Lead>
-          <PrimaryButton>Start a Conversation</PrimaryButton>
-        </div>
-      </section>
+          </>
+        }
+        lead="We build the US entity with you and take equity in it."
+        actions={<PrimaryButton>Start a Conversation</PrimaryButton>}
+        meta={
+          <>
+            <span>Vietnamese brands at $20M-$100M</span>
+            <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
+            <span>Equity, 3-20% · No referral fees</span>
+          </>
+        }
+      />
 
       {/* 2.2 THE PROBLEM */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
@@ -92,22 +112,16 @@ export default function GoGlobalPage() {
       {/* 2.3 WHAT WE DO */}
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-10">
-            {whatWeDo.map((item, i) => (
-              <div
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+            {whatWeDo.map((item) => (
+              <IconCard
                 key={item.title}
-                className="relative bg-bg-card rounded-3xl p-8 lg:p-10 border border-border-subtle flex flex-col items-center text-center gap-5"
+                icon={item.icon}
+                title={item.title}
+                className="min-h-[300px]"
               >
-                <span className="text-[40px] font-display text-gradient-gold leading-none font-medium">
-                  0{i + 1}
-                </span>
-                <h3 className="font-serif text-2xl lg:text-3xl text-text-heading leading-tight">
-                  {item.title}
-                </h3>
-                <p className="text-sm lg:text-base font-light leading-relaxed text-text-body">
-                  {item.line}
-                </p>
-              </div>
+                {item.line}
+              </IconCard>
             ))}
           </div>
         </div>
@@ -181,43 +195,47 @@ export default function GoGlobalPage() {
               {path.map((node, i) => (
                 <li key={node.name} className="flex lg:flex-col items-center gap-5 lg:gap-4 lg:text-center">
                   <div
-                    className={`w-24 h-24 rounded-full flex items-center justify-center shrink-0 text-center ${
+                    className={`w-24 h-24 rounded-full flex items-center justify-center shrink-0 px-4 ${
                       i === path.length - 1
-                        ? "bg-brand-gold text-bg-dark shadow-[0_0_30px_rgba(195,163,116,0.35)]"
+                        ? "bg-brand-gold shadow-[0_0_30px_rgba(195,163,116,0.35)]"
                         : "bg-bg-dark border border-brand-gold/40"
                     }`}
                   >
-                    <span
-                      className={`font-display px-2 ${
-                        node.name.length > 6 ? "text-[13px] leading-[1.1]" : "text-xl leading-none"
-                      } ${i === path.length - 1 ? "text-bg-dark" : "text-gradient-gold"}`}
-                    >
-                      {node.name}
-                    </span>
+                    <img
+                      src={node.logo}
+                      alt={node.name}
+                      className="max-w-[74%] max-h-[38%] w-auto h-auto object-contain"
+                    />
                   </div>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col gap-1.5">
                     <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-text-muted">
                       Step {i + 1}
                     </span>
-                    <span className="font-serif text-xl text-text-heading">{node.step}</span>
+                    <span className="font-sans font-bold text-lg lg:text-xl text-text-heading leading-snug">
+                      {node.step}
+                    </span>
                   </div>
                 </li>
               ))}
             </ol>
           </div>
-          <p className="text-[11px] uppercase tracking-[0.25em] font-semibold text-text-muted">
+          <p className="text-[11px] uppercase tracking-[0.25em] font-semibold text-text-muted text-center">
             Every contract separate. Every vendor optional.
           </p>
         </div>
       </section>
 
-      {/* 2.7 PROOF */}
-      <section className="py-20 lg:py-28 bg-bg-dark">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionTitle className="mb-12 lg:mb-16">
-            What Vietnamese founders <Accent>say.</Accent>
-          </SectionTitle>
-          <TestimonialWall rows={[{ label: "Vietnamese founders", items: founderTestimonials }]} />
+      {/* 2.7 PROOF — one voice at a time, as on the homepage */}
+      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-dark overflow-hidden py-28 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
+          <div className="shrink-0">
+            <SectionTitle className="mb-8 lg:mb-10">
+              What Vietnamese founders <Accent>say.</Accent>
+            </SectionTitle>
+          </div>
+          <TestimonialCarousel
+            groups={[{ label: "Vietnamese founders", items: founderTestimonials }]}
+          />
         </div>
       </section>
 

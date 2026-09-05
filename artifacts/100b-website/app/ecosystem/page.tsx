@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Accent, ArrowLink, Lead, SectionTitle } from "@/components/Section";
 import { ContactCTA } from "@/components/ContactCTA";
+import { PageHero } from "@/components/PageHero";
 import { companies } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -20,17 +21,24 @@ export default function EcosystemPage() {
   return (
     <div className="flex flex-col">
       {/* 5.1 HERO */}
-      <section className="relative bg-bg-dark py-32 lg:py-40 border-b border-border-subtle overflow-hidden glow-warm-top">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center text-center gap-8">
-          <h1 className="text-[44px] md:text-6xl lg:text-[84px] font-serif leading-[0.9] tracking-tight max-w-6xl">
+      <PageHero
+        title={
+          <>
             <span className="block">Five companies.</span>
             <span className="block">
-              <em className="font-serif italic text-gradient-gold">Each stands on its own.</em>
+              <Accent>Each stands on its own.</Accent>
             </span>
-          </h1>
-          <Lead>Every one takes outside clients.</Lead>
-        </div>
-      </section>
+          </>
+        }
+        lead="Every one takes outside clients."
+        meta={
+          <>
+            <span>100B · Container Club · ZAD · 100Bold · BOND</span>
+            <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
+            <span>No referral fees</span>
+          </>
+        }
+      />
 
       {/* 5.2 THE COMPANIES */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">

@@ -4,6 +4,7 @@ import { TheName } from "@/components/TheName";
 import { Founders } from "@/components/Founders";
 import { PressStrip } from "@/components/PressStrip";
 import { ContactCTA } from "@/components/ContactCTA";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "About",
@@ -28,16 +29,23 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col">
       {/* 6.1 HERO */}
-      <section className="relative bg-bg-dark min-h-[70vh] flex items-center py-32 lg:py-40 border-b border-border-subtle overflow-hidden glow-warm-center">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center text-center gap-6">
-          <h1 className="text-[48px] md:text-7xl lg:text-[112px] font-serif leading-[0.9] tracking-tight">
+      <PageHero
+        title={
+          <>
             <span className="block">Between two worlds.</span>
             <span className="block">
-              <em className="font-serif italic text-gradient-gold">Giữa hai thế giới.</em>
+              <Accent>Giữa hai thế giới.</Accent>
             </span>
-          </h1>
-        </div>
-      </section>
+          </>
+        }
+        meta={
+          <>
+            <span>Austin · Hanoi · Ho Chi Minh City</span>
+            <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
+            <span>Three founders · Both sides</span>
+          </>
+        }
+      />
 
       {/* 6.2 THE NAME */}
       <TheName />

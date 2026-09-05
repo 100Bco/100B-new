@@ -107,7 +107,7 @@ export default function Nav() {
         <div className="fixed inset-0 z-40 bg-bg-dark/95 backdrop-blur-xl flex flex-col pt-28 px-6 pb-8 h-screen overflow-y-auto">
           <div className="flex flex-col w-full max-w-md mx-auto gap-8">
             <div className="flex flex-col w-full">
-              {[{ name: "Home", path: "/", descriptor: "Vietnam ⇄ The World" }, ...navLinks].map(
+              {navLinks.map(
                 (link) => (
                   <Link
                     key={link.path}
