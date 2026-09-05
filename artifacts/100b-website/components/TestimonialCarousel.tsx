@@ -94,13 +94,16 @@ export function TestimonialCarousel({
             </div>
 
             {/* Right — portrait in the silver frame.
-                The frame is width-led: a max-width holds the 4:5 so the ratio is
-                never clamped away, and everything inside is positioned off the
-                frame's own edges. A percentage height here would depend on the
-                aspect-ratio box resolving one, which Safari does not do, and the
-                portrait would break out of the frame. */}
+                Below lg a max-width sets the size and the 4:5 gives the height.
+                From lg the column width is fixed by the grid and the section is
+                one screen tall, so the frame is capped against the viewport
+                instead, or it runs past the bottom of the section.
+                Everything inside is positioned off the frame's own edges: a
+                percentage height would depend on the aspect-ratio box resolving
+                one, which Safari does not do, and the portrait would break out
+                of the frame. */}
             <div
-              className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-none aspect-[4/5] mx-auto rounded-[28px] p-2 sm:p-[12px] overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]"
+              className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-none aspect-[4/5] lg:max-h-[min(46vh,480px)] mx-auto rounded-[28px] p-2 sm:p-[12px] overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]"
               style={{
                 background:
                   "linear-gradient(105.42deg, #EAEAEA 0%, #C9C9C9 36%, #FFFFFF 49%, #EAEAEA 69%, #6A6A6A 94%)",
