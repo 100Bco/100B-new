@@ -9,7 +9,7 @@ import {
 } from "@/components/Section";
 import { StatGrid, type Stat } from "@/components/StatGrid";
 import { IconCard } from "@/components/IconCard";
-import { TestimonialWall } from "@/components/TestimonialWall";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
 import { PageHero } from "@/components/PageHero";
 import { PhotoCarousel, type TripPhoto } from "@/components/PhotoCarousel";
@@ -161,87 +161,92 @@ export default function EnterVietnamPage() {
         </div>
       </section>
 
-      {/* 3.4 ACCESS VIETNAM 2026 — held to one screen, the trip carried by photography */}
-      <section className="py-20 lg:py-0 lg:pt-24 lg:h-screen lg:min-h-[780px] flex items-center bg-bg-alt border-b border-border-subtle overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
-          <SectionTitle className="mb-8 lg:mb-10">
+      {/* 3.4 ACCESS VIETNAM 2026 — one centred column: the story, the numbers,
+          the photography, the rooms, the link. */}
+      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
+          <SectionTitle className="mb-8">
             What it <Accent>looked like.</Accent>
           </SectionTitle>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center">
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col gap-4 text-sm lg:text-base font-light leading-relaxed text-text-body">
-                <p>
-                  June 2026. Hanoi and Ho Chi Minh City. 18 delegates. Government officials and
-                  business leaders, brought into Vietnam&apos;s ministries, innovation centers, and
-                  capital circles over eight days.
-                </p>
-                <p>
-                  Organized with the Greater Austin Asian Chamber of Commerce, led by GAACC
-                  President and CEO Mark Duval.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-3 gap-px bg-white/[0.06] rounded-2xl overflow-hidden border border-white/[0.06]">
-                {[
-                  { n: "18", l: "Delegates" },
-                  { n: "8", l: "Days" },
-                  { n: "2", l: "Cities" },
-                ].map((s) => (
-                  <div key={s.l} className="bg-bg-card py-5 flex flex-col gap-1.5 text-center">
-                    <span className="font-display text-3xl lg:text-4xl text-gradient-gold leading-none">
-                      {s.n}
-                    </span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">
-                      {s.l}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold mb-4">
-                  Who we met
-                </p>
-                <ul className="flex flex-wrap gap-2">
-                  {whoWeMet.map((org) => (
-                    <li
-                      key={org}
-                      className="text-[10px] uppercase tracking-[0.12em] px-3 py-1.5 border border-white/15 text-white/90 font-medium rounded-full"
-                    >
-                      {org}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <ArrowLink href="https://austin2vietnam.100b.co/" external>
-                See the full programme
-              </ArrowLink>
-            </div>
-
-            <PhotoCarousel photos={tripPhotos} />
+          <div className="max-w-3xl flex flex-col gap-4 text-base lg:text-lg font-light leading-relaxed text-text-body mb-10">
+            <p>
+              June 2026. Hanoi and Ho Chi Minh City. 18 delegates. Government officials and
+              business leaders, brought into Vietnam&apos;s ministries, innovation centers, and
+              capital circles over eight days.
+            </p>
+            <p>
+              Organized with the Greater Austin Asian Chamber of Commerce, led by GAACC
+              President and CEO Mark Duval.
+            </p>
           </div>
+
+          <div className="w-full max-w-xl grid grid-cols-3 gap-px bg-white/[0.06] rounded-2xl overflow-hidden border border-white/[0.06] mb-12">
+            {[
+              { n: "18", l: "Delegates" },
+              { n: "8", l: "Days" },
+              { n: "2", l: "Cities" },
+            ].map((s) => (
+              <div key={s.l} className="bg-bg-card py-5 flex flex-col gap-1.5">
+                <span className="font-display text-3xl lg:text-4xl text-gradient-gold leading-none">
+                  {s.n}
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">
+                  {s.l}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <PhotoCarousel photos={tripPhotos} className="w-full max-w-2xl mb-12" />
+
+          <div className="w-full max-w-4xl mb-8">
+            <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold mb-4">
+              Who we met
+            </p>
+            <ul className="flex flex-wrap justify-center gap-2">
+              {whoWeMet.map((org) => (
+                <li
+                  key={org}
+                  className="text-[10px] uppercase tracking-[0.12em] px-3 py-1.5 border border-white/15 text-white/90 font-medium rounded-full"
+                >
+                  {org}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <ArrowLink href="https://austin2vietnam.100b.co/" external>
+            See the full programme
+          </ArrowLink>
         </div>
       </section>
 
       {/* 3.5 WHAT DELEGATES SAID. About the trip, not the company. */}
-      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="mt-4">
-            <TestimonialWall rows={[{ label: "Access Vietnam 2026", items: delegateTestimonials }]} />
+      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-dark border-b border-border-subtle overflow-hidden py-28 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
+          <div className="shrink-0">
+            <SectionTitle className="mb-8 lg:mb-10">
+              What delegates <Accent>say.</Accent>
+            </SectionTitle>
           </div>
+          <TestimonialCarousel
+            groups={[{ label: "Access Vietnam 2026", items: delegateTestimonials }]}
+          />
         </div>
       </section>
 
       {/* 3.6 WHO THIS IS FOR */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
           <SectionTitle className="mb-12 lg:mb-16 max-w-4xl">
-            Access Vietnam was one delegation. <Accent>The model travels.</Accent>
+            <span className="block">Access Vietnam was one delegation.</span>
+            <span className="block">
+              <Accent>The model travels.</Accent>
+            </span>
           </SectionTitle>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0 border-t border-border-subtle mb-12">
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0 border-t border-border-subtle mb-12">
             {whoThisIsFor.map((w) => (
               <div key={w.title} className="py-6 border-b border-border-subtle flex flex-col gap-1">
                 <h3 className="font-sans font-bold text-lg text-text-heading">{w.title}</h3>
@@ -250,9 +255,11 @@ export default function EnterVietnamPage() {
             ))}
           </div>
 
-          <p className="font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-3xl mb-10 mx-auto text-center">
-            From any country. We've run the US corridor.{" "}
-            <em className="italic text-gradient-gold">Europe, Asia, and the Gulf are open.</em>
+          <p className="font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-4xl mb-10 mx-auto text-center">
+            <span className="block">From any country. We&apos;ve run the US corridor.</span>
+            <span className="block">
+              <em className="italic text-gradient-gold">Europe, Asia, and the Gulf are open.</em>
+            </span>
           </p>
           <PrimaryButton>Talk to us about a delegation</PrimaryButton>
         </div>
