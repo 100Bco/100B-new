@@ -10,6 +10,9 @@ import saoThaiDuongPhoto from "@assets/Sao Thai Duong.webp";
 import markDuvalPhoto from "@assets/Mark Duval Profile.jpg";
 import hectorPhoto from "@assets/1-Hector Quintanar.jpg";
 import ahmedPhoto from "@assets/Ahmed.jpeg";
+import marcKnapperPhoto from "@assets/Marc Knapper.webp";
+import michaelNguyenPhoto from "@assets/Michael Nguyen.jpg";
+import barbaraJoePhoto from "@assets/Barbara.jpeg";
 import minhPhoto from "@assets/Minh Mac Profile.png";
 import tungPhoto from "@assets/Tung Cao Photo.png";
 import tuPhoto from "@assets/Tu Mac Profile.png";
@@ -205,7 +208,7 @@ export const delegateTestimonials: Testimonial[] = [
     name: "Marc Knapper",
     company: "FORMER US AMBASSADOR TO VIETNAM",
     credential: "",
-    photo: null,
+    photo: marcKnapperPhoto.src,
   },
   {
     headline: "START WITH BUSINESS DEVELOPMENT",
@@ -215,7 +218,7 @@ export const delegateTestimonials: Testimonial[] = [
     title: "MANAGING DIRECTOR",
     company: "BOEING VIETNAM",
     credential: "",
-    photo: null,
+    photo: michaelNguyenPhoto.src,
   },
   {
     headline: "INSPIRING. PRODUCTIVE. MISSION ACCOMPLISHED.",
@@ -223,7 +226,7 @@ export const delegateTestimonials: Testimonial[] = [
     name: "Barbara Joe",
     company: "ASIAN CHAMBER OF COMMERCE HOUSTON",
     credential: "",
-    photo: null,
+    photo: barbaraJoePhoto.src,
   },
 ];
 
