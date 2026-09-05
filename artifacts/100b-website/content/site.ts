@@ -41,6 +41,12 @@ export type NavLink = {
 
 export const navLinks: NavLink[] = [
   {
+    name: "Home",
+    nameVi: "Trang Chủ",
+    path: "/",
+    descriptor: "Vietnam ⇄ The World",
+  },
+  {
     name: "Go Global",
     nameVi: "Go Global",
     path: "/go-global",

@@ -9,6 +9,7 @@ import {
 import { StatGrid, type Stat } from "@/components/StatGrid";
 import { PhotoTile } from "@/components/PhotoTile";
 import { ContactCTA } from "@/components/ContactCTA";
+import { PageHero } from "@/components/PageHero";
 import { programs } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -80,33 +81,24 @@ export default function ContainerClubPage() {
   return (
     <div className="flex flex-col">
       {/* 4.1 HERO */}
-      <section className="relative bg-bg-dark py-32 lg:py-40 border-b border-border-subtle overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none opacity-20"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)",
-            backgroundSize: "100px 100px",
-          }}
-        />
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center text-center gap-8">
-          <h1 className="text-[44px] md:text-6xl lg:text-[84px] font-serif leading-[0.9] tracking-tight max-w-6xl">
+      <PageHero
+        title={
+          <>
             <span className="block">Buy from the factory.</span>
             <span className="block">
-              <em className="font-serif italic text-gradient-gold">
-                Pay a commission, not a markup.
-              </em>
+              <Accent>Pay a commission, not a markup.</Accent>
             </span>
-          </h1>
-          <Lead>
-            100B's trade arm. Sourcing, factory vetting, quality control, freight, and the
-            network behind it.
-          </Lead>
-          <p className="text-[11px] uppercase tracking-[0.25em] font-semibold text-text-muted">
-            Led by Tung Cao and Tu Mac
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        lead="100B's trade arm. Sourcing, factory vetting, quality control, freight, and the network behind it."
+        meta={
+          <>
+            <span>Led by Tung Cao and Tu Mac</span>
+            <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
+            <span>3-5% commission</span>
+          </>
+        }
+      />
 
       {/* 4.2 THE MODEL */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">

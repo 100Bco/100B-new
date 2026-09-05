@@ -13,6 +13,7 @@ import { IconCard } from "@/components/IconCard";
 import { programs } from "@/content/site";
 import { TestimonialWall } from "@/components/TestimonialWall";
 import { ContactCTA } from "@/components/ContactCTA";
+import { PageHero } from "@/components/PageHero";
 import { delegateTestimonials } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -84,21 +85,25 @@ export default function EnterVietnamPage() {
   return (
     <div className="flex flex-col">
       {/* 3.1 HERO */}
-      <section className="relative bg-bg-dark py-32 lg:py-40 border-b border-border-subtle overflow-hidden glow-warm-top">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col items-center text-center gap-8">
-          <h1 className="text-[44px] md:text-6xl lg:text-[84px] font-serif leading-[0.9] tracking-tight max-w-6xl">
+      <PageHero
+        title={
+          <>
             <span className="block">Vietnam rewards the people</span>
             <span className="block">
-              <em className="font-serif italic text-gradient-gold">who show up.</em>
+              <Accent>who show up.</Accent>
             </span>
-          </h1>
-          <Lead>
-            We build delegations into the rooms that matter. Government, innovation, capital,
-            and the founders actually building.
-          </Lead>
-          <PrimaryButton>Start a Conversation</PrimaryButton>
-        </div>
-      </section>
+          </>
+        }
+        lead="We build delegations into the rooms that matter. Government, innovation, capital, and the founders actually building."
+        actions={<PrimaryButton>Start a Conversation</PrimaryButton>}
+        meta={
+          <>
+            <span>Hanoi · Ho Chi Minh City</span>
+            <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
+            <span>Government · Innovation · Capital</span>
+          </>
+        }
+      />
 
       {/* 3.2 WHY VIETNAM */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
