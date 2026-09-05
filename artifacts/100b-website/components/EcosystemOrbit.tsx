@@ -50,7 +50,7 @@ export function EcosystemOrbit() {
         {/* The ring, anchored to the content's right edge and bleeding past it */}
         <div
           className="hidden lg:block absolute top-1/2 right-8 -translate-y-1/2 translate-x-[35%]
-                     w-[min(62vh,660px)] h-[min(62vh,660px)] pointer-events-none"
+                     w-[min(74vh,792px)] h-[min(74vh,792px)] pointer-events-none"
           aria-hidden
         >
           <div className="absolute inset-0 rounded-full border border-dashed border-white/10" />
