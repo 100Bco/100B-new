@@ -9,6 +9,7 @@ import {
 } from "@/components/Section";
 import { StatGrid, type Stat } from "@/components/StatGrid";
 import { IconCard } from "@/components/IconCard";
+import { NumberedCard } from "@/components/NumberedCard";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
 import { PageHero } from "@/components/PageHero";
@@ -161,64 +162,70 @@ export default function EnterVietnamPage() {
         </div>
       </section>
 
-      {/* 3.4 ACCESS VIETNAM 2026 — one centred column: the story, the numbers,
-          the photography, the rooms, the link. */}
+      {/* 3.4 ACCESS VIETNAM 2026 — the story and the numbers beside the
+          photography, the rooms and the link centred underneath both. */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
-          <SectionTitle className="mb-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
+          <SectionTitle className="mb-10 lg:mb-12">
             What it <Accent>looked like.</Accent>
           </SectionTitle>
 
-          <div className="max-w-3xl flex flex-col gap-4 text-base lg:text-lg font-light leading-relaxed text-text-body mb-10">
-            <p>
-              June 2026. Hanoi and Ho Chi Minh City. 18 delegates. Government officials and
-              business leaders, brought into Vietnam&apos;s ministries, innovation centers, and
-              capital circles over eight days.
-            </p>
-            <p>
-              Organized with the Greater Austin Asian Chamber of Commerce, led by GAACC
-              President and CEO Mark Duval.
-            </p>
-          </div>
-
-          <div className="w-full max-w-xl grid grid-cols-3 gap-px bg-white/[0.06] rounded-2xl overflow-hidden border border-white/[0.06] mb-12">
-            {[
-              { n: "18", l: "Delegates" },
-              { n: "8", l: "Days" },
-              { n: "2", l: "Cities" },
-            ].map((s) => (
-              <div key={s.l} className="bg-bg-card py-5 flex flex-col gap-1.5">
-                <span className="font-display text-3xl lg:text-4xl text-gradient-gold leading-none">
-                  {s.n}
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">
-                  {s.l}
-                </span>
+          <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center mb-14">
+            <div className="flex flex-col gap-7">
+              <div className="flex flex-col gap-4 text-base lg:text-lg font-light leading-relaxed text-text-body">
+                <p>
+                  June 2026. Hanoi and Ho Chi Minh City. 18 delegates. Government officials and
+                  business leaders, brought into Vietnam&apos;s ministries, innovation centers, and
+                  capital circles over eight days.
+                </p>
+                <p>
+                  Organized with the Greater Austin Asian Chamber of Commerce, led by GAACC
+                  President and CEO Mark Duval.
+                </p>
               </div>
-            ))}
+
+              <div className="grid grid-cols-3 gap-px bg-white/[0.06] rounded-2xl overflow-hidden border border-white/[0.06]">
+                {[
+                  { n: "18", l: "Delegates" },
+                  { n: "8", l: "Days" },
+                  { n: "2", l: "Cities" },
+                ].map((s) => (
+                  <div key={s.l} className="bg-bg-card py-6 flex flex-col gap-1.5 text-center">
+                    <span className="font-display text-3xl lg:text-4xl text-gradient-gold leading-none">
+                      {s.n}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">
+                      {s.l}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <PhotoCarousel photos={tripPhotos} />
           </div>
 
-          <PhotoCarousel photos={tripPhotos} className="w-full max-w-2xl mb-12" />
+          <div className="w-full max-w-4xl flex flex-col items-center text-center gap-8">
+            <div className="w-full">
+              <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold mb-4">
+                Who we met
+              </p>
+              <ul className="flex flex-wrap justify-center gap-2">
+                {whoWeMet.map((org) => (
+                  <li
+                    key={org}
+                    className="text-[10px] uppercase tracking-[0.12em] px-3 py-1.5 border border-white/15 text-white/90 font-medium rounded-full"
+                  >
+                    {org}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div className="w-full max-w-4xl mb-8">
-            <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold mb-4">
-              Who we met
-            </p>
-            <ul className="flex flex-wrap justify-center gap-2">
-              {whoWeMet.map((org) => (
-                <li
-                  key={org}
-                  className="text-[10px] uppercase tracking-[0.12em] px-3 py-1.5 border border-white/15 text-white/90 font-medium rounded-full"
-                >
-                  {org}
-                </li>
-              ))}
-            </ul>
+            <ArrowLink href="https://austin2vietnam.100b.co/" external>
+              See the full programme
+            </ArrowLink>
           </div>
-
-          <ArrowLink href="https://austin2vietnam.100b.co/" external>
-            See the full programme
-          </ArrowLink>
         </div>
       </section>
 
@@ -246,12 +253,11 @@ export default function EnterVietnamPage() {
             </span>
           </SectionTitle>
 
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0 border-t border-border-subtle mb-12">
-            {whoThisIsFor.map((w) => (
-              <div key={w.title} className="py-6 border-b border-border-subtle flex flex-col gap-1">
-                <h3 className="font-sans font-bold text-lg text-text-heading">{w.title}</h3>
-                <p className="text-sm lg:text-base font-light text-text-body">{w.line}</p>
-              </div>
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6 mb-14">
+            {whoThisIsFor.map((w, i) => (
+              <NumberedCard key={w.title} index={i + 1} title={w.title}>
+                {w.line}
+              </NumberedCard>
             ))}
           </div>
 
