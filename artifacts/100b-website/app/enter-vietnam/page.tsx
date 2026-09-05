@@ -8,12 +8,18 @@ import {
   SectionTitle,
 } from "@/components/Section";
 import { StatGrid, type Stat } from "@/components/StatGrid";
-import { PhotoTile } from "@/components/PhotoTile";
 import { IconCard } from "@/components/IconCard";
-import { programs } from "@/content/site";
 import { TestimonialWall } from "@/components/TestimonialWall";
 import { ContactCTA } from "@/components/ContactCTA";
 import { PageHero } from "@/components/PageHero";
+import { PhotoCarousel, type TripPhoto } from "@/components/PhotoCarousel";
+import delegationHanoi from "@assets/trip/delegation-hanoi.jpg";
+import cityOfHanoi from "@assets/trip/city-of-hanoi.jpg";
+import ministryScience from "@assets/trip/ministry-of-science-and-technology.jpg";
+import mekongCapital from "@assets/trip/mekong-capital.jpg";
+import earthVc from "@assets/trip/earth-vc.jpg";
+import coolmate from "@assets/trip/coolmate.jpg";
+import bca from "@assets/trip/bca.jpg";
 import { delegateTestimonials } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -69,6 +75,16 @@ const whoWeMet = [
   "BCA and BNI Vietnam",
 ];
 
+const tripPhotos: TripPhoto[] = [
+  { src: delegationHanoi.src, label: "June 2026 · Hanoi", caption: "The delegation" },
+  { src: cityOfHanoi.src, label: "Government", caption: "City of Hanoi" },
+  { src: ministryScience.src, label: "Government", caption: "Ministry of Science and Technology" },
+  { src: mekongCapital.src, label: "Capital", caption: "Mekong Capital" },
+  { src: earthVc.src, label: "Capital", caption: "Earth VC" },
+  { src: coolmate.src, label: "Operators", caption: "Coolmate" },
+  { src: bca.src, label: "Network", caption: "BCA and BNI Vietnam" },
+];
+
 const whoThisIsFor = [
   { title: "Chambers and trade associations", line: "bringing members into a new market" },
   { title: "Funds and investors", line: "looking for Vietnam exposure and deal flow" },
@@ -79,13 +95,13 @@ const whoThisIsFor = [
   },
 ];
 
-const accessVietnam = programs.find((p) => p.name === "Access Vietnam");
 
 export default function EnterVietnamPage() {
   return (
     <div className="flex flex-col">
       {/* 3.1 HERO */}
       <PageHero
+        videoId="im4oab6ppu"
         title={
           <>
             <span className="block">Vietnam rewards the people</span>
@@ -145,74 +161,66 @@ export default function EnterVietnamPage() {
         </div>
       </section>
 
-      {/* 3.4 ACCESS VIETNAM 2026 */}
-      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionTitle className="mb-10">
+      {/* 3.4 ACCESS VIETNAM 2026 — held to one screen, the trip carried by photography */}
+      <section className="py-20 lg:py-0 lg:pt-24 lg:h-screen lg:min-h-[780px] flex items-center bg-bg-alt border-b border-border-subtle overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+          <SectionTitle className="mb-8 lg:mb-10">
             What it <Accent>looked like.</Accent>
           </SectionTitle>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-16 mb-12">
-            <div className="flex flex-col gap-6 text-base lg:text-lg font-light leading-relaxed text-text-body">
-              <p>
-                June 2026. Hanoi and Ho Chi Minh City. 18 delegates. Government officials and
-                business leaders, brought into Vietnam's ministries, innovation centers, and
-                capital circles over eight days.
-              </p>
-              <p>
-                Organized with the Greater Austin Asian Chamber of Commerce, led by GAACC
-                President and CEO Mark Duval, former President of AmCham China.
-              </p>
-            </div>
-            <div className="grid grid-cols-3 gap-px bg-white/[0.06] rounded-3xl overflow-hidden border border-white/[0.06] self-start">
-              {[
-                { n: "18", l: "Delegates" },
-                { n: "8", l: "Days" },
-                { n: "2", l: "Cities" },
-              ].map((s) => (
-                <div key={s.l} className="bg-bg-card p-6 flex flex-col gap-2 text-center">
-                  <span className="font-display text-4xl lg:text-5xl text-gradient-gold leading-none">
-                    {s.n}
-                  </span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">
-                    {s.l}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center">
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-4 text-sm lg:text-base font-light leading-relaxed text-text-body">
+                <p>
+                  June 2026. Hanoi and Ho Chi Minh City. 18 delegates. Government officials and
+                  business leaders, brought into Vietnam&apos;s ministries, innovation centers, and
+                  capital circles over eight days.
+                </p>
+                <p>
+                  Organized with the Greater Austin Asian Chamber of Commerce, led by GAACC
+                  President and CEO Mark Duval.
+                </p>
+              </div>
 
-          {/* The trip, carried by photography. */}
-          <div className="mb-8">
-            <PhotoTile
-              src={accessVietnam?.image}
-              alt="The Access Vietnam 2026 delegation in Hanoi"
-              aspect="aspect-[16/9]"
-              position="center 62%"
-              label="June 2026 · Hanoi"
-              caption="The delegation"
-            />
-          </div>
-          <div className="mb-14">
-            <ArrowLink href="https://austin2vietnam.100b.co/" external>
-              See the full programme
-            </ArrowLink>
-          </div>
+              <div className="grid grid-cols-3 gap-px bg-white/[0.06] rounded-2xl overflow-hidden border border-white/[0.06]">
+                {[
+                  { n: "18", l: "Delegates" },
+                  { n: "8", l: "Days" },
+                  { n: "2", l: "Cities" },
+                ].map((s) => (
+                  <div key={s.l} className="bg-bg-card py-5 flex flex-col gap-1.5 text-center">
+                    <span className="font-display text-3xl lg:text-4xl text-gradient-gold leading-none">
+                      {s.n}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">
+                      {s.l}
+                    </span>
+                  </div>
+                ))}
+              </div>
 
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold mb-6">
-              Who we met
-            </p>
-            <ul className="flex flex-wrap gap-x-3 gap-y-3">
-              {whoWeMet.map((org) => (
-                <li
-                  key={org}
-                  className="text-[11px] uppercase tracking-[0.12em] px-4 py-2 border border-white/15 text-white/90 font-medium rounded-full"
-                >
-                  {org}
-                </li>
-              ))}
-            </ul>
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold mb-4">
+                  Who we met
+                </p>
+                <ul className="flex flex-wrap gap-2">
+                  {whoWeMet.map((org) => (
+                    <li
+                      key={org}
+                      className="text-[10px] uppercase tracking-[0.12em] px-3 py-1.5 border border-white/15 text-white/90 font-medium rounded-full"
+                    >
+                      {org}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <ArrowLink href="https://austin2vietnam.100b.co/" external>
+                See the full programme
+              </ArrowLink>
+            </div>
+
+            <PhotoCarousel photos={tripPhotos} />
           </div>
         </div>
       </section>

@@ -12,6 +12,7 @@ import type { ReactNode } from "react";
 export function PageHero({
   image,
   imagePosition = "center",
+  videoId,
   title,
   lead,
   actions,
@@ -19,6 +20,9 @@ export function PageHero({
 }: {
   image?: string;
   imagePosition?: string;
+  /** Wistia media id. Rendered exactly as the homepage hero: muted, looping,
+   *  no controls, scaled to cover the viewport. */
+  videoId?: string;
   title: ReactNode;
   lead?: ReactNode;
   actions?: ReactNode;
@@ -27,11 +31,39 @@ export function PageHero({
   return (
     <section
       className={`relative bg-bg-dark overflow-hidden h-screen min-h-[720px] flex flex-col justify-center border-b border-border-subtle ${
-        image ? "" : "glow-warm-top"
+        image || videoId ? "" : "glow-warm-top"
       }`}
     >
-      {image && (
+      {videoId && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{ width: "max(100vw, 177.78vh)", height: "max(56.25vw, 100vh)" }}
+          >
+            <wistia-player
+              media-id={videoId}
+              aspect="1.7777777777777777"
+              autoplay="true"
+              muted="true"
+              end-video-behavior="loop"
+              controls-visible-on-load="false"
+              play-button="false"
+              playbar="false"
+              small-play-button="false"
+              fullscreen-button="false"
+              volume-control="false"
+              settings-control="false"
+              quality-control="false"
+              silent-auto-play="allow"
+              style={{ width: "100%", height: "100%", display: "block" }}
+            />
+          </div>
+        </div>
+      )}
+
+      {(image || videoId) && (
         <>
+          {image && (
           <img
             src={image}
             alt=""
@@ -39,6 +71,7 @@ export function PageHero({
             className="absolute inset-0 w-full h-full object-cover"
             aria-hidden
           />
+          )}
           {/* Readability scrim: dark at the top and bottom edges, and a soft
               well behind the type so white stays legible over the sunrise. */}
           <div
