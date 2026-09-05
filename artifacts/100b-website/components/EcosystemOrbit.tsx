@@ -144,7 +144,7 @@ export function EcosystemOrbit() {
                     <img
                       src={c.logo}
                       alt=""
-                      className={`relative w-[72%] object-contain transition-opacity duration-700 ${
+                      className={`relative max-w-[72%] max-h-[38%] w-auto h-auto object-contain transition-opacity duration-700 ${
                         isActive ? "opacity-100" : "opacity-80"
                       }`}
                     />

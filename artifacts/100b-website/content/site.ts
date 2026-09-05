@@ -28,6 +28,7 @@ import logo100b from "@assets/logo-100b-mono.png";
 import logoContainerClub from "@assets/logo-container-club-mono.png";
 import logoZad from "@assets/logo-zad-mono.png";
 import logoBond from "@assets/logo-bond-mono.png";
+import logo100bold from "@assets/logo-100bold-mono.png";
 
 export const CONTACT_EMAIL = "global@100b.co";
 
@@ -269,6 +270,7 @@ export const companies: Company[] = [
     detail: "Full-stack, for brands at $5M to $100M.",
     links: [{ label: "100bold.co", href: "https://100bold.co", external: true }],
     accent: "#F2F2F2",
+    logo: logo100bold.src,
   },
   {
     name: "BOND",
