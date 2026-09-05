@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { useAutoAdvance } from "@/components/useAutoAdvance";
 import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
 
 export type TripPhoto = { src: string; label: string; caption: string };
@@ -19,21 +19,10 @@ export function PhotoCarousel({
   interval?: number;
   className?: string;
 }) {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    if (photos.length < 2) return;
-    const timer = setInterval(
-      () => setCurrent((prev) => (prev + 1) % photos.length),
-      interval,
-    );
-    return () => clearInterval(timer);
-  }, [interval, photos.length]);
+  const { current, goTo, goNext, goPrev } = useAutoAdvance(photos.length, interval);
 
   if (!photos.length) return null;
   const photo = photos[current];
-  const goPrev = () => setCurrent((p) => (p - 1 + photos.length) % photos.length);
-  const goNext = () => setCurrent((p) => (p + 1) % photos.length);
 
   return (
     <div className={`flex flex-col gap-5 ${className}`}>
@@ -90,7 +79,7 @@ export function PhotoCarousel({
           {photos.map((p, idx) => (
             <button
               key={p.src}
-              onClick={() => setCurrent(idx)}
+              onClick={() => goTo(idx)}
               aria-label={`Go to photo ${idx + 1}`}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 idx === current ? "w-7 bg-brand-gold" : "w-1.5 bg-white/15 hover:bg-white/30"

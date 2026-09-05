@@ -58,11 +58,11 @@ export function PressCarousel() {
                     <img
                       src={item.image}
                       alt={item.headline}
-                      className="w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
                   ) : (
                     <div
-                      className="w-full h-full"
+                      className="absolute inset-0"
                       style={{
                         background:
                           "linear-gradient(135deg, #2A2520 0%, #1A1714 60%, #0D0B09 100%)",
