@@ -70,7 +70,7 @@ export function Founders({ variant = "short" }: { variant?: "short" | "long" }) 
             </div>
             {/* The titles run one to three lines at this width, so the shortest
                 reserves the tallest's room and the three bios start level. */}
-            <p className="min-h-[46px] sm:min-h-0 text-[8px] sm:text-[11px] uppercase tracking-[0.1em] sm:tracking-[0.2em] font-semibold text-brand-gold leading-snug">
+            <p className="min-h-[46px] sm:min-h-[32px] text-[8px] sm:text-[11px] uppercase tracking-[0.1em] sm:tracking-[0.2em] font-semibold text-brand-gold leading-snug">
               {f.title}
             </p>
             <p className="text-[11px] sm:text-sm font-light leading-relaxed text-text-body mt-0.5 sm:mt-1">

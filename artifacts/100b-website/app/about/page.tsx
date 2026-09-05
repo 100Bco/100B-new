@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Accent, SectionTitle } from "@/components/Section";
 import { TheName } from "@/components/TheName";
 import { Founders } from "@/components/Founders";
-import { PressStrip } from "@/components/PressStrip";
+import { PressCarousel } from "@/components/PressCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
 import { PageHero } from "@/components/PageHero";
 import aboutBanner from "@assets/about-banner-vn.jpg";
@@ -124,10 +124,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 6.6 PRESS */}
-      <section className="py-20 lg:py-28 bg-bg-alt">
+      {/* 6.6 PRESS — the same carousel the homepage runs */}
+      <section className="py-20 lg:py-28 bg-bg-dark">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <PressStrip />
+          <SectionTitle className="text-center mb-10 lg:mb-12">
+            In the <Accent>press.</Accent>
+          </SectionTitle>
+          <PressCarousel />
         </div>
       </section>
 

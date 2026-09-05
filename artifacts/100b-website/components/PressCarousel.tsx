@@ -31,7 +31,7 @@ export function PressCarousel() {
 
   return (
     <>
-      <PressSwipeRow items={pressItems} variant="carousel" />
+      <PressSwipeRow items={pressItems} />
 
       <div className="relative hidden md:block md:px-14 lg:px-16">
         {showNav && (
@@ -54,7 +54,7 @@ export function PressCarousel() {
             className="grid grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full"
           >
             {visible.map((item, idx) => (
-              <PressCard key={page + ":" + idx} item={item} variant="carousel" />
+              <PressCard key={page + ":" + idx} item={item} />
             ))}
           </motion.div>
         </AnimatePresence>
