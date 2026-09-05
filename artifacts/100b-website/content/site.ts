@@ -10,7 +10,7 @@ import saoThaiDuongPhoto from "@assets/Sao Thai Duong.webp";
 import markDuvalPhoto from "@assets/Mark Duval Profile.jpg";
 import hectorPhoto from "@assets/1-Hector Quintanar.jpg";
 import ahmedPhoto from "@assets/Ahmed.jpeg";
-import minhPhoto from "@assets/Minh Mac CEO.jpeg";
+import minhPhoto from "@assets/Minh Mac Profile.png";
 import tungPhoto from "@assets/Tung Cao Photo.png";
 import tuPhoto from "@assets/Tu Mac Photo.jpg";
 import accessVietnamPhoto from "@assets/Access VN 2026.jpeg";
