@@ -2,181 +2,268 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "motion/react";
+import { Accent, ArrowLink } from "@/components/Section";
 import { companies } from "@/content/site";
-import emblem from "@assets/100B Emblem.png";
+import emblem from "@assets/100b-emblem-trimmed.png";
 
-const ORBIT_SECONDS = 90;
-/** Node centres sit on a circle at this share of the container's half-width. */
-const RADIUS = 40;
+/** The arc the nodes sit on, from top-left round to bottom-left. */
+const ARC_START = 245;
+const ARC_END = 115;
 
-function nodePosition(index: number, total: number) {
-  const angle = (-90 + (360 / total) * index) * (Math.PI / 180);
+/** Node centres sit on the container's own circle, so the whole system scales
+ *  with the container and needs no pixel radius. */
+function nodeAngle(index: number, total: number) {
+  return ARC_START + ((ARC_END - ARC_START) * index) / (total - 1);
+}
+
+function nodePosition(angle: number) {
+  const rad = (angle * Math.PI) / 180;
   return {
-    left: `${50 + RADIUS * Math.cos(angle)}%`,
-    top: `${50 + RADIUS * Math.sin(angle)}%`,
+    left: `${50 + 50 * Math.cos(rad)}%`,
+    top: `${50 + 50 * Math.sin(rad)}%`,
   };
 }
 
 /**
- * The five companies orbiting 100B. Pointing at a node reveals that
- * company's line in the panel; the ring drifts slowly and holds still
- * while the pointer is over it so nodes never move under the cursor.
+ * The five companies in orbit around 100B. The list on the left and the ring
+ * on the right are one control: pointing at either end lights the company,
+ * draws its ray in from the hub and dims the other four.
  */
 export function EcosystemOrbit() {
-  const [active, setActive] = useState<number | null>(null);
-  const company = active === null ? null : companies[active];
+  const [activeName, setActiveName] = useState<string | null>(null);
+  const active = companies.find((c) => c.name === activeName) ?? null;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(340px,520px)] gap-12 lg:gap-16 items-center">
-      {/* Panel — swaps to the company under the pointer */}
-      <div className="order-2 lg:order-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left min-h-[220px] lg:min-h-[260px]">
-        <AnimatePresence mode="wait">
-          {company ? (
-            <motion.div
-              key={company.name}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col gap-4"
-            >
-              <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-                {company.role}
-              </span>
-              <span className="font-display text-4xl lg:text-5xl text-text-heading leading-none">
-                {company.name}
-              </span>
-              <p className="text-base lg:text-lg font-light leading-relaxed text-text-body max-w-md">
-                {company.detail ?? company.line}
-              </p>
-              <div className="flex flex-wrap gap-x-5 gap-y-2 pt-1">
-                {company.links.map((l) =>
-                  l.external ? (
-                    <a
-                      key={l.href}
-                      href={l.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold text-text-heading hover:text-brand-gold transition-colors"
-                    >
-                      {l.label}
-                      <span className="text-brand-gold transition-transform group-hover:translate-x-1">
-                        →
-                      </span>
-                    </a>
-                  ) : (
-                    <Link
-                      key={l.href}
-                      href={l.href}
-                      className="group inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold text-text-heading hover:text-brand-gold transition-colors"
-                    >
-                      {l.label}
-                      <span className="text-brand-gold transition-transform group-hover:translate-x-1">
-                        →
-                      </span>
-                    </Link>
-                  ),
-                )}
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="resting"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col gap-5"
-            >
-              <p className="font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-lg">
-                A brand at $5M uses two of them. A brand at $50M uses{" "}
-                <em className="italic text-gradient-gold">all five.</em>
-              </p>
-              <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-text-muted">
-                Select a company to see what it does
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {/* Orbit */}
+    <section className="relative bg-bg-alt border-b border-border-subtle overflow-hidden py-20 lg:py-28">
+      {/* Ambient light behind the ring, brighter while a company is held */}
       <div
-        className="order-1 lg:order-2 group relative w-full max-w-[520px] mx-auto aspect-square"
-        onMouseLeave={() => setActive(null)}
-      >
-        {/* Ambient gold light behind the system */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 50%, rgba(195,163,116,0.12) 0%, transparent 62%)",
-          }}
-          aria-hidden
-        />
+        className="absolute inset-0 pointer-events-none transition-opacity duration-1000"
+        style={{
+          background:
+            "radial-gradient(ellipse 55% 70% at 82% 50%, rgba(195,163,116,0.16) 0%, transparent 62%)",
+          opacity: active ? 1 : 0.35,
+        }}
+        aria-hidden
+      />
 
-        {/* Orbit path */}
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        {/* The ring, anchored to the content's right edge and bleeding past it */}
         <div
-          className="absolute rounded-full border border-dashed border-brand-gold/25 pointer-events-none"
-          style={{
-            left: `${50 - RADIUS}%`,
-            top: `${50 - RADIUS}%`,
-            width: `${RADIUS * 2}%`,
-            height: `${RADIUS * 2}%`,
-          }}
+          className="hidden lg:block absolute top-1/2 right-8 -translate-y-1/2 translate-x-[35%]
+                     w-[560px] h-[560px] xl:w-[680px] xl:h-[680px] pointer-events-none"
           aria-hidden
-        />
+        >
+          <div className="absolute inset-0 rounded-full border border-dashed border-white/10" />
 
-        {/* Centre — 100B */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1 z-10 pointer-events-none">
-          <img
-            src={emblem.src}
-            alt="100B"
-            className="w-40 h-40 lg:w-48 lg:h-48 object-contain drop-shadow-[0_14px_40px_rgba(0,0,0,0.7)]"
-          />
+          {/* One ray per company, drawn from the hub out to its node */}
+          {companies.map((c, i) => (
+            <div
+              key={`ray-${c.name}`}
+              className={`absolute left-1/2 top-1/2 w-1/2 h-px origin-left transition-all duration-700 ease-out ${
+                activeName === c.name ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+              }`}
+              style={{
+                transform: `translateY(-50%) rotate(${nodeAngle(i, companies.length)}deg)`,
+                background:
+                  "linear-gradient(90deg, rgba(195,163,116,0.85) 0%, rgba(195,163,116,0.12) 80%, transparent 100%)",
+                boxShadow: "0 0 10px rgba(195,163,116,0.45)",
+              }}
+            />
+          ))}
+
+          {/* Hub — the 100B emblem on a lit sphere */}
+          <div
+            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10
+                        w-[220px] h-[220px] xl:w-[260px] xl:h-[260px] rounded-full
+                        flex items-center justify-center transition-transform duration-700 ease-out
+                        ${active ? "scale-105" : "scale-100"}`}
+            style={{
+              background: "radial-gradient(circle at 34% 28%, #35332F 0%, #0A0908 76%)",
+              border: "1px solid rgba(195,163,116,0.22)",
+              boxShadow: active
+                ? "inset 0 0 24px rgba(255,255,255,0.06), 0 0 90px rgba(195,163,116,0.32)"
+                : "inset 0 0 24px rgba(255,255,255,0.04), 0 0 48px rgba(195,163,116,0.14)",
+            }}
+          >
+            <div
+              className="absolute inset-0 rounded-full pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse at 30% 22%, rgba(255,255,255,0.10) 0%, transparent 52%)",
+              }}
+            />
+            <img
+              src={emblem.src}
+              alt=""
+              className="w-[54%] h-[54%] object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
+            />
+          </div>
+
+          {/* Nodes */}
+          {companies.map((c, i) => {
+            const isActive = activeName === c.name;
+            const isDimmed = activeName !== null && !isActive;
+            return (
+              <div
+                key={`node-${c.name}`}
+                className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
+                style={nodePosition(nodeAngle(i, companies.length))}
+              >
+                <button
+                  type="button"
+                  onMouseEnter={() => setActiveName(c.name)}
+                  onMouseLeave={() => setActiveName(null)}
+                  onFocus={() => setActiveName(c.name)}
+                  onBlur={() => setActiveName(null)}
+                  aria-label={`${c.name}, ${c.role}`}
+                  className={`relative flex items-center justify-center rounded-full overflow-hidden
+                              transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
+                              ${
+                                isActive
+                                  ? "w-[140px] h-[140px] border border-brand-gold z-30"
+                                  : "w-[112px] h-[112px] border border-white/12 hover:border-white/30 z-20"
+                              }
+                              ${isDimmed ? "opacity-20 blur-[2px] scale-90" : "opacity-100"}`}
+                  style={{
+                    background: isActive
+                      ? "radial-gradient(circle at 30% 28%, rgba(195,163,116,0.30) 0%, rgba(6,6,6,0.94) 78%)"
+                      : "radial-gradient(circle at 30% 28%, rgba(255,255,255,0.06) 0%, rgba(10,10,10,0.95) 78%)",
+                    boxShadow: isActive
+                      ? "inset 0 0 22px rgba(195,163,116,0.28), 0 12px 40px rgba(0,0,0,0.8), 0 0 34px rgba(195,163,116,0.22)"
+                      : "inset 0 0 12px rgba(255,255,255,0.03), 0 10px 24px rgba(0,0,0,0.55)",
+                  }}
+                >
+                  <span
+                    className="absolute inset-0 rounded-full pointer-events-none"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse at 30% 22%, rgba(255,255,255,0.10) 0%, transparent 55%)",
+                    }}
+                  />
+                  {c.logo ? (
+                    <img
+                      src={c.logo}
+                      alt=""
+                      className={`relative w-[72%] object-contain transition-opacity duration-700 ${
+                        isActive ? "opacity-100" : "opacity-80"
+                      }`}
+                    />
+                  ) : (
+                    // No mark supplied yet, so the node carries the name instead.
+                    <span
+                      className={`relative font-sans tracking-wide leading-none transition-all duration-700 ${
+                        isActive
+                          ? "text-brand-gold-hover text-base font-medium"
+                          : "text-white/80 text-sm font-light"
+                      }`}
+                    >
+                      {c.name}
+                    </span>
+                  )}
+                </button>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Orbiting nodes. The ring drifts; each node spins back so the
-            wordmarks stay upright. Both stop while the pointer is over it. */}
-        <div
-          className="absolute inset-0 animate-[spin_90s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:animate-none"
-          style={{ animationDuration: `${ORBIT_SECONDS}s` }}
-        >
-          {companies.map((c, i) => (
-            <button
-              key={c.name}
-              type="button"
-              onMouseEnter={() => setActive(i)}
-              onFocus={() => setActive(i)}
-              onClick={() => setActive(active === i ? null : i)}
-              aria-label={`${c.name} — ${c.role}`}
-              className="absolute -translate-x-1/2 -translate-y-1/2 animate-[spin_90s_linear_infinite_reverse] group-hover:[animation-play-state:paused] motion-reduce:animate-none"
-              style={{ ...nodePosition(i, companies.length), animationDuration: `${ORBIT_SECONDS}s` }}
-            >
-              <span
-                className={`flex items-center justify-center rounded-full bg-bg-dark w-[84px] h-[84px] lg:w-[96px] lg:h-[96px] border transition-all duration-300 ${
-                  active === i
-                    ? "border-brand-gold scale-110 shadow-[0_0_36px_rgba(195,163,116,0.45)]"
-                    : "border-brand-gold/35 shadow-[0_0_24px_rgba(195,163,116,0.10)]"
-                }`}
-              >
-                {c.logo ? (
-                  <img
-                    src={c.logo}
-                    alt={c.name}
-                    className="w-3/5 h-3/5 object-contain"
-                  />
-                ) : (
-                  <span className="font-display text-gradient-gold text-base lg:text-lg leading-[1.05] text-center px-3">
-                    {c.name}
-                  </span>
-                )}
-              </span>
-            </button>
-          ))}
+        {/* The list */}
+        <div className="relative z-10 lg:w-[48%]">
+          <div className="mb-10 lg:mb-12">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-text-heading text-balance">
+              Five companies. <Accent>One corridor.</Accent>
+            </h2>
+          </div>
+
+          <div className="flex flex-col">
+            {companies.map((c) => {
+              const isActive = activeName === c.name;
+              const isDimmed = activeName !== null && !isActive;
+              return (
+                <div
+                  key={c.name}
+                  onMouseEnter={() => setActiveName(c.name)}
+                  onMouseLeave={() => setActiveName(null)}
+                  className={`border-l pl-6 py-4 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
+                              ${isActive ? "border-brand-gold translate-x-3" : "border-white/10 translate-x-0"}
+                              ${isDimmed ? "opacity-25 blur-[1px]" : "opacity-100 blur-0"}`}
+                >
+                  <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 mb-1.5">
+                    <span
+                      className={`font-sans text-xl lg:text-2xl tracking-wide leading-none transition-all duration-700 ${
+                        isActive
+                          ? "text-brand-gold-hover font-medium"
+                          : "text-text-heading font-light"
+                      }`}
+                    >
+                      {c.name}
+                    </span>
+                    <span
+                      className={`text-[11px] uppercase tracking-[0.2em] font-semibold transition-colors duration-700 ${
+                        isActive ? "text-brand-gold" : "text-text-muted"
+                      }`}
+                    >
+                      {c.role}
+                    </span>
+                  </div>
+                  <p
+                    className={`font-sans font-light text-sm lg:text-base leading-relaxed max-w-md transition-colors duration-700 ${
+                      isActive ? "text-text-body" : "text-white/55"
+                    }`}
+                  >
+                    {c.line}
+                  </p>
+                  <div
+                    className={`flex flex-wrap gap-x-5 gap-y-2 overflow-hidden transition-all duration-700 ${
+                      isActive ? "max-h-12 opacity-100 mt-3" : "max-h-0 opacity-0 mt-0"
+                    }`}
+                  >
+                    {c.links.map((l) =>
+                      l.external ? (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold text-text-heading hover:text-brand-gold transition-colors"
+                        >
+                          {l.label}
+                          <span className="text-brand-gold transition-transform group-hover:translate-x-1">
+                            →
+                          </span>
+                        </a>
+                      ) : (
+                        <Link
+                          key={l.href}
+                          href={l.href}
+                          className="group inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold text-text-heading hover:text-brand-gold transition-colors"
+                        >
+                          {l.label}
+                          <span className="text-brand-gold transition-transform group-hover:translate-x-1">
+                            →
+                          </span>
+                        </Link>
+                      ),
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <p
+            className={`mt-10 lg:mt-12 font-sans font-light text-base lg:text-lg text-white/55 transition-opacity duration-700 ${
+              active ? "opacity-30" : "opacity-100"
+            }`}
+          >
+            A brand at $5M uses two of them. A brand at $50M uses{" "}
+            <em className="italic text-text-heading">all five.</em>
+          </p>
+
+          <div className="mt-8">
+            <ArrowLink href="/ecosystem">All five companies</ArrowLink>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

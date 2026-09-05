@@ -33,7 +33,7 @@ export function PressCarousel() {
           <button
             onClick={prev}
             aria-label="Previous press article"
-            className="hidden md:flex absolute -left-4 lg:-left-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105"
+            className="hidden md:flex absolute -left-4 lg:-left-6 min-[1400px]:-left-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105"
           >
             <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
           </button>
@@ -99,7 +99,7 @@ export function PressCarousel() {
           <button
             onClick={next}
             aria-label="Next press article"
-            className="hidden md:flex absolute -right-4 lg:-right-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105"
+            className="hidden md:flex absolute -right-4 lg:-right-6 min-[1400px]:-right-14 top-1/2 -translate-y-1/2 z-10 w-11 h-11 lg:w-12 lg:h-12 items-center justify-center transition-all hover:scale-105"
           >
             <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
           </button>

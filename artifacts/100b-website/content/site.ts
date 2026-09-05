@@ -22,6 +22,12 @@ import socialPress4 from "@assets/press/Social Press 4.jpg";
 import businessPress1 from "@assets/press/Business Press 1.jpg";
 import businessPress2 from "@assets/press/Business Press 2.jpg";
 import businessPress3 from "@assets/press/Business Press 3.jpg";
+// Ecosystem logos, redrawn as white marks on transparent so they read on the
+// dark orbit nodes. Sources are the supplied logos on white.
+import logo100b from "@assets/logo-100b-mono.png";
+import logoContainerClub from "@assets/logo-container-club-mono.png";
+import logoZad from "@assets/logo-zad-mono.png";
+import logoBond from "@assets/logo-bond-mono.png";
 
 export const CONTACT_EMAIL = "global@100b.co";
 
@@ -153,29 +159,33 @@ export const founderTestimonials: Testimonial[] = [
 export const partnerTestimonials: Testimonial[] = [
   {
     headline: "WHAT YOU'RE DOING IS BRILLIANT",
-    quote: "100B plays that bridge. What you're doing is brilliant.",
+    quote:
+      "100B plays that bridge — helping Americans understand Vietnam and Vietnamese entrepreneurs penetrate the U.S. market. What you're doing is brilliant.",
     name: "Mark Duval",
     title: "CEO",
     company: "GREATER AUSTIN ASIAN CHAMBER OF COMMERCE",
-    credential: "Former President of AmCham China",
+    credential: "",
     photo: markDuvalPhoto.src,
     photoPosition: "30% center",
   },
   {
-    headline: "THEY SHORTEN THE LEARNING CURVE",
-    quote: "100B can guide companies to not fail, to shorten the learning curve.",
+    headline: "THAT IS AN AWESOME JOB",
+    quote:
+      "100B can really guide companies to not fail — to shorten the learning curve. That is an awesome job.",
     name: "Hector Quintanar",
+    title: "MANAGING PARTNER",
     company: "TRADE MANAGEMENT SOLUTIONS",
-    credential: "Cross-border trade advisory",
+    credential: "",
     photo: hectorPhoto.src,
   },
   {
     headline: "THE CONNECTIONS WERE OUTSTANDING",
     quote:
-      "The connections we made were outstanding. 100B is very well positioned to help.",
+      "The trip was fantastic — the connections we made were outstanding. 100B is very well positioned to help.",
     name: "Ahmed Moledina",
+    title: "PRESIDENT & CEO",
     company: "SOAL TECHNOLOGIES",
-    credential: "Access Vietnam 2026 delegate",
+    credential: "",
     photo: ahmedPhoto.src,
   },
 ];
@@ -214,7 +224,7 @@ export type Company = {
   detail?: string;
   links: { label: string; href: string; external?: boolean }[];
   accent: string; // brand colour used on Ecosystem cards
-  /** Drop a logo file in here and the orbit node uses it instead of the wordmark. */
+  /** White-on-transparent mark for the orbit node. Falls back to the wordmark. */
   logo?: string | null;
 };
 
@@ -230,6 +240,7 @@ export const companies: Company[] = [
       { label: "Enter Vietnam", href: "/enter-vietnam" },
     ],
     accent: "#C3A374",
+    logo: logo100b.src,
   },
   {
     name: "Container Club",
@@ -239,6 +250,7 @@ export const companies: Company[] = [
       "Sourcing, vetting, QC, freight, network. 3-5% commission. Led by Tung Cao and Tu Mac.",
     links: [{ label: "Container Club", href: "/container-club" }],
     accent: "#8FA3B8",
+    logo: logoContainerClub.src,
   },
   {
     name: "ZAD",
@@ -248,6 +260,7 @@ export const companies: Company[] = [
       "Do It Right. Once. 1,000+ projects, 20+ people, 10 years. Google, Viettel Academy, Coc Coc, VAECO, Eva de Eva, Magonn, Hagoo. Founded by Hai Nguyen.",
     links: [{ label: "zadagency.co", href: "https://zadagency.co", external: true }],
     accent: "#E4572E",
+    logo: logoZad.src,
   },
   {
     name: "100Bold",
@@ -264,6 +277,7 @@ export const companies: Company[] = [
     detail: "Where relationships compound.",
     links: [{ label: "bond.gift", href: "https://bond.gift", external: true }],
     accent: "#7A5C3E",
+    logo: logoBond.src,
   },
 ];
 
