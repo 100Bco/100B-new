@@ -9,7 +9,7 @@ import {
 } from "@/components/Section";
 import { StatGrid, type Stat } from "@/components/StatGrid";
 import { IconCard } from "@/components/IconCard";
-import { TestimonialWall } from "@/components/TestimonialWall";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
 import { PageHero } from "@/components/PageHero";
 import { PhotoCarousel, type TripPhoto } from "@/components/PhotoCarousel";
@@ -226,11 +226,16 @@ export default function EnterVietnamPage() {
       </section>
 
       {/* 3.5 WHAT DELEGATES SAID. About the trip, not the company. */}
-      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="mt-4">
-            <TestimonialWall rows={[{ label: "Access Vietnam 2026", items: delegateTestimonials }]} />
+      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-dark border-b border-border-subtle overflow-hidden py-28 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
+          <div className="shrink-0">
+            <SectionTitle className="mb-8 lg:mb-10">
+              What delegates <Accent>say.</Accent>
+            </SectionTitle>
           </div>
+          <TestimonialCarousel
+            groups={[{ label: "Access Vietnam 2026", items: delegateTestimonials }]}
+          />
         </div>
       </section>
 

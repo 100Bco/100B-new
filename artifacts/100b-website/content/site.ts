@@ -199,26 +199,29 @@ export const partnerTestimonials: Testimonial[] = [
 
 export const delegateTestimonials: Testimonial[] = [
   {
+    headline: "YOU WANT VIETNAMESE PARTNERS",
     quote:
       "If you're investing in Vietnam, you want Vietnamese partners who can help you navigate it.",
     name: "Marc Knapper",
-    company: "Former US Ambassador to Vietnam",
+    company: "FORMER US AMBASSADOR TO VIETNAM",
     credential: "",
     photo: null,
   },
   {
+    headline: "START WITH BUSINESS DEVELOPMENT",
     quote:
       "Start with business development to find customers, then co-production, then full US production.",
     name: "Michael Nguyen",
     title: "MANAGING DIRECTOR",
-    company: "Boeing Vietnam",
+    company: "BOEING VIETNAM",
     credential: "",
     photo: null,
   },
   {
+    headline: "INSPIRING. PRODUCTIVE. MISSION ACCOMPLISHED.",
     quote: "Three words. Inspiring. Productive. Mission accomplished.",
     name: "Barbara Joe",
-    company: "Asian Chamber of Commerce Houston",
+    company: "ASIAN CHAMBER OF COMMERCE HOUSTON",
     credential: "",
     photo: null,
   },
