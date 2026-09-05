@@ -289,6 +289,7 @@ export type Founder = {
   short: string;
   long: string;
   photo: string | null;
+  linkedin?: string;
 };
 
 export const founders: Founder[] = [
@@ -296,6 +297,7 @@ export const founders: Founder[] = [
     name: "Minh Mac",
     title: "Founder & CEO",
     photo: minhPhoto.src,
+    linkedin: "https://www.linkedin.com/in/minhlaunch/",
     short:
       "Left Vietnam at 17. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users.",
     long:
@@ -305,6 +307,7 @@ export const founders: Founder[] = [
     name: "Tung Cao",
     title: "Co-Founder & Head of International Trade",
     photo: tungPhoto.src,
+    linkedin: "https://www.linkedin.com/in/tungcao-thomas/",
     short:
       "Runs the trade side. Buyers, freight, customs, and the network that moves goods.",
     long:
@@ -314,6 +317,7 @@ export const founders: Founder[] = [
     name: "Tu Mac",
     title: "Co-Founder & Head of Factory Ops",
     photo: tuPhoto.src,
+    linkedin: "https://www.linkedin.com/in/tu-mac-6b45a215b/",
     short:
       "Construction and interior materials. Factory vetting and quality control on the ground.",
     long:

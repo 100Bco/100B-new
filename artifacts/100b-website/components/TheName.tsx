@@ -4,14 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-/** One full cycle: the 100 reforms, holds, then splits again. */
-const CYCLE_MS = 12000;
-/** How long the 100 holds before it splits, so the reset reads as a beat. */
-const MERGE_HOLD_MS = 3000;
+/** One full cycle: the 100 shows, splits, holds apart, then reforms. */
+const CYCLE_MS = 5000;
+/** How briefly the 100 holds before it splits. */
+const MERGE_HOLD_MS = 800;
 
 /**
  * The only lyrical section on the site, held to a single screen.
- * The 100 splits into 50 and 50, reforms, and splits again on a 12s loop.
+ * The 100 splits into 50 and 50, holds apart, then reforms, on a 5s loop.
  */
 export function TheName() {
   const ref = useRef<HTMLElement>(null);
@@ -82,7 +82,7 @@ export function TheName() {
                 split: {
                   opacity: 1,
                   x: side === "left" ? "calc(-50% - 24vw)" : "calc(-50% + 24vw)",
-                  transition: { duration: 1.1, ease },
+                  transition: { duration: 0.8, ease },
                 },
               }}
             >

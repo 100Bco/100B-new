@@ -1,3 +1,4 @@
+import { Linkedin } from "lucide-react";
 import { founders } from "@/content/site";
 
 function initials(name: string) {
@@ -49,9 +50,22 @@ export function Founders({ variant = "short" }: { variant?: "short" | "long" }) 
             )}
           </div>
           <div className="flex flex-col items-center gap-1.5">
-            <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading leading-tight">
-              {f.name}
-            </h3>
+            <div className="flex items-center justify-center gap-2">
+              <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading leading-tight">
+                {f.name}
+              </h3>
+              {f.linkedin && (
+                <a
+                  href={f.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${f.name} on LinkedIn`}
+                  className="text-text-muted hover:text-brand-gold transition-colors shrink-0"
+                >
+                  <Linkedin size={16} strokeWidth={1.75} />
+                </a>
+              )}
+            </div>
             <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
               {f.title}
             </p>
