@@ -142,7 +142,7 @@ export default function EnterVietnamPage() {
             A week that would take you <Accent>two years to arrange.</Accent>
           </SectionTitle>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-12">
             {whatWeBuild.map((item) => (
               <IconCard
                 key={item.title}

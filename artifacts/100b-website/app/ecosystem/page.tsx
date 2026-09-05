@@ -91,21 +91,21 @@ export default function EcosystemPage() {
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mt-10 relative">
-            <div className="hidden md:block absolute left-0 right-0 top-[5px] h-px bg-gradient-to-r from-brand-gold/20 via-brand-gold/60 to-brand-gold/20" />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+            <div className="absolute left-0 right-0 top-[5px] h-px bg-gradient-to-r from-brand-gold/20 via-brand-gold/60 to-brand-gold/20" />
+            <div className="grid grid-cols-3 gap-4 md:gap-8">
               {ladder.map((rung) => (
                 <div key={rung.range} className="flex flex-col items-center text-center gap-4">
                   <div className="w-[11px] h-[11px] rounded-full bg-brand-gold shadow-[0_0_12px_rgba(195,163,116,0.7)]" />
                   <span
                     className={`text-gradient-gold leading-none ${
                       /\d/.test(rung.range)
-                        ? "font-display text-3xl lg:text-4xl"
-                        : "font-sans font-semibold text-xl lg:text-2xl"
+                        ? "font-display text-lg sm:text-2xl lg:text-4xl"
+                        : "font-sans font-semibold text-sm sm:text-lg lg:text-2xl"
                     }`}
                   >
                     {rung.range}
                   </span>
-                  <span className="font-sans font-light text-base lg:text-lg text-text-heading leading-snug">
+                  <span className="font-sans font-light text-[13px] sm:text-base lg:text-lg text-text-heading leading-snug">
                     → {rung.who}
                   </span>
                 </div>

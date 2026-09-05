@@ -38,7 +38,7 @@ export default function CommunitiesPage() {
       {/* 7.2 THE FOUR */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mt-10">
             {communities.map((c, i) => (
               <IconCard
                 key={c.name}
