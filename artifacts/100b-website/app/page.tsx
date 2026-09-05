@@ -199,7 +199,8 @@ export default function HomePage() {
                     position="center 62%"
                     tone={i === 0 ? "warm" : "cool"}
                     label={`${p.when} · ${p.where}`}
-                    caption={p.name}
+                    caption={p.name.toUpperCase()}
+                    captionClassName="font-display text-2xl md:text-3xl lg:text-4xl text-text-heading leading-none tracking-wide"
                     className="transition-transform duration-500 group-hover:scale-[1.01] group-hover:border-brand-gold/50"
                   />
                 </a>

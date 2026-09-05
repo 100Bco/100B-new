@@ -34,7 +34,7 @@ export function EcosystemOrbit() {
   const active = companies.find((c) => c.name === activeName) ?? null;
 
   return (
-    <section className="relative bg-bg-alt border-b border-border-subtle overflow-hidden py-20 lg:py-28">
+    <section className="relative bg-bg-alt border-b border-border-subtle overflow-hidden py-20 lg:pt-24 lg:pb-0 lg:h-screen lg:min-h-[800px] flex items-center">
       {/* Ambient light behind the ring, brighter while a company is held */}
       <div
         className="absolute inset-0 pointer-events-none transition-opacity duration-1000"
@@ -46,11 +46,11 @@ export function EcosystemOrbit() {
         aria-hidden
       />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative w-full max-w-7xl mx-auto px-6 lg:px-8">
         {/* The ring, anchored to the content's right edge and bleeding past it */}
         <div
           className="hidden lg:block absolute top-1/2 right-8 -translate-y-1/2 translate-x-[35%]
-                     w-[560px] h-[560px] xl:w-[680px] xl:h-[680px] pointer-events-none"
+                     w-[min(62vh,660px)] h-[min(62vh,660px)] pointer-events-none"
           aria-hidden
         >
           <div className="absolute inset-0 rounded-full border border-dashed border-white/10" />
@@ -74,7 +74,7 @@ export function EcosystemOrbit() {
           {/* Hub — the 100B emblem on a lit sphere */}
           <div
             className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-                        w-[220px] h-[220px] xl:w-[260px] xl:h-[260px] rounded-full
+                        w-[38%] h-[38%] rounded-full
                         flex items-center justify-center transition-transform duration-700 ease-out
                         ${active ? "scale-105" : "scale-100"}`}
             style={{
@@ -106,7 +106,7 @@ export function EcosystemOrbit() {
             return (
               <div
                 key={`node-${c.name}`}
-                className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
+                className="absolute -translate-x-1/2 -translate-y-1/2 w-[21%] pointer-events-auto"
                 style={nodePosition(nodeAngle(i, companies.length))}
               >
                 <button
@@ -116,12 +116,12 @@ export function EcosystemOrbit() {
                   onFocus={() => setActiveName(c.name)}
                   onBlur={() => setActiveName(null)}
                   aria-label={`${c.name}, ${c.role}`}
-                  className={`relative flex items-center justify-center rounded-full overflow-hidden
-                              transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
+                  className={`relative w-full aspect-square flex items-center justify-center rounded-full
+                              overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
                               ${
                                 isActive
-                                  ? "w-[140px] h-[140px] border border-brand-gold z-30"
-                                  : "w-[112px] h-[112px] border border-white/12 hover:border-white/30 z-20"
+                                  ? "border border-brand-gold scale-[1.18] z-30"
+                                  : "border border-white/12 hover:border-white/30 z-20"
                               }
                               ${isDimmed ? "opacity-20 blur-[2px] scale-90" : "opacity-100"}`}
                   style={{
@@ -168,7 +168,7 @@ export function EcosystemOrbit() {
 
         {/* The list */}
         <div className="relative z-10 lg:w-[48%]">
-          <div className="mb-10 lg:mb-12">
+          <div className="mb-6 lg:mb-8">
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-text-heading text-balance">
               Five companies. <Accent>One corridor.</Accent>
             </h2>
@@ -183,31 +183,25 @@ export function EcosystemOrbit() {
                   key={c.name}
                   onMouseEnter={() => setActiveName(c.name)}
                   onMouseLeave={() => setActiveName(null)}
-                  className={`border-l pl-6 py-4 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
+                  className={`border-l pl-6 py-2 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
                               ${isActive ? "border-brand-gold translate-x-3" : "border-white/10 translate-x-0"}
                               ${isDimmed ? "opacity-25 blur-[1px]" : "opacity-100 blur-0"}`}
                 >
                   <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 mb-1.5">
-                    <span
-                      className={`font-sans text-xl lg:text-2xl tracking-wide leading-none transition-all duration-700 ${
-                        isActive
-                          ? "text-brand-gold-hover font-medium"
-                          : "text-text-heading font-light"
+                    <h3
+                      className={`font-sans font-bold text-lg lg:text-xl leading-snug transition-colors duration-700 ${
+                        isActive ? "text-brand-gold-hover" : "text-text-heading"
                       }`}
                     >
                       {c.name}
-                    </span>
-                    <span
-                      className={`text-[11px] uppercase tracking-[0.2em] font-semibold transition-colors duration-700 ${
-                        isActive ? "text-brand-gold" : "text-text-muted"
-                      }`}
-                    >
+                    </h3>
+                    <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
                       {c.role}
                     </span>
                   </div>
                   <p
                     className={`font-sans font-light text-sm lg:text-base leading-relaxed max-w-md transition-colors duration-700 ${
-                      isActive ? "text-text-body" : "text-white/55"
+                      isActive ? "text-text-body" : "text-text-muted"
                     }`}
                   >
                     {c.line}
@@ -251,7 +245,7 @@ export function EcosystemOrbit() {
           </div>
 
           <p
-            className={`mt-10 lg:mt-12 font-sans font-light text-base lg:text-lg text-white/55 transition-opacity duration-700 ${
+            className={`mt-6 font-sans font-light text-lg lg:text-xl leading-relaxed text-text-muted transition-opacity duration-700 ${
               active ? "opacity-30" : "opacity-100"
             }`}
           >
@@ -259,7 +253,7 @@ export function EcosystemOrbit() {
             <em className="italic text-text-heading">all five.</em>
           </p>
 
-          <div className="mt-8">
+          <div className="mt-6">
             <ArrowLink href="/ecosystem">All five companies</ArrowLink>
           </div>
         </div>
