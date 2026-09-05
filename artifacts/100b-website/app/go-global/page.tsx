@@ -177,7 +177,7 @@ export default function GoGlobalPage() {
           </Lead>
 
           <div className="w-full max-w-3xl pt-10 border-t border-border-subtle flex flex-col items-center gap-5">
-            <h3 className="font-serif text-2xl lg:text-3xl text-text-heading">Under $20M?</h3>
+            <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading">Under $20M?</h3>
             <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">
               The equity model doesn't fit yet. Our companies do.
             </p>

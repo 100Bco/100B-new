@@ -117,7 +117,7 @@ export default function ContainerClubPage() {
               <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-text-muted">
                 Distributor path
               </span>
-              <div className="flex items-center gap-3 flex-wrap font-serif text-lg text-text-muted">
+              <div className="flex items-center gap-3 flex-wrap font-sans font-light text-base lg:text-lg text-text-muted">
                 <span>Factory</span>
                 <span className="text-white/30">→</span>
                 <span>Distributor</span>
@@ -137,7 +137,7 @@ export default function ContainerClubPage() {
               <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
                 Direct path
               </span>
-              <div className="flex items-center gap-3 flex-wrap font-serif text-lg text-text-heading">
+              <div className="flex items-center gap-3 flex-wrap font-sans font-light text-base lg:text-lg text-text-heading">
                 <span>Factory</span>
                 <span className="text-brand-gold">→</span>
                 <span>You</span>
@@ -188,7 +188,7 @@ export default function ContainerClubPage() {
                       0{i + 1}
                     </span>
                   </div>
-                  <h3 className="font-serif text-2xl text-text-heading leading-tight">
+                  <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading leading-snug">
                     {item.title}
                   </h3>
                   <p className="text-sm font-light leading-relaxed text-text-body">{item.line}</p>
@@ -307,7 +307,7 @@ export default function ContainerClubPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 border-t border-border-subtle mb-12">
             {repeats.map((r) => (
               <div key={r.title} className="py-6 border-b border-border-subtle flex flex-col gap-1">
-                <h3 className="font-serif text-2xl text-text-heading">{r.title}</h3>
+                <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading">{r.title}</h3>
                 <p className="text-sm lg:text-base font-light text-text-body">{r.line}</p>
               </div>
             ))}

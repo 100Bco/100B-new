@@ -93,7 +93,7 @@ export default function AboutPage() {
                 0{i + 1}
               </span>
               <div className="flex flex-col items-center gap-6">
-                <p className="font-display uppercase text-2xl md:text-[26px] lg:text-[30px] leading-[1.15] text-text-heading">
+                <p className="font-serif font-light text-2xl md:text-[28px] lg:text-[32px] leading-[1.15] text-text-heading">
                   {item.en}
                   {item.enSub && (
                     <>
