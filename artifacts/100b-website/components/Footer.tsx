@@ -34,15 +34,21 @@ export default function Footer() {
               </Link>
             ))}
           </nav>
-          <div className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] uppercase tracking-[0.2em] text-text-muted md:justify-end">
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="hover:text-brand-gold transition-colors normal-case tracking-normal font-serif text-base"
-            >
-              {CONTACT_EMAIL}
-            </a>
-            <span className="hidden sm:inline">·</span>
-            <span>Austin · Hanoi · Ho Chi Minh City</span>
+          <div className="flex flex-col gap-2 md:items-end">
+            <p className="flex items-baseline gap-2">
+              <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
+                Contact:
+              </span>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="font-serif text-base text-text-heading hover:text-brand-gold transition-colors"
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </p>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-text-muted">
+              Austin · Hanoi · Ho Chi Minh City
+            </p>
           </div>
         </div>
       </div>

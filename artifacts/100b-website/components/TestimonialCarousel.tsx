@@ -54,12 +54,12 @@ export function TestimonialCarousel({
 
   return (
     <div className="flex flex-col flex-1 min-h-0">
-      <div className="relative flex-1 min-h-0 flex items-center">
-        {/* Silver arrows, one each side of the slide */}
+      <div className="relative flex-1 min-h-0 flex items-center md:px-14 lg:px-16">
+        {/* Silver arrows, in the gutter the slide leaves for them */}
         <button
           onClick={goPrev}
           aria-label="Previous testimonial"
-          className="hidden md:flex absolute -left-4 lg:-left-6 min-[1400px]:-left-14 top-1/2 -translate-y-1/2 z-10 w-9 h-9 lg:w-10 lg:h-10 items-center justify-center transition-all hover:scale-105"
+          className="hidden md:flex absolute left-0 lg:left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 lg:w-9 lg:h-9 items-center justify-center transition-all hover:scale-110"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
         </button>
@@ -75,7 +75,7 @@ export function TestimonialCarousel({
           >
             {/* Left — headline, quote, signature */}
             <div className="relative flex flex-col justify-center">
-              <div className="absolute -top-6 -left-4 text-[140px] leading-none font-serif select-none pointer-events-none text-white/5">
+              <div className="absolute -top-6 -left-2 text-[120px] leading-none font-serif select-none pointer-events-none text-white/5">
                 “
               </div>
 
@@ -139,7 +139,7 @@ export function TestimonialCarousel({
         <button
           onClick={goNext}
           aria-label="Next testimonial"
-          className="hidden md:flex absolute -right-4 lg:-right-6 min-[1400px]:-right-14 top-1/2 -translate-y-1/2 z-10 w-9 h-9 lg:w-10 lg:h-10 items-center justify-center transition-all hover:scale-105"
+          className="hidden md:flex absolute right-0 lg:right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 lg:w-9 lg:h-9 items-center justify-center transition-all hover:scale-110"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
         </button>

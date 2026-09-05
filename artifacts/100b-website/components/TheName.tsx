@@ -1,16 +1,42 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "motion/react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+/** One full cycle: the 100 reforms, holds, then splits again. */
+const CYCLE_MS = 12000;
+/** How long the 100 holds before it splits, so the reset reads as a beat. */
+const MERGE_HOLD_MS = 3000;
 
 /**
  * The only lyrical section on the site, held to a single screen.
- * The 100 splits into 50 and 50 once it scrolls into view.
+ * The 100 splits into 50 and 50, reforms, and splits again on a 12s loop.
  */
 export function TheName() {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { amount: 0.5 });
+  const [split, setSplit] = useState(false);
+
+  // The 100 splits into 50 and 50, reforms every 12 seconds, and splits again.
+  // It only runs while the section is on screen.
+  useEffect(() => {
+    if (!inView) return;
+    let splitTimer: ReturnType<typeof setTimeout>;
+    const run = () => {
+      setSplit(false);
+      splitTimer = setTimeout(() => setSplit(true), MERGE_HOLD_MS);
+    };
+    run();
+    const cycle = setInterval(run, CYCLE_MS);
+    return () => {
+      clearInterval(cycle);
+      clearTimeout(splitTimer);
+    };
+  }, [inView]);
+
   return (
-    <section className="relative lg:h-screen lg:min-h-[720px] flex items-center bg-bg-dark border-b border-border-subtle overflow-hidden grain-overlay py-20 lg:py-0">
+    <section ref={ref} className="relative lg:h-screen lg:min-h-[720px] flex items-center bg-bg-dark border-b border-border-subtle overflow-hidden grain-overlay py-20 lg:py-0">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -25,18 +51,17 @@ export function TheName() {
         <motion.div
           className="relative h-[110px] md:h-[150px] lg:h-[180px] w-full mb-10 lg:mb-12 select-none"
           initial="rest"
-          whileInView="split"
-          viewport={{ once: true, amount: 0.6 }}
+          animate={split ? "split" : "rest"}
           aria-hidden
         >
           <motion.span
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[96px] md:text-[130px] lg:text-[160px] leading-none text-gradient-gold"
             variants={{
-              rest: { opacity: 1, scale: 1 },
+              rest: { opacity: 1, scale: 1, transition: { duration: 0.5, ease } },
               split: {
                 opacity: 0,
                 scale: 0.9,
-                transition: { delay: 0.9, duration: 0.6, ease },
+                transition: { duration: 0.5, ease },
               },
             }}
           >
@@ -49,11 +74,15 @@ export function TheName() {
               className="absolute left-1/2 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2"
               style={{ x: "-50%" }}
               variants={{
-                rest: { opacity: 0, x: "-50%" },
+                rest: {
+                  opacity: 0,
+                  x: "-50%",
+                  transition: { duration: 0.6, ease },
+                },
                 split: {
                   opacity: 1,
                   x: side === "left" ? "calc(-50% - 24vw)" : "calc(-50% + 24vw)",
-                  transition: { delay: 1.0, duration: 1.1, ease },
+                  transition: { duration: 1.1, ease },
                 },
               }}
             >

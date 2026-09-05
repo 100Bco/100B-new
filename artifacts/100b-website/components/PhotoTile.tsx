@@ -12,6 +12,7 @@ export function PhotoTile({
   className = "",
   tone = "warm",
   position = "center",
+  captionClassName = "font-serif text-lg lg:text-xl text-text-heading leading-snug",
 }: {
   src?: string | null;
   alt?: string;
@@ -21,6 +22,8 @@ export function PhotoTile({
   className?: string;
   tone?: "warm" | "cool" | "neutral";
   position?: string;
+  /** Overrides the caption type, e.g. a UTM display line for the programmes. */
+  captionClassName?: string;
 }) {
   const gradients = {
     warm: "linear-gradient(160deg, #2A2520 0%, #1A1714 55%, #0D0B09 100%)",
@@ -64,16 +67,14 @@ export function PhotoTile({
       )}
 
       {(label || caption) && (
-        <figcaption className="absolute inset-x-0 bottom-0 p-5 lg:p-6 flex flex-col gap-1 bg-gradient-to-t from-black/95 via-black/55 to-transparent">
+        <figcaption className="absolute inset-x-0 bottom-0 px-5 lg:px-6 pb-5 lg:pb-6 pt-16 lg:pt-20 flex flex-col gap-1.5 bg-gradient-to-t from-black via-black/75 to-transparent">
           {label && (
             <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-brand-gold">
               {label}
             </span>
           )}
           {caption && (
-            <span className="font-serif text-lg lg:text-xl text-text-heading leading-snug">
-              {caption}
-            </span>
+            <span className={captionClassName}>{caption}</span>
           )}
         </figcaption>
       )}
