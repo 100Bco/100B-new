@@ -177,7 +177,7 @@ export default function GoGlobalPage() {
           </Lead>
 
           <div className="w-full max-w-3xl pt-10 border-t border-border-subtle flex flex-col items-center gap-5">
-            <h3 className="font-serif text-2xl lg:text-3xl text-text-heading">Under $20M?</h3>
+            <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading">Under $20M?</h3>
             <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">
               The equity model doesn't fit yet. Our companies do.
             </p>
@@ -190,12 +190,12 @@ export default function GoGlobalPage() {
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="relative mt-10 mb-12">
-            <div className="hidden lg:block absolute top-[48px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent" />
-            <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4 relative">
+            <div className="absolute top-[34px] sm:top-[40px] lg:top-[48px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent" />
+            <ol className="grid grid-cols-5 gap-1.5 sm:gap-3 lg:gap-4 relative">
               {path.map((node, i) => (
-                <li key={node.name} className="flex lg:flex-col items-center gap-5 lg:gap-4 lg:text-center">
+                <li key={node.name} className="flex flex-col items-center text-center gap-2.5 sm:gap-3 lg:gap-4">
                   <div
-                    className={`w-24 h-24 rounded-full flex items-center justify-center shrink-0 px-4 ${
+                    className={`w-[60px] h-[60px] sm:w-[72px] sm:h-[72px] lg:w-24 lg:h-24 rounded-full flex items-center justify-center shrink-0 px-2 lg:px-4 ${
                       i === path.length - 1
                         ? "bg-brand-gold shadow-[0_0_30px_rgba(195,163,116,0.35)]"
                         : "bg-bg-dark border border-brand-gold/40"
@@ -207,11 +207,11 @@ export default function GoGlobalPage() {
                       className="max-w-[74%] max-h-[38%] w-auto h-auto object-contain"
                     />
                   </div>
-                  <div className="flex flex-col gap-1.5">
-                    <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-text-muted">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[8px] sm:text-[9px] lg:text-[10px] uppercase tracking-[0.18em] lg:tracking-[0.25em] font-semibold text-text-muted">
                       Step {i + 1}
                     </span>
-                    <span className="font-sans font-bold text-lg lg:text-xl text-text-heading leading-snug">
+                    <span className="font-sans font-bold text-[11px] sm:text-sm lg:text-xl text-text-heading leading-snug">
                       {node.step}
                     </span>
                   </div>

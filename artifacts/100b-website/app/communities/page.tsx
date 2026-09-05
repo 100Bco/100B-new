@@ -76,7 +76,7 @@ export default function CommunitiesPage() {
               },
             ].map((item) => (
               <div key={item.title} className="py-8 border-b border-border-subtle flex flex-col gap-3">
-                <h3 className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
+                <h3 className="font-sans text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
                   {item.title}
                 </h3>
                 <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">

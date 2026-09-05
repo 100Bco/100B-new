@@ -65,14 +65,14 @@ export function PhotoCarousel({
         <button
           onClick={goPrev}
           aria-label="Previous photo"
-          className="hidden md:flex absolute -left-5 lg:-left-6 top-1/2 -translate-y-1/2 z-10 w-9 h-9 items-center justify-center transition-transform hover:scale-110"
+          className="hidden lg:flex absolute -left-6 top-1/2 -translate-y-1/2 z-10 w-9 h-9 items-center justify-center transition-transform hover:scale-110"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
         </button>
         <button
           onClick={goNext}
           aria-label="Next photo"
-          className="hidden md:flex absolute -right-5 lg:-right-6 top-1/2 -translate-y-1/2 z-10 w-9 h-9 items-center justify-center transition-transform hover:scale-110"
+          className="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10 w-9 h-9 items-center justify-center transition-transform hover:scale-110"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
         </button>
@@ -82,7 +82,7 @@ export function PhotoCarousel({
         <button
           onClick={goPrev}
           aria-label="Previous photo"
-          className="md:hidden w-8 h-8 flex items-center justify-center"
+          className="lg:hidden w-8 h-8 flex items-center justify-center"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
         </button>
@@ -101,7 +101,7 @@ export function PhotoCarousel({
         <button
           onClick={goNext}
           aria-label="Next photo"
-          className="md:hidden w-8 h-8 flex items-center justify-center"
+          className="lg:hidden w-8 h-8 flex items-center justify-center"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
         </button>

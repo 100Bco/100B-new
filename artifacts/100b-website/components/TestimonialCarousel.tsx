@@ -107,7 +107,7 @@ export function TestimonialCarousel({
 
             {/* Right — portrait in the silver frame */}
             <div
-              className="w-full aspect-[4/5] max-h-[min(58vh,500px)] mx-auto rounded-[28px] p-[12px] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] flex items-center justify-center"
+              className="w-full aspect-[4/3] sm:aspect-[4/5] max-h-[min(46vh,500px)] sm:max-h-[min(58vh,500px)] mx-auto rounded-[28px] p-2 sm:p-[12px] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] flex items-center justify-center"
               style={{
                 background:
                   "linear-gradient(105.42deg, #EAEAEA 0%, #C9C9C9 36%, #FFFFFF 49%, #EAEAEA 69%, #6A6A6A 94%)",

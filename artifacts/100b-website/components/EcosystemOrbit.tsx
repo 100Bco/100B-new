@@ -1,18 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Accent, ArrowLink } from "@/components/Section";
 import { companies } from "@/content/site";
 import emblem from "@assets/100b-emblem-trimmed.png";
 
-/** The arc the nodes sit on, from top-left round to bottom-left. */
+/** On desktop the ring sits to the right of the list, so the nodes take the
+ *  left arc, from top-left round to bottom-left. Standing alone under the list
+ *  on smaller screens, they take the whole circle instead. */
 const ARC_START = 245;
 const ARC_END = 115;
 
 /** Node centres sit on the container's own circle, so the whole system scales
  *  with the container and needs no pixel radius. */
-function nodeAngle(index: number, total: number) {
+function nodeAngle(index: number, total: number, wholeCircle: boolean) {
+  if (wholeCircle) return -90 + (360 / total) * index;
   return ARC_START + ((ARC_END - ARC_START) * index) / (total - 1);
 }
 
@@ -33,6 +36,16 @@ export function EcosystemOrbit() {
   const [activeName, setActiveName] = useState<string | null>(null);
   const active = companies.find((c) => c.name === activeName) ?? null;
 
+  // The ring only sits beside the list from lg up.
+  const [besideList, setBesideList] = useState(true);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const sync = () => setBesideList(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
   return (
     <section className="relative bg-bg-alt border-b border-border-subtle overflow-hidden py-20 lg:pt-24 lg:pb-0 lg:h-screen lg:min-h-[800px] flex items-center">
       {/* Ambient light behind the ring, brighter while a company is held */}
@@ -46,11 +59,13 @@ export function EcosystemOrbit() {
         aria-hidden
       />
 
-      <div className="relative w-full max-w-7xl mx-auto px-6 lg:px-8">
-        {/* The ring, anchored to the content's right edge and bleeding past it */}
+      <div className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 flex flex-col-reverse lg:block gap-12">
+        {/* The ring. On desktop it is anchored to the content's right edge and
+            bleeds past it; below lg it sits under the list, whole and centred. */}
         <div
-          className="hidden lg:block absolute top-1/2 right-8 -translate-y-1/2 translate-x-[35%]
-                     w-[min(74vh,792px)] h-[min(74vh,792px)] pointer-events-none"
+          className="relative mx-auto w-[min(68vw,380px)] h-[min(68vw,380px)]
+                     lg:absolute lg:top-1/2 lg:right-8 lg:mx-0 lg:-translate-y-1/2 lg:translate-x-[35%]
+                     lg:w-[min(74vh,792px)] lg:h-[min(74vh,792px)] pointer-events-none"
           aria-hidden
         >
           <div className="absolute inset-0 rounded-full border border-dashed border-white/10" />
@@ -63,7 +78,7 @@ export function EcosystemOrbit() {
                 activeName === c.name ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
               }`}
               style={{
-                transform: `translateY(-50%) rotate(${nodeAngle(i, companies.length)}deg)`,
+                transform: `translateY(-50%) rotate(${nodeAngle(i, companies.length, !besideList)}deg)`,
                 background:
                   "linear-gradient(90deg, rgba(195,163,116,0.85) 0%, rgba(195,163,116,0.12) 80%, transparent 100%)",
                 boxShadow: "0 0 10px rgba(195,163,116,0.45)",
@@ -106,8 +121,8 @@ export function EcosystemOrbit() {
             return (
               <div
                 key={`node-${c.name}`}
-                className="absolute -translate-x-1/2 -translate-y-1/2 w-[21%] pointer-events-auto"
-                style={nodePosition(nodeAngle(i, companies.length))}
+                className="absolute -translate-x-1/2 -translate-y-1/2 w-[24%] lg:w-[21%] pointer-events-auto"
+                style={nodePosition(nodeAngle(i, companies.length, !besideList))}
               >
                 <button
                   type="button"

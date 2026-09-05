@@ -128,7 +128,7 @@ export default function EnterVietnamPage() {
           <div className="mt-4 mb-10">
             <StatGrid stats={vietnamStats} columns={3} />
           </div>
-          <p className="font-serif text-xl lg:text-2xl text-text-body leading-snug max-w-4xl mx-auto text-center">
+          <p className="font-sans font-light text-base lg:text-lg text-text-body leading-relaxed max-w-4xl mx-auto text-center">
             690,000 STEM students, growing 10% a year. 4,100+ startups. 4 unicorns. 290+ active
             VC firms.
           </p>
