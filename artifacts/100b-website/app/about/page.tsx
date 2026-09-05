@@ -84,19 +84,23 @@ export default function AboutPage() {
 
       {/* 6.5 HOW WE WORK. Four statements, one per panel, large type. */}
       <section className="bg-bg-dark border-b border-border-subtle">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        {/* Two panels abreast on a phone rather than four stacked: the same
+            four statements in half the scrolling. */}
+        <div className="grid grid-cols-2 lg:grid-cols-4">
           {howWeWork.map((item, i) => (
             <div
               key={item.en}
-              className={`relative min-h-[360px] lg:min-h-[480px] p-8 lg:p-10 flex flex-col items-center text-center justify-between border-b md:border-b-0 border-border-subtle ${
-                i > 0 ? "md:border-l" : ""
+              className={`relative min-h-[240px] sm:min-h-[320px] lg:min-h-[480px] p-5 sm:p-8 lg:p-10 flex flex-col items-center text-center justify-between border-border-subtle ${
+                i % 2 === 1 ? "border-l" : ""
+              } ${i > 0 ? "lg:border-l" : ""} ${
+                i < 2 ? "border-b lg:border-b-0" : ""
               } ${i % 2 === 0 ? "bg-bg-dark" : "bg-bg-alt"}`}
             >
-              <span className="text-[40px] font-display text-gradient-gold leading-none font-medium">
+              <span className="text-[26px] sm:text-[34px] lg:text-[40px] font-display text-gradient-gold leading-none font-medium">
                 0{i + 1}
               </span>
-              <div className="flex flex-col items-center gap-6">
-                <p className="font-serif font-light text-2xl md:text-[28px] lg:text-[32px] leading-[1.15] text-text-heading">
+              <div className="flex flex-col items-center gap-3 sm:gap-6">
+                <p className="font-serif font-light text-[17px] sm:text-2xl md:text-[28px] lg:text-[32px] leading-[1.15] text-text-heading">
                   {item.en}
                   {item.enSub && (
                     <>
@@ -105,7 +109,7 @@ export default function AboutPage() {
                     </>
                   )}
                 </p>
-                <p className="font-serif italic text-lg lg:text-xl text-text-body leading-snug">
+                <p className="font-serif italic text-[13px] sm:text-lg lg:text-xl text-text-body leading-snug">
                   {item.vi}
                   {item.viSub && (
                     <>

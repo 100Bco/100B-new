@@ -112,7 +112,9 @@ export default function GoGlobalPage() {
       {/* 2.3 WHAT WE DO */}
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+          {/* Three of these abreast on a 390px phone leaves 75px of text column,
+              one or two words a line, so they hold a row only from sm up. */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
             {whatWeDo.map((item) => (
               <IconCard
                 key={item.title}

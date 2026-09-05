@@ -307,11 +307,11 @@ export default function ContainerClubPage() {
             Vietnam. Construction materials. Texas buyers.{" "}
             <Accent>That was the first one.</Accent>
           </SectionTitle>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 border-t border-border-subtle mb-12">
+          <div className="grid grid-cols-2 gap-x-6 md:gap-x-12 border-t border-border-subtle mb-12">
             {repeats.map((r) => (
               <div key={r.title} className="py-6 border-b border-border-subtle flex flex-col gap-1">
-                <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading">{r.title}</h3>
-                <p className="text-sm lg:text-base font-light text-text-body">{r.line}</p>
+                <h3 className="font-sans font-bold text-[15px] sm:text-lg lg:text-xl text-text-heading">{r.title}</h3>
+                <p className="text-[13px] sm:text-sm lg:text-base font-light text-text-body">{r.line}</p>
               </div>
             ))}
           </div>
@@ -347,11 +347,11 @@ export default function ContainerClubPage() {
             Introduced by someone already in. No cold applications.
           </Lead>
 
-          <ul className="w-full max-w-3xl grid grid-cols-1 sm:grid-cols-2 gap-x-10 border-t border-border-subtle">
+          <ul className="w-full max-w-3xl grid grid-cols-2 gap-x-5 sm:gap-x-10 border-t border-border-subtle">
             {network.map((item) => (
               <li
                 key={item}
-                className="py-5 border-b border-border-subtle flex items-center gap-4 font-sans text-base lg:text-lg font-light text-text-body"
+                className="py-4 sm:py-5 border-b border-border-subtle flex items-center gap-3 sm:gap-4 font-sans text-[13px] sm:text-base lg:text-lg font-light text-text-body"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shadow-[0_0_8px_rgba(195,163,116,0.8)] shrink-0" />
                 {item}

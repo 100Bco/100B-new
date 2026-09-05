@@ -3,13 +3,16 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { pressItems, type PressItem } from "@/content/site";
+import { PressCard, PressSwipeRow } from "@/components/PressCard";
 import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
 
 const VISIBLE = 3;
 
 /**
- * Press carousel. Three cards per page, paging through the full list.
- * The last page wraps back to the start so the row is always full.
+ * Press carousel. Three cards per page from md up, paging through the full
+ * list, the last page wrapping back to the start so the row is always full.
+ * On a phone there is no room for three abreast, so the same cards become one
+ * horizontal row you swipe rather than a column you scroll past.
  */
 export function PressCarousel() {
   const [page, setPage] = useState(0);
@@ -28,12 +31,14 @@ export function PressCarousel() {
 
   return (
     <>
-      <div className="relative md:px-14 lg:px-16">
+      <PressSwipeRow items={pressItems} variant="carousel" />
+
+      <div className="relative hidden md:block md:px-14 lg:px-16">
         {showNav && (
           <button
             onClick={prev}
             aria-label="Previous press article"
-            className="hidden md:flex absolute left-0 lg:left-1 top-1/2 -translate-y-1/2 z-10 w-9 h-9 lg:w-10 lg:h-10 items-center justify-center transition-all hover:scale-110"
+            className="absolute left-0 lg:left-1 top-1/2 -translate-y-1/2 z-10 w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center transition-all hover:scale-110"
           >
             <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
           </button>
@@ -46,51 +51,10 @@ export function PressCarousel() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -16 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full"
+            className="grid grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full"
           >
             {visible.map((item, idx) => (
-              <article
-                key={page + ":" + idx}
-                className="bg-bg-card rounded-2xl overflow-hidden border border-white/5 flex flex-col"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden shrink-0">
-                  {item.image ? (
-                    <img
-                      src={item.image}
-                      alt={item.headline}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #2A2520 0%, #1A1714 60%, #0D0B09 100%)",
-                      }}
-                      aria-hidden
-                    />
-                  )}
-                  <span className="absolute bottom-3 left-3 bg-brand-gold/90 text-bg-dark text-[10px] font-semibold px-2.5 py-1 rounded">
-                    {item.outlet}
-                  </span>
-                </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="font-display text-gradient-gold uppercase leading-[1.15] text-base lg:text-lg mb-2 line-clamp-2">
-                    {item.headline}
-                  </h3>
-                  <p className="text-[13px] font-light text-text-body leading-relaxed mb-3 line-clamp-2">
-                    {item.description}
-                  </p>
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-auto self-start text-sm text-text-heading underline underline-offset-4 decoration-white/30 hover:decoration-brand-gold hover:text-brand-gold transition-colors"
-                  >
-                    Read more
-                  </a>
-                </div>
-              </article>
+              <PressCard key={page + ":" + idx} item={item} variant="carousel" />
             ))}
           </motion.div>
         </AnimatePresence>
@@ -99,32 +63,12 @@ export function PressCarousel() {
           <button
             onClick={next}
             aria-label="Next press article"
-            className="hidden md:flex absolute right-0 lg:right-1 top-1/2 -translate-y-1/2 z-10 w-9 h-9 lg:w-10 lg:h-10 items-center justify-center transition-all hover:scale-110"
+            className="absolute right-0 lg:right-1 top-1/2 -translate-y-1/2 z-10 w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center transition-all hover:scale-110"
           >
             <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
           </button>
         )}
       </div>
-
-      {/* Mobile prev/next */}
-      {showNav && (
-        <div className="md:hidden flex items-center justify-center gap-6 mt-8">
-          <button
-            onClick={prev}
-            aria-label="Previous press article"
-            className="w-11 h-11 flex items-center justify-center transition-all hover:scale-105"
-          >
-            <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
-          </button>
-          <button
-            onClick={next}
-            aria-label="Next press article"
-            className="w-11 h-11 flex items-center justify-center transition-all hover:scale-105"
-          >
-            <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
-          </button>
-        </div>
-      )}
     </>
   );
 }
