@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useAutoAdvance } from "@/components/useAutoAdvance";
 import type { Testimonial } from "@/content/site";
 import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
 
@@ -35,22 +35,10 @@ export function TestimonialCarousel({
     g.items.map((t) => ({ ...t, group: g.label })),
   );
 
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    if (slides.length < 2) return;
-    const timer = setInterval(
-      () => setCurrent((prev) => (prev + 1) % slides.length),
-      interval,
-    );
-    return () => clearInterval(timer);
-  }, [interval, slides.length]);
+  const { current, goTo, goNext, goPrev } = useAutoAdvance(slides.length, interval);
 
   if (!slides.length) return null;
   const slide = slides[current];
-
-  const goPrev = () => setCurrent((p) => (p - 1 + slides.length) % slides.length);
-  const goNext = () => setCurrent((p) => (p + 1) % slides.length);
 
   return (
     <div className="flex flex-col flex-1 min-h-0">
@@ -105,24 +93,29 @@ export function TestimonialCarousel({
               </div>
             </div>
 
-            {/* Right — portrait in the silver frame */}
+            {/* Right — portrait in the silver frame.
+                The frame is width-led: a max-width holds the 4:5 so the ratio is
+                never clamped away, and everything inside is positioned off the
+                frame's own edges. A percentage height here would depend on the
+                aspect-ratio box resolving one, which Safari does not do, and the
+                portrait would break out of the frame. */}
             <div
-              className="w-full aspect-[4/3] sm:aspect-[4/5] max-h-[min(46vh,500px)] sm:max-h-[min(58vh,500px)] mx-auto rounded-[28px] p-2 sm:p-[12px] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] flex items-center justify-center"
+              className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-none aspect-[4/5] mx-auto rounded-[28px] p-2 sm:p-[12px] overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]"
               style={{
                 background:
                   "linear-gradient(105.42deg, #EAEAEA 0%, #C9C9C9 36%, #FFFFFF 49%, #EAEAEA 69%, #6A6A6A 94%)",
               }}
             >
-              <div className="w-full h-full rounded-[18px] overflow-hidden ring-1 ring-black/20">
+              <div className="absolute inset-2 sm:inset-3 rounded-[18px] overflow-hidden ring-1 ring-black/20">
                 {slide.photo ? (
                   <img
                     src={slide.photo}
                     alt={slide.name}
                     style={{ objectPosition: slide.photoPosition ?? "center" }}
-                    className="w-full h-full object-cover grayscale"
+                    className="absolute inset-0 w-full h-full object-cover grayscale"
                   />
                 ) : (
-                  <div className="flex flex-col items-center justify-center gap-4 w-full h-full bg-[#111111]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#111111]">
                     <span className="text-6xl lg:text-7xl font-display text-gradient-gold opacity-30 leading-none">
                       {initials(slide.name)}
                     </span>
@@ -159,7 +152,7 @@ export function TestimonialCarousel({
           {slides.map((s, idx) => (
             <button
               key={s.name}
-              onClick={() => setCurrent(idx)}
+              onClick={() => goTo(idx)}
               className={`h-1.5 transition-all duration-300 rounded-full ${
                 idx === current ? "w-8 bg-brand-gold" : "w-2 bg-white/15 hover:bg-white/30"
               }`}
