@@ -43,11 +43,12 @@ export default function EcosystemPage() {
       {/* 5.2 THE COMPANIES */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 mt-10">
+          {/* Three across, then the remaining two centred under them. */}
+          <div className="flex flex-wrap justify-center gap-4 lg:gap-6 mt-10">
             {companies.map((c) => (
               <div
                 key={c.name}
-                className="relative bg-bg-card rounded-3xl p-7 lg:p-8 border border-border-subtle hover:border-brand-gold/40 transition-colors flex flex-col gap-5 overflow-hidden"
+                className="relative bg-bg-card rounded-3xl p-7 lg:p-8 border border-border-subtle hover:border-brand-gold/40 transition-colors flex flex-col gap-5 overflow-hidden w-full md:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)]"
               >
                 <span
                   className="absolute top-0 left-0 w-1.5 h-full rounded-l-3xl"

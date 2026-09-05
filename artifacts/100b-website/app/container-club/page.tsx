@@ -82,6 +82,7 @@ export default function ContainerClubPage() {
     <div className="flex flex-col">
       {/* 4.1 HERO */}
       <PageHero
+        videoId="9hbymhvynw"
         title={
           <>
             <span className="block">Buy from the factory.</span>
@@ -179,19 +180,21 @@ export default function ContainerClubPage() {
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="relative mt-10">
-            <div className="hidden lg:block absolute top-[26px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent" />
-            <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 relative">
+            <div className="absolute top-[20px] sm:top-[23px] lg:top-[26px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent" />
+            <ol className="grid grid-cols-5 gap-1.5 sm:gap-3 lg:gap-4 relative">
               {whatWeDo.map((item, i) => (
-                <li key={item.title} className="flex flex-col items-center text-center gap-4">
-                  <div className="w-[52px] h-[52px] rounded-full bg-bg-dark border border-brand-gold/40 flex items-center justify-center">
-                    <span className="font-display text-gradient-gold text-lg leading-none">
+                <li key={item.title} className="flex flex-col items-center text-center gap-2.5 lg:gap-4">
+                  <div className="w-10 h-10 sm:w-[46px] sm:h-[46px] lg:w-[52px] lg:h-[52px] rounded-full bg-bg-dark border border-brand-gold/40 flex items-center justify-center shrink-0">
+                    <span className="font-display text-gradient-gold text-sm lg:text-lg leading-none">
                       0{i + 1}
                     </span>
                   </div>
-                  <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading leading-snug">
+                  <h3 className="font-sans font-bold text-[11px] sm:text-sm lg:text-xl text-text-heading leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-sm font-light leading-relaxed text-text-body">{item.line}</p>
+                  <p className="hidden sm:block text-xs lg:text-sm font-light leading-relaxed text-text-body">
+                    {item.line}
+                  </p>
                 </li>
               ))}
             </ol>

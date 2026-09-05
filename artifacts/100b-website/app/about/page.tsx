@@ -5,6 +5,7 @@ import { Founders } from "@/components/Founders";
 import { PressStrip } from "@/components/PressStrip";
 import { ContactCTA } from "@/components/ContactCTA";
 import { PageHero } from "@/components/PageHero";
+import aboutBanner from "@assets/about-banner-vn.jpg";
 
 export const metadata: Metadata = {
   title: "About",
@@ -30,6 +31,8 @@ export default function AboutPage() {
     <div className="flex flex-col">
       {/* 6.1 HERO */}
       <PageHero
+        image={aboutBanner.src}
+        imagePosition="center 55%"
         title={
           <>
             <span className="block">Between two worlds.</span>
