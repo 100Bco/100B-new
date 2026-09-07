@@ -19,6 +19,29 @@ function initials(name: string) {
 }
 
 /**
+ * Deal the groups together rather than running one after the other, so a
+ * viewer meets both kinds of voice early instead of sitting through every
+ * Vietnamese founder before the first international partner.
+ *
+ * Each quote is placed at its fractional position within its own group, then
+ * everything is ordered by that, which spreads each group evenly however
+ * uneven the counts are. Six founders against three partners deals out as
+ * F P F F P F F P F: no two partners adjacent, never more than two founders
+ * in a row. One group passes through untouched.
+ */
+function interleave(groups: Group[]): Slide[] {
+  return groups
+    .flatMap((g) =>
+      g.items.map((t, i) => ({
+        slide: { ...t, group: g.label },
+        at: (i + 0.5) / g.items.length,
+      })),
+    )
+    .sort((a, b) => a.at - b.at)
+    .map((x) => x.slide);
+}
+
+/**
  * Client quote carousel, as on the previous site. One voice at a time:
  * headline, quote and signature on the left, portrait in the silver frame
  * on the right, silver arrows flanking the slide and dots underneath.
@@ -31,9 +54,7 @@ export function TestimonialCarousel({
   groups: Group[];
   interval?: number;
 }) {
-  const slides: Slide[] = groups.flatMap((g) =>
-    g.items.map((t) => ({ ...t, group: g.label })),
-  );
+  const slides: Slide[] = interleave(groups);
 
   const { current, goTo, goNext, goPrev } = useAutoAdvance(slides.length, interval);
 
@@ -93,17 +114,23 @@ export function TestimonialCarousel({
               </div>
             </div>
 
-            {/* Right — portrait in the silver frame.
-                Below lg a max-width sets the size and the 4:5 gives the height.
-                From lg the column width is fixed by the grid and the section is
-                one screen tall, so the frame is capped against the viewport
-                instead, or it runs past the bottom of the section.
+            {/* Right — the photograph in the silver frame.
+                Below lg a max-width sets the size and the ratio gives the
+                height. From lg the column width is fixed by the grid and the
+                section is one screen tall, so the frame is capped against the
+                viewport instead, or it runs past the bottom of the section.
                 Everything inside is positioned off the frame's own edges: a
                 percentage height would depend on the aspect-ratio box resolving
-                one, which Safari does not do, and the portrait would break out
-                of the frame. */}
+                one, which Safari does not do, and the photograph would break
+                out of the frame.
+                A group shot takes the wider ratio. Squeezing ten people into a
+                4:5 crop loses the ones standing at either end, which is most of
+                the point of a group photograph. The frame keeps its width, so
+                only its height changes between slides. */}
             <div
-              className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-none aspect-[4/5] lg:max-h-[min(46vh,480px)] mx-auto rounded-[28px] p-2 sm:p-[12px] overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]"
+              className={`relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-none ${
+                slide.photoShape === "group" ? "aspect-[4/3]" : "aspect-[4/5]"
+              } lg:max-h-[min(46vh,480px)] mx-auto rounded-[28px] p-2 sm:p-[12px] overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)]`}
               style={{
                 background:
                   "linear-gradient(105.42deg, #EAEAEA 0%, #C9C9C9 36%, #FFFFFF 49%, #EAEAEA 69%, #6A6A6A 94%)",

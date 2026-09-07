@@ -13,6 +13,7 @@ import ahmedPhoto from "@assets/Ahmed.jpeg";
 import marcKnapperPhoto from "@assets/Marc Knapper.webp";
 import michaelNguyenPhoto from "@assets/Michael Nguyen.jpg";
 import barbaraJoePhoto from "@assets/Barbara.jpeg";
+import earthVcPhoto from "@assets/trip/earth-vc.jpg";
 import minhPhoto from "@assets/Minh Mac Profile.png";
 import tungPhoto from "@assets/Tung Cao Photo.png";
 import tuPhoto from "@assets/Tu Mac Profile.png";
@@ -99,6 +100,12 @@ export type Testimonial = {
   photo: string | null;
   /** object-position for the portrait when a centred crop cuts the subject. */
   photoPosition?: string;
+  /**
+   * Shape of the frame. A headshot takes the 4:5 default; a group photograph
+   * takes "group", which widens the frame to 4:3 rather than cropping the
+   * people at both edges away to fit a portrait.
+   */
+  photoShape?: "portrait" | "group";
 };
 
 // The client quotes, verbatim from the previous site. Used by the carousel
@@ -242,7 +249,8 @@ const earthVc: Testimonial = {
   name: "Earth VC",
   company: "CLIMATE TECH FUND",
   credential: "Pioneering climate tech investor, 23 startups in a global portfolio.",
-  photo: null,
+  photo: earthVcPhoto.src,
+  photoShape: "group",
 };
 
 const mindX: Testimonial = {
