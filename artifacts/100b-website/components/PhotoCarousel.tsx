@@ -14,10 +14,13 @@ export function PhotoCarousel({
   photos,
   interval = 5000,
   className = "",
+  captionClassName = "font-sans font-bold text-base lg:text-lg text-text-heading leading-snug",
 }: {
   photos: TripPhoto[];
   interval?: number;
   className?: string;
+  /** Overrides the caption's face, e.g. a UTM programme line. */
+  captionClassName?: string;
 }) {
   const { current, goTo, goNext, goPrev } = useAutoAdvance(photos.length, interval);
 
@@ -45,9 +48,7 @@ export function PhotoCarousel({
             <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-brand-gold">
               {photo.label}
             </span>
-            <span className="font-sans font-bold text-base lg:text-lg text-text-heading leading-snug">
-              {photo.caption}
-            </span>
+            <span className={captionClassName}>{photo.caption}</span>
           </figcaption>
         </figure>
 
