@@ -22,7 +22,7 @@ export function PhotoTile({
   className?: string;
   tone?: "warm" | "cool" | "neutral";
   position?: string;
-  /** Overrides the caption type, e.g. a UTM display line for the programmes. */
+  /** Overrides the caption type, e.g. a UTM display line for the programs. */
   captionClassName?: string;
 }) {
   const gradients = {

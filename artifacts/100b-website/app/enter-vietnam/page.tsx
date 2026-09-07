@@ -59,8 +59,7 @@ const whatWeBuild = [
 ];
 
 const whoWeMet = [
-  "AmCham Hanoi and the US Embassy",
-  "National Data Association",
+  "AmCham Vietnam",
   "National Data Center",
   "City of Hanoi",
   "National Innovation Center",
@@ -69,15 +68,17 @@ const whoWeMet = [
   "AVV",
   "Earth VC",
   "Fulbright University Vietnam",
-  "OpenCommerce",
   "Coolmate",
   "MindX",
-  "MISA",
   "BCA and BNI Vietnam",
 ];
 
 const tripPhotos: TripPhoto[] = [
-  { src: delegationHanoi.src, label: "June 2026 · Hanoi", caption: "The delegation" },
+  {
+    src: delegationHanoi.src,
+    label: "June 2026 · Hanoi",
+    caption: "AmCham Vietnam and the former US Ambassador to Vietnam",
+  },
   { src: cityOfHanoi.src, label: "Government", caption: "City of Hanoi" },
   { src: ministryScience.src, label: "Government", caption: "Ministry of Science and Technology" },
   { src: mekongCapital.src, label: "Capital", caption: "Mekong Capital" },
@@ -223,7 +224,7 @@ export default function EnterVietnamPage() {
             </div>
 
             <ArrowLink href="https://austin2vietnam.100b.co/" external>
-              See the full programme
+              See the full program
             </ArrowLink>
           </div>
         </div>
@@ -234,7 +235,7 @@ export default function EnterVietnamPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
           <div className="shrink-0">
             <SectionTitle className="mb-8 lg:mb-10">
-              What delegates <Accent>say.</Accent>
+              What delegates and local partners <Accent>say.</Accent>
             </SectionTitle>
           </div>
           <TestimonialCarousel

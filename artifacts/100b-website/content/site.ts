@@ -166,68 +166,125 @@ export const founderTestimonials: Testimonial[] = [
   },
 ];
 
+/* The voices from the two 2026 delegations. Each is written once here and
+ * composed into the lists below, so a quote cannot drift between the pages
+ * that carry it. */
+
+const markDuval: Testimonial = {
+  headline: "WHAT YOU'RE DOING IS BRILLIANT",
+  quote:
+    "100B plays that bridge where you understand both sides. You can help the American ecosystem understand Vietnam, and you can help Vietnamese entrepreneurs understand how to penetrate the U.S. market. What you're doing is brilliant. It's exciting and it's important.",
+  name: "Mark Duval",
+  title: "CEO & PRESIDENT",
+  company: "GREATER AUSTIN ASIAN CHAMBER OF COMMERCE",
+  credential: "",
+  photo: markDuvalPhoto.src,
+  photoPosition: "30% center",
+};
+
+const hectorQuintanar: Testimonial = {
+  headline: "THAT IS AN AWESOME JOB",
+  quote:
+    "Asian and Hispanics, we have similar backgrounds. We can help each other to conquer that world that is called the U.S. market. 100B can really guide all these companies to not fail — to not go through the same hurdles that many others have failed on. If you can help even one or two companies shorten the learning curve, that is an awesome job.",
+  name: "Hector Quintanar",
+  title: "MANAGING PARTNER",
+  company: "TRADE MANAGEMENT SOLUTIONS",
+  credential: "",
+  photo: hectorPhoto.src,
+};
+
+const ahmedMoledina: Testimonial = {
+  headline: "THE CONNECTIONS WERE OUTSTANDING",
+  quote:
+    "The trip was just fantastic — the people we met, the connections we made. Everything overall was just outstanding. 100B is very well positioned to help.",
+  name: "Ahmed Moledina",
+  title: "PRESIDENT & CEO",
+  company: "SOAL TECHNOLOGIES",
+  credential: "",
+  photo: ahmedPhoto.src,
+};
+
+const barbaraJoe: Testimonial = {
+  headline: "INSPIRING. PRODUCTIVE. MISSION ACCOMPLISHED.",
+  quote: "Three words to describe Team 100B: Inspiring. Productive. Mission accomplished.",
+  name: "Barbara Joe",
+  title: "DIRECTOR",
+  company: "ASIAN CHAMBER OF COMMERCE HOUSTON",
+  credential: "",
+  photo: barbaraJoePhoto.src,
+};
+
+const marcKnapper: Testimonial = {
+  headline: "YOU WANT VIETNAMESE PARTNERS",
+  quote:
+    "If you're investing in Vietnam, you want Vietnamese partners who can help you navigate it.",
+  name: "Marc Knapper",
+  company: "FORMER US AMBASSADOR TO VIETNAM",
+  credential: "",
+  photo: marcKnapperPhoto.src,
+};
+
+const michaelNguyen: Testimonial = {
+  headline: "START WITH BUSINESS DEVELOPMENT",
+  quote:
+    "The first step is business development — help them find customers first. Then co-production, then full production in the U.S.",
+  name: "Michael Nguyen",
+  title: "MANAGING DIRECTOR",
+  company: "BOEING VIETNAM",
+  credential: "",
+  photo: michaelNguyenPhoto.src,
+};
+
+const earthVc: Testimonial = {
+  headline: "A PLEASURE HOSTING THE DELEGATION",
+  quote:
+    "Thank you for including Earth VC as part of the ACCESS Vietnam program. It was a pleasure hosting the delegation at Earth Hub.",
+  name: "Earth VC",
+  company: "CLIMATE TECH FUND",
+  credential: "Pioneering climate tech investor, 23 startups in a global portfolio.",
+  photo: null,
+};
+
+const mindX: Testimonial = {
+  headline: "STRENGTHENING THE BRIDGES",
+  quote:
+    "We really appreciate the meaningful work you and the 100B team are doing to strengthen bridges between Vietnam and the wider global business community.",
+  name: "Thanh Tung Nguyen",
+  company: "MINDX",
+  credential:
+    "Southeast Asia's largest technology education platform, 54 campuses and over 80,000 students.",
+  photo: null,
+};
+
+const vinmake: Testimonial = {
+  headline: "AN ENJOYABLE EXPERIENCE TO HOST",
+  quote:
+    "It was an enjoyable experience for Vinmake to host the notable members of the Austin business community. I really appreciate the effort you and your team put into organizing the Access Vietnam 2026 delegation visit.",
+  name: "Thai Nguyen",
+  company: "VINMAKE",
+  credential:
+    "AI manufacturing platform for fashion, a network of 300 factories worldwide.",
+  photo: null,
+};
+
+/** The US partners who travelled with us, shown on the homepage. */
 export const partnerTestimonials: Testimonial[] = [
-  {
-    headline: "WHAT YOU'RE DOING IS BRILLIANT",
-    quote:
-      "100B plays that bridge — helping Americans understand Vietnam and Vietnamese entrepreneurs penetrate the U.S. market. What you're doing is brilliant.",
-    name: "Mark Duval",
-    title: "CEO",
-    company: "GREATER AUSTIN ASIAN CHAMBER OF COMMERCE",
-    credential: "",
-    photo: markDuvalPhoto.src,
-    photoPosition: "30% center",
-  },
-  {
-    headline: "THAT IS AN AWESOME JOB",
-    quote:
-      "100B can really guide companies to not fail — to shorten the learning curve. That is an awesome job.",
-    name: "Hector Quintanar",
-    title: "MANAGING PARTNER",
-    company: "TRADE MANAGEMENT SOLUTIONS",
-    credential: "",
-    photo: hectorPhoto.src,
-  },
-  {
-    headline: "THE CONNECTIONS WERE OUTSTANDING",
-    quote:
-      "The trip was fantastic — the connections we made were outstanding. 100B is very well positioned to help.",
-    name: "Ahmed Moledina",
-    title: "PRESIDENT & CEO",
-    company: "SOAL TECHNOLOGIES",
-    credential: "",
-    photo: ahmedPhoto.src,
-  },
+  markDuval,
+  hectorQuintanar,
+  ahmedMoledina,
 ];
 
+/** Access Vietnam 2026: the delegates who came, then the partners who hosted. */
 export const delegateTestimonials: Testimonial[] = [
-  {
-    headline: "YOU WANT VIETNAMESE PARTNERS",
-    quote:
-      "If you're investing in Vietnam, you want Vietnamese partners who can help you navigate it.",
-    name: "Marc Knapper",
-    company: "FORMER US AMBASSADOR TO VIETNAM",
-    credential: "",
-    photo: marcKnapperPhoto.src,
-  },
-  {
-    headline: "START WITH BUSINESS DEVELOPMENT",
-    quote:
-      "Start with business development to find customers, then co-production, then full US production.",
-    name: "Michael Nguyen",
-    title: "MANAGING DIRECTOR",
-    company: "BOEING VIETNAM",
-    credential: "",
-    photo: michaelNguyenPhoto.src,
-  },
-  {
-    headline: "INSPIRING. PRODUCTIVE. MISSION ACCOMPLISHED.",
-    quote: "Three words. Inspiring. Productive. Mission accomplished.",
-    name: "Barbara Joe",
-    company: "ASIAN CHAMBER OF COMMERCE HOUSTON",
-    credential: "",
-    photo: barbaraJoePhoto.src,
-  },
+  barbaraJoe,
+  marcKnapper,
+  michaelNguyen,
+  markDuval,
+  hectorQuintanar,
+  ahmedMoledina,
+  earthVc,
+  mindX,
+  vinmake,
 ];
 
 export type Company = {
@@ -304,17 +361,9 @@ export type Founder = {
   linkedin?: string;
 };
 
+/* Minh sits in the middle, the other two either side: the row reads as one
+ * founding team rather than a ranked list. */
 export const founders: Founder[] = [
-  {
-    name: "Minh Mac",
-    title: "Founder & CEO",
-    photo: minhPhoto.src,
-    linkedin: "https://www.linkedin.com/in/minhlaunch/",
-    short:
-      "Left Vietnam at 17. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users.",
-    long:
-      "Left Vietnam at 17 and spent a decade building in the US. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users. Built a creative agency after being failed by too many marketing vendors.",
-  },
   {
     name: "Tung Cao",
     title: "Co-Founder & Head of International Trade",
@@ -324,6 +373,16 @@ export const founders: Founder[] = [
       "Runs the trade side. Buyers, freight, customs, and the network that moves goods.",
     long:
       "Leads Container Club. Buyers, freight, customs, trade finance, and the network that moves goods.",
+  },
+  {
+    name: "Minh Mac",
+    title: "Founder & CEO",
+    photo: minhPhoto.src,
+    linkedin: "https://www.linkedin.com/in/minhlaunch/",
+    short:
+      "Left Vietnam at 17. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users.",
+    long:
+      "Left Vietnam at 17 and spent a decade building in the US. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users. Built a creative agency after being failed by too many marketing vendors.",
   },
   {
     name: "Tu Mac",
@@ -336,6 +395,7 @@ export const founders: Founder[] = [
       "Construction and interior materials. Factory vetting, quality control, and production oversight in Vietnam. Every factory a buyer visits, he has already been to.",
   },
 ];
+
 
 export type PressItem = {
   outlet: string;
