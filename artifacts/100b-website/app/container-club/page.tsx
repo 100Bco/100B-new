@@ -280,7 +280,7 @@ export default function ContainerClubPage() {
           )}
           <div className="mb-12">
             <ArrowLink href="https://vietnamdirect2026factory.100b.co/" external>
-              See the full programme
+              See the full program
             </ArrowLink>
           </div>
 

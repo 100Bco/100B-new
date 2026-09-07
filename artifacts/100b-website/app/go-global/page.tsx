@@ -54,7 +54,7 @@ const whatWeDo = [
 const path = [
   { name: "ZAD", step: "Identity", logo: logoZad.src },
   { name: "BOND", step: "Packaging", logo: logoBond.src },
-  { name: "100Bold", step: "US marketing", logo: logo100bold.src },
+  { name: "100Bold", step: "Marketing", logo: logo100bold.src },
   { name: "Container Club", step: "Export", logo: logoContainerClub.src },
   { name: "100B", step: "The US entity", logo: logo100bDark.src },
 ];
@@ -89,7 +89,10 @@ export default function GoGlobalPage() {
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
           <SectionTitle className="mb-12">
-            Most Vietnamese brands enter the US <Accent>the expensive way.</Accent>
+            <span className="block">Most Vietnamese brands enter the US</span>
+            <span className="block">
+              <Accent>the expensive way.</Accent>
+            </span>
           </SectionTitle>
           <ul className="w-full max-w-3xl flex flex-col border-t border-border-subtle">
             {problems.map((p) => (

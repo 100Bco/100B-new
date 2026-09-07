@@ -163,7 +163,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
           <div className="shrink-0">
             <SectionTitle className="mb-8 lg:mb-10">
-              What our <Accent>clients say.</Accent>
+              What our <Accent>Founder Network says.</Accent>
             </SectionTitle>
           </div>
           <TestimonialCarousel
