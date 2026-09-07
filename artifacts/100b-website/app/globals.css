@@ -194,3 +194,94 @@
     background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(195,163,116,0.10) 0%, transparent 70%);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   The distribution-shift diagram on Container Club. One six-second loop:
+   the three middlemen are struck through and fade, 100B takes their place,
+   then it resets. Everything is CSS so the diagram stays a scalable SVG
+   rather than a video or a GIF.
+   --------------------------------------------------------------------------- */
+@layer components {
+  .shift-vanish {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: shift-vanish 6s ease-in-out infinite;
+  }
+  @keyframes shift-vanish {
+    0%, 20% { opacity: 1; transform: scale(1); filter: blur(0); }
+    35%, 75% { opacity: 0; transform: scale(0.7); filter: blur(6px); }
+    90%, 100% { opacity: 1; transform: scale(1); filter: blur(0); }
+  }
+
+  .shift-emblem {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: shift-emblem 6s ease-in-out infinite;
+  }
+  @keyframes shift-emblem {
+    0%, 25% { opacity: 0; transform: scale(0.4); filter: blur(8px); }
+    40%, 70% { opacity: 1; transform: scale(1); filter: blur(0); }
+    85%, 100% { opacity: 0; transform: scale(0.4); filter: blur(8px); }
+  }
+
+  .shift-strike {
+    stroke-dasharray: 80;
+    stroke-dashoffset: 80;
+    opacity: 0;
+    animation: shift-strike 6s ease-in-out infinite;
+  }
+  @keyframes shift-strike {
+    0%, 10% { stroke-dashoffset: 80; opacity: 0; }
+    15% { opacity: 1; stroke-dashoffset: 80; }
+    25%, 32% { opacity: 1; stroke-dashoffset: 0; }
+    40%, 100% { opacity: 0; stroke-dashoffset: 0; }
+  }
+
+  .shift-arrow-old { animation: shift-arrow-old 6s ease-in-out infinite; }
+  @keyframes shift-arrow-old {
+    0%, 20% { opacity: 1; }
+    35%, 75% { opacity: 0; }
+    90%, 100% { opacity: 1; }
+  }
+
+  .shift-arrow-new { animation: shift-arrow-new 6s ease-in-out infinite; }
+  @keyframes shift-arrow-new {
+    0%, 25% { opacity: 0; }
+    40%, 70% { opacity: 1; }
+    85%, 100% { opacity: 0; }
+  }
+
+  .shift-draw {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: shift-draw 1.2s ease-out forwards;
+  }
+  @keyframes shift-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* A six-second loop is exactly what this setting is asking us to stop.
+     The diagram holds its finished state instead: middlemen gone, 100B in. */
+  @media (prefers-reduced-motion: reduce) {
+    .shift-vanish,
+    .shift-emblem,
+    .shift-strike,
+    .shift-arrow-old,
+    .shift-arrow-new,
+    .shift-draw {
+      animation: none;
+    }
+    .shift-vanish,
+    .shift-arrow-old,
+    .shift-strike {
+      opacity: 0;
+    }
+    .shift-emblem,
+    .shift-arrow-new {
+      opacity: 1;
+    }
+    .shift-draw {
+      stroke-dashoffset: 0;
+    }
+  }
+}
