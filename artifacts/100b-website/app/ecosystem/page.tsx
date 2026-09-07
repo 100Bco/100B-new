@@ -96,14 +96,16 @@ export default function EcosystemPage() {
               {ladder.map((rung) => (
                 <div key={rung.range} className="flex flex-col items-center text-center gap-4">
                   <div className="w-[11px] h-[11px] rounded-full bg-brand-gold shadow-[0_0_12px_rgba(195,163,116,0.7)]" />
-                  <span
-                    className={`text-gradient-gold leading-none ${
-                      /\d/.test(rung.range)
-                        ? "font-display text-lg sm:text-2xl lg:text-4xl"
-                        : "font-sans font-semibold text-sm sm:text-lg lg:text-2xl"
-                    }`}
-                  >
-                    {rung.range}
+                  <span className="flex items-end justify-center min-h-[1.125rem] sm:min-h-[1.5rem] lg:min-h-[2.25rem]">
+                    <span
+                      className={`text-gradient-gold leading-none ${
+                        /\d/.test(rung.range)
+                          ? "font-display text-lg sm:text-2xl lg:text-4xl"
+                          : "font-sans font-semibold text-sm sm:text-lg lg:text-2xl"
+                      }`}
+                    >
+                      {rung.range}
+                    </span>
                   </span>
                   <span className="font-sans font-light text-[13px] sm:text-base lg:text-lg text-text-heading leading-snug">
                     {rung.who}

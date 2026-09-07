@@ -7,12 +7,16 @@ import type { PressItem } from "@/content/site";
 const SCROLL_PADDING = 24;
 
 /**
- * Most dots the mobile row will show. One per article stops fitting a phone
- * somewhere around seventeen, and reads as clutter well before that, so past
- * this each dot covers a group of articles instead. Seven dots is 152px on a
- * 390px screen however long the list grows.
+ * Most dots the mobile row will show. A dot per article is the honest
+ * indicator: it says exactly where you are. Grouping is a compromise, so it
+ * is held off as long as the dots genuinely fit. Past ten they tighten, and
+ * only past twenty does each dot start covering a group, which keeps the row
+ * inside a 390px screen however long the list grows.
  */
-const MAX_DOTS = 7;
+const MAX_DOTS = 20;
+
+/** Beyond this many, the dots and their gaps tighten to keep the row short. */
+const TIGHTEN_ABOVE = 10;
 
 /**
  * One press placement: the outlet as a gold badge over the image, a UTM
@@ -112,6 +116,7 @@ export function PressSwipeRow({ items }: { items: PressItem[] }) {
   const perDot = Math.ceil(items.length / MAX_DOTS);
   const dotCount = Math.ceil(items.length / perDot);
   const activeDot = Math.floor(active / perDot);
+  const tight = dotCount > TIGHTEN_ABOVE;
 
   return (
     <div className="md:hidden">
@@ -128,7 +133,7 @@ export function PressSwipeRow({ items }: { items: PressItem[] }) {
       </div>
 
       {items.length > 1 && (
-        <div className="flex items-center justify-center gap-3 mt-6">
+        <div className={`flex items-center justify-center mt-6 ${tight ? "gap-2" : "gap-3"}`}>
           {Array.from({ length: dotCount }, (_, dot) => {
             const first = dot * perDot;
             const last = Math.min(first + perDot, items.length);
@@ -148,7 +153,9 @@ export function PressSwipeRow({ items }: { items: PressItem[] }) {
                 }
                 aria-current={dot === activeDot}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
-                  dot === activeDot ? "w-8 bg-brand-gold" : "w-2 bg-white/15"
+                  dot === activeDot
+                    ? "w-8 bg-brand-gold"
+                    : `bg-white/15 ${tight ? "w-1.5" : "w-2"}`
                 }`}
               />
             );

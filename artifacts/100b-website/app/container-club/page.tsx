@@ -11,6 +11,7 @@ import { PhotoTile } from "@/components/PhotoTile";
 import { ContactCTA } from "@/components/ContactCTA";
 import { PageHero } from "@/components/PageHero";
 import { programs } from "@/content/site";
+import logoSpecMate from "@assets/LOGO SPECMATA-04.png";
 
 export const metadata: Metadata = {
   title: "Container Club",
@@ -213,72 +214,83 @@ export default function ContainerClubPage() {
             What it <Accent>looked like.</Accent>
           </SectionTitle>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mb-12">
-            <div className="flex flex-col gap-6 text-base lg:text-lg font-light leading-relaxed text-text-body">
-              <p>
-                May to June 2026. Ho Chi Minh City to Hanoi. 13 hand-picked factories in
-                construction and finishing materials. Decision-makers only: GC principals,
-                development partners, architects who spec.
-              </p>
-              <p>Hosted with LT Commercial Group.</p>
-              <p className="text-sm font-light text-text-body">
-                ASTM, LEED, ISO, FSC certified. Suppliers to California's tallest building and
-                US Marriott properties.
-              </p>
-            </div>
+          {/* The story and the route on the left, the photograph on the right,
+              the same shape Access Vietnam uses. The photograph ran full width
+              underneath before, which made it the loudest thing in the section. */}
+          <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center mb-10">
+            <div className="flex flex-col gap-7">
+              <div className="flex flex-col gap-4 text-base lg:text-lg font-light leading-relaxed text-text-body">
+                <p>
+                  May to June 2026. Ho Chi Minh City to Hanoi. 13 hand-picked factories in
+                  construction and finishing materials. Decision-makers only: GC principals,
+                  development partners, architects who spec.
+                </p>
+                <p>Hosted with LT Commercial Group.</p>
+                <p className="text-sm font-light text-text-body">
+                  ASTM, LEED, ISO, FSC certified. Suppliers to California's tallest building and
+                  US Marriott properties.
+                </p>
+              </div>
 
-            {/* Route: HCMC to Hanoi */}
-            <div className="bg-bg-card rounded-3xl p-8 lg:p-10 border border-border-subtle flex flex-col gap-8">
-              <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-                The route
-              </span>
-              <div className="relative flex items-center justify-between">
-                <div className="absolute left-3 right-3 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-brand-gold/60 via-brand-gold/30 to-brand-gold/60" />
-                {[
-                  { city: "Ho Chi Minh City", note: "Start" },
-                  { city: "Binh Duong · Dong Nai", note: "Factories" },
-                  { city: "Hanoi", note: "Finish" },
-                ].map((stop, i) => (
-                  <div key={stop.city} className="relative flex flex-col items-center gap-3 text-center w-1/3">
-                    <div
-                      className={`w-6 h-6 rounded-full border-[4px] border-bg-card ${
-                        i === 1 ? "bg-white/30" : "bg-brand-gold shadow-[0_0_15px_rgba(195,163,116,0.5)]"
-                      }`}
-                    />
-                    <span className="font-sans font-bold text-sm text-text-heading">{stop.city}</span>
-                    <span className="text-[10px] uppercase tracking-widest text-text-muted">
-                      {stop.note}
-                    </span>
+              {/* Route: HCMC to Hanoi */}
+              <div className="bg-bg-card rounded-3xl p-8 lg:p-10 border border-border-subtle flex flex-col gap-8">
+                <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
+                  The route
+                </span>
+                <div className="relative flex items-start justify-between">
+                  {/* The connector sits on the dots' own centre line and runs
+                      from the first dot to the last, so nothing crosses the
+                      city names underneath. */}
+                  <div className="absolute left-[16.667%] right-[16.667%] top-3 -translate-y-1/2 h-px bg-gradient-to-r from-brand-gold/60 via-brand-gold/30 to-brand-gold/60" />
+                  {[
+                    { city: "Ho Chi Minh City", note: "Start" },
+                    { city: "Binh Duong · Dong Nai", note: "Factories" },
+                    { city: "Hanoi", note: "Finish" },
+                  ].map((stop, i) => (
+                    <div key={stop.city} className="relative flex flex-col items-center gap-3 text-center w-1/3">
+                      <div
+                        className={`w-6 h-6 rounded-full border-[4px] border-bg-card shrink-0 ${
+                          i === 1 ? "bg-white/30" : "bg-brand-gold shadow-[0_0_15px_rgba(195,163,116,0.5)]"
+                        }`}
+                      />
+                      {/* The middle name runs to two lines, so every name
+                          reserves two and the three notes sit on one line. */}
+                      <span className="font-sans font-bold text-sm text-text-heading leading-snug min-h-[2.75em]">
+                        {stop.city}
+                      </span>
+                      <span className="text-[10px] uppercase tracking-widest text-text-muted">
+                        {stop.note}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="grid grid-cols-2 gap-6 border-t border-border-subtle pt-6">
+                  <div className="flex flex-col gap-1">
+                    <span className="font-display text-4xl text-gradient-gold leading-none">13</span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">Factories</span>
                   </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-2 gap-6 border-t border-border-subtle pt-6">
-                <div className="flex flex-col gap-1">
-                  <span className="font-display text-4xl text-gradient-gold leading-none">13</span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">Factories</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-display text-4xl text-gradient-gold leading-none">2</span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">Cities</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="font-display text-4xl text-gradient-gold leading-none">2</span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">Cities</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {vietnamDirect?.image && (
-            <div className="mb-8">
+            {vietnamDirect?.image && (
               <PhotoTile
                 src={vietnamDirect.image}
                 alt="The Vietnam Direct 2026 group at a factory welcome"
-                aspect="aspect-[16/9]"
+                aspect="aspect-[4/3]"
                 position="center 50%"
                 tone="neutral"
                 label="May-June 2026 · Ho Chi Minh City to Hanoi"
                 caption="At the factory gate"
               />
-            </div>
-          )}
-          <div className="mb-12">
+            )}
+          </div>
+
+          <div className="flex justify-center mb-12">
             <ArrowLink href="https://vietnamdirect2026factory.100b.co/" external>
               See the full program
             </ArrowLink>
@@ -324,9 +336,11 @@ export default function ContainerClubPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="relative bg-bg-card rounded-3xl p-8 lg:p-12 border border-border-subtle grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8 lg:gap-16 items-center">
             <span className="absolute top-0 left-0 w-1.5 h-full bg-brand-gold rounded-l-3xl" />
-            <span className="font-display text-4xl lg:text-5xl text-gradient-gold leading-none">
-              SpecMate
-            </span>
+            <img
+              src={logoSpecMate.src}
+              alt="SpecMate"
+              className="h-9 lg:h-11 w-auto object-contain"
+            />
             <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">
               When a category is good enough, we build a company around it instead of just
               sourcing it. SpecMate supplies materials and furniture direct to contractors,
