@@ -9,6 +9,7 @@ import {
 import { StatGrid, type Stat } from "@/components/StatGrid";
 import { ContactCTA } from "@/components/ContactCTA";
 import { PageHero } from "@/components/PageHero";
+import { DistributionShift } from "@/components/DistributionShift";
 import logoSpecMate from "@assets/LOGO SPECMATA-04.png";
 import { PhotoCarousel, type TripPhoto } from "@/components/PhotoCarousel";
 import vdAnCuong from "@assets/vietnam-direct/an-cuong.jpg";
@@ -54,6 +55,7 @@ const whatWeDo = [
 
 const factories = [
   "An Cuong",
+  "Slabstone",
   "BM Windows",
   "Phu Tai and Vina G7",
   "Dai Dung",
@@ -134,50 +136,9 @@ export default function ContainerClubPage() {
             factory. You pay us a commission.
           </Lead>
 
-          {/* Side by side: hidden spread vs visible commission */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12">
-            <div className="bg-bg-card/60 rounded-3xl p-8 lg:p-10 border border-dashed border-white/15 flex flex-col items-center text-center gap-8">
-              <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-text-muted">
-                Distributor path
-              </span>
-              <div className="flex items-center gap-3 flex-wrap font-sans font-light text-base lg:text-lg text-text-muted">
-                <span>Factory</span>
-                <span className="text-white/30">→</span>
-                <span>Distributor</span>
-                <span className="text-white/30">→</span>
-                <span>You</span>
-              </div>
-              <div className="flex flex-col gap-2 mt-auto">
-                <span className="font-display text-6xl lg:text-7xl leading-none text-white/25 blur-[2px] select-none">
-                  ??%
-                </span>
-                <span className="text-sm font-light text-text-body">
-                  Hidden margin. Their incentive is to widen the spread.
-                </span>
-              </div>
-            </div>
-            <div className="bg-bg-card rounded-3xl p-8 lg:p-10 border border-brand-gold/40 flex flex-col items-center text-center gap-8">
-              <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-                Direct path
-              </span>
-              <div className="flex items-center gap-3 flex-wrap font-sans font-light text-base lg:text-lg text-text-heading">
-                <span>Factory</span>
-                <span className="text-brand-gold">→</span>
-                <span>You</span>
-              </div>
-              <div className="flex flex-col gap-2 mt-auto">
-                <span className="font-display text-6xl lg:text-7xl leading-none text-gradient-gold">
-                  3-5%
-                </span>
-                <span className="text-sm font-light text-text-body">
-                  Visible commission. Our incentive is to close the deal and keep you coming
-                  back.
-                </span>
-              </div>
-            </div>
-          </div>
+          <DistributionShift />
 
-          <p className="text-sm font-light text-text-body">
+          <p className="mt-12 lg:mt-14 text-center text-sm font-light text-text-body">
             Sourcing trips are priced per trip, by approved application.
           </p>
         </div>
@@ -235,38 +196,39 @@ export default function ContainerClubPage() {
             What it <Accent>looked like.</Accent>
           </SectionTitle>
 
-          {/* The story and the route on the left, the photograph on the right,
-              the same shape Access Vietnam uses. The photograph ran full width
-              underneath before, which made it the loudest thing in the section. */}
+          {/* The story reads across the whole section; only the route and the
+              photographs split left and right underneath it. */}
+          <div className="max-w-3xl mx-auto text-center flex flex-col gap-4 text-base lg:text-lg font-light leading-relaxed text-text-body mb-12 lg:mb-14">
+            <p>
+              May to June 2026. Ho Chi Minh City to Hanoi. 13 hand-picked factories in
+              construction and finishing materials. Decision-makers only: GC principals,
+              development partners, architects who spec.
+            </p>
+            <p>
+              Hosted with{" "}
+              <a
+                href="https://ltcommercialgroup.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-text-heading underline underline-offset-4 decoration-white/30 hover:decoration-brand-gold hover:text-brand-gold transition-colors"
+              >
+                LT Commercial Group
+              </a>
+              .
+            </p>
+            <p className="text-sm font-light text-text-body">
+              ASTM, LEED, ISO, FSC certified. Suppliers to California's tallest building and US
+              Marriott properties.
+            </p>
+          </div>
+
+          {/* The route on the left, the photographs on the right, the same
+              shape Access Vietnam uses. */}
           <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-end mb-10">
             {/* The carousel hangs its dots below the frame, so the left column
                 is inset by exactly that much: the route card's bottom edge
                 then sits level with the photograph's, not with the dots. */}
             <div className="flex flex-col gap-7 lg:pb-[1.625rem]">
-              <div className="flex flex-col gap-4 text-base lg:text-lg font-light leading-relaxed text-text-body">
-                <p>
-                  May to June 2026. Ho Chi Minh City to Hanoi. 13 hand-picked factories in
-                  construction and finishing materials. Decision-makers only: GC principals,
-                  development partners, architects who spec.
-                </p>
-                <p>
-                  Hosted with{" "}
-                  <a
-                    href="https://ltcommercialgroup.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-text-heading underline underline-offset-4 decoration-white/30 hover:decoration-brand-gold hover:text-brand-gold transition-colors"
-                  >
-                    LT Commercial Group
-                  </a>
-                  .
-                </p>
-                <p className="text-sm font-light text-text-body">
-                  ASTM, LEED, ISO, FSC certified. Suppliers to California's tallest building and
-                  US Marriott properties.
-                </p>
-              </div>
-
               {/* Route: HCMC to Hanoi */}
               <div className="bg-bg-card rounded-3xl p-8 lg:p-10 border border-border-subtle flex flex-col gap-8">
                 <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
@@ -324,10 +286,10 @@ export default function ContainerClubPage() {
             </ArrowLink>
           </div>
 
-          <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold mb-6">
+          <p className="text-center text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold mb-6">
             Factories
           </p>
-          <ul className="flex flex-wrap gap-x-3 gap-y-3">
+          <ul className="flex flex-wrap justify-center gap-x-3 gap-y-3">
             {factories.map((f) => (
               <li
                 key={f}
