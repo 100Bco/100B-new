@@ -77,7 +77,7 @@ const whoWeMet = [
   "Fulbright University Vietnam",
   "Coolmate",
   "MindX",
-  "ABB",
+  "ABB Capital",
   "Vinmake",
   "Metub",
   "DLS Incorporation",
@@ -85,7 +85,7 @@ const whoWeMet = [
 ];
 
 /* The week in order: the opening room, then government, capital, education,
- * industry, the operators building, and the network that closed it. */
+ * the operators building, and the network that closed it. */
 const tripPhotos: TripPhoto[] = [
   {
     src: delegationHanoi.src,
@@ -97,9 +97,9 @@ const tripPhotos: TripPhoto[] = [
   { src: nic.src, label: "Government", caption: "National Innovation Center" },
   { src: mekongCapital.src, label: "Capital", caption: "Mekong Capital" },
   { src: earthVc.src, label: "Capital", caption: "Earth VC" },
+  { src: abb.src, label: "Capital", caption: "ABB Capital" },
   { src: fulbright.src, label: "Education", caption: "Fulbright University Vietnam" },
   { src: mindx.src, label: "Education", caption: "MindX" },
-  { src: abb.src, label: "Industry", caption: "ABB" },
   { src: coolmate.src, label: "Operators", caption: "Coolmate" },
   { src: vinmake.src, label: "Operators", caption: "Vinmake" },
   { src: metub.src, label: "Operators", caption: "Metub" },
