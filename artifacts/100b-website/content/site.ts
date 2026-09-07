@@ -14,6 +14,8 @@ import marcKnapperPhoto from "@assets/Marc Knapper.webp";
 import michaelNguyenPhoto from "@assets/Michael Nguyen.jpg";
 import barbaraJoePhoto from "@assets/Barbara.jpeg";
 import earthVcPhoto from "@assets/trip/earth-vc.jpg";
+import mindXPhoto from "@assets/trip/mindx.jpg";
+import vinmakePhoto from "@assets/trip/vinmake.jpg";
 import minhPhoto from "@assets/Minh Mac Profile.png";
 import tungPhoto from "@assets/Tung Cao Photo.png";
 import tuPhoto from "@assets/Tu Mac Profile.png";
@@ -258,10 +260,12 @@ const mindX: Testimonial = {
   quote:
     "We really appreciate the meaningful work you and the 100B team are doing to strengthen bridges between Vietnam and the wider global business community.",
   name: "Thanh Tung Nguyen",
+  title: "CO-FOUNDER & CEO",
   company: "MINDX",
   credential:
     "Southeast Asia's largest technology education platform, 54 campuses and over 80,000 students.",
-  photo: null,
+  photo: mindXPhoto.src,
+  photoShape: "group",
 };
 
 const vinmake: Testimonial = {
@@ -269,10 +273,12 @@ const vinmake: Testimonial = {
   quote:
     "It was an enjoyable experience for Vinmake to host the notable members of the Austin business community. I really appreciate the effort you and your team put into organizing the Access Vietnam 2026 delegation visit.",
   name: "Thai Nguyen",
+  title: "CO-FOUNDER & CEO",
   company: "VINMAKE",
   credential:
     "AI manufacturing platform for fashion, a network of 300 factories worldwide.",
-  photo: null,
+  photo: vinmakePhoto.src,
+  photoShape: "group",
 };
 
 /** The US partners who travelled with us, shown on the homepage. */
@@ -284,8 +290,8 @@ export const partnerTestimonials: Testimonial[] = [
 
 /** Access Vietnam 2026: the delegates who came, then the partners who hosted. */
 export const delegateTestimonials: Testimonial[] = [
-  barbaraJoe,
   marcKnapper,
+  barbaraJoe,
   michaelNguyen,
   markDuval,
   hectorQuintanar,
