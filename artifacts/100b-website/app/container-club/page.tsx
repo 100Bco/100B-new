@@ -7,11 +7,19 @@ import {
   SectionTitle,
 } from "@/components/Section";
 import { StatGrid, type Stat } from "@/components/StatGrid";
-import { PhotoTile } from "@/components/PhotoTile";
 import { ContactCTA } from "@/components/ContactCTA";
 import { PageHero } from "@/components/PageHero";
-import { programs } from "@/content/site";
 import logoSpecMate from "@assets/LOGO SPECMATA-04.png";
+import { PhotoCarousel, type TripPhoto } from "@/components/PhotoCarousel";
+import vdAnCuong from "@assets/vietnam-direct/an-cuong.jpg";
+import vdBmWindows from "@assets/vietnam-direct/bm-windows.jpg";
+import vdDaiDung from "@assets/vietnam-direct/dai-dung.jpg";
+import vdAaCorporation from "@assets/vietnam-direct/aa-corporation.jpg";
+import vdEurowindow from "@assets/vietnam-direct/eurowindow.jpg";
+import vdWoodsland from "@assets/vietnam-direct/woodsland.jpg";
+import vdAmyGrupo from "@assets/vietnam-direct/amy-grupo.jpg";
+import vdSlabstone from "@assets/vietnam-direct/slabstone.jpg";
+import vdFactoryVisit from "@assets/vietnam-direct/factory-visit.jpg";
 
 export const metadata: Metadata = {
   title: "Container Club",
@@ -60,6 +68,20 @@ const factories = [
   "EuroStark",
 ];
 
+/* The nine factory floors, in the order the factory list runs. Each frame
+ * names its factory; the programme line under them stays constant. */
+const vietnamDirectPhotos: TripPhoto[] = [
+  { src: vdAnCuong.src, label: "An Cuong", caption: "Vietnam Direct 2026" },
+  { src: vdBmWindows.src, label: "BM Windows", caption: "Vietnam Direct 2026" },
+  { src: vdDaiDung.src, label: "Dai Dung", caption: "Vietnam Direct 2026" },
+  { src: vdAaCorporation.src, label: "AA Corporation", caption: "Vietnam Direct 2026" },
+  { src: vdEurowindow.src, label: "Eurowindow", caption: "Vietnam Direct 2026" },
+  { src: vdWoodsland.src, label: "Woodsland", caption: "Vietnam Direct 2026" },
+  { src: vdAmyGrupo.src, label: "Amy Grupo", caption: "Vietnam Direct 2026" },
+  { src: vdSlabstone.src, label: "Slabstone", caption: "Vietnam Direct 2026" },
+  { src: vdFactoryVisit.src, label: "Factory visit", caption: "Vietnam Direct 2026" },
+];
+
 const repeats = [
   { title: "Other industries.", line: "Beyond construction and finishing." },
   { title: "Other origins.", line: "Across Asia and beyond." },
@@ -76,7 +98,6 @@ const network = [
   "Compliance advisors",
 ];
 
-const vietnamDirect = programs.find((p) => p.name === "Vietnam Direct");
 
 export default function ContainerClubPage() {
   return (
@@ -217,15 +238,29 @@ export default function ContainerClubPage() {
           {/* The story and the route on the left, the photograph on the right,
               the same shape Access Vietnam uses. The photograph ran full width
               underneath before, which made it the loudest thing in the section. */}
-          <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center mb-10">
-            <div className="flex flex-col gap-7">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-end mb-10">
+            {/* The carousel hangs its dots below the frame, so the left column
+                is inset by exactly that much: the route card's bottom edge
+                then sits level with the photograph's, not with the dots. */}
+            <div className="flex flex-col gap-7 lg:pb-[1.625rem]">
               <div className="flex flex-col gap-4 text-base lg:text-lg font-light leading-relaxed text-text-body">
                 <p>
                   May to June 2026. Ho Chi Minh City to Hanoi. 13 hand-picked factories in
                   construction and finishing materials. Decision-makers only: GC principals,
                   development partners, architects who spec.
                 </p>
-                <p>Hosted with LT Commercial Group.</p>
+                <p>
+                  Hosted with{" "}
+                  <a
+                    href="https://ltcommercialgroup.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text-heading underline underline-offset-4 decoration-white/30 hover:decoration-brand-gold hover:text-brand-gold transition-colors"
+                  >
+                    LT Commercial Group
+                  </a>
+                  .
+                </p>
                 <p className="text-sm font-light text-text-body">
                   ASTM, LEED, ISO, FSC certified. Suppliers to California's tallest building and
                   US Marriott properties.
@@ -265,11 +300,11 @@ export default function ContainerClubPage() {
                   ))}
                 </div>
                 <div className="grid grid-cols-2 gap-6 border-t border-border-subtle pt-6">
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col items-center text-center gap-1">
                     <span className="font-display text-4xl text-gradient-gold leading-none">13</span>
                     <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">Factories</span>
                   </div>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col items-center text-center gap-1">
                     <span className="font-display text-4xl text-gradient-gold leading-none">2</span>
                     <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">Cities</span>
                   </div>
@@ -277,17 +312,10 @@ export default function ContainerClubPage() {
               </div>
             </div>
 
-            {vietnamDirect?.image && (
-              <PhotoTile
-                src={vietnamDirect.image}
-                alt="The Vietnam Direct 2026 group at a factory welcome"
-                aspect="aspect-[4/3]"
-                position="center 50%"
-                tone="neutral"
-                label="May-June 2026 · Ho Chi Minh City to Hanoi"
-                caption="At the factory gate"
-              />
-            )}
+            <PhotoCarousel
+              photos={vietnamDirectPhotos}
+              captionClassName="font-display uppercase tracking-wide text-gradient-gold text-lg lg:text-xl leading-snug"
+            />
           </div>
 
           <div className="flex justify-center mb-12">
