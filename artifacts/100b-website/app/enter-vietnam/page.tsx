@@ -21,6 +21,13 @@ import mekongCapital from "@assets/trip/mekong-capital.jpg";
 import earthVc from "@assets/trip/earth-vc.jpg";
 import coolmate from "@assets/trip/coolmate.jpg";
 import bca from "@assets/trip/bca.jpg";
+import nic from "@assets/trip/national-innovation-center.jpg";
+import fulbright from "@assets/trip/fulbright.jpg";
+import mindx from "@assets/trip/mindx.jpg";
+import abb from "@assets/trip/abb.jpg";
+import vinmake from "@assets/trip/vinmake.jpg";
+import metub from "@assets/trip/metub.jpg";
+import dls from "@assets/trip/dls.jpg";
 import { delegateTestimonials } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -70,9 +77,15 @@ const whoWeMet = [
   "Fulbright University Vietnam",
   "Coolmate",
   "MindX",
+  "ABB",
+  "Vinmake",
+  "Metub",
+  "DLS Incorporation",
   "BCA and BNI Vietnam",
 ];
 
+/* The week in order: the opening room, then government, capital, education,
+ * industry, the operators building, and the network that closed it. */
 const tripPhotos: TripPhoto[] = [
   {
     src: delegationHanoi.src,
@@ -81,9 +94,16 @@ const tripPhotos: TripPhoto[] = [
   },
   { src: cityOfHanoi.src, label: "Government", caption: "City of Hanoi" },
   { src: ministryScience.src, label: "Government", caption: "Ministry of Science and Technology" },
+  { src: nic.src, label: "Government", caption: "National Innovation Center" },
   { src: mekongCapital.src, label: "Capital", caption: "Mekong Capital" },
   { src: earthVc.src, label: "Capital", caption: "Earth VC" },
+  { src: fulbright.src, label: "Education", caption: "Fulbright University Vietnam" },
+  { src: mindx.src, label: "Education", caption: "MindX" },
+  { src: abb.src, label: "Industry", caption: "ABB" },
   { src: coolmate.src, label: "Operators", caption: "Coolmate" },
+  { src: vinmake.src, label: "Operators", caption: "Vinmake" },
+  { src: metub.src, label: "Operators", caption: "Metub" },
+  { src: dls.src, label: "Operators", caption: "DLS Incorporation" },
   { src: bca.src, label: "Network", caption: "BCA and BNI Vietnam" },
 ];
 
