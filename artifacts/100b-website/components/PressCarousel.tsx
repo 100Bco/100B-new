@@ -68,6 +68,24 @@ export function PressCarousel() {
             <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
           </button>
         )}
+
+        {/* One dot per page, as on the quote and photo carousels, so a reader
+            can jump straight to a page instead of stepping through it. */}
+        {showNav && (
+          <div className="flex items-center justify-center gap-3 mt-8">
+            {Array.from({ length: pageCount }, (_, i) => (
+              <button
+                key={i}
+                onClick={() => setPage(i)}
+                aria-label={`Go to press page ${i + 1}`}
+                aria-current={i === page}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === page ? "w-8 bg-brand-gold" : "w-2 bg-white/15 hover:bg-white/30"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

@@ -20,10 +20,10 @@ type Member = { name: string; role: string; company: string };
 const team: Member[] = [];
 
 const howWeWork = [
-  { en: "No referral fees.", enSub: "Equity only.", vi: "Không hoa hồng giới thiệu.", viSub: "Chỉ cổ phần." },
-  { en: "Partner, not middleman.", enSub: "", vi: "Đối tác, không phải trung gian.", viSub: "" },
-  { en: "We pass often.", enSub: "", vi: "Chúng tôi từ chối nhiều.", viSub: "" },
-  { en: "We're in both rooms.", enSub: "", vi: "Chúng tôi có mặt ở cả hai đầu.", viSub: "" },
+  { en: "No referral fees.", enSub: "Equity only." },
+  { en: "Partner, not middleman.", enSub: "" },
+  { en: "We pass often.", enSub: "" },
+  { en: "We're in both rooms.", enSub: "" },
 ];
 
 export default function AboutPage() {
@@ -82,45 +82,37 @@ export default function AboutPage() {
         </section>
       )}
 
-      {/* 6.5 HOW WE WORK. Four statements, one per panel, large type. */}
-      <section className="bg-bg-dark border-b border-border-subtle">
-        {/* Two panels abreast on a phone rather than four stacked: the same
-            four statements in half the scrolling. */}
-        <div className="grid grid-cols-2 lg:grid-cols-4">
-          {howWeWork.map((item, i) => (
-            <div
-              key={item.en}
-              className={`relative min-h-[240px] sm:min-h-[320px] lg:min-h-[480px] p-5 sm:p-8 lg:p-10 flex flex-col items-center text-center justify-between border-border-subtle ${
-                i % 2 === 1 ? "border-l" : ""
-              } ${i > 0 ? "lg:border-l" : ""} ${
-                i < 2 ? "border-b lg:border-b-0" : ""
-              } ${i % 2 === 0 ? "bg-bg-dark" : "bg-bg-alt"}`}
-            >
-              <span className="text-[26px] sm:text-[34px] lg:text-[40px] font-display text-gradient-gold leading-none font-medium">
-                0{i + 1}
-              </span>
-              <div className="flex flex-col items-center gap-3 sm:gap-6">
-                <p className="font-serif font-light text-[17px] sm:text-2xl md:text-[28px] lg:text-[32px] leading-[1.15] text-text-heading">
+      {/* 6.5 HOW WE WORK. Four principles as a manifesto list. Four tall
+          panels were mostly empty even with the Vietnamese in them; as rows
+          the numeral holds the left edge and each statement takes the width
+          and the size it deserves, and the section stops being a grid of
+          boxes like every other section on the site. */}
+      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <SectionTitle className="mb-12 lg:mb-16">
+            How we <Accent>work.</Accent>
+          </SectionTitle>
+          <ul className="flex flex-col border-t border-border-subtle">
+            {howWeWork.map((item, i) => (
+              <li
+                key={item.en}
+                className="grid grid-cols-[auto_1fr] items-baseline gap-x-5 sm:gap-x-10 lg:gap-x-16 py-7 sm:py-10 lg:py-12 border-b border-border-subtle"
+              >
+                <span className="font-display text-gradient-gold leading-none font-medium text-2xl sm:text-4xl lg:text-5xl">
+                  0{i + 1}
+                </span>
+                <p className="font-serif font-light leading-[1.1] text-text-heading text-2xl sm:text-4xl lg:text-[52px] text-balance">
                   {item.en}
                   {item.enSub && (
                     <>
-                      <br />
-                      <span className="text-gradient-gold">{item.enSub}</span>
+                      {" "}
+                      <Accent>{item.enSub}</Accent>
                     </>
                   )}
                 </p>
-                <p className="font-serif italic text-[13px] sm:text-lg lg:text-xl text-text-body leading-snug">
-                  {item.vi}
-                  {item.viSub && (
-                    <>
-                      <br />
-                      {item.viSub}
-                    </>
-                  )}
-                </p>
-              </div>
-            </div>
-          ))}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
