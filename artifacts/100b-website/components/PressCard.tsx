@@ -7,11 +7,14 @@ import type { PressItem } from "@/content/site";
 const SCROLL_PADDING = 24;
 
 /**
- * Most dots the mobile row will show. A dot per article is the honest
- * indicator: it says exactly where you are. Grouping is a compromise, so it
- * is held off as long as the dots genuinely fit. Past ten they tighten, and
- * only past twenty does each dot start covering a group, which keeps the row
- * inside a 390px screen however long the list grows.
+ * Articles to a page on the mobile row, so one dot means one page there just
+ * as it means one page of three on the grid above md.
+ */
+const MOBILE_PER_PAGE = 2;
+
+/**
+ * Ceiling on the dots, so a very long list cannot push the row off a 390px
+ * screen. Past this, a dot covers more than a page.
  */
 const MAX_DOTS = 20;
 
@@ -112,8 +115,8 @@ export function PressSwipeRow({ items }: { items: PressItem[] }) {
     };
   }, [items.length]);
 
-  // One dot per article while they fit; beyond that, one dot per group.
-  const perDot = Math.ceil(items.length / MAX_DOTS);
+  // A page of two per dot, widening only if that would need too many dots.
+  const perDot = Math.max(MOBILE_PER_PAGE, Math.ceil(items.length / MAX_DOTS));
   const dotCount = Math.ceil(items.length / perDot);
   const activeDot = Math.floor(active / perDot);
   const tight = dotCount > TIGHTEN_ABOVE;
@@ -147,7 +150,7 @@ export function PressSwipeRow({ items }: { items: PressItem[] }) {
                   })
                 }
                 aria-label={
-                  perDot === 1
+                  last - first === 1
                     ? `Go to press article ${first + 1}`
                     : `Go to press articles ${first + 1} to ${last}`
                 }
