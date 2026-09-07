@@ -7,6 +7,14 @@ import type { PressItem } from "@/content/site";
 const SCROLL_PADDING = 24;
 
 /**
+ * Most dots the mobile row will show. One per article stops fitting a phone
+ * somewhere around seventeen, and reads as clutter well before that, so past
+ * this each dot covers a group of articles instead. Seven dots is 152px on a
+ * 390px screen however long the list grows.
+ */
+const MAX_DOTS = 7;
+
+/**
  * One press placement: the outlet as a gold badge over the image, a UTM
  * headline, the standfirst, and the link out. Shared so the mobile swipe row
  * and the desktop grid cannot drift apart.
@@ -100,6 +108,11 @@ export function PressSwipeRow({ items }: { items: PressItem[] }) {
     };
   }, [items.length]);
 
+  // One dot per article while they fit; beyond that, one dot per group.
+  const perDot = Math.ceil(items.length / MAX_DOTS);
+  const dotCount = Math.ceil(items.length / perDot);
+  const activeDot = Math.floor(active / perDot);
+
   return (
     <div className="md:hidden">
       <div
@@ -116,19 +129,30 @@ export function PressSwipeRow({ items }: { items: PressItem[] }) {
 
       {items.length > 1 && (
         <div className="flex items-center justify-center gap-3 mt-6">
-          {items.map((item, i) => (
-            <button
-              key={item.link}
-              onClick={() =>
-                rowRef.current?.scrollBy({ left: offsetOf(rowRef.current, i), behavior: "smooth" })
-              }
-              aria-label={`Go to press article ${i + 1}`}
-              aria-current={i === active}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === active ? "w-8 bg-brand-gold" : "w-2 bg-white/15"
-              }`}
-            />
-          ))}
+          {Array.from({ length: dotCount }, (_, dot) => {
+            const first = dot * perDot;
+            const last = Math.min(first + perDot, items.length);
+            return (
+              <button
+                key={first}
+                onClick={() =>
+                  rowRef.current?.scrollBy({
+                    left: offsetOf(rowRef.current, first),
+                    behavior: "smooth",
+                  })
+                }
+                aria-label={
+                  perDot === 1
+                    ? `Go to press article ${first + 1}`
+                    : `Go to press articles ${first + 1} to ${last}`
+                }
+                aria-current={dot === activeDot}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  dot === activeDot ? "w-8 bg-brand-gold" : "w-2 bg-white/15"
+                }`}
+              />
+            );
+          })}
         </div>
       )}
     </div>

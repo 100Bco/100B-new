@@ -18,7 +18,7 @@ import mindXPhoto from "@assets/trip/mindx.jpg";
 import vinmakePhoto from "@assets/trip/vinmake.jpg";
 import minhPhoto from "@assets/Minh Mac Profile.png";
 import tungPhoto from "@assets/Tung Cao Photo.png";
-import tuPhoto from "@assets/Tu Mac Profile.png";
+import tuPhoto from "@assets/Tu Mac avar.png";
 import accessVietnamPhoto from "@assets/Access VN 2026.jpeg";
 import vietnamDirectPhoto from "@assets/IMG_9596.jpg";
 import socialPress1 from "@assets/press/Social Press 1.jpg";
