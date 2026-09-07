@@ -1,4 +1,10 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import type { PressItem } from "@/content/site";
+
+/** Matches the row's scroll-pl-6, in pixels. */
+const SCROLL_PADDING = 24;
 
 /**
  * One press placement: the outlet as a gold badge over the image, a UTM
@@ -53,18 +59,78 @@ export function PressCard({ item }: { item: PressItem }) {
  * The mobile shape for both press sections: one horizontal row you swipe,
  * rather than a column you scroll past. Snapping so a card always settles
  * square, and the row is peeked at the right edge so it reads as scrollable.
+ *
+ * The dots underneath do the same job as the ones on the paged grid above md:
+ * they say where you are in the run and take you straight to a card. Position
+ * is read off the row's own scroll rather than tracked separately, so a swipe
+ * and a tap can never disagree.
  */
 export function PressSwipeRow({ items }: { items: PressItem[] }) {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  /** Distance from the row's snap edge to a card's leading edge. */
+  const offsetOf = (row: HTMLDivElement, index: number) => {
+    const card = row.children[index] as HTMLElement | undefined;
+    if (!card) return 0;
+    return card.getBoundingClientRect().left - row.getBoundingClientRect().left - SCROLL_PADDING;
+  };
+
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row) return;
+    const sync = () => {
+      let best = 0;
+      let bestDistance = Infinity;
+      for (let i = 0; i < row.children.length; i++) {
+        const distance = Math.abs(offsetOf(row, i));
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = i;
+        }
+      }
+      setActive(best);
+    };
+    sync();
+    row.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    return () => {
+      row.removeEventListener("scroll", sync);
+      window.removeEventListener("resize", sync);
+    };
+  }, [items.length]);
+
   return (
-    <div
-      className="md:hidden -mx-6 px-6 scroll-pl-6 flex gap-4 overflow-x-auto snap-x snap-mandatory
-                 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-    >
-      {items.map((item) => (
-        <div key={item.link} className="w-[74%] shrink-0 snap-start">
-          <PressCard item={item} />
+    <div className="md:hidden">
+      <div
+        ref={rowRef}
+        className="-mx-6 px-6 scroll-pl-6 flex gap-4 overflow-x-auto snap-x snap-mandatory
+                   [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {items.map((item) => (
+          <div key={item.link} className="w-[74%] shrink-0 snap-start">
+            <PressCard item={item} />
+          </div>
+        ))}
+      </div>
+
+      {items.length > 1 && (
+        <div className="flex items-center justify-center gap-3 mt-6">
+          {items.map((item, i) => (
+            <button
+              key={item.link}
+              onClick={() =>
+                rowRef.current?.scrollBy({ left: offsetOf(rowRef.current, i), behavior: "smooth" })
+              }
+              aria-label={`Go to press article ${i + 1}`}
+              aria-current={i === active}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === active ? "w-8 bg-brand-gold" : "w-2 bg-white/15"
+              }`}
+            />
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 }

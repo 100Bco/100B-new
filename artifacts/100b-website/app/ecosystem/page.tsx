@@ -106,7 +106,7 @@ export default function EcosystemPage() {
                     {rung.range}
                   </span>
                   <span className="font-sans font-light text-[13px] sm:text-base lg:text-lg text-text-heading leading-snug">
-                    → {rung.who}
+                    {rung.who}
                   </span>
                 </div>
               ))}
@@ -125,9 +125,9 @@ export default function EcosystemPage() {
           <SectionTitle>
             No referral fees. <Accent>Ever.</Accent>
           </SectionTitle>
-          <p className="font-serif text-xl lg:text-2xl text-text-body leading-snug max-w-2xl mx-auto text-center">
+          <Lead className="max-w-2xl">
             We hold equity in these companies and we say so. Hire anyone you want.
-          </p>
+          </Lead>
         </div>
       </section>
 
