@@ -206,15 +206,19 @@ const MOBILE_MIDDLE: Stop[] = [
 
 export function DistributionShift() {
   return (
-    <div className="w-full">
-      <p className="text-center text-[11px] uppercase tracking-[0.22em] font-semibold text-text-body mb-8 lg:mb-10">
+    /* The whole diagram sits in a card rather than running the width of the
+       section: bordered, held short of the edges, with the drawing itself
+       inset again so it reads as a compact panel rather than a full-bleed
+       illustration. */
+    <div className="max-w-5xl mx-auto bg-bg-card rounded-3xl border border-border-subtle px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14">
+      <p className="text-center text-[11px] uppercase tracking-[0.22em] font-semibold text-text-body mb-10 lg:mb-14">
         How the chain changes
       </p>
 
       {/* Desktop board: five stops across 900 units */}
       <svg
         viewBox="0 0 900 200"
-        className="hidden md:block w-full h-auto"
+        className="hidden md:block w-full max-w-4xl mx-auto h-auto"
         role="img"
         aria-label="The distribution chain runs factory, distributor, wholesaler, retailer, buyer. The three in the middle drop out and 100B stands in their place, leaving factory, 100B, buyer."
       >
@@ -467,7 +471,7 @@ export function DistributionShift() {
         />
       </svg>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 pt-10 border-t border-border-subtle">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 lg:mt-14 pt-10 border-t border-border-subtle">
         {[
           { figure: "1", line: "One strategic partner, not a chain of middlemen" },
           { figure: "3-5%", line: "Visible commission. You pay the factory direct" },
