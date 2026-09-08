@@ -25,6 +25,14 @@ import socialPress1 from "@assets/press/Social Press 1.jpg";
 import socialPress2 from "@assets/press/Social Press 2.jpeg";
 import socialPress3 from "@assets/press/Social Press 3.webp";
 import socialPress4 from "@assets/press/Social Press 4.jpg";
+import pressUdonThani from "@assets/press/press-udon-thani-forum.jpg";
+import pressBudapest from "@assets/press/press-budapest-forum.jpg";
+import pressBrussels from "@assets/press/press-brussels-startup-exchange.jpg";
+import pressTechfestUsa from "@assets/press/press-techfest-silicon-valley.jpg";
+import pressTechfestVn from "@assets/press/press-techfest-vietnam.jpg";
+import pressNacentech from "@assets/press/press-nacentech.jpg";
+import pressHanoiTexas from "@assets/press/press-hanoi-texas.jpg";
+import pressInnovationNetwork from "@assets/press/press-vietnam-innovation-network.jpg";
 import businessPress1 from "@assets/press/Business Press 1.jpg";
 import businessPress2 from "@assets/press/Business Press 2.jpg";
 import businessPress3 from "@assets/press/Business Press 3.jpg";
@@ -482,6 +490,73 @@ export const pressItems: PressItem[] = [
       "At a Ho Chi Minh City symposium, industry leaders agreed that operational excellence is the foundation of effective communication and lasting global positioning.",
     link: "https://congthuong.vn/doanh-nghiep-muon-truyen-thong-hieu-qua-truoc-het-can-co-san-pham-tot-300633.html",
     image: businessPress3.src,
+  },
+  {
+    outlet: "NACENTECH",
+    headline:
+      "Access Vietnam 2026 builds a startup bridge to Austin, Texas, the second Silicon Valley",
+    description:
+      "Vietnam's National Centre for Technological Progress on the delegation carrying Vietnamese founders into the Austin ecosystem.",
+    link: "https://nacentech.vn/access-vietnam-2026-kien-tao-cau-noi-khoi-nghiep-cho-doanh-nghiep-viet-tai-austin-texas-thung-lung-silicon-thu-hai/",
+    image: pressNacentech.src,
+  },
+  {
+    outlet: "Hanoi Television",
+    headline: "Hanoi strengthens investment ties with businesses from Texas",
+    description:
+      "The city's leadership met the Texas business delegation to open investment and trade channels between Hanoi and the state.",
+    link: "https://hanoionline.vn/ha-noi-tang-cuong-ket-noi-dau-tu-voi-doanh-nghiep-bang-texas-hoa-ky-402572.htm",
+    image: pressHanoiTexas.src,
+  },
+  {
+    outlet: "Vietnam Plus",
+    headline:
+      "Thailand-Vietnam-Laos-Cambodia-Myanmar Business Forum connects enterprises across five countries",
+    description:
+      "Udon Thani, Thailand, November 2023. Five Southeast Asian business communities met to build trade and investment links across the region.",
+    link: "https://en.vietnamplus.vn/forum-connects-enterprises-in-five-southeast-asian-countries-post271492.vnp",
+    image: pressUdonThani.src,
+  },
+  {
+    outlet: "Government News",
+    headline: "Widening the network of overseas Vietnamese businesses in Europe",
+    description:
+      "The 12th European Vietnamese Business Forum, Budapest, September 2023. Overseas Vietnamese entrepreneurs across Europe met to deepen commercial ties with home.",
+    link: "https://baochinhphu.vn/mo-rong-ket-noi-doanh-nghiep-kieu-bao-tai-chau-au-102231005172234868.htm",
+    image: pressBudapest.src,
+  },
+  {
+    outlet: "Vietnam Innovation Network Europe",
+    headline: "Startup Exchange brings Vietnamese founders to Brussels",
+    description:
+      "September 2023. A week of exchange between Vietnamese founders and the European innovation community.",
+    link: "https://www.facebook.com/vietnaminnovationnetworkeurope/posts/pfbid0XGcwVGp1nByT8tMWuNCNksoZZph5iBKt8vdvqYCvWKxxyf3ZkUb5fnPWSAPw7sVKl",
+    image: pressBrussels.src,
+  },
+  {
+    outlet: "Dan Tri",
+    headline: "Vietnam takes its place on the world startup map",
+    description:
+      "Techfest in Silicon Valley, September 2019. Vietnamese startups presented to US investors and the global innovation community.",
+    link: "https://dantri.com.vn/khoa-hoc/viet-nam-chinh-thuc-co-ten-tren-ban-do-khoi-nghiep-the-gioi-20190914070921282.htm",
+    image: pressTechfestUsa.src,
+  },
+  {
+    outlet: "VnExpress",
+    headline: "Techfest Vietnam 2019: a journey of connection and integration",
+    description:
+      "December 2019. A paper on models for connecting global startup resources in the fourth industrial revolution.",
+    link: "https://tiasang.com.vn/techfest-2019-hanh-trinh-lien-ket-va-hoi-nhap-5023824.html",
+    image: pressTechfestVn.src,
+  },
+  {
+    outlet: "HTV",
+    headline:
+      "Minister Nguyen Chi Dung meets the Vietnam Innovation Network in the United States",
+    description:
+      "May 2022. The Minister of Planning and Investment met the network of Vietnamese innovators building in the US.",
+    link: "https://htv.vn/doanhnhansaigon/bo-truong-nguyen-chi-dung-du-hop-mat-mang-luoi-doi-moi-sang-tao-viet-nam-tai-hoa-ky-205889.html",
+    image: pressInnovationNetwork.src,
   },
 ];
 
