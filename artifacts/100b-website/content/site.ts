@@ -432,13 +432,21 @@ export type PressItem = {
 // a gradient tile so the layout never breaks.
 export const pressItems: PressItem[] = [
   {
-    outlet: "Ministry of Foreign Affairs",
-    headline:
-      "Vietnamese diaspora business delegation received at Vietnam's Ministry of Foreign Affairs",
+    outlet: "Hanoi Television",
+    headline: "Hanoi strengthens investment ties with businesses from Texas",
     description:
-      "Deputy Minister Le Thi Thu Hang welcomed a delegation of overseas Vietnamese business leaders to deepen cross-border investment ties and strengthen institutional bridges with the homeland.",
-    link: "https://scov.gov.vn/cong-tac-ve-nvnonn/tin-tuc/thu-truong-le-thi-thu-hang-tiep-dai-dien-hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai.html",
-    image: socialPress1.src,
+      "The city's leadership met the Texas business delegation to open investment and trade channels between Hanoi and the state.",
+    link: "https://hanoionline.vn/ha-noi-tang-cuong-ket-noi-dau-tu-voi-doanh-nghiep-bang-texas-hoa-ky-402572.htm",
+    image: pressHanoiTexas.src,
+  },
+  {
+    outlet: "NACENTECH",
+    headline:
+      "Access Vietnam 2026 builds a startup bridge to Austin, Texas, the second Silicon Valley",
+    description:
+      "Vietnam's National Centre for Technological Progress on the delegation carrying Vietnamese founders into the Austin ecosystem.",
+    link: "https://nacentech.vn/access-vietnam-2026-kien-tao-cau-noi-khoi-nghiep-cho-doanh-nghiep-viet-tai-austin-texas-thung-lung-silicon-thu-hai/",
+    image: pressNacentech.src,
   },
   {
     outlet: "Ministry of Culture, Sports and Tourism",
@@ -447,6 +455,15 @@ export const pressItems: PressItem[] = [
       "A national event recognized the next generation of overseas Vietnamese entrepreneurs as cultural ambassadors and a strategic bridge between the homeland and global markets.",
     link: "https://www.vietnam.vn/ngay-quoc-to-viet-nam-toan-cau-va-chuyen-cua-nhung-nguoi-con-xa-xu",
     image: socialPress2.src,
+  },
+  {
+    outlet: "Ministry of Foreign Affairs",
+    headline:
+      "Vietnamese diaspora business delegation received at Vietnam's Ministry of Foreign Affairs",
+    description:
+      "Deputy Minister Le Thi Thu Hang welcomed a delegation of overseas Vietnamese business leaders to deepen cross-border investment ties and strengthen institutional bridges with the homeland.",
+    link: "https://scov.gov.vn/cong-tac-ve-nvnonn/tin-tuc/thu-truong-le-thi-thu-hang-tiep-dai-dien-hiep-hoi-doanh-nhan-viet-nam-o-nuoc-ngoai.html",
+    image: socialPress1.src,
   },
   {
     outlet: "Vietnam Real Estate Association",
@@ -490,23 +507,6 @@ export const pressItems: PressItem[] = [
       "At a Ho Chi Minh City symposium, industry leaders agreed that operational excellence is the foundation of effective communication and lasting global positioning.",
     link: "https://congthuong.vn/doanh-nghiep-muon-truyen-thong-hieu-qua-truoc-het-can-co-san-pham-tot-300633.html",
     image: businessPress3.src,
-  },
-  {
-    outlet: "NACENTECH",
-    headline:
-      "Access Vietnam 2026 builds a startup bridge to Austin, Texas, the second Silicon Valley",
-    description:
-      "Vietnam's National Centre for Technological Progress on the delegation carrying Vietnamese founders into the Austin ecosystem.",
-    link: "https://nacentech.vn/access-vietnam-2026-kien-tao-cau-noi-khoi-nghiep-cho-doanh-nghiep-viet-tai-austin-texas-thung-lung-silicon-thu-hai/",
-    image: pressNacentech.src,
-  },
-  {
-    outlet: "Hanoi Television",
-    headline: "Hanoi strengthens investment ties with businesses from Texas",
-    description:
-      "The city's leadership met the Texas business delegation to open investment and trade channels between Hanoi and the state.",
-    link: "https://hanoionline.vn/ha-noi-tang-cuong-ket-noi-dau-tu-voi-doanh-nghiep-bang-texas-hoa-ky-402572.htm",
-    image: pressHanoiTexas.src,
   },
   {
     outlet: "Vietnam Plus",
