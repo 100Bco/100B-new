@@ -123,7 +123,7 @@ export default function EnterVietnamPage() {
     <div className="flex flex-col">
       {/* 3.1 HERO */}
       <PageHero
-        videoId="im4oab6ppu"
+        videoId="t0jdqo7des"
         title={
           <>
             <span className="block">Vietnam rewards the people</span>
