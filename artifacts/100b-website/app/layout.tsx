@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [
       {
-        url: "/opengraph.jpg",
+        url: "/og-100b.jpg",
         width: 1200,
         height: 630,
         alt: "100B Beyond Borders",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: "100B | Beyond Borders",
     description:
       "Vietnamese brands go out. The world comes in.",
-    images: ["/opengraph.jpg"],
+    images: ["/og-100b.jpg"],
   },
   icons: {
     icon: [{ url: "/Favicon 100B.png", type: "image/png" }],
