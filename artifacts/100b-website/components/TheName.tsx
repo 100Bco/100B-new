@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
+import backdrop from "@assets/100b-name-background.jpg";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 /** One full cycle: the 100 shows, splits, holds apart, then reforms. */
@@ -37,6 +38,29 @@ export function TheName() {
 
   return (
     <section ref={ref} className="relative lg:h-screen lg:min-h-[720px] flex items-center bg-bg-dark border-b border-border-subtle overflow-hidden grain-overlay py-20 lg:py-0">
+      {/* The Dong Son drum, with the mountains at one corner and the sea at
+          the other: the story the section tells, behind the words that tell
+          it. The picture is already near black, so it needs no scrim of its
+          own; the gold glow that was here stays, over it. */}
+      <img
+        src={backdrop.src}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover"
+        aria-hidden
+      />
+      {/* A well of black where the words sit. The drum's face is its busiest
+          ring at exactly the height of the copy, and on a phone the crop puts
+          that ring right under it. The outer rings and both corners stay. */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 62% 48% at 50% 58%, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 55%, transparent 78%)",
+        }}
+        aria-hidden
+      />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
