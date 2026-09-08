@@ -40,8 +40,7 @@ export function TheName() {
     <section ref={ref} className="relative lg:h-screen lg:min-h-[720px] flex items-center bg-bg-dark border-b border-border-subtle overflow-hidden grain-overlay py-20 lg:py-0">
       {/* The Dong Son drum, with the mountains at one corner and the sea at
           the other: the story the section tells, behind the words that tell
-          it. The picture is already near black, so it needs no scrim of its
-          own; the gold glow that was here stays, over it. */}
+          it. */}
       <img
         src={backdrop.src}
         alt=""
@@ -57,7 +56,7 @@ export function TheName() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 62% 48% at 50% 58%, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 55%, transparent 78%)",
+            "radial-gradient(ellipse 62% 48% at 50% 58%, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.7) 55%, transparent 78%)",
         }}
         aria-hidden
       />
@@ -120,7 +119,7 @@ export function TheName() {
           ))}
         </motion.div>
 
-        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-text-heading mb-6">
+        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-brand-gold mb-6">
           Where the name comes from.
         </h2>
 
