@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [
       {
-        url: "/og-100b.jpg",
-        width: 1200,
-        height: 630,
+        url: "/og-100b.jpg?v=2",
+        width: 2400,
+        height: 1260,
         alt: "100B Beyond Borders",
       },
     ],
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: "100B | Beyond Borders",
     description:
       "Vietnamese brands go out. The world comes in.",
-    images: ["/og-100b.jpg"],
+    images: ["/og-100b.jpg?v=2"],
   },
   icons: {
     icon: [{ url: "/Favicon 100B.png", type: "image/png" }],
