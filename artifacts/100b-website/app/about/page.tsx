@@ -82,26 +82,25 @@ export default function AboutPage() {
         </section>
       )}
 
-      {/* 6.5 HOW WE WORK. Four principles as a manifesto list. Four tall
-          panels were mostly empty even with the Vietnamese in them; as rows
-          the numeral holds the left edge and each statement takes the width
-          and the size it deserves, and the section stops being a grid of
-          boxes like every other section on the site. */}
+      {/* 6.5 HOW WE WORK. Four principles, one to a card, numbered. Two
+          abreast on a phone and four across from lg: the statements are short
+          enough to hold their own box, and the four read as one set rather
+          than as a list you scroll past. */}
       <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionTitle className="mb-12 lg:mb-16">
             How we <Accent>work.</Accent>
           </SectionTitle>
-          <ul className="flex flex-col border-t border-border-subtle">
+          <ul className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
             {howWeWork.map((item, i) => (
               <li
                 key={item.en}
-                className="grid grid-cols-[auto_1fr] items-baseline gap-x-5 sm:gap-x-10 lg:gap-x-16 py-7 sm:py-10 lg:py-12 border-b border-border-subtle"
+                className="h-full bg-bg-card rounded-3xl border border-border-subtle hover:border-brand-gold/40 transition-colors p-5 sm:p-7 lg:p-8 flex flex-col gap-4 lg:gap-5"
               >
-                <span className="font-display text-gradient-gold leading-none font-medium text-2xl sm:text-4xl lg:text-5xl">
+                <span className="font-display text-gradient-gold leading-none font-medium text-3xl sm:text-5xl lg:text-[56px]">
                   0{i + 1}
                 </span>
-                <p className="font-serif font-light leading-[1.1] text-text-heading text-2xl sm:text-4xl lg:text-[52px] text-balance">
+                <p className="font-serif font-light leading-[1.15] text-text-heading text-lg sm:text-2xl lg:text-[30px] text-balance">
                   {item.en}
                   {item.enSub && (
                     <>
