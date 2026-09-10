@@ -46,6 +46,10 @@ export function TheName() {
         alt=""
         loading="lazy"
         decoding="async"
+        /* Dimmed 30%, evenly. A gradient scrim swallowed the engraving in the
+           middle, where the drum is; brightness holds the whole picture in
+           proportion, so the pattern still reads across every ring. */
+        style={{ filter: "brightness(0.7)" }}
         className="absolute inset-0 w-full h-full object-cover"
         aria-hidden
       />
