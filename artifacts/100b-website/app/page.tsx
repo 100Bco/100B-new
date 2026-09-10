@@ -63,7 +63,7 @@ export default function HomePage() {
             style={{ width: "max(100vw, 177.78vh)", height: "max(56.25vw, 100vh)" }}
           >
             <wistia-player
-              media-id="9hbymhvynw"
+              media-id="68iibq5ow9"
               aspect="1.7777777777777777"
               autoplay="true"
               muted="true"

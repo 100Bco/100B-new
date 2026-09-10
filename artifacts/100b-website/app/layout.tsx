@@ -134,6 +134,11 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         <Script
+          src="https://fast.wistia.com/embed/68iibq5ow9.js"
+          strategy="afterInteractive"
+          type="module"
+        />
+        <Script
           src="https://fast.wistia.com/embed/9hbymhvynw.js"
           strategy="afterInteractive"
           type="module"
