@@ -56,7 +56,7 @@ export function TheName() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 62% 48% at 50% 58%, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.7) 55%, transparent 78%)",
+            "radial-gradient(ellipse 68% 55% at 50% 56%, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 55%, transparent 82%)",
         }}
         aria-hidden
       />
