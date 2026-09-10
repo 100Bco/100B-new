@@ -100,12 +100,16 @@ export default function AboutPage() {
                 <span className="font-display text-gradient-gold leading-none font-medium text-3xl sm:text-5xl lg:text-[56px]">
                   0{i + 1}
                 </span>
-                <p className="font-serif font-light leading-[1.15] text-text-heading text-lg sm:text-2xl lg:text-[30px] text-balance">
+                {/* Inter, as on every other card title on the site. The gold
+                    half stays gold but takes the same face rather than the
+                    serif italic Accent, which would put two fonts in one
+                    sentence. */}
+                <p className="font-sans font-semibold leading-snug text-text-heading text-[15px] sm:text-lg lg:text-xl text-balance">
                   {item.en}
                   {item.enSub && (
                     <>
                       {" "}
-                      <Accent>{item.enSub}</Accent>
+                      <span className="text-gradient-gold">{item.enSub}</span>
                     </>
                   )}
                 </p>
