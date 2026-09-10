@@ -49,17 +49,6 @@ export function TheName() {
         className="absolute inset-0 w-full h-full object-cover"
         aria-hidden
       />
-      {/* A well of black where the words sit. The drum's face is its busiest
-          ring at exactly the height of the copy, and on a phone the crop puts
-          that ring right under it. The outer rings and both corners stay. */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 68% 55% at 50% 56%, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 55%, transparent 82%)",
-        }}
-        aria-hidden
-      />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -69,7 +58,13 @@ export function TheName() {
         aria-hidden
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full flex flex-col items-center text-center">
+      {/* The drum keeps its own colour, so nothing is laid over the picture.
+          The words carry their own halo instead, tight enough to vanish over
+          the black field and to lift the type off the engraved ring it
+          crosses. Solid type takes a text shadow; the gold marks are painted
+          through background-clip, where a text shadow would show through the
+          glyph itself, so those take a drop shadow on the painted pixels. */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full flex flex-col items-center text-center name-halo">
         {/* 100 splitting into 50 and 50 */}
         <motion.div
           className="relative h-[110px] md:h-[150px] lg:h-[180px] w-full mb-10 lg:mb-12 select-none"
@@ -78,7 +73,7 @@ export function TheName() {
           aria-hidden
         >
           <motion.span
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[96px] md:text-[130px] lg:text-[160px] leading-none text-gradient-gold"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[96px] md:text-[130px] lg:text-[160px] leading-none text-gradient-gold name-halo-mark"
             variants={{
               rest: { opacity: 1, scale: 1, transition: { duration: 0.5, ease } },
               split: {
@@ -133,7 +128,7 @@ export function TheName() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-12 pt-8 mt-8 border-t border-border-subtle w-full max-w-3xl">
           <p className="flex items-baseline gap-3">
-            <span className="font-display text-4xl lg:text-5xl text-gradient-gold leading-none">
+            <span className="font-display text-4xl lg:text-5xl text-gradient-gold leading-none name-halo-mark">
               100
             </span>
             <span className="font-sans font-light text-sm lg:text-base text-text-body">
@@ -141,7 +136,7 @@ export function TheName() {
             </span>
           </p>
           <p className="flex items-baseline gap-3">
-            <span className="font-display text-4xl lg:text-5xl text-gradient-gold leading-none">
+            <span className="font-display text-4xl lg:text-5xl text-gradient-gold leading-none name-halo-mark">
               B
             </span>
             <span className="font-sans font-light text-sm lg:text-base text-text-body">
