@@ -141,6 +141,21 @@
     .prose-body { font-size: 18px; }
   }
 
+  /* The name section sits on the drum at its own colour, so the words carry
+     their own halo rather than a scrim over the picture. */
+  .name-halo {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 2px 14px rgba(0, 0, 0, 0.85);
+  }
+
+  /* Gold type is painted through background-clip, so its fill is transparent
+     and a text shadow would sit inside the letter. A drop shadow follows the
+     painted pixels instead. */
+  .name-halo .name-halo-mark {
+    text-shadow: none;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9))
+            drop-shadow(0 2px 12px rgba(0, 0, 0, 0.8));
+  }
+
   .grain-overlay::after {
     content: "";
     position: absolute;
