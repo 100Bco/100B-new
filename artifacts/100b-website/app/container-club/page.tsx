@@ -311,17 +311,23 @@ export default function ContainerClubPage() {
 
       {/* 4.6 THE MODEL REPEATS */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionTitle className="mb-12 lg:mb-16 max-w-4xl">
+        {/* Centred on its own axis, the button included: the heading was
+            already centred and everything under it was ranged left, which
+            left the section reading as two different layouts. */}
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
+          <SectionTitle className="mb-10 lg:mb-12 max-w-4xl">
             One example, <Accent>not the whole model.</Accent>
           </SectionTitle>
-          <p className="text-base lg:text-lg font-light leading-relaxed text-text-body mb-10 max-w-3xl">
+          <p className="text-base lg:text-lg font-light leading-relaxed text-text-body mb-10 max-w-3xl text-center">
             Vietnam. Construction materials. Texas buyers. That was the first one.
           </p>
 
-          <div className="grid grid-cols-2 gap-x-6 md:gap-x-12 border-t border-border-subtle mb-12">
+          <div className="w-full max-w-4xl grid grid-cols-2 gap-x-6 md:gap-x-12 border-t border-border-subtle mb-12">
             {repeats.map((r) => (
-              <div key={r.title} className="py-6 border-b border-border-subtle flex flex-col gap-1">
+              <div
+                key={r.title}
+                className="py-6 border-b border-border-subtle flex flex-col items-center text-center gap-1"
+              >
                 <h3 className="font-sans font-bold text-[15px] sm:text-lg lg:text-xl text-text-heading">{r.title}</h3>
                 <p className="text-[13px] sm:text-sm lg:text-base font-light text-text-body">{r.line}</p>
               </div>
