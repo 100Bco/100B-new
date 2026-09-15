@@ -6,11 +6,14 @@ import { PressCarousel } from "@/components/PressCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
 import { PageHero } from "@/components/PageHero";
 import aboutBanner from "@assets/about-banner-vn.jpg";
+import { pressItems } from "@/content/site";
+import { pressSchema } from "@/content/structured-data";
+import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Between two worlds. Giữa hai thế giới. Who 100B is, where the name comes from, and how we work: no referral fees, partner not middleman, in both rooms.",
+    "Between two worlds. Giữa hai thế giới. Who 100B is, where the name comes from, and how we work: equity and commissions, never a markup, partner not middleman, in both rooms.",
   alternates: { canonical: "/about" },
 };
 
@@ -20,15 +23,17 @@ type Member = { name: string; role: string; company: string };
 const team: Member[] = [];
 
 const howWeWork = [
-  { en: "No referral fees.", enSub: "Equity only." },
+  { en: "Equity, retainers, commissions.", enSub: "Never a markup." },
   { en: "Partner, not middleman.", enSub: "" },
-  { en: "We pass often.", enSub: "" },
+  { en: "We say no a lot.", enSub: "" },
   { en: "We're in both rooms.", enSub: "" },
 ];
 
 export default function AboutPage() {
   return (
     <div className="flex flex-col">
+      <JsonLd data={pressSchema(pressItems)} />
+
       {/* 6.1 HERO */}
       <PageHero
         image={aboutBanner.src}
@@ -57,7 +62,7 @@ export default function AboutPage() {
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionTitle className="mb-12 lg:mb-16">
-            Three founders. <Accent>Both sides.</Accent>
+            Three founders. <Accent>Two countries.</Accent>
           </SectionTitle>
           <Founders variant="long" />
         </div>
@@ -137,7 +142,7 @@ export default function AboutPage() {
           </>
         }
         meta="Austin · Hanoi · Ho Chi Minh City"
-        note="48 hours."
+        note="We reply within 48 hours."
       />
     </div>
   );

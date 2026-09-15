@@ -12,6 +12,8 @@ import { PageHero } from "@/components/PageHero";
 import { DistributionShift } from "@/components/DistributionShift";
 import logoSpecMate from "@assets/LOGO SPECMATA-04.png";
 import { PhotoCarousel, type TripPhoto } from "@/components/PhotoCarousel";
+import { gallerySchema } from "@/content/structured-data";
+import { JsonLd } from "@/components/JsonLd";
 import vdAnCuong from "@assets/vietnam-direct/an-cuong.jpg";
 import vdBmWindows from "@assets/vietnam-direct/bm-windows.jpg";
 import vdDaiDung from "@assets/vietnam-direct/dai-dung.jpg";
@@ -104,6 +106,8 @@ const network = [
 export default function ContainerClubPage() {
   return (
     <div className="flex flex-col">
+      <JsonLd data={gallerySchema("Vietnam Direct 2026", vietnamDirectPhotos)} />
+
       {/* 4.1 HERO */}
       <PageHero
         videoId="9hbymhvynw"
@@ -139,7 +143,8 @@ export default function ContainerClubPage() {
           <DistributionShift />
 
           <p className="mt-12 lg:mt-14 text-center text-sm font-light text-text-body">
-            Sourcing trips are priced per trip, by approved application.
+            Trips are priced separately, by application. If we do business afterward, the trip
+            fee comes off your first commission.
           </p>
         </div>
       </section>
@@ -200,9 +205,9 @@ export default function ContainerClubPage() {
               photographs split left and right underneath it. */}
           <div className="max-w-3xl mx-auto text-center flex flex-col gap-4 text-base lg:text-lg font-light leading-relaxed text-text-body mb-12 lg:mb-14">
             <p>
-              May to June 2026. Ho Chi Minh City to Hanoi. 13 hand-picked factories in
-              construction and finishing materials. Decision-makers only: GC principals,
-              development partners, architects who spec.
+              May to June 2026. Ho Chi Minh City to Hanoi. 14 hand-picked factories in
+              construction and finishing materials. Decision-makers only: general contractor
+              principals, development partners, and the architects who choose materials.
             </p>
             <p>
               Hosted with{" "}
@@ -263,7 +268,7 @@ export default function ContainerClubPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-6 border-t border-border-subtle pt-6">
                   <div className="flex flex-col items-center text-center gap-1">
-                    <span className="font-display text-4xl text-gradient-gold leading-none">13</span>
+                    <span className="font-display text-4xl text-gradient-gold leading-none">14</span>
                     <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">Factories</span>
                   </div>
                   <div className="flex flex-col items-center text-center gap-1">
@@ -306,9 +311,12 @@ export default function ContainerClubPage() {
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionTitle className="mb-12 lg:mb-16 max-w-4xl">
-            Vietnam. Construction materials. Texas buyers.{" "}
-            <Accent>That was the first one.</Accent>
+            One example, <Accent>not the whole model.</Accent>
           </SectionTitle>
+          <p className="text-base lg:text-lg font-light leading-relaxed text-text-body mb-10 max-w-3xl">
+            Vietnam. Construction materials. Texas buyers. That was the first one.
+          </p>
+
           <div className="grid grid-cols-2 gap-x-6 md:gap-x-12 border-t border-border-subtle mb-12">
             {repeats.map((r) => (
               <div key={r.title} className="py-6 border-b border-border-subtle flex flex-col gap-1">
@@ -331,11 +339,17 @@ export default function ContainerClubPage() {
               alt="SpecMate"
               className="h-9 lg:h-11 w-auto object-contain"
             />
-            <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">
-              When a category is good enough, we build a company around it instead of just
-              sourcing it. SpecMate supplies materials and furniture direct to contractors,
-              multi-origin, built with LT Commercial Group.
-            </p>
+            <div className="flex flex-col gap-3">
+              <p className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
+                When we find a category worth owning.
+              </p>
+              <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">
+                When a product category is big enough to be worth owning,
+                we build a company around it instead of just sourcing it. SpecMate supplies
+                materials and furniture direct to contractors, multi-origin, built with LT
+                Commercial Group.
+              </p>
+            </div>
           </div>
         </div>
       </section>

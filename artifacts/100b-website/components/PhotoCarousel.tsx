@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { useAutoAdvance } from "@/components/useAutoAdvance";
 import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
 
@@ -25,32 +25,48 @@ export function PhotoCarousel({
   const { current, goTo, goNext, goPrev } = useAutoAdvance(photos.length, interval);
 
   if (!photos.length) return null;
-  const photo = photos[current];
 
   return (
     <div className={`flex flex-col gap-5 ${className}`}>
       <div className="relative">
-        <figure className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 bg-bg-card">
-          <AnimatePresence mode="wait">
-            <motion.img
+        {/* Every frame and every caption is in the page, and the current one
+            is the one you can see. Mounting a single frame kept the rest out
+            of the document a crawler reads, so only one room of the trip was
+            ever indexed. */}
+        <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 bg-bg-card">
+          {photos.map((photo, index) => (
+            <figure
               key={photo.src}
-              src={photo.src}
-              alt={photo.caption}
-              loading={current === 0 ? "eager" : "lazy"}
-              initial={{ opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </AnimatePresence>
-          <figcaption className="absolute inset-x-0 bottom-0 px-5 lg:px-6 pb-5 lg:pb-6 pt-14 flex flex-col gap-1.5 bg-gradient-to-t from-black via-black/70 to-transparent">
-            <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-brand-gold">
-              {photo.label}
-            </span>
-            <span className={captionClassName}>{photo.caption}</span>
-          </figcaption>
-        </figure>
+              className="absolute inset-0"
+              style={{ pointerEvents: index === current ? "auto" : "none" }}
+            >
+              <motion.img
+                src={photo.src}
+                alt={`${photo.caption}, ${photo.label}`}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+                initial={false}
+                animate={{
+                  opacity: index === current ? 1 : 0,
+                  scale: index === current ? 1 : 1.03,
+                }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <motion.figcaption
+                initial={false}
+                animate={{ opacity: index === current ? 1 : 0 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-x-0 bottom-0 px-5 lg:px-6 pb-5 lg:pb-6 pt-14 flex flex-col gap-1.5 bg-gradient-to-t from-black via-black/70 to-transparent"
+              >
+                <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-brand-gold">
+                  {photo.label}
+                </span>
+                <span className={captionClassName}>{photo.caption}</span>
+              </motion.figcaption>
+            </figure>
+          ))}
+        </div>
 
         <button
           onClick={goPrev}

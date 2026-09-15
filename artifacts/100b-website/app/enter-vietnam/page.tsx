@@ -29,11 +29,13 @@ import vinmake from "@assets/trip/vinmake.jpg";
 import metub from "@assets/trip/metub.jpg";
 import dls from "@assets/trip/dls.jpg";
 import { delegateTestimonials } from "@/content/site";
+import { gallerySchema, reviewSchema } from "@/content/structured-data";
+import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Enter Vietnam",
   description:
-    "For companies, funds, and organizations coming into Vietnam. We build delegations into the rooms that matter: government, innovation, capital, and the founders actually building.",
+    "For companies, funds, and organizations coming into Vietnam. We organize delegations into the rooms that matter: ministries, funds, and the founders actually building.",
   alternates: { canonical: "/enter-vietnam" },
 };
 
@@ -70,6 +72,7 @@ const whoWeMet = [
   "National Data Center",
   "City of Hanoi",
   "National Innovation Center",
+  "Ministry of Science and Technology",
   "Do Ventures",
   "Mekong Capital",
   "AVV",
@@ -121,6 +124,9 @@ const whoThisIsFor = [
 export default function EnterVietnamPage() {
   return (
     <div className="flex flex-col">
+      <JsonLd data={reviewSchema(delegateTestimonials)} />
+      <JsonLd data={gallerySchema("Access Vietnam 2026", tripPhotos)} />
+
       {/* 3.1 HERO */}
       <PageHero
         videoId="t0jdqo7des"
@@ -132,7 +138,7 @@ export default function EnterVietnamPage() {
             </span>
           </>
         }
-        lead="We build delegations into the rooms that matter. Government, innovation, capital, and the founders actually building."
+        lead="We organize delegations into the rooms that matter. Ministries, funds, and the founders actually building."
         actions={<PrimaryButton>Start a Conversation</PrimaryButton>}
         meta={
           <>
@@ -162,6 +168,10 @@ export default function EnterVietnamPage() {
           <SectionTitle className="mb-12 lg:mb-16 max-w-4xl">
             A week that would take you <Accent>two years to arrange.</Accent>
           </SectionTitle>
+
+          <p className="text-base lg:text-lg font-light leading-relaxed text-text-body max-w-3xl mb-12">
+            These are meetings that take outsiders years to arrange.
+          </p>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-12">
             {whatWeBuild.map((item) => (
@@ -268,9 +278,9 @@ export default function EnterVietnamPage() {
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
           <SectionTitle className="mb-12 lg:mb-16 max-w-4xl">
-            <span className="block">Access Vietnam was one delegation.</span>
+            <span className="block">Access Vietnam is one example.</span>
             <span className="block">
-              <Accent>The model travels.</Accent>
+              <Accent>We build these for organizations in our network.</Accent>
             </span>
           </SectionTitle>
 
@@ -283,9 +293,11 @@ export default function EnterVietnamPage() {
           </div>
 
           <p className="font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-4xl mb-10 mx-auto text-center">
-            <span className="block">From any country. We&apos;ve run the US corridor.</span>
+            <span className="block">We&apos;ve run the US route. We&apos;re ready to run it</span>
             <span className="block">
-              <em className="italic text-gradient-gold">Europe, Asia, and the Gulf are open.</em>
+              <em className="italic text-gradient-gold">
+                from Europe, Asia, or the Middle East.
+              </em>
             </span>
           </p>
           <PrimaryButton>Talk to us about a delegation</PrimaryButton>

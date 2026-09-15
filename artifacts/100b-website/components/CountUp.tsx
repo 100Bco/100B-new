@@ -24,10 +24,17 @@ export function CountUp({
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement | null>(null);
   const inView = useInView(ref, { once: true, amount: threshold });
-  const [value, setValue] = useState(0);
+  /* The final figure is what the server renders and what a reader sees with
+     no JavaScript, so the number is in the page rather than a zero waiting to
+     be animated. The client drops it to zero on mount, which happens while
+     the block is still below the fold, and counts it back up on scroll. */
+  const [value, setValue] = useState(to);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView) {
+      setValue(0);
+      return;
+    }
     if (to === 0) {
       setValue(0);
       return;

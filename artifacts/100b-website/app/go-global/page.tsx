@@ -12,6 +12,8 @@ import { PageHero } from "@/components/PageHero";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
 import { founderTestimonials } from "@/content/site";
+import { reviewSchema } from "@/content/structured-data";
+import { JsonLd } from "@/components/JsonLd";
 import heroImage from "@assets/go-global-banner-clean.png";
 import logoZad from "@assets/logo-zad-mono.png";
 import logoBond from "@assets/logo-bond-mono.png";
@@ -22,7 +24,7 @@ import logo100bDark from "@assets/logo-100b-dark.png";
 export const metadata: Metadata = {
   title: "Go Global",
   description:
-    "For Vietnamese brands entering the US. We build the US entity with you and take equity in it. 3% to 20%, no referral fees.",
+    "For Vietnamese brands entering the US. We start a US company with you and own part of it. Equity, 3% to 20%.",
   alternates: { canonical: "/go-global" },
 };
 
@@ -42,12 +44,12 @@ const whatWeDo = [
   {
     icon: DoorOpen,
     title: "We open the rooms.",
-    line: "Distribution, retail, capital, chambers.",
+    line: "Distribution, retail, capital, chambers of commerce.",
   },
   {
     icon: Handshake,
     title: "We stay in it.",
-    line: "Board seat, operating input, and a call when it breaks.",
+    line: "Board seat, hands on the business, and a call when it breaks.",
   },
 ];
 
@@ -56,12 +58,14 @@ const path = [
   { name: "BOND", step: "Packaging", logo: logoBond.src },
   { name: "100Bold", step: "Marketing", logo: logo100bold.src },
   { name: "Container Club", step: "Export", logo: logoContainerClub.src },
-  { name: "100B", step: "The US entity", logo: logo100bDark.src },
+  { name: "100B", step: "Your US company", logo: logo100bDark.src },
 ];
 
 export default function GoGlobalPage() {
   return (
     <div className="flex flex-col">
+      <JsonLd data={reviewSchema(founderTestimonials)} />
+
       {/* 2.1 HERO */}
       <PageHero
         image={heroImage.src}
@@ -74,15 +78,9 @@ export default function GoGlobalPage() {
             </span>
           </>
         }
-        lead="We build the US entity with you and take equity in it."
+        lead="We start a US company with you and own part of it."
         actions={<PrimaryButton>Start a Conversation</PrimaryButton>}
-        meta={
-          <>
-            <span>Vietnamese brands at $20M-$100M</span>
-            <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
-            <span>Equity, 3-20% · No referral fees</span>
-          </>
-        }
+        meta={<span>Vietnamese brands at $20M-$100M</span>}
       />
 
       {/* 2.2 THE PROBLEM */}
@@ -136,7 +134,7 @@ export default function GoGlobalPage() {
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionTitle className="mb-12 lg:mb-16">
-            We take equity. <Accent>Nothing else.</Accent>
+            How we <Accent>make money.</Accent>
           </SectionTitle>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
@@ -146,19 +144,22 @@ export default function GoGlobalPage() {
               </span>
               <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">
                 <strong className="font-semibold text-text-heading">
-                  3% to 20% of the US entity
+                  Of the US company
                 </strong>
-                , depending on scope and stage. When equity lands low, we add a retainer and
-                success fees.
+                , depending on scope and stage. When we take a smaller share, we add a retainer
+                and success fees.
               </p>
             </div>
             <div className="bg-bg-card rounded-3xl p-8 lg:p-12 border border-border-subtle flex flex-col items-center text-center gap-6">
               <span className="font-display text-[88px] md:text-[120px] lg:text-[140px] leading-none text-text-heading">
-                0%
+                5
               </span>
               <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">
-                <strong className="font-semibold text-text-heading">No referral fees.</strong> If
-                you hire ZAD, 100Bold, or Container Club, none of it comes back to us.
+                <strong className="font-semibold text-text-heading">
+                  Companies under one roof.
+                </strong>{" "}
+                We own ZAD, 100Bold, BOND, and Container Club, so when we advise you on branding
+                or freight, we&apos;ve done the work ourselves.
               </p>
             </div>
           </div>
@@ -177,8 +178,8 @@ export default function GoGlobalPage() {
             $20M to $100M
           </p>
           <Lead className="mb-14">
-            in revenue. Established in Vietnam. Ready to give up equity in a new entity for a
-            partner who works.
+            in revenue. Established in Vietnam. Ready to give up part of a new company for a
+            partner who does the work, not just advises.
           </Lead>
 
           <div className="w-full max-w-3xl pt-10 border-t border-border-subtle flex flex-col items-center gap-5">
@@ -225,7 +226,7 @@ export default function GoGlobalPage() {
             </ol>
           </div>
           <p className="text-[11px] uppercase tracking-[0.25em] font-semibold text-text-muted text-center">
-            Every contract separate. Every vendor optional.
+            You hire each one separately.
           </p>
         </div>
       </section>

@@ -90,12 +90,15 @@ export const navLinks: NavLink[] = [
     path: "/about",
     descriptor: "Who we are",
   },
+  {
+    name: "Communities",
+    nameVi: "Cộng Đồng",
+    path: "/communities",
+    descriptor: "The networks we've built",
+  },
 ];
 
-export const footerLinks = [
-  ...navLinks.map((l) => ({ name: l.name, path: l.path })),
-  { name: "Communities", path: "/communities" },
-];
+export const footerLinks = navLinks.map((l) => ({ name: l.name, path: l.path }));
 
 export type Testimonial = {
   /** Gold display line above the quote. Falls back to the company name. */
@@ -122,49 +125,9 @@ export type Testimonial = {
 // on Home and the wall on Go Global.
 export const founderTestimonials: Testimonial[] = [
   {
-    headline: "VIETNAMESE SPIRIT, GLOBAL ASPIRATION",
-    quote:
-      "When we started in 2017 with only ~3,500 USD, we never imagined selling millions of products—let alone dreaming about going global. But meeting Minh and 100B gave us courage. We dared to leave our comfort zone and dream bigger. I truly believe: TOGETHER, with 100B, we'll empower more Vietnamese brands to succeed globally.",
-    name: "Sandy Phuong Nguyen",
-    title: "FOUNDER",
-    company: "CỎ CÂY HOA LÁ",
-    credential: "Rising Vietnamese wellness brand, 4.3 million products sold in 6 years",
-    photo: cchlPhoto.src,
-  },
-  {
-    headline: "ELEVATING VIETNAM'S GLOBAL VALUE",
-    quote:
-      "Congratulations to Minh and the 100B team for their outstanding work in bringing Vietnamese brands and products to the global market. Your efforts are helping elevate the value of Vietnam in the eyes of the world and driving the country's development.",
-    name: "Long Lu",
-    title: "FOUNDER",
-    company: "MISA",
-    credential: "Leading accounting software company, 80%+ market share",
-    photo: misaPhoto.src,
-  },
-  {
-    headline: "A LAUNCHPAD TO GLOBAL MARKETS",
-    quote:
-      "Huge thanks to 100B for helping Quang Vinh Ceramics see the world with a new perspective—alongside a strong and global-minded community of Vietnamese entrepreneurs. 100B has been a launchpad and a support system, opening opportunities for our manufacturing team to access global markets.",
-    name: "Vinh Ha",
-    title: "FOUNDER",
-    company: "QUANG VINH CERAMICS",
-    credential: "Heritage ceramics maker, exporting to 20+ countries",
-    photo: quangVinhPhoto.src,
-  },
-  {
-    headline: "ALIGNMENT IN VISION AND VALUES",
-    quote:
-      "It's been a joy working with 100B. The direction and vision of 100B deeply aligns with Hexagon's values. We're excited for this partnership and the connections it brings.",
-    name: "Thang Luu",
-    title: "CO-FOUNDER",
-    company: "HEXAGON",
-    credential: "Top interior firm with 4 factories and 5,000+ completed projects",
-    photo: hexagonPhoto.src,
-  },
-  {
     headline: "STEPPING ONTO THE GLOBAL STAGE",
     quote:
-      "Born from the love of two fathers, Kalotoys has touched the hearts of millions of children and parents around the world. With 100B as a launchpad, we hope Kalotoys—and millions of other Vietnamese brands—can win the trust of global customers.",
+      "Born from the love of two fathers, Kalotoys has touched the hearts of millions of children and parents around the world. With 100B as a launchpad, we hope Kalotoys, and millions of other Vietnamese brands, can win the trust of global customers.",
     name: "Thanh Dong",
     title: "CO-FOUNDER",
     company: "KALOTOYS",
@@ -172,10 +135,50 @@ export const founderTestimonials: Testimonial[] = [
     photo: kalotoysPhoto.src,
   },
   {
+    headline: "VIETNAMESE SPIRIT, GLOBAL ASPIRATION",
+    quote:
+      "When we started in 2017 with only ~3,500 USD, we never imagined selling millions of products, let alone dreaming about going global. But meeting Minh and 100B gave us courage. We dared to leave our comfort zone and dream bigger. I truly believe: TOGETHER, with 100B, we'll empower more Vietnamese brands to succeed globally.",
+    name: "Sandy Phuong Nguyen",
+    title: "FOUNDER",
+    company: "CỎ CÂY HOA LÁ",
+    credential: "Rising Vietnamese wellness brand, 4.3 million products sold in 6 years",
+    photo: cchlPhoto.src,
+  },
+  {
+    headline: "A LAUNCHPAD TO GLOBAL MARKETS",
+    quote:
+      "Huge thanks to 100B for helping Quang Vinh Ceramics see the world with a new perspective, alongside a strong and global-minded community of Vietnamese entrepreneurs. 100B has been a launchpad and a support system, opening opportunities for our manufacturing team to access global markets.",
+    name: "Hà Thị Vinh",
+    title: "FOUNDER",
+    company: "GỐM QUANG VINH",
+    credential: "Heritage ceramics maker, exporting to 20+ countries",
+    photo: quangVinhPhoto.src,
+  },
+  {
+    headline: "ALIGNMENT IN VISION AND VALUES",
+    quote:
+      "It's been a joy working with 100B. The direction and vision of 100B deeply aligns with Hexagon's values. We're excited for this partnership and the connections it brings.",
+    name: "Lưu Việt Thắng",
+    title: "CO-FOUNDER",
+    company: "HEXAGON",
+    credential: "Top interior firm with 4 factories and 5,000+ completed projects",
+    photo: hexagonPhoto.src,
+  },
+  {
+    headline: "ELEVATING VIETNAM'S GLOBAL VALUE",
+    quote:
+      "Congratulations to Minh and the 100B team for their outstanding work in bringing Vietnamese brands and products to the global market. Your efforts are helping elevate the value of Vietnam in the eyes of the world and driving the country's development.",
+    name: "Lữ Thành Long",
+    title: "FOUNDER",
+    company: "MISA",
+    credential: "Leading accounting software company, 80%+ market share",
+    photo: misaPhoto.src,
+  },
+  {
     headline: "AN INSPIRING & IMPACTFUL MISSION",
     quote:
       "Congratulations to 100B on such an inspiring and impactful mission for Vietnam's economic future.",
-    name: "Nguyen Thi Huong Lien",
+    name: "Nguyễn Thị Hương Liên",
     title: "CO-FOUNDER",
     company: "SAO THÁI DƯƠNG",
     credential: "Herbal care pioneer, 240M+ products sold worldwide",
@@ -312,6 +315,8 @@ export const delegateTestimonials: Testimonial[] = [
 export type Company = {
   name: string;
   role: string;
+  /** Role as the homepage names it, where the fuller phrase reads better. */
+  homeRole?: string;
   line: string;
   detail?: string;
   links: { label: string; href: string; external?: boolean }[];
@@ -337,6 +342,7 @@ export const companies: Company[] = [
   {
     name: "Container Club",
     role: "Trade",
+    homeRole: "Sourcing and shipping",
     line: "Sourcing, factories, logistics, network.",
     detail:
       "Sourcing, vetting, QC, freight, network. 3-5% commission. Led by Tung Cao and Tu Mac.",
@@ -404,7 +410,7 @@ export const founders: Founder[] = [
     short:
       "Left Vietnam at 17. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users.",
     long:
-      "Left Vietnam at 17 and spent a decade building in the US. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users. Built a creative agency after being failed by too many marketing vendors.",
+      "Left Vietnam at 17 and spent a decade building in the US. Private equity covering a $65B portfolio. Co-founded a Southeast Asian tech company that reached 1.6 million users. Built a creative agency after too many marketing vendors let him down.",
   },
   {
     name: "Tu Mac",
@@ -563,19 +569,19 @@ export const pressItems: PressItem[] = [
 export const communities = [
   {
     name: "Founders and brand owners",
-    line: "Vietnamese founders taking brands out",
+    line: "Vietnamese founders taking brands out into the world.",
   },
   {
     name: "Factory owners",
-    line: "Manufacturers building past contract work",
+    line: "Manufacturers building past contract work toward their own brand and their own buyers.",
   },
   {
     name: "Trade professionals",
-    line: "Freight, customs, 3PL, trade finance",
+    line: "Freight, customs, 3PL, trade finance, compliance. Container Club's network.",
   },
   {
     name: "Sellers and partners",
-    line: "People who sell what our companies make",
+    line: "People who sell what our companies make, and earn on what they sell.",
   },
 ];
 
@@ -597,7 +603,7 @@ export const programs = [
     name: "Vietnam Direct",
     when: "May-June 2026",
     where: "Ho Chi Minh City to Hanoi",
-    line: "13 vetted factories in construction and finishing materials, for buyers sourcing direct.",
+    line: "14 vetted factories in construction and finishing materials, for buyers sourcing direct.",
     href: "/container-club",
     cta: "Container Club",
     site: "https://vietnamdirect2026factory.100b.co/",
