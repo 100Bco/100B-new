@@ -96,6 +96,12 @@ export const navLinks: NavLink[] = [
     path: "/about",
     descriptor: "Who we are",
   },
+  {
+    name: "Communities",
+    nameVi: "Cộng Đồng",
+    path: "/communities",
+    descriptor: "The networks we've built",
+  },
 ];
 
 export const footerLinks = navLinks.map((l) => ({ name: l.name, path: l.path }));
