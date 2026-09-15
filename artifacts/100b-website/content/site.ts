@@ -85,16 +85,16 @@ export const navLinks: NavLink[] = [
     descriptor: "The five companies",
   },
   {
-    name: "About",
-    nameVi: "Về Chúng Tôi",
-    path: "/about",
-    descriptor: "Who we are",
-  },
-  {
     name: "Communities",
     nameVi: "Cộng Đồng",
     path: "/communities",
     descriptor: "The networks we've built",
+  },
+  {
+    name: "About",
+    nameVi: "Về Chúng Tôi",
+    path: "/about",
+    descriptor: "Who we are",
   },
 ];
 
