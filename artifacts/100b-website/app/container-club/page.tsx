@@ -129,20 +129,22 @@ export default function ContainerClubPage() {
         }
       />
 
-      {/* 4.2 THE MODEL */}
-      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
+      {/* 4.2 THE MODEL. Held to one screen: the diagram is the point, and it
+          was being pushed off the bottom by the air around it. */}
+      <section className="py-14 lg:py-16 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionTitle className="mb-6">
-            3% to 5% <Accent>commission.</Accent>
+          <SectionTitle className="mb-5">
+            <span className="font-display">3%</span> to{" "}
+            <span className="font-display">5%</span> <Accent>commission.</Accent>
           </SectionTitle>
-          <Lead className="mb-12 lg:mb-16 max-w-3xl">
+          <Lead className="mb-8 lg:mb-10 max-w-3xl">
             We don't buy your goods and resell them at a margin you can't see. You pay the
             factory. You pay us a commission.
           </Lead>
 
           <DistributionShift />
 
-          <p className="mt-12 lg:mt-14 text-center text-sm font-light text-text-body">
+          <p className="mt-8 lg:mt-10 text-center text-sm font-light text-text-body">
             Trips are priced separately, by application. If we do business afterward, the trip
             fee comes off your first commission.
           </p>

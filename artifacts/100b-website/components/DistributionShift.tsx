@@ -210,15 +210,19 @@ export function DistributionShift() {
        section: bordered, held short of the edges, with the drawing itself
        inset again so it reads as a compact panel rather than a full-bleed
        illustration. */
-    <div className="max-w-5xl mx-auto bg-bg-card rounded-3xl border border-border-subtle px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14">
-      <p className="text-center text-[11px] uppercase tracking-[0.22em] font-semibold text-text-body mb-10 lg:mb-14">
+    <div className="max-w-5xl mx-auto bg-bg-card rounded-3xl border border-border-subtle px-6 py-8 sm:px-10 sm:py-9 lg:px-14 lg:py-10">
+      <p className="text-center text-[11px] uppercase tracking-[0.22em] font-semibold text-text-body mb-6 lg:mb-8">
         How the chain changes
       </p>
 
       {/* Desktop board: five stops across 900 units */}
+      {/* The drawing occupies y 54 to 168 of the old 200-unit board, so the
+          board carried 54 units of empty sky and 32 of floor. Cropping the
+          frame rather than shrinking the art keeps every stop the same size
+          and takes 27px off the section. */}
       <svg
-        viewBox="0 0 900 200"
-        className="hidden md:block w-full max-w-4xl mx-auto h-auto"
+        viewBox="0 30 900 158"
+        className="hidden md:block w-full max-w-3xl mx-auto h-auto"
         role="img"
         aria-label="The distribution chain runs factory, distributor, wholesaler, retailer, buyer. The three in the middle drop out and 100B stands in their place, leaving factory, 100B, buyer."
       >
@@ -471,12 +475,12 @@ export function DistributionShift() {
         />
       </svg>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 lg:mt-14 pt-10 border-t border-border-subtle">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 lg:mt-10 pt-8 border-t border-border-subtle">
         {[
           { figure: "1", line: "One strategic partner, not a chain of middlemen" },
           { figure: "3-5%", line: "Visible commission. You pay the factory direct" },
         ].map((stat) => (
-          <div key={stat.figure} className="flex flex-col items-center text-center gap-4">
+          <div key={stat.figure} className="flex flex-col items-center text-center gap-3">
             <span className="font-display text-4xl lg:text-5xl text-gradient-gold leading-none">
               {stat.figure}
             </span>
