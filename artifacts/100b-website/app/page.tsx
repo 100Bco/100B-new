@@ -48,7 +48,7 @@ const doors = [
   },
   {
     icon: Layers,
-    title: "Too early for the above, or want to earn by referring clients.",
+    title: "Too early, or you earn by referring clients.",
     line: "Our companies work at every size.",
     links: [{ label: "Ecosystem", href: "/ecosystem" }],
   },
@@ -215,7 +215,10 @@ export default function HomePage() {
                 <p className="text-sm lg:text-base font-light leading-relaxed text-text-body">
                   {p.line}
                 </p>
-                <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                {/* One programme runs to three lines and the other to two, so
+                    the links are pushed to the bottom of their own column
+                    rather than sitting wherever the copy leaves them. */}
+                <div className="mt-auto flex flex-wrap justify-center gap-x-6 gap-y-2">
                   <ArrowLink href={p.href}>{p.cta}</ArrowLink>
                 </div>
               </div>
