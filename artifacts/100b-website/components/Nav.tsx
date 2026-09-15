@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { navLinks } from "@/content/site";
 
 export default function Nav() {
@@ -59,29 +59,73 @@ export default function Nav() {
             />
           </Link>
 
-          {/* Seven links plus the button do not fit at 1024 on the old gaps, so
-              the row tightens up to xl and keeps its old spacing beyond it. */}
-          <div className="hidden lg:flex items-center gap-5 xl:gap-10">
-            <div className="flex items-center gap-3 xl:gap-7">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-10">
+            <div className="flex items-center gap-5 xl:gap-7">
               {navLinks.map((link) => {
-                const isActive = pathname === link.path || pathname.startsWith(link.path + "/");
+                const own = pathname === link.path || pathname.startsWith(link.path + "/");
+                const childActive = (link.children ?? []).some(
+                  (c) => pathname === c.path || pathname.startsWith(c.path + "/"),
+                );
+                const isActive = own || childActive;
                 return (
-                  <Link
-                    key={link.path}
-                    href={link.path}
-                    className={`group relative font-sans text-[11px] uppercase whitespace-nowrap tracking-[0.12em] xl:tracking-[0.2em] font-semibold transition-colors py-2 ${
-                      isActive ? "text-brand-gold" : "text-text-muted hover:text-white"
-                    }`}
-                  >
-                    {link.name}
-                    {/* Hover descriptor */}
-                    <span
-                      className="pointer-events-none absolute left-1/2 top-full -translate-x-1/2 mt-1 whitespace-nowrap rounded-full border border-white/10 bg-bg-card/95 backdrop-blur-md px-3 py-1.5 text-[10px] normal-case tracking-[0.05em] font-normal text-text-body opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0"
-                      aria-hidden
+                  <div key={link.path} className="group relative flex items-center">
+                    <Link
+                      href={link.path}
+                      className={`font-sans text-[11px] uppercase whitespace-nowrap tracking-[0.15em] xl:tracking-[0.2em] font-semibold transition-colors py-2 flex items-center gap-1 ${
+                        isActive ? "text-brand-gold" : "text-text-muted hover:text-white"
+                      }`}
                     >
-                      {link.descriptor}
-                    </span>
-                  </Link>
+                      {link.name}
+                      {link.children && (
+                        <ChevronDown
+                          size={12}
+                          strokeWidth={2.5}
+                          className="transition-transform duration-200 group-hover:rotate-180"
+                          aria-hidden
+                        />
+                      )}
+                    </Link>
+
+                    {link.children ? (
+                      /* The pages under this one. Held open on hover and on
+                         keyboard focus, so it is reachable by tab as well as
+                         by pointer. The gap between the link and the panel is
+                         padded rather than empty, or the pointer crossing it
+                         closes the panel. */
+                      <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3 opacity-0 translate-y-1 pointer-events-none transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
+                        <div className="min-w-[200px] rounded-2xl border border-white/10 bg-bg-card/95 backdrop-blur-md p-2 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.9)]">
+                          {link.children.map((child) => {
+                            const active =
+                              pathname === child.path || pathname.startsWith(child.path + "/");
+                            return (
+                              <Link
+                                key={child.path}
+                                href={child.path}
+                                className={`flex flex-col gap-0.5 rounded-xl px-3 py-2.5 transition-colors hover:bg-white/5 ${
+                                  active ? "text-brand-gold" : "text-text-heading"
+                                }`}
+                              >
+                                <span className="text-[11px] uppercase tracking-[0.2em] font-semibold">
+                                  {child.name}
+                                </span>
+                                <span className="text-[10px] font-normal text-text-body">
+                                  {child.descriptor}
+                                </span>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ) : (
+                      /* Hover descriptor */
+                      <span
+                        className="pointer-events-none absolute left-1/2 top-full -translate-x-1/2 mt-1 whitespace-nowrap rounded-full border border-white/10 bg-bg-card/95 backdrop-blur-md px-3 py-1.5 text-[10px] normal-case tracking-[0.05em] font-normal text-text-body opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0"
+                        aria-hidden
+                      >
+                        {link.descriptor}
+                      </span>
+                    )}
+                  </div>
                 );
               })}
             </div>
@@ -109,10 +153,9 @@ export default function Nav() {
         <div className="fixed inset-0 z-40 bg-bg-dark/95 backdrop-blur-xl flex flex-col pt-28 px-6 pb-8 h-screen overflow-y-auto">
           <div className="flex flex-col w-full max-w-md mx-auto gap-8">
             <div className="flex flex-col w-full">
-              {navLinks.map(
-                (link) => (
+              {navLinks.map((link) => (
+                <div key={link.path} className="flex flex-col">
                   <Link
-                    key={link.path}
                     href={link.path}
                     className="flex flex-col gap-1 py-5 border-b border-border-subtle"
                   >
@@ -125,23 +168,24 @@ export default function Nav() {
                     </span>
                     <span className="text-sm font-light text-text-muted">{link.descriptor}</span>
                   </Link>
-                ),
-              )}
-              <Link
-                href="/communities"
-                className="flex flex-col gap-1 py-5 border-b border-border-subtle"
-              >
-                <span
-                  className={`text-xl font-sans uppercase tracking-[0.2em] font-semibold ${
-                    pathname === "/communities" ? "text-brand-gold" : "text-text-heading"
-                  }`}
-                >
-                  Communities
-                </span>
-                <span className="text-sm font-light text-text-muted">
-                  Four networks. Vetted, by introduction.
-                </span>
-              </Link>
+                  {(link.children ?? []).map((child) => (
+                    <Link
+                      key={child.path}
+                      href={child.path}
+                      className="flex flex-col gap-1 py-5 pl-5 border-b border-border-subtle border-l border-l-white/10"
+                    >
+                      <span
+                        className={`text-base font-sans uppercase tracking-[0.2em] font-semibold ${
+                          pathname === child.path ? "text-brand-gold" : "text-text-heading"
+                        }`}
+                      >
+                        {child.name}
+                      </span>
+                      <span className="text-sm font-light text-text-muted">{child.descriptor}</span>
+                    </Link>
+                  ))}
+                </div>
+              ))}
             </div>
             <a
               href="#contact-footer"

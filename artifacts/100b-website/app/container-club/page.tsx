@@ -179,7 +179,10 @@ export default function ContainerClubPage() {
                       0{i + 1}
                     </span>
                   </div>
-                  <h3 className="font-sans font-bold text-[11px] sm:text-sm lg:text-xl text-text-heading leading-snug">
+                  {/* Two of the five titles run to two lines, so every title
+                      reserves two and the descriptions under them start on
+                      one line rather than five different ones. */}
+                  <h3 className="font-sans font-bold text-[11px] sm:text-sm lg:text-xl text-text-heading leading-snug sm:min-h-[2.75em]">
                     {item.title}
                   </h3>
                   <p className="hidden sm:block text-xs lg:text-sm font-light leading-relaxed text-text-body">

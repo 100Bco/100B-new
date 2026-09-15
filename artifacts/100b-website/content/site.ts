@@ -51,6 +51,8 @@ export type NavLink = {
   nameVi: string;
   path: string;
   descriptor: string;
+  /** Pages that hang off this one in the nav rather than sitting beside it. */
+  children?: NavLink[];
 };
 
 export const navLinks: NavLink[] = [
@@ -79,12 +81,6 @@ export const navLinks: NavLink[] = [
     descriptor: "Sourcing, factories, and the trade network",
   },
   {
-    name: "Ecosystem",
-    nameVi: "Hệ Sinh Thái",
-    path: "/ecosystem",
-    descriptor: "The five companies",
-  },
-  {
     name: "Communities",
     nameVi: "Cộng Đồng",
     path: "/communities",
@@ -95,10 +91,22 @@ export const navLinks: NavLink[] = [
     nameVi: "Về Chúng Tôi",
     path: "/about",
     descriptor: "Who we are",
+    children: [
+      {
+        name: "Ecosystem",
+        nameVi: "Hệ Sinh Thái",
+        path: "/ecosystem",
+        descriptor: "The five companies",
+      },
+    ],
   },
 ];
 
-export const footerLinks = navLinks.map((l) => ({ name: l.name, path: l.path }));
+/** The footer is flat: a page under About in the nav is still its own page. */
+export const footerLinks = navLinks.flatMap((l) => [
+  { name: l.name, path: l.path },
+  ...(l.children ?? []).map((c) => ({ name: c.name, path: c.path })),
+]);
 
 export type Testimonial = {
   /** Gold display line above the quote. Falls back to the company name. */
