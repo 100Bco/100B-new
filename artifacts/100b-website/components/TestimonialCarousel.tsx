@@ -45,11 +45,11 @@ function interleave(groups: Group[]): Slide[] {
  * Client quote carousel, as on the previous site. One voice at a time:
  * headline, quote and signature on the left, portrait in the silver frame
  * on the right, silver arrows flanking the slide and dots underneath.
- * Advances on its own every 12 seconds.
+ * Advances on its own every 7 seconds.
  */
 export function TestimonialCarousel({
   groups,
-  interval = 12000,
+  interval = 7000,
 }: {
   groups: Group[];
   interval?: number;
