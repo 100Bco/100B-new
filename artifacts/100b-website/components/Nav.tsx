@@ -101,14 +101,17 @@ export default function Nav() {
                               <Link
                                 key={child.path}
                                 href={child.path}
-                                className={`flex flex-col gap-0.5 rounded-xl px-3 py-2.5 transition-colors hover:bg-white/5 ${
+                                className={`flex flex-col gap-0.5 rounded-xl px-3 py-2.5 transition-colors hover:bg-white/5 hover:text-brand-gold ${
                                   active ? "text-brand-gold" : "text-text-heading"
                                 }`}
                               >
                                 <span className="text-[11px] uppercase tracking-[0.2em] font-semibold">
                                   {child.name}
                                 </span>
-                                <span className="text-[10px] font-normal text-text-body">
+                                {/* Inherits the row's colour, so the descriptor
+                                    turns gold with the name rather than staying
+                                    grey under it. */}
+                                <span className="text-[10px] font-normal text-current opacity-70">
                                   {child.descriptor}
                                 </span>
                               </Link>
