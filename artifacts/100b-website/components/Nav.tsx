@@ -48,7 +48,7 @@ export default function Nav() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between gap-6">
-          <Link href="/" className="flex items-center group relative z-50">
+          <Link href="/" className="flex items-center group relative z-50 shrink-0">
             <Image
               src="/logo-100b.png"
               alt="100B Beyond Borders"
@@ -59,15 +59,17 @@ export default function Nav() {
             />
           </Link>
 
-          <div className="hidden lg:flex items-center gap-10">
-            <div className="flex items-center gap-7">
+          {/* Seven links plus the button do not fit at 1024 on the old gaps, so
+              the row tightens up to xl and keeps its old spacing beyond it. */}
+          <div className="hidden lg:flex items-center gap-5 xl:gap-10">
+            <div className="flex items-center gap-3 xl:gap-7">
               {navLinks.map((link) => {
                 const isActive = pathname === link.path || pathname.startsWith(link.path + "/");
                 return (
                   <Link
                     key={link.path}
                     href={link.path}
-                    className={`group relative font-sans text-[11px] uppercase tracking-[0.2em] font-semibold transition-colors py-2 ${
+                    className={`group relative font-sans text-[11px] uppercase whitespace-nowrap tracking-[0.12em] xl:tracking-[0.2em] font-semibold transition-colors py-2 ${
                       isActive ? "text-brand-gold" : "text-text-muted hover:text-white"
                     }`}
                   >
@@ -86,7 +88,7 @@ export default function Nav() {
             <a
               href="#contact-footer"
               onClick={scrollToContact}
-              className="btn-silver-gradient rounded-full px-6 py-3 text-[11px] uppercase tracking-widest font-semibold flex items-center justify-center whitespace-nowrap"
+              className="btn-silver-gradient rounded-full px-4 xl:px-6 py-3 text-[11px] uppercase tracking-widest font-semibold flex items-center justify-center whitespace-nowrap"
             >
               Start a Conversation
             </a>

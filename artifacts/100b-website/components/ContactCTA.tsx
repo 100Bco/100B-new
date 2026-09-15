@@ -9,7 +9,7 @@ import pattern from "@assets/100B Pattern (1).png";
  */
 export function ContactCTA({
   title,
-  note = "Read by one of us. 48 hours.",
+  note = "Read by one of us. We reply within 48 hours.",
   meta,
 }: {
   title: ReactNode;

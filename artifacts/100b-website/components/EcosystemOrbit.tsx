@@ -130,7 +130,7 @@ export function EcosystemOrbit() {
                   onMouseLeave={() => setActiveName(null)}
                   onFocus={() => setActiveName(c.name)}
                   onBlur={() => setActiveName(null)}
-                  aria-label={`${c.name}, ${c.role}`}
+                  aria-label={`${c.name}, ${c.homeRole ?? c.role}`}
                   className={`relative w-full aspect-square flex items-center justify-center rounded-full
                               overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
                               ${
@@ -211,7 +211,7 @@ export function EcosystemOrbit() {
                       {c.name}
                     </h3>
                     <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-                      {c.role}
+                      {c.homeRole ?? c.role}
                     </span>
                   </div>
                   <p
@@ -264,7 +264,7 @@ export function EcosystemOrbit() {
               active ? "opacity-30" : "opacity-100"
             }`}
           >
-            A brand at $5M uses two of them. A brand at $50M uses{" "}
+            A brand at $5M might use two. A brand at $50M often uses{" "}
             <em className="italic text-text-heading">all five.</em>
           </p>
 

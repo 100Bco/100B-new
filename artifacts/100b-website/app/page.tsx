@@ -10,12 +10,15 @@ import { Founders } from "@/components/Founders";
 import { PressCarousel } from "@/components/PressCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
 import { EcosystemOrbit } from "@/components/EcosystemOrbit";
+import { JsonLd } from "@/components/JsonLd";
 import {
   communities,
   founderTestimonials,
   partnerTestimonials,
+  pressItems,
   programs,
 } from "@/content/site";
+import { pressSchema, reviewSchema } from "@/content/structured-data";
 
 export const metadata: Metadata = {
   title: "100B | Beyond Borders",
@@ -27,14 +30,14 @@ export const metadata: Metadata = {
 const doors = [
   {
     icon: Globe,
-    title: "A Vietnamese brand going to the US.",
-    line: "We build the US entity with you and take equity in it.",
+    title: "A Vietnamese brand going global.",
+    line: "We start a US company with you and own part of it.",
     links: [{ label: "Go Global", href: "/go-global" }],
   },
   {
     icon: DoorOpen,
     title: "A fund or company entering Vietnam.",
-    line: "We open the rooms. Government, industry, capital.",
+    line: "We get you in the room. Ministries, industry, funds.",
     links: [{ label: "Enter Vietnam", href: "/enter-vietnam" }],
   },
   {
@@ -45,7 +48,7 @@ const doors = [
   },
   {
     icon: Layers,
-    title: "Under $20M, or you want to sell with us.",
+    title: "Too early for the above, or want to earn by referring clients.",
     line: "Our companies work at every size.",
     links: [{ label: "Ecosystem", href: "/ecosystem" }],
   },
@@ -54,6 +57,9 @@ const doors = [
 export default function HomePage() {
   return (
     <div className="flex flex-col">
+      <JsonLd data={reviewSchema([...founderTestimonials, ...partnerTestimonials])} />
+      <JsonLd data={pressSchema(pressItems)} />
+
       {/* 1.1 HERO */}
       <section className="relative bg-bg-dark overflow-hidden h-screen min-h-[720px] flex flex-col justify-center border-b border-border-subtle">
         {/* Full-bleed footage. Wistia embed scaled to cover the viewport. */}
@@ -113,14 +119,16 @@ export default function HomePage() {
               href="/enter-vietnam"
               className="bg-white hover:bg-brand-gold text-bg-dark rounded-full px-8 py-4 text-xs uppercase tracking-widest font-semibold transition-colors duration-300 text-center"
             >
-              I want into Vietnam →
+              I want to enter Vietnam →
             </Link>
           </div>
 
           <div className="mt-4 pt-6 border-t border-white/10 w-full flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[10px] uppercase tracking-[0.25em] text-text-muted">
             <span>Austin · Hanoi · Ho Chi Minh City</span>
             <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
-            <span>Five companies · One corridor</span>
+            <span>Five companies</span>
+            <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
+            <span>Vietnam and the US</span>
           </div>
         </div>
       </section>
@@ -129,7 +137,7 @@ export default function HomePage() {
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionTitle className="mb-12 lg:mb-16">
-            Four ways in. <Accent>Pick yours.</Accent>
+            Four ways in. <Accent>Which one is you?</Accent>
           </SectionTitle>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
@@ -163,7 +171,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
           <div className="shrink-0">
             <SectionTitle className="mb-8 lg:mb-10">
-              What our <Accent>Founder Network says.</Accent>
+              What founders and CEOs <Accent>on both sides say.</Accent>
             </SectionTitle>
           </div>
           <TestimonialCarousel
@@ -215,8 +223,8 @@ export default function HomePage() {
           </div>
 
           <p className="mt-14 font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-4xl mx-auto text-center">
-            Both are repeatable. Different countries, different industries,{" "}
-            <em className="italic text-gradient-gold">different buyers.</em>
+            We can run either one again, for a{" "}
+            <em className="italic text-gradient-gold">different country or industry.</em>
           </p>
         </div>
       </section>

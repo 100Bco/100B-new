@@ -31,7 +31,7 @@ export default function CommunitiesPage() {
             </span>
           </>
         }
-        lead="Four networks. Vetted, by introduction."
+        lead="Four networks. Vetted, by introduction, and growing."
         meta={<span>Founders · Factory owners · Trade · Sellers and partners</span>}
       />
 
@@ -64,7 +64,7 @@ export default function CommunitiesPage() {
             {[
               {
                 title: "What you'd sell",
-                line: "ZAD brand identity. BOND gifting and packaging. Both proven, both in demand.",
+                line: "ZAD brand identity. BOND gifting and packaging.",
               },
               {
                 title: "Who it's for",

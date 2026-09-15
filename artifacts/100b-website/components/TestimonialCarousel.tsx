@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { useAutoAdvance } from "@/components/useAutoAdvance";
 import type { Testimonial } from "@/content/site";
 import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
@@ -59,7 +59,6 @@ export function TestimonialCarousel({
   const { current, goTo, goNext, goPrev } = useAutoAdvance(slides.length, interval);
 
   if (!slides.length) return null;
-  const slide = slides[current];
 
   return (
     <div className="flex flex-col flex-1 min-h-0">
@@ -73,14 +72,24 @@ export function TestimonialCarousel({
           <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
         </button>
 
-        <AnimatePresence mode="wait">
+        {/* Every quote is rendered, and the current one is the one you can
+            see. Mounting a single slide left the other eight out of the page
+            a crawler reads, so the other eight were invisible to search:
+            nine quotes on the page, one indexed. They are stacked in one grid
+            cell rather than positioned absolutely, so the block still takes
+            its height from its content and nothing can be clipped. */}
+        <div className="w-full grid">
+          {slides.map((slide, index) => (
           <motion.div
-            key={current}
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -24 }}
+            key={slide.name + index}
+            initial={false}
+            animate={{
+              opacity: index === current ? 1 : 0,
+              x: index === current ? 0 : index < current ? -24 : 24,
+            }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full grid grid-cols-1 lg:grid-cols-[1fr_minmax(280px,420px)] gap-8 lg:gap-14 items-center"
+            style={{ pointerEvents: index === current ? "auto" : "none" }}
+            className="col-start-1 row-start-1 w-full grid grid-cols-1 lg:grid-cols-[1fr_minmax(280px,420px)] gap-8 lg:gap-14 items-center"
           >
             {/* Left — headline, quote, signature */}
             <div className="relative flex flex-col justify-center">
@@ -140,7 +149,9 @@ export function TestimonialCarousel({
                 {slide.photo ? (
                   <img
                     src={slide.photo}
-                    alt={slide.name}
+                    alt={`${slide.name}, ${slide.company}`}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
                     style={{ objectPosition: slide.photoPosition ?? "center" }}
                     className="absolute inset-0 w-full h-full object-cover grayscale"
                   />
@@ -157,7 +168,8 @@ export function TestimonialCarousel({
               </div>
             </div>
           </motion.div>
-        </AnimatePresence>
+          ))}
+        </div>
 
         <button
           onClick={goNext}

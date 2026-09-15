@@ -7,13 +7,13 @@ import { companies } from "@/content/site";
 export const metadata: Metadata = {
   title: "Ecosystem",
   description:
-    "Five companies. Each stands on its own. 100B, Container Club, ZAD, 100Bold, and BOND. Every one takes outside clients. No referral fees, ever.",
+    "Five companies. Each stands on its own. 100B, Container Club, ZAD, 100Bold, and BOND. Every one takes outside clients, under one standard and one team.",
   alternates: { canonical: "/ecosystem" },
 };
 
 const ladder = [
   { range: "$5M-$20M", who: "ZAD, 100Bold, BOND" },
-  { range: "$20M+", who: "all of it, plus 100B in the US entity" },
+  { range: "$20M+", who: "all of it, plus 100B in the US company" },
   { range: "Moving goods, any size", who: "Container Club" },
 ];
 
@@ -35,7 +35,7 @@ export default function EcosystemPage() {
           <>
             <span>100B · Container Club · ZAD · 100Bold · BOND</span>
             <span className="w-px h-3 bg-border-subtle hidden sm:inline-block" aria-hidden />
-            <span>No referral fees</span>
+            <span>One team, one standard</span>
           </>
         }
       />
@@ -125,10 +125,10 @@ export default function EcosystemPage() {
       <section className="py-20 lg:py-28 bg-bg-alt">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center flex flex-col items-center gap-8">
           <SectionTitle>
-            No referral fees. <Accent>Ever.</Accent>
+            We own <Accent>these companies.</Accent>
           </SectionTitle>
           <Lead className="max-w-2xl">
-            We hold equity in these companies and we say so. Hire anyone you want.
+            One standard, one team, one accountable party across everything you need.
           </Lead>
         </div>
       </section>
