@@ -12,8 +12,6 @@ import { PageHero } from "@/components/PageHero";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { ContactCTA } from "@/components/ContactCTA";
 import { founderTestimonials } from "@/content/site";
-import { reviewSchema } from "@/content/structured-data";
-import { JsonLd } from "@/components/JsonLd";
 import heroImage from "@assets/go-global-banner-clean.png";
 import logoZad from "@assets/logo-zad-mono.png";
 import logoBond from "@assets/logo-bond-mono.png";
@@ -64,8 +62,6 @@ const path = [
 export default function GoGlobalPage() {
   return (
     <div className="flex flex-col">
-      <JsonLd data={reviewSchema(founderTestimonials)} />
-
       {/* 2.1 HERO */}
       <PageHero
         image={heroImage.src}

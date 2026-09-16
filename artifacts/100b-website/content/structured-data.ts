@@ -1,36 +1,22 @@
-import type { PressItem, Testimonial } from "@/content/site";
+import type { PressItem } from "@/content/site";
 import type { TripPhoto } from "@/components/PhotoCarousel";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://100b.co";
 
 /**
- * Structured data for the three things the site says in carousels: what
- * people said about us, where we were written about, and what the trips
- * looked like. The markup carries the same words the page carries, so a
- * crawler that reads only the head still gets the substance of each section.
+ * Structured data for what the carousels carry: where we were written about,
+ * and what the trips looked like. The markup repeats the words already in the
+ * page rather than standing in for them.
  */
 
-/** The quotes on a page, as reviews of 100B. */
-export function reviewSchema(testimonials: Testimonial[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "100B Beyond Borders",
-    url: SITE_URL,
-    review: testimonials.map((t) => ({
-      "@type": "Review",
-      reviewBody: t.quote,
-      name: t.headline ?? t.company,
-      author: {
-        "@type": "Person",
-        name: t.name,
-        ...(t.title ? { jobTitle: t.title } : {}),
-        worksFor: { "@type": "Organization", name: t.company },
-      },
-      itemReviewed: { "@type": "Organization", name: "100B Beyond Borders", url: SITE_URL },
-    })),
-  };
-}
+/* The quotes are deliberately not marked up as Review.
+   Google rejects an item carrying several reviews with no aggregateRating,
+   and there is no rating to give: these are testimonials, not scored reviews,
+   so any number would be invented. Reviews an organisation publishes about
+   itself are self-serving in Google's terms and never eligible for rich
+   results either, so the markup could only ever have cost us. The quotes
+   themselves are in the page, every one of them, which is what a crawler
+   actually reads. */
 
 /** The press placements, each credited to the outlet that published it. */
 export function pressSchema(items: PressItem[]) {

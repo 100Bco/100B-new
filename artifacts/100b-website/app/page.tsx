@@ -18,7 +18,7 @@ import {
   pressItems,
   programs,
 } from "@/content/site";
-import { pressSchema, reviewSchema } from "@/content/structured-data";
+import { pressSchema } from "@/content/structured-data";
 
 export const metadata: Metadata = {
   title: "100B | Beyond Borders",
@@ -57,7 +57,6 @@ const doors = [
 export default function HomePage() {
   return (
     <div className="flex flex-col">
-      <JsonLd data={reviewSchema([...founderTestimonials, ...partnerTestimonials])} />
       <JsonLd data={pressSchema(pressItems)} />
 
       {/* 1.1 HERO */}
