@@ -29,7 +29,7 @@ import vinmake from "@assets/trip/vinmake.jpg";
 import metub from "@assets/trip/metub.jpg";
 import dls from "@assets/trip/dls.jpg";
 import { delegateTestimonials } from "@/content/site";
-import { gallerySchema, reviewSchema } from "@/content/structured-data";
+import { gallerySchema } from "@/content/structured-data";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
@@ -124,7 +124,6 @@ const whoThisIsFor = [
 export default function EnterVietnamPage() {
   return (
     <div className="flex flex-col">
-      <JsonLd data={reviewSchema(delegateTestimonials)} />
       <JsonLd data={gallerySchema("Access Vietnam 2026", tripPhotos)} />
 
       {/* 3.1 HERO */}
