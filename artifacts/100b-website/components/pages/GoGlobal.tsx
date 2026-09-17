@@ -1,0 +1,232 @@
+import { Building2, DoorOpen, Handshake, X } from "lucide-react";
+import {
+  Accent,
+  ArrowLink,
+  Lead,
+  PrimaryButton,
+  SectionTitle,
+} from "@/components/Section";
+import { IconCard } from "@/components/IconCard";
+import { PageHero } from "@/components/PageHero";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { ContactCTA } from "@/components/ContactCTA";
+import { getSite } from "@/content/get-site";
+import { goGlobalCopy as g } from "@/content/copy/go-global";
+import { ui } from "@/content/copy/ui";
+import { localePath, type Locale } from "@/content/locale";
+import heroImage from "@assets/go-global-banner-clean.png";
+import logoZad from "@assets/logo-zad-mono.png";
+import logoBond from "@assets/logo-bond-mono.png";
+import logo100bold from "@assets/logo-100bold-mono.png";
+import logoContainerClub from "@assets/logo-container-club-mono.png";
+import logo100bDark from "@assets/logo-100b-dark.png";
+
+const pathLogos = [
+  { name: "ZAD", logo: logoZad.src },
+  { name: "BOND", logo: logoBond.src },
+  { name: "100Bold", logo: logo100bold.src },
+  { name: "Container Club", logo: logoContainerClub.src },
+  { name: "100B", logo: logo100bDark.src },
+];
+
+const whatWeDoIcons = [Building2, DoorOpen, Handshake];
+
+export function GoGlobalPage({ locale }: { locale: Locale }) {
+  const { founderTestimonials } = getSite(locale);
+  const problems = g.problems.items.map((i) => i[locale]);
+  const whatWeDo = g.whatWeDo.map((w, i) => ({
+    icon: whatWeDoIcons[i],
+    title: w.title[locale],
+    line: w.line[locale],
+  }));
+  const path = pathLogos.map((n, i) => ({ ...n, step: g.path.steps[i][locale] }));
+  return (
+    <div className="flex flex-col">
+      {/* 2.1 HERO */}
+      <PageHero
+        image={heroImage.src}
+        imagePosition="center 58%"
+        title={
+          <>
+            <span className="block">{g.hero.line1[locale]}</span>
+            <span className="block">
+              <Accent>{g.hero.line2[locale]}</Accent>
+            </span>
+          </>
+        }
+        lead={g.hero.lead[locale]}
+        actions={<PrimaryButton>{ui.nav.cta[locale]}</PrimaryButton>}
+        meta={<span>{g.hero.meta[locale]}</span>}
+      />
+
+      {/* 2.2 THE PROBLEM */}
+      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
+          <SectionTitle className="mb-12">
+            <span className="block">{g.problems.headingLead[locale]}</span>
+            <span className="block">
+              <Accent>{g.problems.headingAccent[locale]}</Accent>
+            </span>
+          </SectionTitle>
+          <ul className="w-full max-w-3xl flex flex-col border-t border-border-subtle">
+            {problems.map((p) => (
+              <li
+                key={p}
+                className="flex items-center gap-5 py-6 border-b border-border-subtle"
+              >
+                <span className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center shrink-0 text-text-muted">
+                  <X size={14} strokeWidth={2.5} />
+                </span>
+                <span className="font-sans text-base lg:text-lg font-light text-text-muted line-through decoration-brand-gold/60 decoration-1">
+                  {p}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 2.3 WHAT WE DO */}
+      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Three of these abreast on a 390px phone leaves 75px of text column,
+              one or two words a line, so they hold a row only from sm up. */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+            {whatWeDo.map((item) => (
+              <IconCard
+                key={item.title}
+                icon={item.icon}
+                title={item.title}
+                className="min-h-[300px]"
+              >
+                {item.line}
+              </IconCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 2.4 THE MODEL */}
+      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionTitle className="mb-12 lg:mb-16">
+            {g.money.headingLead[locale]} <Accent>{g.money.headingAccent[locale]}</Accent>
+          </SectionTitle>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+            <div className="bg-bg-card rounded-3xl p-8 lg:p-12 border border-brand-gold/30 flex flex-col items-center text-center gap-6">
+              <span className="font-display text-[88px] md:text-[120px] lg:text-[140px] leading-none text-gradient-gold">
+                3-20%
+              </span>
+              <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">
+                <strong className="font-semibold text-text-heading">
+                  {g.money.equityStrong[locale]}
+                </strong>
+                {g.money.equityRest[locale]}
+              </p>
+            </div>
+            <div className="bg-bg-card rounded-3xl p-8 lg:p-12 border border-border-subtle flex flex-col items-center text-center gap-6">
+              <span className="font-display text-[88px] md:text-[120px] lg:text-[140px] leading-none text-text-heading">
+                5
+              </span>
+              <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">
+                <strong className="font-semibold text-text-heading">
+                  {g.money.fiveStrong[locale]}
+                </strong>{" "}
+                {g.money.fiveRest[locale]}
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-12 font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-3xl mx-auto text-center">
+            {g.money.closingLead[locale]}{" "}
+            <em className="italic text-gradient-gold">{g.money.closingAccent[locale]}</em>
+          </p>
+        </div>
+      </section>
+
+      {/* 2.5 WHO WE WORK WITH */}
+      <section className="py-20 lg:py-28 bg-bg-dark border-b border-border-subtle">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
+          <p className="font-display text-5xl md:text-6xl lg:text-7xl text-gradient-gold leading-none mb-6">
+            {g.fit.figure[locale]}
+          </p>
+          <Lead className="mb-14">
+            {g.fit.lead[locale]}
+          </Lead>
+
+          <div className="w-full max-w-3xl pt-10 border-t border-border-subtle flex flex-col items-center gap-5">
+            <h3 className="font-sans font-bold text-lg lg:text-xl text-text-heading">{g.fit.underTitle[locale]}</h3>
+            <p className="text-base lg:text-lg font-light leading-relaxed text-text-body">
+              {g.fit.underLine[locale]}
+            </p>
+            <ArrowLink href={localePath(locale, "/ecosystem")}>{g.fit.underLink[locale]}</ArrowLink>
+          </div>
+        </div>
+      </section>
+
+      {/* 2.6 THE PATH */}
+      <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="relative mt-10 mb-12">
+            <div className="absolute top-[34px] sm:top-[40px] lg:top-[48px] left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent" />
+            <ol className="grid grid-cols-5 gap-1.5 sm:gap-3 lg:gap-4 relative">
+              {path.map((node, i) => (
+                <li key={node.name} className="flex flex-col items-center text-center gap-2.5 sm:gap-3 lg:gap-4">
+                  <div
+                    className={`w-[60px] h-[60px] sm:w-[72px] sm:h-[72px] lg:w-24 lg:h-24 rounded-full flex items-center justify-center shrink-0 px-2 lg:px-4 ${
+                      i === path.length - 1
+                        ? "bg-brand-gold shadow-[0_0_30px_rgba(195,163,116,0.35)]"
+                        : "bg-bg-dark border border-brand-gold/40"
+                    }`}
+                  >
+                    <img
+                      src={node.logo}
+                      alt={node.name}
+                      className="max-w-[74%] max-h-[38%] w-auto h-auto object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[8px] sm:text-[9px] lg:text-[10px] uppercase tracking-[0.18em] lg:tracking-[0.25em] font-semibold text-text-muted">
+                      Step {i + 1}
+                    </span>
+                    <span className="font-sans font-bold text-[11px] sm:text-sm lg:text-xl text-text-heading leading-snug">
+                      {node.step}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <p className="text-[11px] uppercase tracking-[0.25em] font-semibold text-text-muted text-center">
+            {g.path.note[locale]}
+          </p>
+        </div>
+      </section>
+
+      {/* 2.7 PROOF — one voice at a time, as on the homepage */}
+      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-dark overflow-hidden py-28 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
+          <div className="shrink-0">
+            <SectionTitle className="mb-8 lg:mb-10">
+              {g.proof.headingLead[locale]} <Accent>{g.proof.headingAccent[locale]}</Accent>
+            </SectionTitle>
+          </div>
+          <TestimonialCarousel
+            groups={[{ label: g.proof.groupLabel[locale], items: founderTestimonials }]}
+          />
+        </div>
+      </section>
+
+      {/* 2.8 CTA */}
+      <ContactCTA
+        locale={locale}
+        title={
+          <>
+            {g.contact.titleLead[locale]} <Accent>{g.contact.titleAccent[locale]}</Accent>
+          </>
+        }
+      />
+    </div>
+  );
+}

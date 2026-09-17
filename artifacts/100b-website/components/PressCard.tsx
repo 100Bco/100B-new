@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import type { PressItem } from "@/content/site";
 import Image from "next/image";
+import { ui } from "@/content/copy/ui";
+import { useLocale } from "@/components/useLocale";
 
 /** Matches the row's scroll-pl-6, in pixels. */
 const SCROLL_PADDING = 24;
@@ -28,6 +30,7 @@ const TIGHTEN_ABOVE = 10;
  * and the desktop grid cannot drift apart.
  */
 export function PressCard({ item }: { item: PressItem }) {
+  const locale = useLocale();
   return (
     <article className="h-full bg-bg-card rounded-2xl overflow-hidden border border-white/5 flex flex-col">
       <div className="relative aspect-[16/10] overflow-hidden shrink-0">
@@ -66,7 +69,7 @@ export function PressCard({ item }: { item: PressItem }) {
           rel="noopener noreferrer"
           className="mt-auto self-start text-sm text-text-heading underline underline-offset-4 decoration-white/30 hover:decoration-brand-gold hover:text-brand-gold transition-colors"
         >
-          Read more
+          {ui.press.readMore[locale]}
         </a>
       </div>
     </article>

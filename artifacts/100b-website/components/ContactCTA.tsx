@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 import { CONTACT_EMAIL } from "@/content/site";
+import { ui } from "@/content/copy/ui";
+import type { Locale } from "@/content/locale";
 import pattern from "@assets/100B Pattern (1).png";
 import Image from "next/image";
 
@@ -10,13 +12,16 @@ import Image from "next/image";
  */
 export function ContactCTA({
   title,
-  note = "Read by one of us. We reply within 48 hours.",
+  note,
   meta,
+  locale = "en",
 }: {
   title: ReactNode;
   note?: string;
   meta?: string;
+  locale?: Locale;
 }) {
+  const noteText = note ?? ui.contact.note[locale];
   return (
     <section
       id="contact-footer"
@@ -55,7 +60,7 @@ export function ContactCTA({
             {meta}
           </p>
         )}
-        <p className="text-sm text-text-body font-light leading-relaxed">{note}</p>
+        <p className="text-sm text-text-body font-light leading-relaxed">{noteText}</p>
         <a
           href={`mailto:${CONTACT_EMAIL}`}
           className="btn-silver-gradient rounded-full px-10 py-4 text-sm uppercase tracking-widest font-semibold inline-block"

@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { pressItems, type PressItem } from "@/content/site";
+import { type PressItem } from "@/content/site";
 import { PressCard, PressSwipeRow } from "@/components/PressCard";
 import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
+import { getSite } from "@/content/get-site";
+import { ui } from "@/content/copy/ui";
+import { useLocale } from "@/components/useLocale";
 
 const VISIBLE = 3;
 
@@ -15,6 +18,8 @@ const VISIBLE = 3;
  * horizontal row you swipe rather than a column you scroll past.
  */
 export function PressCarousel() {
+  const locale = useLocale();
+  const { pressItems } = getSite(locale);
   const [page, setPage] = useState(0);
   const pageCount = Math.max(1, Math.ceil(pressItems.length / VISIBLE));
   const showNav = pageCount > 1;
@@ -37,7 +42,7 @@ export function PressCarousel() {
         {showNav && (
           <button
             onClick={prev}
-            aria-label="Previous press article"
+            aria-label={ui.carousel.prevPress[locale]}
             className="absolute left-0 lg:left-1 top-1/2 -translate-y-1/2 z-10 w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center transition-all hover:scale-110"
           >
             <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
@@ -62,7 +67,7 @@ export function PressCarousel() {
         {showNav && (
           <button
             onClick={next}
-            aria-label="Next press article"
+            aria-label={ui.carousel.nextPress[locale]}
             className="absolute right-0 lg:right-1 top-1/2 -translate-y-1/2 z-10 w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center transition-all hover:scale-110"
           >
             <img src={nextButtonIcon.src} alt="" className="w-full h-full" />

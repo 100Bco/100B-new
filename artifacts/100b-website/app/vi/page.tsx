@@ -4,11 +4,11 @@ import { home } from "@/content/copy/home";
 import { languageAlternates } from "@/content/locale";
 
 export const metadata: Metadata = {
-  title: home.meta.title.en,
-  description: home.meta.description.en,
-  alternates: { canonical: "/", languages: languageAlternates("/") },
+  title: home.meta.title.vi,
+  description: home.meta.description.vi,
+  alternates: { canonical: "/vi", languages: languageAlternates("/") },
 };
 
 export default function Page() {
-  return <HomePage locale="en" />;
+  return <HomePage locale="vi" />;
 }

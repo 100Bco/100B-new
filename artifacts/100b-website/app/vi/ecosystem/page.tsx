@@ -4,11 +4,11 @@ import { ecosystemCopy } from "@/content/copy/ecosystem";
 import { languageAlternates } from "@/content/locale";
 
 export const metadata: Metadata = {
-  title: ecosystemCopy.meta.title.en,
-  description: ecosystemCopy.meta.description.en,
-  alternates: { canonical: "/ecosystem", languages: languageAlternates("/ecosystem") },
+  title: ecosystemCopy.meta.title.vi,
+  description: ecosystemCopy.meta.description.vi,
+  alternates: { canonical: "/vi/ecosystem", languages: languageAlternates("/ecosystem") },
 };
 
 export default function Page() {
-  return <EcosystemPage locale="en" />;
+  return <EcosystemPage locale="vi" />;
 }

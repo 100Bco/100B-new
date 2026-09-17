@@ -1,4 +1,6 @@
 import emblem from "@assets/100b-emblem-trimmed.png";
+import { ui } from "@/content/copy/ui";
+import type { Locale } from "@/content/locale";
 
 /**
  * The distribution chain, and what happens to it.
@@ -13,9 +15,13 @@ import emblem from "@assets/100b-emblem-trimmed.png";
  * tighter 480px board with shorter labels.
  */
 
+/** The middle stops of the chain, named by a key into the copy sheet so the
+ *  board reads in whichever language the page is in. */
+type StopKey = "distributor" | "wholesaler" | "retailer";
+
 type Stop = {
   x: number;
-  label: string;
+  key: StopKey;
   /** A second label line, for the names that will not fit on one. */
   sub?: string;
 };
@@ -192,19 +198,19 @@ function Endpoint({
 }
 
 const DESKTOP_MIDDLE: Stop[] = [
-  { x: 270, label: "Distributor" },
-  { x: 450, label: "Wholesaler" },
-  { x: 630, label: "Retailer" },
+  { x: 270, key: "distributor" },
+  { x: 450, key: "wholesaler" },
+  { x: 630, key: "retailer" },
 ];
 const DESKTOP_ICONS = ["shiftBox", "shiftTruck", "shiftShop"];
 
 const MOBILE_MIDDLE: Stop[] = [
-  { x: 144, label: "Distributor" },
-  { x: 240, label: "Wholesaler" },
-  { x: 336, label: "Retailer" },
+  { x: 144, key: "distributor" },
+  { x: 240, key: "wholesaler" },
+  { x: 336, key: "retailer" },
 ];
 
-export function DistributionShift() {
+export function DistributionShift({ locale = "en" }: { locale?: Locale }) {
   return (
     /* The whole diagram sits in a card rather than running the width of the
        section: bordered, held short of the edges, with the drawing itself
@@ -212,7 +218,7 @@ export function DistributionShift() {
        illustration. */
     <div className="max-w-5xl mx-auto bg-bg-card rounded-3xl border border-border-subtle px-6 py-8 sm:px-10 sm:py-9 lg:px-14 lg:py-10">
       <p className="text-center text-[11px] uppercase tracking-[0.22em] font-semibold text-text-body mb-6 lg:mb-8">
-        How the chain changes
+        {ui.distribution.heading[locale]}
       </p>
 
       {/* Desktop board: five stops across 900 units */}
@@ -224,7 +230,7 @@ export function DistributionShift() {
         viewBox="0 30 900 158"
         className="hidden md:block w-full max-w-3xl mx-auto h-auto"
         role="img"
-        aria-label="The distribution chain runs factory, distributor, wholesaler, retailer, buyer. The three in the middle drop out and 100B stands in their place, leaving factory, 100B, buyer."
+        aria-label={ui.distribution.chainAlt[locale]}
       >
         <Defs />
 
@@ -261,7 +267,7 @@ export function DistributionShift() {
           r={32}
           icon="shiftFactory"
           iconSize={40}
-          lines={["Factory"]}
+          lines={[ui.distribution.factory[locale]]}
           labelY={148}
           lineHeight={18}
           fontSize={13}
@@ -269,13 +275,13 @@ export function DistributionShift() {
 
         {DESKTOP_MIDDLE.map((stop, i) => (
           <Middleman
-            key={stop.label}
+            key={stop.key}
             x={stop.x}
             y={90}
             r={28}
             icon={DESKTOP_ICONS[i]}
             iconSize={40}
-            label={stop.label}
+            label={ui.distribution[stop.key][locale]}
             labelY={146}
             fontSize={12}
           />
@@ -283,7 +289,7 @@ export function DistributionShift() {
 
         {DESKTOP_MIDDLE.map((stop) => (
           <line
-            key={`strike-${stop.label}`}
+            key={`strike-${stop.key}`}
             className="shift-strike"
             x1={stop.x - 22}
             y1="68"
@@ -333,7 +339,7 @@ export function DistributionShift() {
             fontSize="13"
             fontWeight="500"
           >
-            Strategic partner
+            {ui.distribution.strategicPartner[locale]}
           </text>
         </g>
 
@@ -343,7 +349,7 @@ export function DistributionShift() {
           r={32}
           icon="shiftPerson"
           iconSize={40}
-          lines={["Developers", "and contractors"]}
+          lines={[ui.distribution.developers[locale], ui.distribution.andContractors[locale]]}
           labelY={148}
           lineHeight={18}
           fontSize={13}
@@ -355,7 +361,7 @@ export function DistributionShift() {
         viewBox="0 0 480 140"
         className="md:hidden w-full h-auto"
         role="img"
-        aria-label="The distribution chain runs factory, distributor, wholesaler, retailer, buyer. The three in the middle drop out and 100B stands in their place, leaving factory, 100B, buyer."
+        aria-label={ui.distribution.chainAlt[locale]}
       >
         <Defs />
 
@@ -397,7 +403,7 @@ export function DistributionShift() {
           r={24}
           icon="shiftFactory"
           iconSize={32}
-          lines={["Factory"]}
+          lines={[ui.distribution.factory[locale]]}
           labelY={106}
           lineHeight={14}
           fontSize={11}
@@ -405,13 +411,13 @@ export function DistributionShift() {
 
         {MOBILE_MIDDLE.map((stop, i) => (
           <Middleman
-            key={stop.label}
+            key={stop.key}
             x={stop.x}
             y={60}
             r={20}
             icon={DESKTOP_ICONS[i]}
             iconSize={32}
-            label={stop.label}
+            label={ui.distribution[stop.key][locale]}
             labelY={106}
             fontSize={10}
           />
@@ -419,7 +425,7 @@ export function DistributionShift() {
 
         {MOBILE_MIDDLE.map((stop) => (
           <line
-            key={`strike-${stop.label}`}
+            key={`strike-${stop.key}`}
             className="shift-strike"
             x1={stop.x - 22}
             y1="38"
@@ -468,7 +474,7 @@ export function DistributionShift() {
           r={24}
           icon="shiftPerson"
           iconSize={32}
-          lines={["Developers", "and contractors"]}
+          lines={[ui.distribution.developers[locale], ui.distribution.andContractors[locale]]}
           labelY={104}
           lineHeight={14}
           fontSize={10}
@@ -477,8 +483,8 @@ export function DistributionShift() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 lg:mt-10 pt-8 border-t border-border-subtle">
         {[
-          { figure: "1", line: "One strategic partner, not a chain of middlemen" },
-          { figure: "3-5%", line: "Visible commission. You pay the factory direct" },
+          { figure: "1", line: ui.distribution.onePartner[locale] },
+          { figure: "3-5%", line: ui.distribution.visibleCommission[locale] },
         ].map((stat) => (
           <div key={stat.figure} className="flex flex-col items-center text-center gap-3">
             <span className="font-display text-4xl lg:text-5xl text-gradient-gold leading-none">

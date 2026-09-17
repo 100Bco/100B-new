@@ -5,7 +5,66 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { navLinks } from "@/content/site";
+import { getSite } from "@/content/get-site";
+import { ui } from "@/content/copy/ui";
+import {
+  localeFromPath,
+  localePath,
+  localeNames,
+  localeTags,
+  locales,
+  swapLocale,
+  type Locale,
+} from "@/content/locale";
+
+/**
+ * EN / VI, in the same 11px uppercase the nav links use, so it reads as part
+ * of the bar rather than a control bolted onto it. The language you are in is
+ * gold, the other is the muted grey every inactive link takes. Both are real
+ * links to the same page in the other language, so a reader who lands on the
+ * Vietnamese Container Club page and switches gets the English one, not the
+ * home page, and so a crawler can follow them.
+ */
+function LocaleSwitcher({
+  locale,
+  otherPath,
+  size = "desktop",
+}: {
+  locale: Locale;
+  otherPath: string;
+  size?: "desktop" | "mobile";
+}) {
+  const base =
+    size === "desktop"
+      ? "font-sans text-[11px] uppercase tracking-[0.15em] xl:tracking-[0.2em] font-semibold transition-colors"
+      : "font-sans text-sm uppercase tracking-[0.2em] font-semibold transition-colors";
+  return (
+    <div className="flex items-center gap-1.5 shrink-0" aria-label="Language">
+      {locales.map((l, i) => (
+        <span key={l} className="flex items-center gap-1.5">
+          {i > 0 && (
+            <span className="text-border-subtle text-[11px] select-none" aria-hidden>
+              /
+            </span>
+          )}
+          {l === locale ? (
+            <span className={`${base} text-brand-gold`} aria-current="true">
+              {localeNames[l]}
+            </span>
+          ) : (
+            <Link
+              href={otherPath}
+              hrefLang={localeTags[l]}
+              className={`${base} text-text-muted hover:text-white`}
+            >
+              {localeNames[l]}
+            </Link>
+          )}
+        </span>
+      ))}
+    </div>
+  );
+}
 
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,6 +73,10 @@ export default function Nav() {
    *  in CSS; this is what a touch screen has instead of hover. */
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const pathname = usePathname();
+  const locale = localeFromPath(pathname);
+  const { navLinks } = getSite(locale);
+  /** The same page in the other language, so switching keeps your place. */
+  const otherPath = swapLocale(pathname);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -70,7 +133,7 @@ export default function Nav() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between gap-6">
-          <Link href="/" className="flex items-center group relative z-50 shrink-0">
+          <Link href={localePath(locale, "/")} className="flex items-center group relative z-50 shrink-0">
             <Image
               src="/logo-100b.png"
               alt="100B Beyond Borders"
@@ -84,16 +147,18 @@ export default function Nav() {
           <div className="hidden lg:flex items-center gap-6 xl:gap-10">
             <div className="flex items-center gap-5 xl:gap-7">
               {navLinks.map((link) => {
-                const own = pathname === link.path || pathname.startsWith(link.path + "/");
-                const childActive = (link.children ?? []).some(
-                  (c) => pathname === c.path || pathname.startsWith(c.path + "/"),
-                );
+                const href = localePath(locale, link.path);
+                const own = pathname === href || pathname.startsWith(href + "/");
+                const childActive = (link.children ?? []).some((c) => {
+                  const ch = localePath(locale, c.path);
+                  return pathname === ch || pathname.startsWith(ch + "/");
+                });
                 const isActive = own || childActive;
                 const isOpen = openMenu === link.path;
                 return (
                   <div key={link.path} data-nav-item className="group relative flex items-center">
                     <Link
-                      href={link.path}
+                      href={href}
                       aria-expanded={link.children ? isOpen : undefined}
                       onClick={(e) => {
                         /* A tablet gets no hover, so the panel had no way to
@@ -139,12 +204,13 @@ export default function Nav() {
                       >
                         <div className="min-w-[200px] rounded-2xl border border-white/10 bg-bg-card/95 backdrop-blur-md p-2 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.9)]">
                           {link.children.map((child) => {
+                            const childHref = localePath(locale, child.path);
                             const active =
-                              pathname === child.path || pathname.startsWith(child.path + "/");
+                              pathname === childHref || pathname.startsWith(childHref + "/");
                             return (
                               <Link
                                 key={child.path}
-                                href={child.path}
+                                href={childHref}
                                 className={`flex flex-col gap-0.5 rounded-xl px-3 py-2.5 transition-colors hover:bg-white/5 hover:text-brand-gold ${
                                   active ? "text-brand-gold" : "text-text-heading"
                                 }`}
@@ -181,14 +247,15 @@ export default function Nav() {
               onClick={scrollToContact}
               className="btn-silver-gradient rounded-full px-4 xl:px-6 py-3 text-[11px] uppercase tracking-widest font-semibold flex items-center justify-center whitespace-nowrap"
             >
-              Start a Conversation
+              {ui.nav.cta[locale]}
             </a>
+            <LocaleSwitcher locale={locale} otherPath={otherPath} />
           </div>
 
           <button
             className="lg:hidden relative z-50 p-2 text-text-heading"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={ui.nav.toggleMenu[locale]}
             aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -203,12 +270,14 @@ export default function Nav() {
               {navLinks.map((link) => (
                 <div key={link.path} className="flex flex-col">
                   <Link
-                    href={link.path}
+                    href={localePath(locale, link.path)}
                     className="flex flex-col gap-1 py-5 border-b border-border-subtle"
                   >
                     <span
                       className={`text-xl font-sans uppercase tracking-[0.2em] font-semibold ${
-                        pathname === link.path ? "text-brand-gold" : "text-text-heading"
+                        pathname === localePath(locale, link.path)
+                          ? "text-brand-gold"
+                          : "text-text-heading"
                       }`}
                     >
                       {link.name}
@@ -218,12 +287,14 @@ export default function Nav() {
                   {(link.children ?? []).map((child) => (
                     <Link
                       key={child.path}
-                      href={child.path}
+                      href={localePath(locale, child.path)}
                       className="flex flex-col gap-1 py-5 pl-5 border-b border-border-subtle border-l border-l-white/10"
                     >
                       <span
                         className={`text-base font-sans uppercase tracking-[0.2em] font-semibold ${
-                          pathname === child.path ? "text-brand-gold" : "text-text-heading"
+                          pathname === localePath(locale, child.path)
+                            ? "text-brand-gold"
+                            : "text-text-heading"
                         }`}
                       >
                         {child.name}
@@ -239,8 +310,11 @@ export default function Nav() {
               onClick={scrollToContact}
               className="btn-silver-gradient rounded-full px-8 py-4 text-sm uppercase tracking-widest font-semibold w-full text-center"
             >
-              Start a Conversation
+              {ui.nav.cta[locale]}
             </a>
+            <div className="flex justify-center">
+              <LocaleSwitcher locale={locale} otherPath={otherPath} size="mobile" />
+            </div>
           </div>
         </div>
       )}

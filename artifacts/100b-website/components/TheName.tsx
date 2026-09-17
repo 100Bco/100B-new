@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import backdrop from "@assets/100b-name-background.jpg";
 import Image from "next/image";
+import { ui } from "@/content/copy/ui";
+import { useLocale } from "@/components/useLocale";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 /** One full cycle: the 100 shows, splits, holds apart, then reforms. */
@@ -16,6 +18,7 @@ const MERGE_HOLD_MS = 800;
  * The 100 splits into 50 and 50, holds apart, then reforms, on a 5s loop.
  */
 export function TheName() {
+  const locale = useLocale();
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { amount: 0.5 });
   const [split, setSplit] = useState(false);
@@ -113,22 +116,21 @@ export function TheName() {
                 50
               </span>
               <span className="text-[10px] uppercase tracking-[0.25em] text-brand-gold whitespace-nowrap">
-                {side === "left" ? "to the mountains" : "to the sea"}
+                {side === "left" ? ui.theName.mountains[locale] : ui.theName.sea[locale]}
               </span>
             </motion.div>
           ))}
         </motion.div>
 
         <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-brand-gold mb-6">
-          Where the name comes from.
+          {ui.theName.heading[locale]}
         </h2>
 
         <p className="font-sans text-base md:text-lg lg:text-xl font-light leading-relaxed text-text-body max-w-3xl mb-4">
-          Âu Cơ bore one hundred children. Fifty went to the mountains with their mother.
-          Fifty went to the sea with their father.
+          {ui.theName.legend[locale]}
         </p>
         <p className="font-sans text-base md:text-lg lg:text-xl font-light leading-relaxed text-text-body max-w-3xl">
-          Vietnam&apos;s oldest story is about going out into the world.
+          {ui.theName.oldestStory[locale]}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-12 pt-8 mt-8 border-t border-border-subtle w-full max-w-3xl">
@@ -137,7 +139,7 @@ export function TheName() {
               100
             </span>
             <span className="font-sans font-light text-sm lg:text-base text-text-body">
-              is also a perfect score.
+              {ui.theName.perfectScore[locale]}
             </span>
           </p>
           <p className="flex items-baseline gap-3">
@@ -145,7 +147,7 @@ export function TheName() {
               B
             </span>
             <span className="font-sans font-light text-sm lg:text-base text-text-body">
-              is for Brands. Borders. Billions.
+              {ui.theName.isFor[locale]}
             </span>
           </p>
         </div>

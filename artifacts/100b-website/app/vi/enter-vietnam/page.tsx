@@ -4,11 +4,11 @@ import { enterVietnamCopy } from "@/content/copy/enter-vietnam";
 import { languageAlternates } from "@/content/locale";
 
 export const metadata: Metadata = {
-  title: enterVietnamCopy.meta.title.en,
-  description: enterVietnamCopy.meta.description.en,
-  alternates: { canonical: "/enter-vietnam", languages: languageAlternates("/enter-vietnam") },
+  title: enterVietnamCopy.meta.title.vi,
+  description: enterVietnamCopy.meta.description.vi,
+  alternates: { canonical: "/vi/enter-vietnam", languages: languageAlternates("/enter-vietnam") },
 };
 
 export default function Page() {
-  return <EnterVietnamPage locale="en" />;
+  return <EnterVietnamPage locale="vi" />;
 }
