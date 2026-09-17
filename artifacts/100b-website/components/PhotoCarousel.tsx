@@ -4,6 +4,8 @@ import { motion } from "motion/react";
 import { useAutoAdvance } from "@/components/useAutoAdvance";
 import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
 import Image from "next/image";
+import { ui } from "@/content/copy/ui";
+import { useLocale } from "@/components/useLocale";
 
 export type TripPhoto = { src: string; label: string; caption: string };
 
@@ -23,6 +25,7 @@ export function PhotoCarousel({
   /** Overrides the caption's face, e.g. a UTM programme line. */
   captionClassName?: string;
 }) {
+  const locale = useLocale();
   const { current, goTo, goNext, goPrev } = useAutoAdvance(photos.length, interval);
 
   if (!photos.length) return null;
@@ -76,14 +79,14 @@ export function PhotoCarousel({
 
         <button
           onClick={goPrev}
-          aria-label="Previous photo"
+          aria-label={ui.carousel.prevPhoto[locale]}
           className="hidden lg:flex absolute -left-6 top-1/2 -translate-y-1/2 z-10 w-9 h-9 items-center justify-center transition-transform hover:scale-110"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
         </button>
         <button
           onClick={goNext}
-          aria-label="Next photo"
+          aria-label={ui.carousel.nextPhoto[locale]}
           className="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10 w-9 h-9 items-center justify-center transition-transform hover:scale-110"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
@@ -93,7 +96,7 @@ export function PhotoCarousel({
       <div className="flex items-center justify-center gap-5">
         <button
           onClick={goPrev}
-          aria-label="Previous photo"
+          aria-label={ui.carousel.prevPhoto[locale]}
           className="lg:hidden w-8 h-8 flex items-center justify-center"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
@@ -112,7 +115,7 @@ export function PhotoCarousel({
         </div>
         <button
           onClick={goNext}
-          aria-label="Next photo"
+          aria-label={ui.carousel.nextPhoto[locale]}
           className="lg:hidden w-8 h-8 flex items-center justify-center"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full" />

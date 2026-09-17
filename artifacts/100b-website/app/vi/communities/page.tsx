@@ -4,11 +4,11 @@ import { communitiesCopy } from "@/content/copy/communities";
 import { languageAlternates } from "@/content/locale";
 
 export const metadata: Metadata = {
-  title: communitiesCopy.meta.title.en,
-  description: communitiesCopy.meta.description.en,
-  alternates: { canonical: "/communities", languages: languageAlternates("/communities") },
+  title: communitiesCopy.meta.title.vi,
+  description: communitiesCopy.meta.description.vi,
+  alternates: { canonical: "/vi/communities", languages: languageAlternates("/communities") },
 };
 
 export default function Page() {
-  return <CommunitiesPage locale="en" />;
+  return <CommunitiesPage locale="vi" />;
 }

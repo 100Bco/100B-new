@@ -1,13 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { CONTACT_EMAIL, footerLinks } from "@/content/site";
+import { CONTACT_EMAIL } from "@/content/site";
+import { getSite } from "@/content/get-site";
+import { ui } from "@/content/copy/ui";
+import { localePath } from "@/content/locale";
+import { useLocale } from "@/components/useLocale";
 
 export default function Footer() {
+  const locale = useLocale();
+  const { footerLinks } = getSite(locale);
   return (
     <footer className="bg-bg-dark border-t border-border-subtle">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-start">
         <div className="flex flex-col gap-4">
-          <Link href="/" className="inline-block w-fit">
+          <Link href={localePath(locale, "/")} className="inline-block w-fit">
             <Image
               src="/logo-100b.png"
               alt="100B Beyond Borders"
@@ -18,7 +26,7 @@ export default function Footer() {
           </Link>
           <div className="flex flex-col gap-1 font-serif leading-snug">
             <span className="text-base text-text-heading">100B Beyond Borders</span>
-            <em className="italic text-brand-gold/80 text-base">Giữa hai thế giới.</em>
+            <em className="italic text-brand-gold/80 text-base">{ui.footer.tagline[locale]}</em>
           </div>
         </div>
 
@@ -27,7 +35,7 @@ export default function Footer() {
             {footerLinks.map((l) => (
               <Link
                 key={l.path}
-                href={l.path}
+                href={localePath(locale, l.path)}
                 className="text-[11px] uppercase tracking-[0.2em] font-semibold text-text-muted hover:text-white transition-colors"
               >
                 {l.name}
@@ -37,7 +45,7 @@ export default function Footer() {
           <div className="flex flex-col gap-2 md:items-end">
             <p className="flex items-baseline gap-2">
               <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
-                Contact:
+                {ui.footer.contact[locale]}
               </span>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
@@ -47,16 +55,16 @@ export default function Footer() {
               </a>
             </p>
             <p className="text-[11px] uppercase tracking-[0.2em] text-text-muted">
-              Austin · Hanoi · Ho Chi Minh City
+              {ui.footer.cities[locale]}
             </p>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 border-t border-border-subtle flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[10px] uppercase tracking-[0.2em] text-text-muted/70">
-        <p>© 2026 100B Beyond Borders.</p>
+        <p>{ui.footer.rights[locale]}</p>
         <p>
-          Powered by{" "}
+          {ui.footer.poweredBy[locale]}{" "}
           <a
             href="https://100bold.co"
             target="_blank"

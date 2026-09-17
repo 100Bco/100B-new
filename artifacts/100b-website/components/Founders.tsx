@@ -1,5 +1,6 @@
 import { Linkedin } from "lucide-react";
-import { founders } from "@/content/site";
+import { getSite } from "@/content/get-site";
+import type { Locale } from "@/content/locale";
 import Image from "next/image";
 
 function initials(name: string) {
@@ -13,7 +14,14 @@ function initials(name: string) {
 /** Three founders on near-black. Portrait, name, title, one paragraph.
  *  They hold one row at every width, phones included: three stacked cards
  *  cost most of a screen of scrolling to say what a row says at a glance. */
-export function Founders({ variant = "short" }: { variant?: "short" | "long" }) {
+export function Founders({
+  variant = "short",
+  locale = "en",
+}: {
+  variant?: "short" | "long";
+  locale?: Locale;
+}) {
+  const { founders } = getSite(locale);
   return (
     <div className="grid grid-cols-3 gap-3 sm:gap-5 lg:gap-6">
       {founders.map((f) => (

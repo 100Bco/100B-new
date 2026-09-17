@@ -4,11 +4,11 @@ import { aboutCopy } from "@/content/copy/about";
 import { languageAlternates } from "@/content/locale";
 
 export const metadata: Metadata = {
-  title: aboutCopy.meta.title.en,
-  description: aboutCopy.meta.description.en,
-  alternates: { canonical: "/about", languages: languageAlternates("/about") },
+  title: aboutCopy.meta.title.vi,
+  description: aboutCopy.meta.description.vi,
+  alternates: { canonical: "/vi/about", languages: languageAlternates("/about") },
 };
 
 export default function Page() {
-  return <AboutPage locale="en" />;
+  return <AboutPage locale="vi" />;
 }

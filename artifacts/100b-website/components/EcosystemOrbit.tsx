@@ -3,8 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Accent, ArrowLink } from "@/components/Section";
-import { companies } from "@/content/site";
+
 import emblem from "@assets/100b-emblem-trimmed.png";
+import { ui } from "@/content/copy/ui";
+import { useLocale } from "@/components/useLocale";
+import { localePath } from "@/content/locale";
+import { getSite } from "@/content/get-site";
 
 /** On desktop the ring sits to the right of the list, so the nodes take the
  *  left arc, from top-left round to bottom-left. Standing alone under the list
@@ -33,6 +37,8 @@ function nodePosition(angle: number) {
  * draws its ray in from the hub and dims the other four.
  */
 export function EcosystemOrbit() {
+  const locale = useLocale();
+  const { companies } = getSite(locale);
   const [activeName, setActiveName] = useState<string | null>(null);
   const active = companies.find((c) => c.name === activeName) ?? null;
 
@@ -185,7 +191,7 @@ export function EcosystemOrbit() {
         <div className="relative z-10 lg:w-[48%]">
           <div className="mb-6 lg:mb-8">
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-text-heading text-balance">
-              Five companies. <Accent>One corridor.</Accent>
+              {ui.orbit.headingLead[locale]} <Accent>{ui.orbit.headingAccent[locale]}</Accent>
             </h2>
           </div>
 
@@ -264,12 +270,12 @@ export function EcosystemOrbit() {
               active ? "opacity-30" : "opacity-100"
             }`}
           >
-            A brand at $5M might use two. A brand at $50M often uses{" "}
-            <em className="italic text-text-heading">all five.</em>
+            {ui.orbit.scaleLead[locale]}{" "}
+            <em className="italic text-text-heading">{ui.orbit.scaleEmphasis[locale]}</em>
           </p>
 
           <div className="mt-6">
-            <ArrowLink href="/ecosystem">All five companies</ArrowLink>
+            <ArrowLink href={localePath(locale, "/ecosystem")}>{ui.orbit.link[locale]}</ArrowLink>
           </div>
         </div>
       </div>

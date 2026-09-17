@@ -5,6 +5,8 @@ import { useAutoAdvance } from "@/components/useAutoAdvance";
 import type { Testimonial } from "@/content/site";
 import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
 import Image from "next/image";
+import { ui } from "@/content/copy/ui";
+import { useLocale } from "@/components/useLocale";
 
 type Group = { label: string; items: Testimonial[] };
 type Slide = Testimonial & { group: string };
@@ -55,6 +57,7 @@ export function TestimonialCarousel({
   groups: Group[];
   interval?: number;
 }) {
+  const locale = useLocale();
   const slides: Slide[] = interleave(groups);
 
   const { current, goTo, goNext, goPrev } = useAutoAdvance(slides.length, interval);
@@ -67,7 +70,7 @@ export function TestimonialCarousel({
         {/* Silver arrows, in the gutter the slide leaves for them */}
         <button
           onClick={goPrev}
-          aria-label="Previous testimonial"
+          aria-label={ui.carousel.prevTestimonial[locale]}
           className="hidden md:flex absolute left-0 lg:left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 lg:w-9 lg:h-9 items-center justify-center transition-all hover:scale-110"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
@@ -175,7 +178,7 @@ export function TestimonialCarousel({
 
         <button
           onClick={goNext}
-          aria-label="Next testimonial"
+          aria-label={ui.carousel.nextTestimonial[locale]}
           className="hidden md:flex absolute right-0 lg:right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 lg:w-9 lg:h-9 items-center justify-center transition-all hover:scale-110"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
@@ -186,7 +189,7 @@ export function TestimonialCarousel({
       <div className="flex items-center justify-center gap-6 mt-8 shrink-0">
         <button
           onClick={goPrev}
-          aria-label="Previous testimonial"
+          aria-label={ui.carousel.prevTestimonial[locale]}
           className="md:hidden w-9 h-9 flex items-center justify-center transition-all hover:scale-105"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full -scale-x-100" />
@@ -200,14 +203,14 @@ export function TestimonialCarousel({
               className={`h-1.5 transition-all duration-300 rounded-full ${
                 idx === current ? "w-8 bg-brand-gold" : "w-2 bg-white/15 hover:bg-white/30"
               }`}
-              aria-label={`Go to slide ${idx + 1}`}
+              aria-label={`${ui.carousel.goToSlide[locale]} ${idx + 1}`}
             />
           ))}
         </div>
 
         <button
           onClick={goNext}
-          aria-label="Next testimonial"
+          aria-label={ui.carousel.nextTestimonial[locale]}
           className="md:hidden w-9 h-9 flex items-center justify-center transition-all hover:scale-105"
         >
           <img src={nextButtonIcon.src} alt="" className="w-full h-full" />
