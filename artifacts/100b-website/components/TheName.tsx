@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import backdrop from "@assets/100b-name-background.jpg";
+import Image from "next/image";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 /** One full cycle: the 100 shows, splits, holds apart, then reforms. */
@@ -41,16 +42,16 @@ export function TheName() {
       {/* The Dong Son drum, with the mountains at one corner and the sea at
           the other: the story the section tells, behind the words that tell
           it. */}
-      <img
-        src={backdrop.src}
+      <Image
+        src={backdrop}
         alt=""
-        loading="lazy"
-        decoding="async"
+        fill
+        sizes="100vw"
         /* Dimmed 40%, evenly. A gradient scrim swallowed the engraving in the
            middle, where the drum is; brightness holds the whole picture in
            proportion, so the pattern still reads across every ring. */
         style={{ filter: "brightness(0.6)" }}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="object-cover"
         aria-hidden
       />
       <div

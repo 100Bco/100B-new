@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { useAutoAdvance } from "@/components/useAutoAdvance";
 import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
+import Image from "next/image";
 
 export type TripPhoto = { src: string; label: string; caption: string };
 
@@ -40,19 +41,24 @@ export function PhotoCarousel({
               className="absolute inset-0"
               style={{ pointerEvents: index === current ? "auto" : "none" }}
             >
-              <motion.img
-                src={photo.src}
-                alt={`${photo.caption}, ${photo.label}`}
-                loading={index === 0 ? "eager" : "lazy"}
-                decoding="async"
+              <motion.div
                 initial={false}
                 animate={{
                   opacity: index === current ? 1 : 0,
                   scale: index === current ? 1 : 1.03,
                 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
+                className="absolute inset-0"
+              >
+                <Image
+                  src={photo.src}
+                  alt={`${photo.caption}, ${photo.label}`}
+                  fill
+                  priority={index === 0}
+                  sizes="(max-width: 1024px) 100vw, 900px"
+                  className="object-cover"
+                />
+              </motion.div>
               <motion.figcaption
                 initial={false}
                 animate={{ opacity: index === current ? 1 : 0 }}

@@ -1,4 +1,5 @@
 import type { Testimonial } from "@/content/site";
+import Image from "next/image";
 
 function initials(name: string) {
   return name
@@ -45,13 +46,15 @@ export function TestimonialWall({
                   “{t.quote}”
                 </blockquote>
                 <figcaption className="mt-auto flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full overflow-hidden shrink-0 ring-1 ring-white/15 bg-[#111111] flex items-center justify-center">
+                  <div className="relative w-14 h-14 rounded-full overflow-hidden shrink-0 ring-1 ring-white/15 bg-[#111111] flex items-center justify-center">
                     {t.photo ? (
-                      <img
+                      <Image
                         src={t.photo}
                         alt={t.name}
+                        fill
+                        sizes="56px"
                         style={{ objectPosition: t.photoPosition ?? "center" }}
-                        className="w-full h-full object-cover grayscale"
+                        className="object-cover grayscale"
                       />
                     ) : (
                       <span className="font-display text-gradient-gold text-base tracking-wide">

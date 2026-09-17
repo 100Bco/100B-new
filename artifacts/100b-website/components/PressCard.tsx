@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { PressItem } from "@/content/site";
+import Image from "next/image";
 
 /** Matches the row's scroll-pl-6, in pixels. */
 const SCROLL_PADDING = 24;
@@ -31,10 +32,12 @@ export function PressCard({ item }: { item: PressItem }) {
     <article className="h-full bg-bg-card rounded-2xl overflow-hidden border border-white/5 flex flex-col">
       <div className="relative aspect-[16/10] overflow-hidden shrink-0">
         {item.image ? (
-          <img
+          <Image
             src={item.image}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            sizes="(max-width: 768px) 80vw, 420px"
+            className="object-cover"
           />
         ) : (
           <div
