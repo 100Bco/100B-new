@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { useAutoAdvance } from "@/components/useAutoAdvance";
 import type { Testimonial } from "@/content/site";
 import nextButtonIcon from "@assets/carbon_next-filled_1777018054288.png";
+import Image from "next/image";
 
 type Group = { label: string; items: Testimonial[] };
 type Slide = Testimonial & { group: string };
@@ -147,13 +148,14 @@ export function TestimonialCarousel({
             >
               <div className="absolute inset-2 sm:inset-3 rounded-[18px] overflow-hidden ring-1 ring-black/20">
                 {slide.photo ? (
-                  <img
+                  <Image
                     src={slide.photo}
                     alt={`${slide.name}, ${slide.company}`}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    decoding="async"
+                    fill
+                    priority={index === 0}
+                    sizes="(max-width: 640px) 280px, (max-width: 1024px) 340px, 420px"
                     style={{ objectPosition: slide.photoPosition ?? "center" }}
-                    className="absolute inset-0 w-full h-full object-cover grayscale"
+                    className="object-cover grayscale"
                   />
                 ) : (
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-[#111111]">

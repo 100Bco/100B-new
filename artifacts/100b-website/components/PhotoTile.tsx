@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 /**
  * Photography slot. Renders the image when one is supplied; otherwise a
  * dark, intentional placeholder so the layout reads as finished until the
@@ -36,11 +38,13 @@ export function PhotoTile({
       className={`relative overflow-hidden rounded-3xl border border-white/10 bg-bg-card ${aspect} ${className}`}
     >
       {src ? (
-        <img
+        <Image
           src={src}
           alt={alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 640px"
           style={{ objectPosition: position }}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="object-cover"
         />
       ) : (
         <div

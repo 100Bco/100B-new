@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { CONTACT_EMAIL } from "@/content/site";
 import pattern from "@assets/100B Pattern (1).png";
+import Image from "next/image";
 
 /**
  * Closing contact block. Every page ends with one, and the nav's
@@ -34,10 +35,11 @@ export function ContactCTA({
 
       {/* The 100B pattern, bleeding off the right corner */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
-        <img
-          src={pattern.src}
+        <Image
+          src={pattern}
           alt=""
-          className="absolute right-0 bottom-0 w-[260px] md:w-[380px] lg:w-[480px] max-w-none opacity-[0.13] select-none"
+          sizes="(max-width: 768px) 260px, (max-width: 1024px) 380px, 480px"
+          className="absolute right-0 bottom-0 h-auto w-[260px] md:w-[380px] lg:w-[480px] max-w-none opacity-[0.13] select-none"
         />
       </div>
 

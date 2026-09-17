@@ -1,5 +1,6 @@
 import { Linkedin } from "lucide-react";
 import { founders } from "@/content/site";
+import Image from "next/image";
 
 function initials(name: string) {
   return name
@@ -20,10 +21,12 @@ export function Founders({ variant = "short" }: { variant?: "short" | "long" }) 
           <div className="relative w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-[#0A0A0A]">
             {f.photo ? (
               <>
-                <img
+                <Image
                   src={f.photo}
                   alt={f.name}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 640px) 33vw, (max-width: 1024px) 31vw, 400px"
+                  className="object-cover"
                 />
                 {/* Warm floor so the portraits sit in the same light as the page */}
                 <div

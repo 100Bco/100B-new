@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 
 /**
  * The hero every inner page uses. Same shape as the homepage hero: one full
@@ -64,11 +65,14 @@ export function PageHero({
       {(image || videoId) && (
         <>
           {image && (
-          <img
+          <Image
             src={image}
             alt=""
+            fill
+            priority
+            sizes="100vw"
             style={{ objectPosition: imagePosition }}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="object-cover"
             aria-hidden
           />
           )}

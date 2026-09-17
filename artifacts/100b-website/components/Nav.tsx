@@ -10,6 +10,9 @@ import { navLinks } from "@/content/site";
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  /** Which top-level link has its panel held open by a tap. Hover is handled
+   *  in CSS; this is what a touch screen has instead of hover. */
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -21,7 +24,26 @@ export default function Nav() {
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setOpenMenu(null);
   }, [pathname]);
+
+  /* A tap anywhere else, or Escape, puts the panel away again. Without this a
+     panel opened by touch would stay open until the next navigation. */
+  useEffect(() => {
+    if (!openMenu) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (!(e.target as HTMLElement).closest("[data-nav-item]")) setOpenMenu(null);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenMenu(null);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [openMenu]);
 
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
@@ -67,10 +89,24 @@ export default function Nav() {
                   (c) => pathname === c.path || pathname.startsWith(c.path + "/"),
                 );
                 const isActive = own || childActive;
+                const isOpen = openMenu === link.path;
                 return (
-                  <div key={link.path} className="group relative flex items-center">
+                  <div key={link.path} data-nav-item className="group relative flex items-center">
                     <Link
                       href={link.path}
+                      aria-expanded={link.children ? isOpen : undefined}
+                      onClick={(e) => {
+                        /* A tablet gets no hover, so the panel had no way to
+                           open: tapping About simply went to About and the page
+                           under it was unreachable from the bar. Where the
+                           pointer cannot hover, the first tap opens the panel
+                           and the second one follows the link. */
+                        if (!link.children || isOpen) return;
+                        if (window.matchMedia("(hover: none)").matches) {
+                          e.preventDefault();
+                          setOpenMenu(link.path);
+                        }
+                      }}
                       className={`font-sans text-[11px] uppercase whitespace-nowrap tracking-[0.15em] xl:tracking-[0.2em] font-semibold transition-colors py-2 flex items-center gap-1 ${
                         isActive ? "text-brand-gold" : "text-text-muted hover:text-white"
                       }`}
@@ -80,7 +116,9 @@ export default function Nav() {
                         <ChevronDown
                           size={12}
                           strokeWidth={2.5}
-                          className="transition-transform duration-200 group-hover:rotate-180"
+                          className={`transition-transform duration-200 group-hover:rotate-180 ${
+                            isOpen ? "rotate-180" : ""
+                          }`}
                           aria-hidden
                         />
                       )}
@@ -92,7 +130,13 @@ export default function Nav() {
                          by pointer. The gap between the link and the panel is
                          padded rather than empty, or the pointer crossing it
                          closes the panel. */
-                      <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3 opacity-0 translate-y-1 pointer-events-none transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
+                      <div
+                        className={`absolute left-1/2 top-full -translate-x-1/2 pt-3 transition-all duration-200 ${
+                          isOpen
+                            ? "opacity-100 translate-y-0 pointer-events-auto"
+                            : "opacity-0 translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto"
+                        }`}
+                      >
                         <div className="min-w-[200px] rounded-2xl border border-white/10 bg-bg-card/95 backdrop-blur-md p-2 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.9)]">
                           {link.children.map((child) => {
                             const active =

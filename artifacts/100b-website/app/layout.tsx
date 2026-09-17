@@ -1,8 +1,38 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Cormorant_Garamond, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import "./globals.css";
+
+/* The three faces, self-hosted. Loading them from fonts.googleapis.com with an
+   @import meant the browser had to fetch globals.css before it even learned a
+   font existed, two round trips in series before any text could paint. Next
+   inlines the @font-face rules and preloads the files from our own origin
+   instead. The vietnamese subset is not optional here: the founders' and the
+   testimonial names carry diacritics, and without it they fall back to a
+   system face mid-sentence. */
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin", "vietnamese"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin", "vietnamese"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const utm = localFont({
+  src: "../public/fonts/UTM-Classizism-Antiqua.ttf",
+  variable: "--font-utm",
+  display: "swap",
+});
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://100b.co";
@@ -76,7 +106,9 @@ export const viewport: Viewport = {
   themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  /* No maximumScale: pinning it to 1 stops a reader pinching to zoom, which
+     Lighthouse flags and which matters more than the stray iOS input zoom it
+     was presumably there to avoid. */
 };
 
 const organizationSchema = {
@@ -120,13 +152,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${cormorant.variable} ${inter.variable} ${utm.variable}`}>
       <body>
         <div className="flex flex-col min-h-screen">
           <Nav />
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+
+        {/* Ahrefs Web Analytics. afterInteractive so it is fetched once the page
+            is usable rather than competing with the hero for bandwidth. */}
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="Lmnnu9lq/mOdk3LPVASIbA"
+          strategy="afterInteractive"
+        />
 
         {/* Wistia player for the hero video background */}
         <Script
