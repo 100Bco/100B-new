@@ -49,7 +49,7 @@ export const ui = {
   theName: {
     mountains: { en: "to the mountains", vi: "lên núi" },
     sea: { en: "to the sea", vi: "xuống biển" },
-    heading: { en: "Where the name comes from.", vi: "Câu chuyện phía sau cái tên 100B" },
+    heading: { en: "Where the name comes from.", vi: "Câu chuyện phía sau" },
     legend: {
       en: "Âu Cơ bore one hundred children. Fifty went to the mountains with their mother. Fifty went to the sea with their father.",
       vi: "Theo truyền thuyết, Âu Cơ sinh ra một trăm người con. Năm mươi người theo mẹ lên núi. Năm mươi người theo cha xuống biển.",

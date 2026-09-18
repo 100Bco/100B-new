@@ -20,6 +20,7 @@ export function CommunitiesPage({ locale }: { locale: Locale }) {
     <div className="flex flex-col">
       {/* 7.1 HERO */}
       <PageHero
+        locale={locale}
         title={
           <>
             <span className="block">{c.hero.line1[locale]}</span>
@@ -35,12 +36,13 @@ export function CommunitiesPage({ locale }: { locale: Locale }) {
       {/* 7.2 THE FOUR */}
       <section className="py-20 lg:py-28 bg-bg-alt border-b border-border-subtle">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mt-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mt-10 grid-rows-[repeat(2,auto_auto_1fr)] lg:grid-rows-[auto_auto_1fr]">
             {communities.map((c, i) => (
               <IconCard
                 key={c.name}
                 icon={networkIcons[i]}
                 title={c.name}
+                align
                 className="min-h-[260px]"
               >
                 {c.line}

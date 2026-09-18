@@ -74,7 +74,11 @@ export function HomePage({ locale }: { locale: Locale }) {
         />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-center text-center gap-7 pt-24 lg:pt-28">
-          <h1 className="text-[44px] md:text-7xl lg:text-[96px] font-serif leading-[0.9] tracking-tight max-w-6xl">
+          <h1
+            className={`text-[44px] md:text-7xl lg:text-[96px] font-serif tracking-tight max-w-6xl ${
+              locale === "vi" ? "leading-[1.06]" : "leading-[0.9]"
+            }`}
+          >
             <span className="block">{home.hero.line1[locale]}</span>
             <span className="block">
               <em className="font-serif italic text-gradient-gold">{home.hero.line2[locale]}</em>
@@ -117,12 +121,15 @@ export function HomePage({ locale }: { locale: Locale }) {
             {home.doors.headingLead[locale]} <Accent>{home.doors.headingAccent[locale]}</Accent>
           </SectionTitle>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+          {/* The row declares the tracks each card lines up against: icon,
+              title, copy, link. Two cards to a row on a phone, four from lg. */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 grid-rows-[repeat(2,auto_auto_1fr_auto)] lg:grid-rows-[auto_auto_1fr_auto]">
             {doors.map((door) => (
               <IconCard
                 key={door.title}
                 icon={door.icon}
                 title={door.title}
+                align
                 className="min-h-[320px]"
                 footer={door.links.map((l) => (
                   <ArrowLink key={l.href} href={l.href}>
@@ -144,7 +151,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       <EcosystemOrbit />
 
       {/* 1.5 PROOF — one voice at a time, as on the previous site */}
-      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-alt border-b border-border-subtle overflow-hidden py-28 lg:py-32">
+      <section className="min-h-screen flex flex-col bg-bg-alt border-b border-border-subtle overflow-hidden py-28 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
           <div className="shrink-0">
             <SectionTitle className="mb-8 lg:mb-10">
@@ -204,7 +211,8 @@ export function HomePage({ locale }: { locale: Locale }) {
           </div>
 
           <p className="mt-14 font-serif text-2xl lg:text-3xl text-text-heading leading-snug max-w-4xl mx-auto text-center">
-            {home.programs.closingLead[locale]}{" "}
+            {home.programs.closingLead[locale]}
+            {locale === "vi" ? <br /> : " "}
             <em className="italic text-gradient-gold">{home.programs.closingAccent[locale]}</em>
           </p>
         </div>

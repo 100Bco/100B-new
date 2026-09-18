@@ -12,16 +12,33 @@ export function IconCard({
   children,
   footer,
   className = "",
+  align = false,
 }: {
   icon: LucideIcon;
   title: ReactNode;
   children: ReactNode;
   footer?: ReactNode;
   className?: string;
+  /**
+   * Line the card's parts up with its neighbours'.
+   *
+   * Titles run to different numbers of lines, so the copy under them starts
+   * at a different height in each card and the row reads as ragged. With this
+   * on, the card takes its rows from the grid it sits in rather than from its
+   * own contents, so every icon, every title block, every paragraph and every
+   * link sits on the same line across the row. The parent grid has to declare
+   * the tracks; see the callers.
+   */
+  align?: boolean;
 }) {
+  const rows = footer ? "row-span-4" : "row-span-3";
   return (
     <div
-      className={`group relative bg-bg-card rounded-2xl sm:rounded-3xl px-4 py-6 sm:px-6 sm:py-8 lg:py-9 border border-border-subtle hover:border-brand-gold/50 transition-colors flex flex-col items-center text-center gap-3.5 sm:gap-5 ${className}`}
+      className={`group relative bg-bg-card rounded-2xl sm:rounded-3xl px-4 py-6 sm:px-6 sm:py-8 lg:py-9 border border-border-subtle hover:border-brand-gold/50 transition-colors text-center gap-3.5 sm:gap-5 ${
+        align
+          ? `grid grid-rows-subgrid ${rows} justify-items-center`
+          : "flex flex-col items-center"
+      } ${className}`}
     >
       <div className="icon-sphere w-12 h-12 sm:w-16 sm:h-16 lg:w-[72px] lg:h-[72px] mb-1 shrink-0">
         <Icon size={26} strokeWidth={1.5} className="text-white/90 w-[20px] h-[20px] sm:w-[26px] sm:h-[26px]" />
@@ -33,7 +50,15 @@ export function IconCard({
         {children}
       </p>
       {footer && (
-        <div className="mt-auto pt-4 sm:pt-5 flex flex-wrap justify-center gap-x-4 sm:gap-x-5 gap-y-2">
+        <div
+          className={`pt-4 sm:pt-5 flex flex-wrap justify-center gap-x-4 sm:gap-x-5 gap-y-2 ${
+            /* Aligned cards take the link row from the grid, so it already
+               starts level with its neighbours. Pushing it down as well would
+               hang the links off the bottom, and a label that wraps to two
+               lines would then start lower than the rest. */
+            align ? "self-start" : "mt-auto"
+          }`}
+        >
           {footer}
         </div>
       )}

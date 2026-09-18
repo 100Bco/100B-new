@@ -53,7 +53,7 @@ export function EcosystemOrbit() {
   }, []);
 
   return (
-    <section className="relative bg-bg-alt border-b border-border-subtle overflow-hidden py-20 lg:pt-24 lg:pb-0 lg:h-screen lg:min-h-[800px] flex items-center">
+    <section className="relative bg-bg-alt border-b border-border-subtle overflow-hidden py-20 lg:pt-24 lg:pb-16 lg:min-h-screen flex items-center">
       {/* Ambient light behind the ring, brighter while a company is held */}
       <div
         className="absolute inset-0 pointer-events-none transition-opacity duration-1000"

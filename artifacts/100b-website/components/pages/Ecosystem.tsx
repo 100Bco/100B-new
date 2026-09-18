@@ -12,6 +12,7 @@ export function EcosystemPage({ locale }: { locale: Locale }) {
     <div className="flex flex-col">
       {/* 5.1 HERO */}
       <PageHero
+        locale={locale}
         title={
           <>
             <span className="block">{e.hero.line1[locale]}</span>

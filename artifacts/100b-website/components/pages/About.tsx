@@ -28,6 +28,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
 
       {/* 6.1 HERO */}
       <PageHero
+        locale={locale}
         image={aboutBanner.src}
         imagePosition="center 55%"
         title={

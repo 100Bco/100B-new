@@ -121,6 +121,7 @@ export function EnterVietnamPage({ locale }: { locale: Locale }) {
 
       {/* 3.1 HERO */}
       <PageHero
+        locale={locale}
         videoId="t0jdqo7des"
         title={
           <>
@@ -164,12 +165,13 @@ export function EnterVietnamPage({ locale }: { locale: Locale }) {
             {v.build.intro[locale]}
           </p>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-12 grid-rows-[repeat(2,auto_auto_1fr)] lg:grid-rows-[auto_auto_1fr]">
             {whatWeBuild.map((item) => (
               <IconCard
                 key={item.title}
                 icon={item.icon}
                 title={item.title}
+                align
                 className="min-h-[260px]"
               >
                 {item.line}
@@ -248,7 +250,7 @@ export function EnterVietnamPage({ locale }: { locale: Locale }) {
       </section>
 
       {/* 3.5 WHAT DELEGATES SAID. About the trip, not the company. */}
-      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-dark border-b border-border-subtle overflow-hidden py-28 lg:py-32">
+      <section className="min-h-screen flex flex-col bg-bg-dark border-b border-border-subtle overflow-hidden py-28 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
           <div className="shrink-0">
             <SectionTitle className="mb-8 lg:mb-10">

@@ -44,6 +44,7 @@ export function GoGlobalPage({ locale }: { locale: Locale }) {
     <div className="flex flex-col">
       {/* 2.1 HERO */}
       <PageHero
+        locale={locale}
         image={heroImage.src}
         imagePosition="center 58%"
         title={
@@ -205,7 +206,7 @@ export function GoGlobalPage({ locale }: { locale: Locale }) {
       </section>
 
       {/* 2.7 PROOF — one voice at a time, as on the homepage */}
-      <section className="min-h-screen lg:h-screen flex flex-col bg-bg-dark overflow-hidden py-28 lg:py-32">
+      <section className="min-h-screen flex flex-col bg-bg-dark overflow-hidden py-28 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative w-full flex-1 flex flex-col">
           <div className="shrink-0">
             <SectionTitle className="mb-8 lg:mb-10">
