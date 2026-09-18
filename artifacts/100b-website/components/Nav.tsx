@@ -5,12 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { Flag } from "@/components/Flag";
 import { getSite } from "@/content/get-site";
 import { ui } from "@/content/copy/ui";
 import {
   localeFromPath,
   localePath,
-  localeNames,
+  localeLabels,
   localeTags,
   locales,
   swapLocale,
@@ -18,12 +19,17 @@ import {
 } from "@/content/locale";
 
 /**
- * EN / VI, in the same 11px uppercase the nav links use, so it reads as part
- * of the bar rather than a control bolted onto it. The language you are in is
- * gold, the other is the muted grey every inactive link takes. Both are real
- * links to the same page in the other language, so a reader who lands on the
- * Vietnamese Container Club page and switches gets the English one, not the
- * home page, and so a crawler can follow them.
+ * The two flags, side by side. The language you are in is at full strength
+ * with a gold rule around it; the other is dimmed until you reach for it.
+ *
+ * Both are real links to the same page in the other language, so a reader who
+ * lands on the Vietnamese Container Club page and switches gets the English
+ * one rather than the home page, and a crawler can follow them. The flag
+ * carries no text, so each link states its language for a screen reader.
+ *
+ * It sits in the bar itself at every width, phones included: buried in the
+ * menu, a Vietnamese reader landing on the English homepage had no way of
+ * knowing the site speaks their language without opening it first.
  */
 function LocaleSwitcher({
   locale,
@@ -34,34 +40,39 @@ function LocaleSwitcher({
   otherPath: string;
   size?: "desktop" | "mobile";
 }) {
-  const base =
-    size === "desktop"
-      ? "font-sans text-[11px] uppercase tracking-[0.15em] xl:tracking-[0.2em] font-semibold transition-colors"
-      : "font-sans text-sm uppercase tracking-[0.2em] font-semibold transition-colors";
+  const flag = size === "desktop" ? "w-[26px] h-[17px]" : "w-[30px] h-[20px]";
   return (
-    <div className="flex items-center gap-1.5 shrink-0" aria-label="Language">
-      {locales.map((l, i) => (
-        <span key={l} className="flex items-center gap-1.5">
-          {i > 0 && (
-            <span className="text-border-subtle text-[11px] select-none" aria-hidden>
-              /
-            </span>
-          )}
-          {l === locale ? (
-            <span className={`${base} text-brand-gold`} aria-current="true">
-              {localeNames[l]}
-            </span>
-          ) : (
-            <Link
-              href={otherPath}
-              hrefLang={localeTags[l]}
-              className={`${base} text-text-muted hover:text-white`}
-            >
-              {localeNames[l]}
-            </Link>
-          )}
-        </span>
-      ))}
+    <div className="flex items-center gap-1 shrink-0">
+      {locales.map((l) => {
+        const active = l === locale;
+        const mark = (
+          <Flag
+            locale={l}
+            className={`${flag} ring-1 transition-all duration-200 ${
+              active
+                ? "ring-brand-gold/70 opacity-100"
+                : "ring-white/15 opacity-45 group-hover/flag:opacity-100 group-hover/flag:ring-white/40"
+            }`}
+          />
+        );
+        const box = "group/flag inline-flex items-center justify-center min-w-[40px] min-h-[40px]";
+        return active ? (
+          <span key={l} className={box} aria-current="true" title={localeLabels[l]}>
+            {mark}
+          </span>
+        ) : (
+          <Link
+            key={l}
+            href={otherPath}
+            hrefLang={localeTags[l]}
+            aria-label={localeLabels[l]}
+            title={localeLabels[l]}
+            className={box}
+          >
+            {mark}
+          </Link>
+        );
+      })}
     </div>
   );
 }
@@ -252,14 +263,20 @@ export default function Nav() {
             <LocaleSwitcher locale={locale} otherPath={otherPath} />
           </div>
 
-          <button
-            className="lg:hidden relative z-50 p-2 text-text-heading"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={ui.nav.toggleMenu[locale]}
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* On a phone the flags sit in the bar rather than inside the menu,
+              so the site says which languages it speaks before anything is
+              opened. */}
+          <div className="lg:hidden flex items-center gap-1 relative z-50">
+            <LocaleSwitcher locale={locale} otherPath={otherPath} size="mobile" />
+            <button
+              className="relative z-50 p-2 text-text-heading"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={ui.nav.toggleMenu[locale]}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -312,9 +329,6 @@ export default function Nav() {
             >
               {ui.nav.cta[locale]}
             </a>
-            <div className="flex justify-center">
-              <LocaleSwitcher locale={locale} otherPath={otherPath} size="mobile" />
-            </div>
           </div>
         </div>
       )}

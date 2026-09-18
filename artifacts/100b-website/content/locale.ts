@@ -19,6 +19,12 @@ export const localeNames: Record<Locale, string> = {
   vi: "VI",
 };
 
+/** The full name, for the label a screen reader reads off the flag. */
+export const localeLabels: Record<Locale, string> = {
+  en: "English",
+  vi: "Tiếng Việt",
+};
+
 /** The BCP 47 tag for <html lang> and for hreflang. */
 export const localeTags: Record<Locale, string> = {
   en: "en",
