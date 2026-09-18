@@ -1,3 +1,4 @@
+import type { Locale } from "@/content/locale";
 import type { ReactNode } from "react";
 import Image from "next/image";
 
@@ -11,6 +12,7 @@ import Image from "next/image";
  * brightest there.
  */
 export function PageHero({
+  locale = "en",
   image,
   imagePosition = "center",
   videoId,
@@ -19,6 +21,7 @@ export function PageHero({
   actions,
   meta,
 }: {
+  locale?: Locale;
   image?: string;
   imagePosition?: string;
   /** Wistia media id. Rendered exactly as the homepage hero: muted, looping,
@@ -98,7 +101,14 @@ export function PageHero({
       )}
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-center text-center gap-7 pt-24 lg:pt-28">
-        <h1 className="text-[44px] md:text-7xl lg:text-[96px] font-serif leading-[0.9] tracking-tight max-w-6xl drop-shadow-[0_2px_24px_rgba(0,0,0,0.55)]">
+        <h1
+          className={`text-[44px] md:text-7xl lg:text-[96px] font-serif tracking-tight max-w-6xl drop-shadow-[0_2px_24px_rgba(0,0,0,0.55)] ${
+            /* Vietnamese stacks marks above and dots below, which collide at
+               the 0.9em the English setting uses. Measured ink extents need
+               1.021em; 1.06 clears them with room to spare. */
+            locale === "vi" ? "leading-[1.06]" : "leading-[0.9]"
+          }`}
+        >
           {title}
         </h1>
 

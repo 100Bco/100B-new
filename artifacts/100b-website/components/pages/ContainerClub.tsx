@@ -66,6 +66,7 @@ export function ContainerClubPage({ locale }: { locale: Locale }) {
 
       {/* 4.1 HERO */}
       <PageHero
+        locale={locale}
         videoId="9hbymhvynw"
         title={
           <>
