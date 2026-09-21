@@ -45,6 +45,7 @@ export function GoGlobalPage({ locale }: { locale: Locale }) {
       {/* 2.1 HERO */}
       <PageHero
         locale={locale}
+        titleScale={locale === "vi" ? "lg:text-[54px] xl:text-[68px]" : "lg:text-[96px]"}
         image={heroImage.src}
         imagePosition="center 58%"
         title={

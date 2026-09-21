@@ -57,7 +57,14 @@ export const ui = {
     headingAfter: { en: "", vi: " từ một câu chuyện rất Việt Nam!" },
     legend: {
       en: "Âu Cơ bore one hundred children. Fifty went to the mountains with their mother. Fifty went to the sea with their father.",
-      vi: "Truyền thuyết kể rằng Âu Cơ sinh ra một bọc trăm trứng, nở thành một trăm người con. Năm mươi người con theo mẹ lên núi. Năm mươi người con theo cha xuống biển.",
+      vi: "Truyền thuyết rằng Âu Cơ sinh ra một bọc trăm trứng, nở thành một trăm người con.",
+    },
+    /* Vietnamese breaks the legend after the hundred children, so the two
+       halves of the story sit on their own lines. English runs on, so its
+       tail is empty and the paragraph renders exactly as before. */
+    legendTail: {
+      en: "",
+      vi: "Năm mươi người con theo mẹ lên núi. Năm mươi người con theo cha xuống biển.",
     },
     oldestStory: {
       en: "Vietnam's oldest story is about going out into the world.",

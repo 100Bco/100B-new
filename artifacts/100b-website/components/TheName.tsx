@@ -130,8 +130,21 @@ export function TheName() {
           {ui.theName.headingAfter[locale]}
         </h2>
 
-        <p className="font-sans text-base md:text-lg lg:text-xl font-light leading-relaxed text-text-body max-w-3xl mb-4">
+        {/* The tail only exists where the legend breaks in two. That line
+            wants 782px at the desktop size, so the measure widens with it;
+            without a tail the paragraph keeps the 3xl measure it always had. */}
+        <p
+          className={`font-sans text-base md:text-lg lg:text-xl font-light leading-relaxed text-text-body mb-4 ${
+            ui.theName.legendTail[locale] ? "max-w-4xl" : "max-w-3xl"
+          }`}
+        >
           {ui.theName.legend[locale]}
+          {ui.theName.legendTail[locale] && (
+            <>
+              <br />
+              {ui.theName.legendTail[locale]}
+            </>
+          )}
         </p>
         <p className="font-sans text-base md:text-lg lg:text-xl font-light leading-relaxed text-text-body max-w-3xl">
           {ui.theName.oldestStory[locale]}

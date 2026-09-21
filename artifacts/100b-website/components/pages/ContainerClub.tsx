@@ -67,6 +67,7 @@ export function ContainerClubPage({ locale }: { locale: Locale }) {
       {/* 4.1 HERO */}
       <PageHero
         locale={locale}
+        titleScale={locale === "vi" ? "lg:text-[48px] xl:text-[60px]" : "lg:text-[96px]"}
         videoId="9hbymhvynw"
         title={
           <>

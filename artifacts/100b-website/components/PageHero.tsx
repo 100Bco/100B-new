@@ -13,6 +13,7 @@ import Image from "next/image";
  */
 export function PageHero({
   locale = "en",
+  titleScale = "lg:text-[96px]",
   image,
   imagePosition = "center",
   videoId,
@@ -22,6 +23,11 @@ export function PageHero({
   meta,
 }: {
   locale?: Locale;
+  /** Overrides the large-screen step of the title scale. Vietnamese headlines
+   *  run much longer than the English they translate, so a page whose lines
+   *  would otherwise wrap passes a smaller lg/xl size and keeps one line per
+   *  colour. Re-measure if the hero copy changes. */
+  titleScale?: string;
   image?: string;
   imagePosition?: string;
   /** Wistia media id. Rendered exactly as the homepage hero: muted, looping,
@@ -102,7 +108,11 @@ export function PageHero({
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col items-center text-center gap-7 pt-24 lg:pt-28">
         <h1
-          className={`text-[44px] md:text-7xl lg:text-[96px] font-serif tracking-tight max-w-6xl drop-shadow-[0_2px_24px_rgba(0,0,0,0.55)] ${
+          className={`text-[44px] md:text-7xl ${titleScale} font-serif tracking-tight drop-shadow-[0_2px_24px_rgba(0,0,0,0.55)] ${
+            /* Vietnamese gets the full measure the container allows, so the
+               type does not have to shrink any further than the words need. */
+            locale === "vi" ? "max-w-7xl" : "max-w-6xl"
+          } ${
             /* Vietnamese stacks marks above and dots below, which collide at
                the 0.9em the English setting uses. Measured ink extents need
                1.021em; 1.06 clears them with room to spare. */

@@ -212,6 +212,7 @@ const markDuval: Testimonial = {
   name: "Mark Duval",
   title: "CEO & PRESIDENT",
   company: "GREATER AUSTIN ASIAN CHAMBER OF COMMERCE",
+  companyUrl: "https://austinasianchamber.org/",
   credential: "",
   photo: markDuvalPhoto.src,
   photoPosition: "30% center",
@@ -309,14 +310,14 @@ const vinmake: Testimonial = {
 
 /** The US partners who travelled with us, shown on the homepage. */
 const locDang: Testimonial = {
-  headline: "THEY UNDERSTAND BOTH ENDS",
+  headline: "THEY KNOW WHAT BOTH MARKETS NEED",
   quote:
-    "I work with a lot of Vietnamese businesses here in the US, and what is rare about Minh and 100B is that they understand both ends of the bridge. They don't just make the introduction, they sit down and work through it with you.",
+    "I work with a lot of Vietnamese businesses here in the US, and what is rare about Minh and 100B is that they understand what both markets actually need. They don't just make the introduction, they sit down and work through it with you. Their network is a serious one, and once they connect you, you can get straight to work.",
   name: "Loc Dang",
   title: "FOUNDER",
   company: "DANG LAW GROUP",
   companyUrl: "https://danglawgroup.com/",
-  credential: "Personal injury law firm, Austin, Texas",
+  credential: "Law firm in Austin, Texas",
   photo: locDangPhoto.src,
 };
 
