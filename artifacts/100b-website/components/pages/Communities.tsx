@@ -21,6 +21,7 @@ export function CommunitiesPage({ locale }: { locale: Locale }) {
       {/* 7.1 HERO */}
       <PageHero
         locale={locale}
+        titleScale={locale === "vi" ? "lg:text-[62px] xl:text-[78px]" : "lg:text-[96px]"}
         title={
           <>
             <span className="block">{c.hero.line1[locale]}</span>

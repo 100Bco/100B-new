@@ -122,6 +122,7 @@ export function EnterVietnamPage({ locale }: { locale: Locale }) {
       {/* 3.1 HERO */}
       <PageHero
         locale={locale}
+        titleScale={locale === "vi" ? "lg:text-[70px] xl:text-[88px]" : "lg:text-[96px]"}
         videoId="t0jdqo7des"
         title={
           <>

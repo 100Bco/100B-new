@@ -13,6 +13,7 @@ export function EcosystemPage({ locale }: { locale: Locale }) {
       {/* 5.1 HERO */}
       <PageHero
         locale={locale}
+        titleScale={locale === "vi" ? "lg:text-[88px] xl:text-[96px]" : "lg:text-[96px]"}
         title={
           <>
             <span className="block">{e.hero.line1[locale]}</span>
