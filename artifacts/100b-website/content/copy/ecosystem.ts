@@ -12,9 +12,9 @@ export const ecosystemCopy = {
   },
   hero: {
     line1: t("Five companies.", "Năm công ty."),
-    line2: t("Each stands on its own.", "Mỗi công ty hoạt động độc lập."),
-    lead: t("Every one takes outside clients.", "Mỗi công ty đều nhận khách hàng bên ngoài."),
-    metaTeam: t("One team, one standard", "Một đội ngũ, một tiêu chuẩn"),
+    line2: t("Each stands on its own.", "Mỗi công ty một thế mạnh riêng."),
+    lead: t("Every one takes outside clients.", "Mỗi công ty đều hoạt động độc lập và phục vụ nhóm khách hàng riêng."),
+    metaTeam: t("One team, one standard", "Một đội ngũ. Một chuẩn mực chung."),
   },
   ladder: [
     { range: t("$5M-$20M", "5-20 triệu USD"), who: t("ZAD, 100Bold, BOND", "ZAD, 100Bold, BOND") },
@@ -36,11 +36,11 @@ export const ecosystemCopy = {
     headingAccent: t("these companies.", "những công ty này."),
     lead: t(
       "One standard, one team, one accountable party across everything you need.",
-      "Một tiêu chuẩn. Một đội ngũ. Một đầu mối chịu trách nhiệm xuyên suốt cho mọi nhu cầu của bạn.",
+      "Một chuẩn mực chung. Một đội ngũ. Một đầu mối chịu trách nhiệm xuyên suốt cho mọi nhu cầu của bạn.",
     ),
   },
   contact: {
-    titleLead: t("Not sure which company fits?", "Chưa chắc công ty nào phù hợp?"),
+    titleLead: t("Not sure which company fits?", "Chưa rõ công ty nào phù hợp?"),
     titleAccent: t("Ask us.", "Hãy trao đổi với chúng tôi."),
   },
 };

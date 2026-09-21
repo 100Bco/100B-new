@@ -35,7 +35,7 @@ function overlay<T extends Record<string, unknown>>(
 
 const navText: Record<string, string> = {
   Home: "Việt Nam ⇄ Thế giới",
-  "Go Global": "Dành cho thương hiệu Việt vào thị trường Mỹ",
+  "Go Global": "Dành cho thương hiệu Việt muốn vào thị trường Mỹ",
   "Enter Vietnam": "Dành cho doanh nghiệp, quỹ đầu tư và tổ chức muốn vào Việt Nam",
   "Container Club": "Nguồn hàng, nhà máy và mạng lưới thương mại",
   Communities: "Mạng lưới chúng tôi đã xây dựng",
@@ -182,36 +182,36 @@ export const delegateTestimonials: Testimonial[] = overlay(delegateEn, byName, t
 const companyText: Record<string, Partial<Company>> = {
   "100B": {
     role: "Tư vấn chiến lược",
-    line: "Dành cho các thương hiệu Việt có doanh thu 20-100 triệu USD và các doanh nghiệp muốn vào Việt Nam.",
+    line: "Dành cho các thương hiệu Việt có doanh thu 20-100 triệu USD muốn mở rộng ra thị trường quốc tế, và các doanh nghiệp nước ngoài đang tìm đường vào Việt Nam.",
     detail:
-      "Đồng hành cùng thương hiệu Việt doanh thu 20-100 triệu USD trên hành trình vươn ra thế giới, và các doanh nghiệp quốc tế muốn vào Việt Nam. Mô hình hợp tác bằng cổ phần, 3-20%.",
+      "Đồng hành cùng thương hiệu Việt doanh thu 20-100 triệu USD trên hành trình vươn ra thế giới, và các doanh nghiệp quốc tế muốn vào Việt Nam. Mô hình hợp tác bằng cổ phần: 3-20%.",
     links: [
-      { label: "Vươn ra thế giới", href: "/go-global" },
+      { label: "Đi ra thị trường quốc tế", href: "/go-global" },
       { label: "Vào Việt Nam", href: "/enter-vietnam" },
     ],
   },
   "Container Club": {
     role: "Thương mại quốc tế",
-    homeRole: "Tìm nguồn hàng và vận chuyển",
-    line: "Tìm nguồn cung, kết nối nhà máy, logistics và mạng lưới thương mại.",
+    homeRole: "Tìm nguồn hàng & vận chuyển",
+    line: "Tìm nguồn hàng, làm việc trực tiếp với nhà máy và tổ chức vận chuyển từ nơi sản xuất đến thị trường.",
     detail:
       "Tìm nguồn hàng, thẩm định nhà máy, kiểm soát chất lượng, vận chuyển và kết nối mạng lưới thương mại. Phí dịch vụ 3-5%. Phụ trách bởi Tung Cao và Tu Mac.",
   },
   ZAD: {
     role: "Nhận diện thương hiệu",
-    line: "Hơn 1.000 dự án đã thực hiện cho Google, Viettel, Coc Coc và nhiều thương hiệu khác.",
+    line: "Hơn 1.000 dự án đã thực hiện cho Google, Viettel, Coc Coc và nhiều thương hiệu hàng đầu tại Việt Nam.",
     detail:
-      "Làm đúng. Một lần. Hơn 1.000 dự án, đội ngũ hơn 20 người, 10 năm kinh nghiệm. Google, Viettel Academy, Coc Coc, VAECO, Eva de Eva, Magonn, Hagoo. Sáng lập bởi Hai Nguyen.",
+      "Làm đúng ngay từ đầu. Hơn 1.000 dự án, đội ngũ hơn 20 người, 10 năm kinh nghiệm. Google, Viettel Academy, Coc Coc, VAECO, Eva de Eva, Magonn, Hagoo. Sáng lập bởi Hai Nguyen.",
   },
   "100Bold": {
     role: "Marketing tại Mỹ",
-    line: "Đồng hành cùng các thương hiệu có doanh thu 5-100 triệu USD trên hành trình phát triển tại thị trường Mỹ.",
+    line: "Giúp các thương hiệu có doanh thu 5-100 triệu USD xây dựng chỗ đứng và phát triển tại thị trường Mỹ.",
     detail:
       "Giải pháp marketing toàn diện dành cho các thương hiệu có doanh thu 5-100 triệu USD.",
   },
   BOND: {
-    role: "Quà tặng và bao bì",
-    line: "Nơi những mối quan hệ được vun đắp và tạo ra giá trị lâu dài.",
+    role: "Quà tặng & bao bì",
+    line: "Biến quà tặng và bao bì trở thành một phần trong cách thương hiệu xây dựng và gìn giữ những mối quan hệ.",
     detail: "Nơi những mối quan hệ được vun đắp và tạo ra giá trị lâu dài.",
   },
 };
@@ -247,7 +247,7 @@ export const founders: Founder[] = overlay(foundersEn, (f) => f.name, founderTex
 
 const communityText: Record<string, { name: string; line: string }> = {
   "Founders and brand owners": {
-    name: "Nhà sáng lập và chủ thương hiệu",
+    name: "Nhà sáng lập & chủ thương hiệu",
     line: "Những nhà sáng lập Việt Nam đang đưa thương hiệu của mình ra thế giới.",
   },
   "Factory owners": {
@@ -259,7 +259,7 @@ const communityText: Record<string, { name: string; line: string }> = {
     line: "Vận chuyển, hải quan, 3PL, tài chính thương mại, tuân thủ. Mạng lưới của Container Club.",
   },
   "Sellers and partners": {
-    name: "Người bán hàng và đối tác",
+    name: "Người bán hàng & đối tác",
     line: "Những người đưa sản phẩm của các công ty trong hệ sinh thái đến khách hàng và cùng tạo ra giá trị từ mỗi giao dịch.",
   },
 };
@@ -271,7 +271,7 @@ export const communities = overlay(communitiesEn, (c) => c.name, communityText);
 const programText: Record<string, Record<string, string>> = {
   "Access Vietnam": {
     when: "Tháng 6/2026",
-    where: "Hà Nội và TP. Hồ Chí Minh",
+    where: "Hà Nội & TP. Hồ Chí Minh",
     line: "18 đại biểu gồm các quan chức, lãnh đạo doanh nghiệp và nhà đầu tư, kết nối với các bộ ngành, trung tâm đổi mới sáng tạo và các quỹ tại Việt Nam. Chương trình được tổ chức cùng Greater Austin Asian Chamber of Commerce.",
     cta: "Vào Việt Nam",
   },

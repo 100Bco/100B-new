@@ -11,8 +11,8 @@ export const enterVietnamCopy = {
     ),
   },
   hero: {
-    line1: t("Vietnam rewards the people", "Việt Nam mở cửa cho những người"),
-    line2: t("who show up.", "thực sự muốn bước vào."),
+    line1: t("Vietnam rewards the people", "Việt Nam đang mở ra nhiều cơ hội"),
+    line2: t("who show up.", "cho doanh nghiệp và nhà đầu tư quốc tế."),
     lead: t(
       "We organize delegations into the rooms that matter. Ministries, funds, and the founders actually building.",
       "Chúng tôi tổ chức các đoàn công tác đến đúng nơi cần đến: các bộ ngành, các quỹ đầu tư và những nhà sáng lập đang trực tiếp xây dựng doanh nghiệp.",
@@ -31,11 +31,11 @@ export const enterVietnamCopy = {
     ],
     footnote: t(
       "690,000 STEM students, growing 10% a year. 4,100+ startups. 4 unicorns. 290+ active VC firms.",
-      "690.000 sinh viên STEM, tăng 10% mỗi năm. Hơn 4.100 startup. 4 kỳ lân. Hơn 290 quỹ đầu tư mạo hiểm đang hoạt động.",
+      "690.000 sinh viên STEM, tăng 10% mỗi năm. 4.100+ startup · 4 kỳ lân · 290+ quỹ VC đang hoạt động.",
     ),
   },
   build: {
-    headingLead: t("A week that would take you", "Chỉ một tuần để có những kết nối"),
+    headingLead: t("A week that would take you", "Chỉ một tuần để thiết lập những kết nối"),
     headingAccent: t("two years to arrange.", "mất hai năm mới xây dựng được."),
     intro: t(
       "These are meetings that take outsiders years to arrange.",
@@ -73,15 +73,15 @@ export const enterVietnamCopy = {
     ],
     outro: t(
       "We handle the itinerary, the introductions, the translation, and everything between the airport and the airport.",
-      "Chúng tôi lo trọn hành trình: lịch trình, kết nối, phiên dịch và mọi chi tiết từ lúc bạn đến Việt Nam cho đến khi rời đi.",
+      "Chúng tôi lo trọn hành trình: lịch trình, kết nối, phiên dịch và mọi chi tiết khi bạn đến Việt Nam cho đến lúc rời đi.",
     ),
   },
   trip: {
     headingLead: t("What it", "Một hành trình"),
-    headingAccent: t("looked like.", "thực tế."),
+    headingAccent: t("looked like.", "đã thực sự diễn ra."),
     para1: t(
       "June 2026. Hanoi and Ho Chi Minh City. 18 delegates. Government officials and business leaders, brought into Vietnam's ministries, innovation centers, and capital circles over eight days.",
-      "Tháng 6/2026. Hà Nội và TP. Hồ Chí Minh. 18 đại biểu gồm lãnh đạo doanh nghiệp và đại diện cơ quan quản lý, được kết nối với các bộ ngành, trung tâm đổi mới sáng tạo và hệ sinh thái vốn của Việt Nam trong 8 ngày.",
+      "Tháng 6/2026. Hà Nội và TP. Hồ Chí Minh. 18 đại biểu gồm lãnh đạo doanh nghiệp và đại diện cơ quan quản lý, được kết nối với các bộ ngành, trung tâm đổi mới sáng tạo và các tổ chức đầu tư tại Việt Nam trong 8 ngày.",
     ),
     para2: t(
       "Organized with the Greater Austin Asian Chamber of Commerce, led by GAACC President and CEO Mark Duval.",
@@ -137,11 +137,11 @@ export const enterVietnamCopy = {
     ),
     items: [
       {
-        title: t("Chambers and trade associations", "Phòng thương mại và hiệp hội ngành"),
+        title: t("Chambers and trade associations", "Phòng thương mại & hiệp hội ngành"),
         line: t("bringing members into a new market", "đưa thành viên tiếp cận một thị trường mới"),
       },
       {
-        title: t("Funds and investors", "Quỹ đầu tư và nhà đầu tư"),
+        title: t("Funds and investors", "Quỹ đầu tư & nhà đầu tư"),
         line: t(
           "looking for Vietnam exposure and deal flow",
           "tìm kiếm cơ hội tại Việt Nam và tiếp cận nguồn deal flow",
@@ -157,16 +157,16 @@ export const enterVietnamCopy = {
       {
         title: t(
           "Government and economic development bodies",
-          "Cơ quan chính phủ và tổ chức phát triển kinh tế",
+          "Cơ quan chính phủ & tổ chức phát triển kinh tế",
         ),
         line: t("building bilateral ties", "mở rộng quan hệ hợp tác song phương"),
       },
     ],
     closingLead: t(
       "We've run the US route. We're ready to run it",
-      "Chúng tôi đã thực hiện hành trình từ Mỹ. Giờ đây, chúng tôi có thể làm điều tương tự",
+      "Chúng tôi đã thực hiện hành trình từ Mỹ. Giờ đây, chúng tôi có thể xây dựng những chương trình tương tự",
     ),
-    closingAccent: t("from Europe, Asia, or the Middle East.", "từ châu Âu, châu Á hoặc Trung Đông."),
+    closingAccent: t("from Europe, Asia, or the Middle East.", "cho các đoàn đến từ châu Âu, châu Á hoặc Trung Đông."),
     cta: t("Talk to us about a delegation", "Trao đổi về chương trình dành cho đoàn của bạn"),
   },
   beyond: {
@@ -180,7 +180,7 @@ export const enterVietnamCopy = {
     ),
     items: [
       t("Market entry advisory", "Tư vấn gia nhập thị trường"),
-      t("Partner and factory matching", "Kết nối đối tác và nhà máy"),
+      t("Partner and factory matching", "Kết nối đối tác & nhà máy"),
       t("Capital introductions", "Kết nối nguồn vốn"),
     ],
   },
