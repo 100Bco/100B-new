@@ -34,7 +34,7 @@ export function PageHero({
 }) {
   return (
     <section
-      className={`relative bg-bg-dark overflow-hidden h-screen min-h-[720px] flex flex-col justify-center border-b border-border-subtle ${
+      className={`relative bg-bg-dark overflow-hidden min-h-[max(100vh,720px)] flex flex-col justify-center border-b border-border-subtle ${
         image || videoId ? "" : "glow-warm-top"
       }`}
     >

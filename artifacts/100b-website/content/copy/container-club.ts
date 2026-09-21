@@ -12,10 +12,10 @@ export const containerClubCopy = {
   },
   hero: {
     line1: t("Buy from the factory.", "Mua trực tiếp từ nhà máy."),
-    line2: t("Pay a commission, not a markup.", "Trả phí dịch vụ, không trả giá chênh."),
+    line2: t("Pay a commission, not a markup.", "Phí dịch vụ minh bạch, không cộng chênh lệch vào giá hàng."),
     lead: t(
       "100B's trade arm. Sourcing, factory vetting, quality control, freight, and the network behind it.",
-      "Mảng thương mại của 100B, phụ trách tìm nguồn hàng, thẩm định nhà máy, kiểm soát chất lượng, vận chuyển và toàn bộ mạng lưới phía sau.",
+      "Mảng thương mại của 100B phụ trách toàn bộ quá trình từ nguồn hàng, thẩm định nhà máy, kiểm soát chất lượng, vận chuyển và toàn bộ mạng lưới phía sau.",
     ),
     meta: t("Led by Tung Cao and Tu Mac", "Phụ trách bởi Tung Cao và Tu Mac"),
   },
@@ -36,7 +36,7 @@ export const containerClubCopy = {
     headingAccent: t("you can control.", "bạn có thể chủ động kiểm soát."),
     lead: t(
       "Flooring, tile, cabinets, windows, doors, panels, roofing, steel. Typically 25-35% of construction cost. Most US buyers pay 3 to 4 times the factory price through domestic distribution.",
-      "Sàn, gạch, tủ, cửa sổ, cửa ra vào, tấm ốp, vật liệu mái, thép. Thông thường chiếm 25-35% tổng chi phí xây dựng. Phần lớn người mua tại Mỹ phải trả mức giá cao gấp 3 đến 4 lần giá xuất xưởng thông qua hệ thống phân phối trong nước.",
+      "Sàn, gạch, tủ, cửa sổ, cửa ra vào, tấm ốp, vật liệu mái, thép. Thông thường chiếm 25-35% tổng chi phí xây dựng. Phần lớn người mua tại Mỹ phải trả mức giá cao gấp 3-4 lần giá xuất xưởng thông qua hệ thống phân phối trong nước.",
     ),
     labels: [
       t("Savings going direct", "Mức tiết kiệm khi mua trực tiếp"),
@@ -58,7 +58,7 @@ export const containerClubCopy = {
         title: t("Quality control.", "Kiểm soát chất lượng."),
         line: t(
           "Samples, mid-run checks, final inspection, ground QC.",
-          "Từ mẫu thử, kiểm tra giữa quá trình sản xuất đến nghiệm thu cuối cùng, với đội ngũ QC tại chỗ.",
+          "Từ duyệt mẫu, kiểm tra giữa quá trình sản xuất đến nghiệm thu cuối cùng, với đội ngũ kiểm soát chất lượng ngay tại Việt Nam.",
         ),
       },
       {
@@ -72,7 +72,7 @@ export const containerClubCopy = {
         title: t("Your procurement team.", "Đội ngũ thu mua của bạn."),
         line: t(
           "Spec to delivery. No overseas hire.",
-          "Từ yêu cầu kỹ thuật đến khi giao hàng. Không cần tuyển riêng một đội ngũ ở nước ngoài.",
+          "Từ yêu cầu kỹ thuật đến khi giao hàng. Không cần xây dựng riêng một đội ngũ ở nước ngoài.",
         ),
       },
       {
@@ -88,10 +88,10 @@ export const containerClubCopy = {
   },
   trip: {
     headingLead: t("What it", "Hành trình"),
-    headingAccent: t("looked like.", "thực tế."),
+    headingAccent: t("looked like.", "đã diễn ra."),
     para1: t(
       "May to June 2026. Ho Chi Minh City to Hanoi. 14 hand-picked factories in construction and finishing materials. Decision-makers only: general contractor principals, development partners, and the architects who choose materials.",
-      "Tháng 5 đến tháng 6/2026. TP. Hồ Chí Minh đến Hà Nội. 14 nhà máy được tuyển chọn trong lĩnh vực vật liệu xây dựng và hoàn thiện. Thành phần tham gia chỉ gồm những người có quyền quyết định: chủ doanh nghiệp tổng thầu, đối tác phát triển dự án và các kiến trúc sư trực tiếp lựa chọn vật liệu.",
+      "Tháng 5 đến tháng 6/2026. TP. Hồ Chí Minh đến Hà Nội. 14 nhà máy được tuyển chọn trong lĩnh vực vật liệu xây dựng và hoàn thiện. Đối tượng tham gia là những người trực tiếp ra quyết định: chủ doanh nghiệp tổng thầu, đơn vị phát triển dự án và kiến trúc sư phụ trách lựa chọn vật liệu.",
     ),
     hostedWith: t("Hosted with", "Chương trình được tổ chức cùng"),
     certs: t(
@@ -128,19 +128,19 @@ export const containerClubCopy = {
   },
   repeats: {
     headingLead: t("One example,", "Một ví dụ,"),
-    headingAccent: t("not the whole model.", "không phải toàn bộ mô hình."),
+    headingAccent: t("not the whole model.", "không phải toàn bộ cách triển khai."),
     intro: t(
       "Vietnam. Construction materials. Texas buyers. That was the first one.",
-      "Việt Nam. Vật liệu xây dựng. Người mua tại Texas. Đó là nơi chúng tôi bắt đầu.",
+      "Việt Nam. Vật liệu xây dựng. Người mua tại Texas. Đó là điểm chúng tôi bắt đầu.",
     ),
     items: [
       {
         title: t("Other industries.", "Những ngành khác."),
-        line: t("Beyond construction and finishing.", "Không chỉ vật liệu xây dựng và hoàn thiện."),
+        line: t("Beyond construction and finishing.", "Không giới hạn ở vật liệu xây dựng và hoàn thiện."),
       },
       {
         title: t("Other origins.", "Những nguồn cung khác."),
-        line: t("Across Asia and beyond.", "Mở rộng sang châu Á và các thị trường khác."),
+        line: t("Across Asia and beyond.", "Mở rộng sang châu Á và các thị trường phù hợp."),
       },
       {
         title: t("Other buyers.", "Những người mua khác."),
@@ -162,16 +162,16 @@ export const containerClubCopy = {
   specMate: {
     kicker: t(
       "When we find a category worth owning.",
-      "Khi tìm thấy một ngành hàng đủ lớn để sở hữu.",
+      "Khi một ngành hàng đủ lớn để sở hữu.",
     ),
     body: t(
       "When a product category is big enough to be worth owning, we build a company around it instead of just sourcing it. SpecMate supplies materials and furniture direct to contractors, multi-origin, built with LT Commercial Group.",
-      "Khi một ngành hàng đủ lớn để tạo thành một cơ hội kinh doanh riêng, chúng tôi xây dựng một công ty xoay quanh ngành hàng đó thay vì chỉ dừng lại ở việc tìm nguồn cung. SpecMate cung cấp trực tiếp vật liệu và nội thất cho các nhà thầu, với nguồn hàng từ nhiều quốc gia, được xây dựng cùng LT Commercial Group.",
+      "Khi quy mô của một ngành hàng đủ lớn để tạo thành một cơ hội kinh doanh riêng, chúng tôi xây dựng một doanh nghiệp xoay quanh cơ hội đó thay vì chỉ dừng lại ở việc tìm nguồn cung. SpecMate cung cấp trực tiếp vật liệu và nội thất cho các nhà thầu, với nguồn hàng từ nhiều quốc gia, được xây dựng cùng LT Commercial Group.",
     ),
   },
   network: {
     headingLead: t("The people who make trade work", "Những người làm thương mại"),
-    headingAccent: t("deserve a room of their own.", "cần một cộng đồng của riêng mình."),
+    headingAccent: t("deserve a room of their own.", "cần một cộng đồng tin cậy của riêng mình."),
     vetted: t("Vetted, not listed.", "Được thẩm định, không chỉ được liệt kê."),
     vettedRest: t(
       "Introduced by someone already in. No cold applications.",

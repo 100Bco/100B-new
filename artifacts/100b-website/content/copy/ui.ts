@@ -28,7 +28,7 @@ export const ui = {
   contact: {
     note: {
       en: "Read by one of us. We reply within 48 hours.",
-      vi: "Tin nhắn sẽ được một thành viên trong đội ngũ 100B trực tiếp đọc. Chúng tôi phản hồi trong vòng 48 giờ.",
+      vi: "Tin nhắn của bạn sẽ được đội ngũ 100B phản hồi trong vòng 48 giờ.",
     },
   },
 
@@ -49,32 +49,32 @@ export const ui = {
   theName: {
     mountains: { en: "to the mountains", vi: "lên núi" },
     sea: { en: "to the sea", vi: "xuống biển" },
-    heading: { en: "Where the name comes from.", vi: "Câu chuyện phía sau" },
+    heading: { en: "Where the name comes from.", vi: "Cái tên 100B từ một câu chuyện rất Việt Nam!" },
     legend: {
       en: "Âu Cơ bore one hundred children. Fifty went to the mountains with their mother. Fifty went to the sea with their father.",
-      vi: "Theo truyền thuyết, Âu Cơ sinh ra một trăm người con. Năm mươi người theo mẹ lên núi. Năm mươi người theo cha xuống biển.",
+      vi: "Truyền thuyết kể rằng Âu Cơ sinh ra một bọc trăm trứng, nở thành một trăm người con. Năm mươi người con theo mẹ lên núi. Năm mươi người con theo cha xuống biển.",
     },
     oldestStory: {
       en: "Vietnam's oldest story is about going out into the world.",
-      vi: "Câu chuyện lâu đời nhất của Việt Nam cũng là câu chuyện về việc đi ra thế giới.",
+      vi: "Từ thuở đầu, người Việt đã mang trong mình một câu chuyện về đi xa, gây dựng, tìm và khai hoang một miền đất mới.",
     },
-    perfectScore: { en: "is also a perfect score.", vi: "cũng là một điểm số hoàn hảo." },
-    isFor: { en: "is for Brands. Borders. Billions.", vi: "là viết tắt của Brands. Borders. Billions." },
+    perfectScore: { en: "is also a perfect score.", vi: "đại diện cho một trăm người con, cũng là một con số trọn vẹn." },
+    isFor: { en: "is for Brands. Borders. Billions.", vi: "là viết tắt của Brands. Borders. Billions. Thương hiệu. Biên giới. Tỷ đô." },
   },
 
   orbit: {
-    headingLead: { en: "Five companies.", vi: "Năm công ty." },
-    headingAccent: { en: "One corridor.", vi: "Một hành lang kết nối." },
+    headingLead: { en: "Five companies.", vi: "Năm mảnh ghép." },
+    headingAccent: { en: "One corridor.", vi: "Cùng một hành trình." },
     scaleLead: {
       en: "A brand at $5M might use two. A brand at $50M often uses",
-      vi: "Một thương hiệu ở quy mô 5 triệu USD có thể chỉ cần hai công ty. Ở quy mô 50 triệu USD, nhiều thương hiệu sẽ cần đến",
+      vi: "Không phải doanh nghiệp nào cũng cần cả năm công ty ngay từ đầu. Khi thương hiệu ở quy mô 5 triệu USD, thương hiệu có thể chỉ cần 2 công ty. Nhưng khi quy mô lên tới 50 triệu USD, cũng là lúc",
     },
-    scaleEmphasis: { en: "all five.", vi: "toàn bộ hệ sinh thái." },
+    scaleEmphasis: { en: "all five.", vi: "sức mạnh của toàn bộ hệ sinh thái bắt đầu phát huy giá trị." },
     link: { en: "All five companies", vi: "Khám phá toàn bộ hệ sinh thái" },
   },
 
   distribution: {
-    heading: { en: "How the chain changes", vi: "Chuỗi cung ứng thay đổi như thế nào" },
+    heading: { en: "How the chain changes", vi: "Chuỗi cung ứng thay đổi như thế nào?" },
     factory: { en: "Factory", vi: "Nhà máy" },
     distributor: { en: "Distributor", vi: "Nhà phân phối" },
     wholesaler: { en: "Wholesaler", vi: "Nhà bán buôn" },

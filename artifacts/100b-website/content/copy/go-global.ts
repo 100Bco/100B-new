@@ -11,17 +11,17 @@ export const goGlobalCopy = {
     ),
   },
   hero: {
-    line1: t("You built the brand in Vietnam.", "Doanh nghiệp đã xây dựng thương hiệu tại Việt Nam."),
-    line2: t("America is a different job.", "Nhưng nước Mỹ là một cuộc chơi khác."),
+    line1: t("You built the brand in Vietnam.", "Doanh nghiệp đã có chỗ đứng tại Việt Nam."),
+    line2: t("America is a different job.", "Nhưng thị trường Mỹ vận hành theo một cách khác."),
     lead: t(
       "We start a US company with you and own part of it.",
-      "Chúng tôi đồng hành cùng bạn xây dựng doanh nghiệp tại Mỹ ngay từ những bước đầu tiên.",
+      "Chúng tôi đồng hành cùng bạn xây dựng doanh nghiệp tại Mỹ ngay từ những nền móng đầu tiên.",
     ),
-    meta: t("Vietnamese brands at $20M-$100M", "Thương hiệu Việt có doanh thu 20-100 triệu USD"),
+    meta: t("Vietnamese brands at $20M-$100M", "Dành cho thương hiệu Việt có doanh thu 20-100 triệu USD"),
   },
   problems: {
-    headingLead: t("Most Vietnamese brands enter the US", "Nhiều thương hiệu Việt đang chọn cách tốn kém nhất"),
-    headingAccent: t("the expensive way.", "để bước vào thị trường Mỹ."),
+    headingLead: t("Most Vietnamese brands enter the US", "Không ít thương hiệu Việt phải trả giá quá cao"),
+    headingAccent: t("the expensive way.", "cho những bước đi đầu tiên tại Mỹ."),
     items: [
       t(
         "An American agency that has never sold a Vietnamese product",
@@ -40,17 +40,17 @@ export const goGlobalCopy = {
   },
   whatWeDo: [
     {
-      title: t("We build the US company.", "Chúng tôi cùng bạn xây dựng doanh nghiệp tại Mỹ."),
+      title: t("We build the US company.", "Cùng bạn tạo dựng nền tảng để phát triển tại Mỹ."),
       line: t(
         "Entity, brand, positioning, go-to-market. Built for an American buyer, not translated from a Vietnamese one.",
-        "Từ pháp nhân, thương hiệu, định vị đến chiến lược thâm nhập thị trường. Mọi thứ đều được xây dựng cho người tiêu dùng Mỹ, thay vì mang nguyên mô hình từ Việt Nam sang.",
+        "Từ pháp nhân, thương hiệu, định vị đến chiến lược thâm nhập thị trường. Mọi thứ đều được xây dựng lại để phù hợp với cách người Mỹ lựa chọn, mua và tin vào một thương hiệu, thay vì mang nguyên mô hình từ Việt Nam.",
       ),
     },
     {
-      title: t("We open the rooms.", "Chúng tôi mở cánh cửa."),
+      title: t("We open the rooms.", "Chúng tôi mở đường vào thị trường."),
       line: t(
         "Distribution, retail, capital, chambers of commerce.",
-        "Kết nối với hệ thống phân phối, bán lẻ, nguồn vốn và các hiệp hội doanh nghiệp.",
+        "Tiếp cận hệ thống phân phối, bán lẻ, nguồn vốn và các hiệp hội doanh nghiệp.",
       ),
     },
     {
@@ -62,20 +62,20 @@ export const goGlobalCopy = {
     },
   ],
   money: {
-    headingLead: t("How we", "Chúng tôi kiếm tiền"),
-    headingAccent: t("make money.", "như thế nào?"),
-    equityStrong: t("Of the US company", "Phần sở hữu trong công ty tại Mỹ"),
+    headingLead: t("How we", "Lợi ích của chúng tôi"),
+    headingAccent: t("make money.", "gắn với sự tăng trưởng của bạn."),
+    equityStrong: t("Of the US company", "Tỷ lệ sở hữu trong công ty tại Mỹ"),
     equityRest: t(
       ", depending on scope and stage. When we take a smaller share, we add a retainer and success fees.",
-      ", tùy theo quy mô công việc và giai đoạn phát triển. Với những dự án mà chúng tôi sở hữu tỷ lệ nhỏ hơn, mô hình hợp tác sẽ kết hợp thêm phí cố định và phí theo kết quả.",
+      ", tùy theo quy mô công việc, mức độ tham gia và giai đoạn phát triển của doanh nghiệp. Với những dự án có tỷ lệ sở hữu thấp hơn, mô hình hợp tác có thể kết hợp thêm phí cố định và phí dựa trên kết quả.",
     ),
     fiveStrong: t("Companies under one roof.", "Công ty cùng trong một hệ sinh thái."),
     fiveRest: t(
       "We own ZAD, 100Bold, BOND, and Container Club, so when we advise you on branding or freight, we've done the work ourselves.",
-      "Chúng tôi sở hữu ZAD, 100Bold, BOND và Container Club. Vì vậy, khi tư vấn cho bạn về thương hiệu hay logistics, chúng tôi không chỉ đưa ra lời khuyên, chúng tôi đã trực tiếp làm những việc đó.",
+      "100B cùng ZAD, 100Bold, BOND và Container Club. Vì vậy, khi tư vấn cho bạn về thương hiệu hay logistics, chúng tôi không chỉ đưa ra lời khuyên, mà là những việc chúng tôi trực tiếp làm.",
     ),
-    closingLead: t("We make money when your US company is", "Chúng tôi chỉ thực sự tạo ra giá trị khi"),
-    closingAccent: t("worth something.", "doanh nghiệp tại Mỹ của bạn có giá trị."),
+    closingLead: t("We make money when your US company is", "Giá trị của chúng tôi"),
+    closingAccent: t("worth something.", "gắn với giá trị mà doanh nghiệp của bạn tạo ra tại Mỹ."),
   },
   fit: {
     figure: t("$20M to $100M", "20-100 triệu USD"),
@@ -101,12 +101,12 @@ export const goGlobalCopy = {
     note: t("You hire each one separately.", "Bạn có thể sử dụng từng công ty độc lập."),
   },
   proof: {
-    headingLead: t("What Vietnamese founders", "Những nhà sáng lập Việt Nam"),
-    headingAccent: t("say.", "nói gì?"),
+    headingLead: t("What Vietnamese founders", "Những nhà sáng lập và CEO"),
+    headingAccent: t("say.", "ở cả hai phía nói gì?"),
     groupLabel: t("Vietnamese founders", "Nhà sáng lập Việt Nam"),
   },
   contact: {
-    titleLead: t("Tell us about", "Hãy kể chúng tôi nghe về"),
+    titleLead: t("Tell us about", "Hãy kể cho chúng tôi về"),
     titleAccent: t("your brand.", "thương hiệu của bạn."),
   },
 };

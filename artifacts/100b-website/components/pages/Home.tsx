@@ -38,7 +38,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       <JsonLd data={pressSchema(pressItems)} />
 
       {/* 1.1 HERO */}
-      <section className="relative bg-bg-dark overflow-hidden h-screen min-h-[720px] flex flex-col justify-center border-b border-border-subtle">
+      <section className="relative bg-bg-dark overflow-hidden min-h-[max(100vh,720px)] flex flex-col justify-center border-b border-border-subtle">
         {/* Full-bleed footage. Wistia embed scaled to cover the viewport. */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div

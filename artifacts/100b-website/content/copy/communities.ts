@@ -12,14 +12,14 @@ export const communitiesCopy = {
   },
   hero: {
     line1: t("We build rooms,", "Chúng tôi xây dựng mạng lưới,"),
-    line2: t("not lists.", "không chỉ những danh sách liên hệ."),
+    line2: t("not lists.", "không chỉ dừng lại ở những danh sách liên hệ."),
     lead: t(
       "Four networks. Vetted, by introduction, and growing.",
       "Bốn mạng lưới. Được tuyển chọn, kết nối qua giới thiệu và không ngừng mở rộng.",
     ),
     meta: t(
       "Founders · Factory owners · Trade · Sellers and partners",
-      "Nhà sáng lập · Chủ nhà máy · Chuyên gia thương mại · Người bán hàng và đối tác",
+      "Nhà sáng lập · Chủ nhà máy · Chuyên gia thương mại · Người bán hàng & đối tác",
     ),
   },
   seller: {

@@ -17,11 +17,11 @@ export const home = {
   },
 
   hero: {
-    line1: t("Vietnamese brands go out.", "Thương hiệu Việt vươn xa."),
-    line2: t("The world comes in.", "Thế giới tìm đến Việt Nam."),
+    line1: t("Vietnamese brands go out.", "Việt Nam đi ra thế giới."),
+    line2: t("The world comes in.", "Thế giới đến gần Việt Nam."),
     lead: t(
       "We work both directions. Capital, brands, and goods.",
-      "Chúng tôi kết nối cả hai chiều: đưa nguồn vốn, thương hiệu và hàng hóa đi qua biên giới.",
+      "Chúng tôi làm việc với cả hai chiều: giúp doanh nghiệp Việt bước vào những thị trường mới, đồng thời đưa doanh nghiệp, nguồn vốn và cơ hội quốc tế đến Việt Nam.",
     ),
     ctaBrand: t("I'm a Vietnamese brand →", "Tôi là thương hiệu Việt →"),
     ctaEnter: t("I want to enter Vietnam →", "Tôi muốn vào Việt Nam →"),
@@ -31,41 +31,41 @@ export const home = {
   },
 
   doors: {
-    headingLead: t("Four ways in.", "Bốn cánh cửa."),
-    headingAccent: t("Which one is you?", "Bạn đang tìm lối nào?"),
+    headingLead: t("Four ways in.", "Bốn hướng đi."),
+    headingAccent: t("Which one is you?", "Bạn đang ở đâu?"),
     items: [
       {
-        title: t("A Vietnamese brand going global.", "Thương hiệu Việt muốn vươn ra thế giới."),
+        title: t("A Vietnamese brand going global.", "Đưa thương hiệu Việt đến những thị trường mới."),
         line: t(
           "We start a US company with you and own part of it.",
-          "Cùng doanh nghiệp xây dựng doanh nghiệp tại Mỹ, từ những bước đầu tiên đến khi vươn ra thị trường.",
+          "Xây dựng nền tảng tại Mỹ, tạo chỗ đứng trên thị trường và từng bước mở rộng.",
         ),
-        label: t("Go Global", "Vươn ra thế giới"),
+        label: t("Go Global", "Đi ra thị trường quốc tế"),
       },
       {
-        title: t("A fund or company entering Vietnam.", "Quỹ đầu tư hoặc doanh nghiệp muốn vào Việt Nam."),
+        title: t("A fund or company entering Vietnam.", "Tìm đường vào thị trường Việt Nam."),
         line: t(
           "We get you in the room. Ministries, industry, funds.",
-          "Chúng tôi đưa doanh nghiệp đến đúng nơi, gặp đúng người, từ cơ quan quản lý và lãnh đạo ngành đến các quỹ đầu tư.",
+          "Hiểu thị trường, tìm đúng đầu mối và gặp đúng người, từ cơ quan quản lý, lãnh đạo ngành đến các quỹ đầu tư và đối tác tại Việt Nam.",
         ),
-        label: t("Enter Vietnam", "Vào Việt Nam"),
+        label: t("Enter Vietnam", "Khám phá thị trường Việt Nam"),
       },
       {
-        title: t("A buyer sourcing from Asia.", "Doanh nghiệp muốn tìm nguồn hàng tại châu Á."),
+        title: t("A buyer sourcing from Asia.", "Tìm nguồn hàng trực tiếp tại châu Á."),
         line: t(
           "Straight to the factory. Commission, not markup.",
-          "Kết nối trực tiếp với nhà máy. Phí dịch vụ minh bạch, không cộng chênh lệch vào giá sản phẩm.",
+          "Làm việc trực tiếp với nhà máy và nguồn cung đã được chọn lọc. Phí dịch vụ rõ ràng, không cộng thêm vào giá sản phẩm.",
         ),
         label: t("Container Club", "Container Club"),
       },
       {
         title: t(
           "Too early, or you earn by referring clients.",
-          "Doanh nghiệp còn ở giai đoạn đầu hoặc muốn kết nối khách hàng.",
+          "Doanh nghiệp mới đang xây dựng những bước đầu tiên.",
         ),
         line: t(
           "Our companies work at every size.",
-          "Hệ sinh thái của chúng tôi đồng hành với doanh nghiệp ở mọi quy mô.",
+          "Hệ sinh thái của chúng tôi đồng hành với doanh nghiệp ở mọi quy mô, giúp tập hợp những năng lực phù hợp, cùng đưa kế hoạch vào thực tế.",
         ),
         label: t("Ecosystem", "Hệ sinh thái"),
       },
@@ -83,21 +83,21 @@ export const home = {
   },
 
   programs: {
-    headingLead: t("Two programs.", "Hai chương trình."),
+    headingLead: t("Two programs.", "Hai nhịp cầu."),
     headingAccent: t("Mid-2026.", "Giữa năm 2026."),
     openSite: t("open the event site", "mở trang của chương trình"),
-    closingLead: t("We can run either one again, for a", "Chúng tôi có thể tổ chức lại cả hai chương trình cho"),
-    closingAccent: t("different country or industry.", "một quốc gia hoặc một ngành khác."),
+    closingLead: t("We can run either one again, for a", "Mỗi chương trình đều có thể được thiết kế lại để phù hợp"),
+    closingAccent: t("different country or industry.", "từng quốc gia, ngành hàng hoặc nhu cầu cụ thể."),
   },
 
   founders: {
     headingLead: t("Three founders.", "Ba nhà sáng lập."),
-    headingAccent: t("Both sides.", "Kết nối hai phía."),
+    headingAccent: t("Both sides.", "Khơi thông dòng chảy Việt Nam và thế giới."),
   },
 
   communities: {
-    headingLead: t("We build rooms,", "Chúng tôi xây dựng những kết nối thực sự,"),
-    headingAccent: t("not lists.", "không chỉ là danh sách liên hệ."),
+    headingLead: t("We build rooms,", "Chúng tôi cùng bạn đưa những cuộc gặp"),
+    headingAccent: t("not lists.", "trở thành những cơ hội hợp tác thực sự."),
     link: t("Communities", "Tham gia cộng đồng"),
   },
 
@@ -107,7 +107,7 @@ export const home = {
   },
 
   contact: {
-    titleLead: t("If one of the four doors is yours,", "Nếu một trong bốn cánh cửa là dành cho bạn,"),
-    titleAccent: t("let's talk.", "hãy nói chuyện với chúng tôi."),
+    titleLead: t("If one of the four doors is yours,", "Một trong bốn hướng là điều bạn đang tìm kiếm,"),
+    titleAccent: t("let's talk.", "hãy chia sẻ với chúng tôi."),
   },
 };
