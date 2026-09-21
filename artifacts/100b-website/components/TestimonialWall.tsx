@@ -68,7 +68,18 @@ export function TestimonialWall({
                     </span>
                     <span className="text-[11px] uppercase tracking-[0.15em] text-brand-gold font-semibold">
                       {t.title ? `${t.title} · ` : ""}
-                      {t.company}
+                      {t.companyUrl ? (
+                        <a
+                          href={t.companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline underline-offset-4 decoration-brand-gold/40 hover:decoration-brand-gold transition-colors"
+                        >
+                          {t.company}
+                        </a>
+                      ) : (
+                        t.company
+                      )}
                     </span>
                     {t.credential && (
                       <span className="text-xs text-text-body italic">{t.credential}</span>

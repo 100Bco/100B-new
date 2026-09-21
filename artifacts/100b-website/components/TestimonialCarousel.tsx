@@ -117,7 +117,18 @@ export function TestimonialCarousel({
                 </span>
                 <span className="text-[11px] uppercase tracking-widest text-brand-gold font-semibold mt-1">
                   {slide.title ? `${slide.title} · ` : ""}
-                  <span className="font-bold">{slide.company}</span>
+                  {slide.companyUrl ? (
+                    <a
+                      href={slide.companyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-bold underline underline-offset-4 decoration-brand-gold/40 hover:decoration-brand-gold transition-colors"
+                    >
+                      {slide.company}
+                    </a>
+                  ) : (
+                    <span className="font-bold">{slide.company}</span>
+                  )}
                 </span>
                 {slide.credential && (
                   <span className="text-xs text-text-body italic mt-1">
