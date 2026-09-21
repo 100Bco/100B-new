@@ -110,6 +110,13 @@ const testimonialText: Record<string, Partial<Testimonial>> = {
     credential:
       "Tiên phong trong lĩnh vực chăm sóc sức khỏe từ thảo dược, hơn 240 triệu sản phẩm được bán trên toàn thế giới",
   },
+  "Loc Dang": {
+    headline: "Họ hiểu cả hai đầu cầu",
+    quote:
+      "Tôi làm việc với nhiều doanh nghiệp Việt tại Mỹ, và điều hiếm thấy ở Minh cùng 100B là họ hiểu cả hai đầu cầu. Không chỉ giới thiệu, mà thực sự ngồi xuống giải quyết từng việc một.",
+    title: "Nhà sáng lập",
+    credential: "Văn phòng luật tại Austin, Texas",
+  },
   "Mark Duval": {
     headline: "Điều các bạn đang làm thật sự tuyệt vời",
     quote:

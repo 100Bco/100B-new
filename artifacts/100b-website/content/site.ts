@@ -8,6 +8,7 @@ import hexagonPhoto from "@assets/Hexagon.webp";
 import kalotoysPhoto from "@assets/Kalotoys.jpg";
 import saoThaiDuongPhoto from "@assets/Sao Thai Duong.webp";
 import markDuvalPhoto from "@assets/Mark Duval Profile.jpg";
+import locDangPhoto from "@assets/Loc Dang.png";
 import hectorPhoto from "@assets/1-Hector Quintanar.jpg";
 import ahmedPhoto from "@assets/Ahmed.jpeg";
 import marcKnapperPhoto from "@assets/Marc Knapper.webp";
@@ -116,6 +117,12 @@ export type Testimonial = {
   /** Role, shown as "TITLE · COMPANY". */
   title?: string;
   company: string;
+  /**
+   * Where the company name points, when it should point anywhere. A real
+   * link to a real firm, followed like every other outbound link on the
+   * site: these are partners, not paid placements.
+   */
+  companyUrl?: string;
   /** One credential line under the signature. */
   credential: string;
   photo: string | null;
@@ -301,8 +308,21 @@ const vinmake: Testimonial = {
 };
 
 /** The US partners who travelled with us, shown on the homepage. */
+const locDang: Testimonial = {
+  headline: "THEY UNDERSTAND BOTH ENDS",
+  quote:
+    "I work with a lot of Vietnamese businesses here in the US, and what is rare about Minh and 100B is that they understand both ends of the bridge. They don't just make the introduction, they sit down and work through it with you.",
+  name: "Loc Dang",
+  title: "FOUNDER",
+  company: "DANG LAW GROUP",
+  companyUrl: "https://danglawgroup.com/",
+  credential: "Personal injury law firm, Austin, Texas",
+  photo: locDangPhoto.src,
+};
+
 export const partnerTestimonials: Testimonial[] = [
   markDuval,
+  locDang,
   hectorQuintanar,
   ahmedMoledina,
 ];

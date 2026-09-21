@@ -123,7 +123,11 @@ export function TheName() {
         </motion.div>
 
         <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-brand-gold mb-6">
-          {ui.theName.heading[locale]}
+          {ui.theName.headingBefore[locale]}
+          {ui.theName.headingMark[locale] && (
+            <span className="font-display">{ui.theName.headingMark[locale]}</span>
+          )}
+          {ui.theName.headingAfter[locale]}
         </h2>
 
         <p className="font-sans text-base md:text-lg lg:text-xl font-light leading-relaxed text-text-body max-w-3xl mb-4">

@@ -49,7 +49,12 @@ export const ui = {
   theName: {
     mountains: { en: "to the mountains", vi: "lên núi" },
     sea: { en: "to the sea", vi: "xuống biển" },
-    heading: { en: "Where the name comes from.", vi: "Cái tên 100B từ một câu chuyện rất Việt Nam!" },
+    /* Split so the mark can take the UTM face the rest of the site gives
+       every 100B numeral. English has no mark in this line, so its middle
+       and tail are empty and the heading renders exactly as before. */
+    headingBefore: { en: "Where the name comes from.", vi: "Cái tên " },
+    headingMark: { en: "", vi: "100B" },
+    headingAfter: { en: "", vi: " từ một câu chuyện rất Việt Nam!" },
     legend: {
       en: "Âu Cơ bore one hundred children. Fifty went to the mountains with their mother. Fifty went to the sea with their father.",
       vi: "Truyền thuyết kể rằng Âu Cơ sinh ra một bọc trăm trứng, nở thành một trăm người con. Năm mươi người con theo mẹ lên núi. Năm mươi người con theo cha xuống biển.",
