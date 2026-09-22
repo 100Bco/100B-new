@@ -13,7 +13,11 @@ export function EcosystemPage({ locale }: { locale: Locale }) {
       {/* 5.1 HERO */}
       <PageHero
         locale={locale}
-        titleScale={locale === "vi" ? "lg:text-[88px] xl:text-[96px]" : "lg:text-[96px]"}
+        titleScale={
+          locale === "vi"
+            ? "md:text-[min(96px,calc((100vw-4rem)/11.0))]"
+            : "md:text-7xl lg:text-[96px]"
+        }
         title={
           <>
             <span className="block">{e.hero.line1[locale]}</span>
@@ -88,18 +92,17 @@ export function EcosystemPage({ locale }: { locale: Locale }) {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mt-10 relative">
             <div className="absolute left-0 right-0 top-[5px] h-px bg-gradient-to-r from-brand-gold/20 via-brand-gold/60 to-brand-gold/20" />
-            <div className="grid grid-cols-3 gap-4 md:gap-8">
+            {/* Subgrid, so the dot, the range and the company line up across
+                all three rungs even when one range wraps to two lines. */}
+            <div className="grid grid-cols-3 grid-rows-[auto_auto_auto] gap-4 md:gap-8">
               {ladder.map((rung) => (
-                <div key={rung.range} className="flex flex-col items-center text-center gap-4">
+                <div
+                  key={rung.range}
+                  className="grid grid-rows-subgrid row-span-3 justify-items-center text-center gap-4"
+                >
                   <div className="w-[11px] h-[11px] rounded-full bg-brand-gold shadow-[0_0_12px_rgba(195,163,116,0.7)]" />
-                  <span className="flex items-end justify-center min-h-[1.125rem] sm:min-h-[1.5rem] lg:min-h-[2.25rem]">
-                    <span
-                      className={`text-gradient-gold leading-none ${
-                        /\d/.test(rung.range)
-                          ? "font-display text-lg sm:text-2xl lg:text-4xl"
-                          : "font-sans font-semibold text-sm sm:text-lg lg:text-2xl"
-                      }`}
-                    >
+                  <span className="flex items-end justify-center self-stretch">
+                    <span className="text-gradient-gold leading-snug font-sans font-semibold text-sm sm:text-lg lg:text-2xl">
                       {rung.range}
                     </span>
                   </span>

@@ -122,7 +122,11 @@ export function EnterVietnamPage({ locale }: { locale: Locale }) {
       {/* 3.1 HERO */}
       <PageHero
         locale={locale}
-        titleScale={locale === "vi" ? "lg:text-[70px] xl:text-[88px]" : "lg:text-[96px]"}
+        titleScale={
+          locale === "vi"
+            ? "md:text-[min(88px,calc((100vw-4rem)/13.7))]"
+            : "md:text-7xl lg:text-[96px]"
+        }
         videoId="t0jdqo7des"
         title={
           <>
@@ -162,7 +166,7 @@ export function EnterVietnamPage({ locale }: { locale: Locale }) {
             {v.build.headingLead[locale]} <Accent>{v.build.headingAccent[locale]}</Accent>
           </SectionTitle>
 
-          <p className="text-base lg:text-lg font-light leading-relaxed text-text-body max-w-3xl mb-12">
+          <p className="text-base lg:text-lg font-light leading-relaxed text-text-body max-w-3xl mx-auto text-center mb-12">
             {v.build.intro[locale]}
           </p>
 

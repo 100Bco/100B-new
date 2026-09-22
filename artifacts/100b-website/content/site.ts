@@ -334,6 +334,7 @@ export const delegateTestimonials: Testimonial[] = [
   barbaraJoe,
   michaelNguyen,
   markDuval,
+  locDang,
   hectorQuintanar,
   ahmedMoledina,
   earthVc,
