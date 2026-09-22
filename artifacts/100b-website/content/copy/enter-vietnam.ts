@@ -133,7 +133,7 @@ export const enterVietnamCopy = {
     line1: t("Access Vietnam is one example.", "ACCESS Vietnam chỉ là một ví dụ."),
     line2: t(
       "We build these for organizations in our network.",
-      "Chúng tôi xây dựng những chương trình tương tự cho các tổ chức trong mạng lưới của mình.",
+      "Chúng tôi xây dựng chương trình cho cả mạng lưới.",
     ),
     items: [
       {
