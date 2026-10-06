@@ -1,6 +1,7 @@
 import { Linkedin } from "lucide-react";
+import Link from "next/link";
 import { getSite } from "@/content/get-site";
-import type { Locale } from "@/content/locale";
+import { localePath, type Locale } from "@/content/locale";
 import Image from "next/image";
 
 function initials(name: string) {
@@ -64,8 +65,18 @@ export function Founders({
           </div>
           <div className="flex flex-col items-center gap-1 sm:gap-1.5">
             <div className="flex items-center justify-center gap-1.5 sm:gap-2">
+              {/* A founder with a page of their own takes the reader there. */}
               <h3 className="font-sans font-bold text-[13px] sm:text-lg lg:text-xl text-text-heading leading-tight">
-                {f.name}
+                {f.profile ? (
+                  <Link
+                    href={localePath(locale, f.profile)}
+                    className="underline underline-offset-4 decoration-brand-gold/40 hover:text-brand-gold hover:decoration-brand-gold transition-colors"
+                  >
+                    {f.name}
+                  </Link>
+                ) : (
+                  f.name
+                )}
               </h3>
               {f.linkedin && (
                 <a

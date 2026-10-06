@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/container-club", priority: 0.9 },
     { path: "/ecosystem", priority: 0.8 },
     { path: "/about", priority: 0.7 },
+    { path: "/about/minh-mac", priority: 0.6 },
     { path: "/communities", priority: 0.6 },
   ];
 

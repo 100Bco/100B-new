@@ -54,6 +54,9 @@ export type NavLink = {
   descriptor: string;
   /** Pages that hang off this one in the nav rather than sitting beside it. */
   children?: NavLink[];
+  /** A person rather than a section. The footer leaves these out: one
+   *  name per founder would crowd the row the sections live on. */
+  person?: boolean;
 };
 
 export const navLinks: NavLink[] = [
@@ -94,6 +97,13 @@ export const navLinks: NavLink[] = [
     descriptor: "Who we are",
     children: [
       {
+        name: "Minh Mac",
+        nameVi: "Minh Mạc",
+        path: "/about/minh-mac",
+        descriptor: "Founder & CEO",
+        person: true,
+      },
+      {
         name: "Ecosystem",
         nameVi: "Hệ Sinh Thái",
         path: "/ecosystem",
@@ -106,7 +116,9 @@ export const navLinks: NavLink[] = [
 /** The footer is flat: a page under About in the nav is still its own page. */
 export const footerLinks = navLinks.flatMap((l) => [
   { name: l.name, path: l.path },
-  ...(l.children ?? []).map((c) => ({ name: c.name, path: c.path })),
+  ...(l.children ?? [])
+    .filter((c) => !c.person)
+    .map((c) => ({ name: c.name, path: c.path })),
 ]);
 
 export type Testimonial = {
@@ -417,6 +429,8 @@ export type Founder = {
   long: string;
   photo: string | null;
   linkedin?: string;
+  /** The route of their own page, where one exists. */
+  profile?: string;
 };
 
 /* Minh sits in the middle, the other two either side: the row reads as one
@@ -435,6 +449,7 @@ export const founders: Founder[] = [
   {
     name: "Minh Mac",
     title: "Founder & CEO",
+    profile: "/about/minh-mac",
     photo: minhPhoto.src,
     linkedin: "https://www.linkedin.com/in/minhlaunch/",
     short:
