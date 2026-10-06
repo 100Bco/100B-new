@@ -1,6 +1,7 @@
 import type { Locale } from "@/content/locale";
 import type { ReactNode } from "react";
 import Image from "next/image";
+import { WistiaScripts } from "@/components/WistiaScripts";
 
 /**
  * The hero every inner page uses. Same shape as the homepage hero: one full
@@ -48,6 +49,9 @@ export function PageHero({
         image || videoId ? "" : "glow-warm-top"
       }`}
     >
+      {videoId && (
+        <WistiaScripts mediaId={videoId} />
+      )}
       {videoId && (
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div

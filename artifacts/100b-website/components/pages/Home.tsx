@@ -4,6 +4,7 @@ import { Accent, ArrowLink, SectionTitle, Lead } from "@/components/Section";
 import { IconCard } from "@/components/IconCard";
 import { TheName } from "@/components/TheName";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { WistiaScripts } from "@/components/WistiaScripts";
 import { PhotoTile } from "@/components/PhotoTile";
 import { Founders } from "@/components/Founders";
 import { PressCarousel } from "@/components/PressCarousel";
@@ -40,6 +41,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       {/* 1.1 HERO */}
       <section className="relative bg-bg-dark overflow-hidden min-h-[max(100vh,720px)] flex flex-col justify-center border-b border-border-subtle">
         {/* Full-bleed footage. Wistia embed scaled to cover the viewport. */}
+        <WistiaScripts mediaId="68iibq5ow9" />
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"

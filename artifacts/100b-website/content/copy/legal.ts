@@ -83,8 +83,8 @@ const privacy: LegalDoc = {
           "Phân tích truy cập. Chúng tôi dùng Ahrefs Web Analytics để đếm lượt truy cập và xem trang nào được đọc. Công cụ này không đặt cookie và không xây dựng hồ sơ theo dõi bạn qua nhiều trang web.",
         ),
         t(
-          "Video. Some pages embed a Wistia player. Wistia sets cookies and records playback data such as how much of a video was watched. These are the only cookies this site causes to be set.",
-          "Video. Một số trang nhúng trình phát Wistia. Wistia đặt cookie và ghi nhận dữ liệu phát như thời lượng video đã xem. Đây là những cookie duy nhất mà trang web này tạo ra.",
+          "Video. The pages that carry a video load a Wistia player, and only those pages load it. Wistia sets cookies and records playback data such as how much of a video was watched. These are the only cookies this site causes to be set, and they are set nowhere else on it.",
+          "Video. Những trang có video sẽ tải trình phát Wistia, và chỉ những trang đó mới tải. Wistia đặt cookie và ghi nhận dữ liệu phát như thời lượng video đã xem. Đây là những cookie duy nhất mà trang web này tạo ra, và chúng không xuất hiện ở bất kỳ trang nào khác.",
         ),
       ],
     },
@@ -92,8 +92,8 @@ const privacy: LegalDoc = {
       heading: t("Cookies", "Cookie"),
       body: [
         t(
-          "We set no cookies of our own. We store nothing in your browser. The only cookies you may receive come from the Wistia player on the pages that carry a video, and you can block or clear them in your browser settings without losing anything else on the site.",
-          "Chúng tôi không đặt cookie của riêng mình và không lưu gì trong trình duyệt của bạn. Cookie duy nhất bạn có thể nhận đến từ trình phát Wistia trên những trang có video, và bạn có thể chặn hoặc xóa chúng trong cài đặt trình duyệt mà không ảnh hưởng tới phần còn lại của trang.",
+          "We set no cookies of our own. We store nothing in your browser. The only cookies you may receive come from the Wistia player, which loads on the pages that carry a video and on no others, so you can read every other page on this site, these policies included, without receiving a cookie at all. You can block or clear them in your browser settings without losing anything else here.",
+          "Chúng tôi không đặt cookie của riêng mình và không lưu gì trong trình duyệt của bạn. Cookie duy nhất bạn có thể nhận đến từ trình phát Wistia, vốn chỉ được tải trên những trang có video và không tải ở trang nào khác, nên bạn có thể đọc mọi trang còn lại của website này, kể cả các trang chính sách, mà không nhận cookie nào. Bạn có thể chặn hoặc xóa chúng trong cài đặt trình duyệt mà không ảnh hưởng tới phần còn lại của trang.",
         ),
       ],
     },
