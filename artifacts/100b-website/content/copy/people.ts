@@ -25,7 +25,7 @@ export type Person = {
   /** One or two short paragraphs: the road here, then the work now. */
   intro: Dict<string>[];
   /** Organisations and ventures, not clients of clients. */
-  workedWith: string[];
+  workedWith: Dict<string>[];
   expertIn: Dict<string>[];
   wantsYouToKnow: Dict<string>[];
 };
@@ -51,9 +51,7 @@ const minhMac: Person = {
   name: t("Minh Mac", "Minh Mạc"),
   title: t("Founder & Chief Executive Officer", "Nhà sáng lập & Tổng giám đốc"),
   company: "100B",
-  /* His own address, the one on his LinkedIn. Swap it for a 100B address
-     the day one exists. */
-  email: "minh.launch@gmail.com",
+  email: "global@100b.co",
   linkedin: "https://www.linkedin.com/in/minhlaunch/",
   photo: minhPhoto.src,
   /* The source frame is square. Cropped to a tall panel it holds the head
@@ -77,14 +75,14 @@ const minhMac: Person = {
     ),
   ],
   workedWith: [
-    "Neuberger Berman",
-    "Kansas State University Foundation",
-    "Greater Austin Asian Chamber of Commerce",
-    "AREAA",
-    "Project 844, Ministry of Science and Technology",
-    "Techfest Vietnam",
-    "LocaMos",
-    "Loca Cafe",
+    t("Neuberger Berman", "Neuberger Berman"),
+    t("Kansas State University Foundation", "Quỹ Đại học Kansas State"),
+    t("Greater Austin Asian Chamber of Commerce", "Phòng Thương mại châu Á Greater Austin"),
+    t("AREAA", "AREAA"),
+    t("Ministry of Science and Technology", "Bộ Khoa học và Công nghệ"),
+    t("Techfest Vietnam", "Techfest Việt Nam"),
+    t("LocaMos", "LocaMos"),
+    t("Loca Cafe", "Loca Cafe"),
   ],
   expertIn: [
     t(
@@ -106,20 +104,16 @@ const minhMac: Person = {
   ],
   wantsYouToKnow: [
     t(
-      "Valedictorian in Finance at Kansas State, and the first international student in 53 years to give the business school's commencement address",
-      "Thủ khoa ngành Tài chính tại Đại học Kansas State, và là sinh viên quốc tế đầu tiên sau 53 năm được chọn phát biểu tại lễ tốt nghiệp của trường kinh doanh",
-    ),
-    t(
-      "The first international student elected student senate president at his community college",
-      "Sinh viên quốc tế đầu tiên được bầu làm Chủ tịch Hội sinh viên tại trường cao đẳng cộng đồng của mình",
+      "Graduated valedictorian in Finance at Kansas State University, and was the first international student in 53 years to give the business school's commencement address",
+      "Tốt nghiệp thủ khoa đầu ra ngành Tài chính, Đại học Kansas State, và là sinh viên quốc tế đầu tiên sau 53 năm được chọn phát biểu tại lễ tốt nghiệp của trường kinh doanh",
     ),
     t(
       "Board member at AREAA, a US real estate association with 40+ chapters and 20,000 members",
       "Thành viên hội đồng AREAA, hiệp hội bất động sản Mỹ với hơn 40 chi hội và 20.000 thành viên",
     ),
     t(
-      "Brought Techfest Vietnam to the United States for the first time, as an advisor to Project 844 at the Ministry of Science and Technology",
-      "Lần đầu tiên đưa Techfest Việt Nam sang Mỹ, trên cương vị cố vấn Đề án 844 của Bộ Khoa học và Công nghệ",
+      "Brought Techfest Vietnam to the United States for the first time, as an advisor to the Ministry of Science and Technology",
+      "Lần đầu tiên đưa Techfest Việt Nam sang Mỹ, trên cương vị cố vấn của Bộ Khoa học và Công nghệ",
     ),
     t(
       "One winter he drove 39 days across the American West with no plan and no hotels. Every night but one he stayed with a stranger, and some are still friends.",
