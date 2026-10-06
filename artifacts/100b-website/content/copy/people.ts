@@ -76,11 +76,14 @@ const minhMac: Person = {
   ],
   workedWith: [
     t("Neuberger Berman", "Neuberger Berman"),
-    t("Kansas State University Foundation", "Quỹ Đại học Kansas State"),
-    t("Greater Austin Asian Chamber of Commerce", "Phòng Thương mại châu Á Greater Austin"),
-    t("AREAA", "AREAA"),
+    t("National Innovation Center (NIC)", "Trung tâm Đổi mới sáng tạo Quốc gia (NIC)"),
     t("Ministry of Science and Technology", "Bộ Khoa học và Công nghệ"),
     t("Techfest Vietnam", "Techfest Việt Nam"),
+    t("Vietnam–Japan Business Association", "Hiệp hội Doanh nghiệp Việt Nam – Nhật Bản"),
+    t("Greater Austin Asian Chamber of Commerce", "Phòng Thương mại châu Á Greater Austin"),
+    t("AREAA", "AREAA"),
+    t("LT Commercial Group", "LT Commercial Group"),
+    t("Cỏ Cây Hoa Lá", "Cỏ Cây Hoa Lá"),
     t("LocaMos · Loca Cafe", "LocaMos · Loca Cafe"),
   ],
   expertIn: [
