@@ -168,26 +168,6 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        {/* Wistia player for the hero video background */}
-        <Script
-          src="https://fast.wistia.com/player.js"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="https://fast.wistia.com/embed/68iibq5ow9.js"
-          strategy="afterInteractive"
-          type="module"
-        />
-        <Script
-          src="https://fast.wistia.com/embed/9hbymhvynw.js"
-          strategy="afterInteractive"
-          type="module"
-        />
-        <Script
-          src="https://fast.wistia.com/embed/t0jdqo7des.js"
-          strategy="afterInteractive"
-          type="module"
-        />
 
         {/* Organization structured data for search engines / AI crawlers */}
         <Script
