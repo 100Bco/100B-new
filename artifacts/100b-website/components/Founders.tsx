@@ -1,4 +1,4 @@
-import { Linkedin } from "lucide-react";
+import { LinkedInMark } from "@/components/SocialMarks";
 import Link from "next/link";
 import { getSite } from "@/content/get-site";
 import { localePath, type Locale } from "@/content/locale";
@@ -86,7 +86,7 @@ export function Founders({
                   aria-label={`${f.name} on LinkedIn`}
                   className="text-text-muted hover:text-brand-gold transition-colors shrink-0"
                 >
-                  <Linkedin strokeWidth={1.75} className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <LinkedInMark className="w-3 h-3 sm:w-4 sm:h-4" />
                 </a>
               )}
             </div>

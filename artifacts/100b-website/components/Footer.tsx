@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { CONTACT_EMAIL } from "@/content/site";
+import { CONTACT_EMAIL, socialLinks } from "@/content/site";
+import { SocialMark } from "@/components/SocialMarks";
 import { getSite } from "@/content/get-site";
 import { ui } from "@/content/copy/ui";
 import { localePath } from "@/content/locale";
@@ -28,6 +29,24 @@ export default function Footer() {
             <span className="text-base text-text-heading">100B Beyond Borders</span>
             <em className="italic text-brand-gold/80 text-base">{ui.footer.tagline[locale]}</em>
           </div>
+
+          {/* The channels. Each mark is a 40px target on a phone, which is
+              what a thumb needs, with the square itself drawn smaller. */}
+          <ul className="flex items-center gap-1 -ml-2 mt-1">
+            {socialLinks.map((s) => (
+              <li key={s.name}>
+                <a
+                  href={s.href[locale]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`100B on ${s.name}`}
+                  className="flex items-center justify-center w-10 h-10 text-text-muted hover:text-brand-gold transition-colors"
+                >
+                  <SocialMark name={s.mark} className="w-[22px] h-[22px]" />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="flex flex-col gap-6 md:items-end">
