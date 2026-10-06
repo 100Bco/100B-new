@@ -18,9 +18,10 @@ function Block({
 }) {
   return (
     <section className="pt-10 mt-10 border-t border-border-subtle first:border-0 first:mt-0 first:pt-0">
-      {/* Smaller than the 48px heading a full-width section takes, because
-          this one sits inside a half-width column of running text. */}
-      <h2 className="font-serif font-light text-2xl lg:text-3xl text-brand-gold leading-tight mb-5">
+      {/* The same face the testimonial headlines take, caps in UTM on gold,
+          at a smaller size: this heading sits inside a half-width column of
+          running text rather than across a full-width section. */}
+      <h2 className="font-display uppercase tracking-wide text-gradient-gold text-2xl lg:text-3xl leading-[1.1] mb-5">
         {title}
       </h2>
       {children}
