@@ -20,6 +20,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about", priority: 0.7 },
     { path: "/about/minh-mac", priority: 0.6 },
     { path: "/communities", priority: 0.6 },
+    { path: "/privacy", priority: 0.3 },
+    { path: "/terms", priority: 0.3 },
+    { path: "/disclaimer", priority: 0.3 },
   ];
 
   const languages = (path: string) =>

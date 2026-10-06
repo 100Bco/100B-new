@@ -6,6 +6,7 @@ import { CONTACT_EMAIL, socialLinks } from "@/content/site";
 import { SocialMark } from "@/components/SocialMarks";
 import { getSite } from "@/content/get-site";
 import { ui } from "@/content/copy/ui";
+import { legalDocs } from "@/content/copy/legal";
 import { localePath } from "@/content/locale";
 import { useLocale } from "@/components/useLocale";
 
@@ -25,10 +26,9 @@ export default function Footer() {
               className="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity"
             />
           </Link>
-          <div className="flex flex-col gap-1 font-serif leading-snug">
-            <span className="text-base text-text-heading">100B Beyond Borders</span>
-            <em className="italic text-brand-gold/80 text-base">{ui.footer.tagline[locale]}</em>
-          </div>
+          <em className="font-serif italic text-brand-gold/80 text-base leading-snug">
+            {ui.footer.tagline[locale]}
+          </em>
 
           {/* The channels. Each mark is a 40px target on a phone, which is
               what a thumb needs, with the square itself drawn smaller. */}
@@ -81,7 +81,18 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 border-t border-border-subtle flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[10px] uppercase tracking-[0.2em] text-text-muted/70">
-        <p>{ui.footer.rights[locale]}</p>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <p>{ui.footer.rights[locale]}</p>
+          {legalDocs.map((d) => (
+            <Link
+              key={d.slug}
+              href={localePath(locale, `/${d.slug}`)}
+              className="hover:text-brand-gold transition-colors"
+            >
+              {d.title[locale]}
+            </Link>
+          ))}
+        </div>
         <p>
           {ui.footer.poweredBy[locale]}{" "}
           <a
