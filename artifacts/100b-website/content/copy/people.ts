@@ -77,11 +77,17 @@ const minhMac: Person = {
   workedWith: [
     t("Neuberger Berman", "Neuberger Berman"),
     t("National Innovation Center (NIC)", "Trung tâm Đổi mới sáng tạo Quốc gia (NIC)"),
-    t("Ministry of Science and Technology", "Bộ Khoa học và Công nghệ"),
+    t(
+      "Ministry of Science and Technology of Vietnam",
+      "Bộ Khoa học và Công nghệ Việt Nam",
+    ),
     t("Techfest Vietnam", "Techfest Việt Nam"),
     t("Vietnam–Japan Business Association", "Hiệp hội Doanh nghiệp Việt Nam – Nhật Bản"),
     t("Greater Austin Asian Chamber of Commerce", "Phòng Thương mại châu Á Greater Austin"),
-    t("AREAA", "AREAA"),
+    t(
+      "Asian Real Estate Association of America (AREAA)",
+      "Hiệp hội Bất động sản châu Á tại Hoa Kỳ (AREAA)",
+    ),
     t("LT Commercial Group", "LT Commercial Group"),
     t("Cỏ Cây Hoa Lá", "Cỏ Cây Hoa Lá"),
     t("LocaMos · Loca Cafe", "LocaMos · Loca Cafe"),
