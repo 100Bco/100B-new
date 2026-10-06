@@ -90,10 +90,6 @@ export function PersonPage({ person, locale }: { person: Person; locale: Locale 
 
           <p className="mt-4 text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-gold">
             {person.title[locale]}
-            <span className="mx-2 text-border-subtle">·</span>
-            <span className="font-display text-base align-[-0.08em] tracking-normal">
-              {person.company}
-            </span>
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -161,7 +157,7 @@ export function PersonPage({ person, locale }: { person: Person; locale: Locale 
                 {person.wantsYouToKnow.map((w) => (
                   <li
                     key={w.en}
-                    className="relative pl-5 text-base lg:text-lg font-light leading-relaxed text-text-body before:absolute before:left-0 before:top-[0.62em] before:w-2 before:h-px before:bg-brand-gold"
+                    className="relative pl-[18px] text-base lg:text-lg font-light leading-relaxed text-text-body before:absolute before:left-0 before:top-[0.68em] before:w-[5px] before:h-[5px] before:rounded-full before:bg-brand-gold"
                   >
                     {w[locale]}
                   </li>
