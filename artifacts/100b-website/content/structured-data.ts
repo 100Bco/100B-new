@@ -1,5 +1,7 @@
 import type { PressItem } from "@/content/site";
 import type { TripPhoto } from "@/components/PhotoCarousel";
+import type { Person } from "@/content/copy/people";
+import { localePath, type Locale } from "@/content/locale";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://100b.co";
 
@@ -51,5 +53,26 @@ export function gallerySchema(name: string, photos: TripPhoto[]) {
       caption: `${photo.caption}, ${photo.label}`,
       representativeOfPage: false,
     })),
+  };
+}
+
+/** One leader, for the knowledge panel and for anything that reads a byline. */
+export function personSchema(person: Person, locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: person.name[locale],
+    jobTitle: person.title[locale],
+    email: `mailto:${person.email}`,
+    /* The asset filenames carry spaces, which are not legal in a URL. */
+    image: encodeURI(`${SITE_URL}${person.photo}`),
+    url: `${SITE_URL}${localePath(locale, `/about/${person.slug}`)}`,
+    ...(person.linkedin ? { sameAs: [person.linkedin] } : {}),
+    worksFor: {
+      "@type": "Organization",
+      name: person.company,
+      url: SITE_URL,
+    },
+    knowsAbout: person.expertIn.map((e) => e[locale]),
   };
 }

@@ -41,6 +41,7 @@ const navText: Record<string, string> = {
   Communities: "Mạng lưới chúng tôi đã xây dựng",
   About: "Về chúng tôi",
   Ecosystem: "Năm công ty",
+  "Minh Mac": "Nhà sáng lập & CEO",
 };
 
 /** The nav already carried a Vietnamese name for each link; this adds the
@@ -58,7 +59,9 @@ export const navLinks: NavLink[] = localizeNav(navLinksEn);
 
 export const footerLinks = navLinks.flatMap((l) => [
   { name: l.name, path: l.path },
-  ...(l.children ?? []).map((c) => ({ name: c.name, path: c.path })),
+  ...(l.children ?? [])
+    .filter((c) => !c.person)
+    .map((c) => ({ name: c.name, path: c.path })),
 ]);
 
 /* -------------------------------------------------------- testimonials ---- */

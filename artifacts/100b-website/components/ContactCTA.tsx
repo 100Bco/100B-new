@@ -14,11 +14,14 @@ export function ContactCTA({
   title,
   note,
   meta,
+  email = CONTACT_EMAIL,
   locale = "en",
 }: {
   title: ReactNode;
   note?: string;
   meta?: string;
+  /** Overrides the house address, for a page that belongs to one person. */
+  email?: string;
   locale?: Locale;
 }) {
   const noteText = note ?? ui.contact.note[locale];
@@ -62,10 +65,10 @@ export function ContactCTA({
         )}
         <p className="text-sm text-text-body font-light leading-relaxed">{noteText}</p>
         <a
-          href={`mailto:${CONTACT_EMAIL}`}
+          href={`mailto:${email}`}
           className="btn-silver-gradient rounded-full px-10 py-4 text-sm uppercase tracking-widest font-semibold inline-block"
         >
-          {CONTACT_EMAIL}
+          {email}
         </a>
       </div>
     </section>
