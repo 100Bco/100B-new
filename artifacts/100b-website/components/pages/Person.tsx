@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Linkedin, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { LinkedInMark } from "@/components/SocialMarks";
 import { Accent } from "@/components/Section";
 import { ContactCTA } from "@/components/ContactCTA";
 import { JsonLd } from "@/components/JsonLd";
@@ -112,7 +113,7 @@ export function PersonPage({ person, locale }: { person: Person; locale: Locale 
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 text-sm font-light text-text-body hover:text-brand-gold transition-colors"
               >
-                <Linkedin strokeWidth={1.75} className="w-4 h-4 text-brand-gold" />
+                <LinkedInMark className="w-4 h-4 text-brand-gold" />
                 <span className="underline underline-offset-4 decoration-brand-gold/40 group-hover:decoration-brand-gold transition-colors">
                   {c.labels.linkedin[locale]}
                 </span>

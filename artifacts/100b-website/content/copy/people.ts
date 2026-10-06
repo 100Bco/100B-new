@@ -32,9 +32,9 @@ export type Person = {
 
 export const peopleCopy = {
   labels: {
-    workedWith: t("Has worked with:", "Đã làm việc cùng:"),
-    expertIn: t("Is an expert in:", "Chuyên sâu về:"),
-    wantsYouToKnow: t("Wants you to know:", "Một vài điều về anh:"),
+    workedWith: t("Has worked with", "Đã làm việc cùng"),
+    expertIn: t("Is an expert in", "Chuyên sâu về"),
+    wantsYouToKnow: t("Wants you to know", "Một vài điều về anh"),
     email: t("Email", "Email"),
     linkedin: t("LinkedIn", "LinkedIn"),
     back: t("All of 100B", "Về trang giới thiệu"),
@@ -66,8 +66,8 @@ const minhMac: Person = {
   },
   intro: [
     t(
-      "Minh left Vietnam for the United States alone at seventeen. A Finance valedictorian at Kansas State University, he spent four years in private equity at Neuberger Berman, a leading global investment firm, before becoming an entrepreneur. He co-founded LocaMos, a marketing technology platform that reached 1.6 million users in ten months, and helped grow a café chain to 36 locations across 17 provinces in just four and a half months.",
-      "Minh rời Việt Nam sang Mỹ một mình năm 17 tuổi. Tốt nghiệp thủ khoa đầu ra ngành Tài chính tại Đại học Kansas State, anh có bốn năm làm private equity tại Neuberger Berman, một công ty đầu tư hàng đầu thế giới, trước khi chuyển sang khởi nghiệp. Anh đồng sáng lập LocaMos, nền tảng marketing công nghệ đạt 1,6 triệu người dùng trong mười tháng, và góp phần đưa một chuỗi cà phê lên 36 điểm bán tại 17 tỉnh thành chỉ trong bốn tháng rưỡi.",
+      "Minh left Vietnam for the United States alone at seventeen. A Finance valedictorian at Kansas State University, he spent four years in private equity at Neuberger Berman, one of the world’s largest investment management firms, before becoming an entrepreneur. He co-founded LocaMos, a marketing technology platform that reached 1.6 million users in ten months, and helped grow a café chain to 36 locations across 17 provinces in just four and a half months.",
+      "Minh rời Việt Nam sang Mỹ một mình năm 17 tuổi. Tốt nghiệp thủ khoa đầu ra ngành Tài chính tại Đại học Kansas State, anh có bốn năm làm private equity tại Neuberger Berman, một trong những công ty quản lý đầu tư lớn nhất thế giới, trước khi chuyển sang khởi nghiệp. Anh đồng sáng lập LocaMos, nền tảng marketing công nghệ đạt 1,6 triệu người dùng trong mười tháng, và góp phần đưa một chuỗi cà phê lên 36 điểm bán tại 17 tỉnh thành chỉ trong bốn tháng rưỡi.",
     ),
     t(
       "Today, Minh leads 100B from Hanoi and Austin, helping Vietnamese brands expand internationally and global businesses enter Vietnam. He brings an investor\u2019s discipline, a founder\u2019s practical experience and a personal understanding of both markets. Through 100B\u2019s equity partnerships in the US, he puts that experience behind a shared commitment: to succeed alongside the businesses he helps build.",
@@ -81,51 +81,34 @@ const minhMac: Person = {
     t("AREAA", "AREAA"),
     t("Ministry of Science and Technology", "Bộ Khoa học và Công nghệ"),
     t("Techfest Vietnam", "Techfest Việt Nam"),
-    t("LocaMos", "LocaMos"),
-    t("Loca Cafe", "Loca Cafe"),
+    t("LocaMos · Loca Cafe", "LocaMos · Loca Cafe"),
   ],
   expertIn: [
-    t(
-      "Cross-border market entry, Vietnam and the United States, in both directions",
-      "Mở thị trường hai chiều giữa Việt Nam và Mỹ",
-    ),
+    t("Vietnam–US market entry", "Mở thị trường Việt Nam – Mỹ"),
     t(
       "Private equity due diligence, valuation and fundraising",
       "Thẩm định, định giá và gọi vốn trong private equity",
     ),
-    t(
-      "Taking an operating company from zero to scale",
-      "Đưa một doanh nghiệp từ con số không đến quy mô lớn",
-    ),
-    t(
-      "Brand and demand generation for US businesses",
-      "Xây thương hiệu và tạo nhu cầu cho doanh nghiệp tại Mỹ",
-    ),
+    t("Building and scaling businesses", "Xây dựng và mở rộng quy mô doanh nghiệp"),
+    t("Brand strategy and demand generation", "Chiến lược thương hiệu và tạo nhu cầu"),
+    t("AI adoption and business automation", "Ứng dụng AI và tự động hóa vận hành"),
   ],
   wantsYouToKnow: [
     t(
-      "Graduated valedictorian in Finance at Kansas State University, and was the first international student in 53 years to give the business school's commencement address",
-      "Tốt nghiệp thủ khoa đầu ra ngành Tài chính, Đại học Kansas State, và là sinh viên quốc tế đầu tiên sau 53 năm được chọn phát biểu tại lễ tốt nghiệp của trường kinh doanh",
+      "Kansas State’s first international business school commencement speaker in 53 years.",
+      "Sinh viên quốc tế đầu tiên sau 53 năm phát biểu tại lễ tốt nghiệp trường kinh doanh, Đại học Kansas State.",
     ),
     t(
-      "Board member at AREAA, a US real estate association with 40+ chapters and 20,000 members",
-      "Thành viên hội đồng AREAA, hiệp hội bất động sản Mỹ với hơn 40 chi hội và 20.000 thành viên",
+      "Project 844 advisor, helping bring Techfest Vietnam to the US for the first time.",
+      "Cố vấn Đề án 844, góp phần lần đầu đưa Techfest Việt Nam sang Mỹ.",
     ),
     t(
-      "Brought Techfest Vietnam to the United States for the first time, as an advisor to the Ministry of Science and Technology",
-      "Lần đầu tiên đưa Techfest Việt Nam sang Mỹ, trên cương vị cố vấn của Bộ Khoa học và Công nghệ",
+      "Spent 39 days driving across the American West, staying with strangers almost every night. Some are still friends.",
+      "39 ngày lái xe xuyên miền Tây nước Mỹ, gần như đêm nào cũng ở nhà một người lạ. Nhiều người giờ vẫn là bạn.",
     ),
     t(
-      "One winter he drove 39 days across the American West with no plan and no hotels. Every night but one he stayed with a stranger, and some are still friends.",
-      "Một mùa đông anh lái xe 39 ngày xuyên miền Tây nước Mỹ, không kế hoạch, không đặt khách sạn. Gần như đêm nào anh cũng ở nhà một người lạ, và nhiều người trong số đó giờ vẫn là bạn.",
-    ),
-    t(
-      "His English comes from his grandfather, a paediatrician who taught himself English and French off BBC and CNN on the radio.",
-      "Giọng tiếng Anh của anh đến từ ông ngoại, một bác sĩ nhi tự học tiếng Anh và tiếng Pháp qua đài BBC và CNN.",
-    ),
-    t(
-      "He calls business “my game, the only hobby I have.” Financial freedom, to him, is not a number: it is being able to live anywhere in the world.",
-      "Anh gọi kinh doanh là “cuộc chơi của tôi, thú vui duy nhất tôi có”. Với anh, tự do tài chính không phải một con số, mà là được sống ở bất cứ đâu trên thế giới.",
+      "To him, financial freedom means the freedom to live and build anywhere in the world.",
+      "Với anh, tự do tài chính là tự do sống và xây dựng ở bất cứ đâu trên thế giới.",
     ),
   ],
 };

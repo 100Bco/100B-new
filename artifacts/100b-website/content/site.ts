@@ -1,3 +1,5 @@
+import type { Dict } from "./locale";
+import type { SocialMarkName } from "@/components/SocialMarks";
 // Single source of truth for site copy that is reused across pages.
 // Page-specific copy lives inline in each page file.
 
@@ -46,6 +48,41 @@ import logoBond from "@assets/logo-bond-mono.png";
 import logo100bold from "@assets/logo-100bold-mono.png";
 
 export const CONTACT_EMAIL = "global@100b.co";
+
+export type SocialLink = {
+  name: string;
+  mark: SocialMarkName;
+  /** Per language, because the two Facebook pages are written in two
+   *  languages and a Vietnamese reader should land on the Vietnamese one. */
+  href: Dict<string>;
+};
+
+export const socialLinks: SocialLink[] = [
+  {
+    name: "LinkedIn",
+    mark: "linkedin",
+    href: {
+      en: "https://www.linkedin.com/company/103019290/",
+      vi: "https://www.linkedin.com/company/103019290/",
+    },
+  },
+  {
+    name: "Facebook",
+    mark: "facebook",
+    href: {
+      en: "https://www.facebook.com/100bglobal",
+      vi: "https://www.facebook.com/100bvietnam",
+    },
+  },
+  {
+    name: "TikTok",
+    mark: "tiktok",
+    href: {
+      en: "https://www.tiktok.com/@100b.co",
+      vi: "https://www.tiktok.com/@100b.co",
+    },
+  },
+];
 
 export type NavLink = {
   name: string;
