@@ -134,8 +134,8 @@ export function PersonPage({ person, locale }: { person: Person; locale: Locale 
             <Block title={c.labels.workedWith[locale]}>
               <ul className="flex flex-col gap-2">
                 {person.workedWith.map((w) => (
-                  <li key={w} className="text-base lg:text-lg font-light text-text-heading">
-                    {w}
+                  <li key={w.en} className="text-base lg:text-lg font-light text-text-heading">
+                    {w[locale]}
                   </li>
                 ))}
               </ul>
