@@ -79,6 +79,7 @@ function LocaleSwitcher({
 
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [canHover, setCanHover] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   /** Which top-level link has its panel held open by a tap. Hover is handled
    *  in CSS; this is what a touch screen has instead of hover. */
@@ -88,6 +89,18 @@ export default function Nav() {
   const { navLinks } = getSite(locale);
   /** The same page in the other language, so switching keeps your place. */
   const otherPath = swapLocale(pathname);
+
+  /* Whether the pointer can hover. A tap fires pointerenter too, so opening
+     on enter has to be limited to a pointer that can actually rest on
+     something, or a tap on the caret would open the panel and then toggle it
+     straight back shut. */
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover)");
+    const update = () => setCanHover(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -167,28 +180,51 @@ export default function Nav() {
                 const isActive = own || childActive;
                 const isOpen = openMenu === link.path;
                 return (
-                  <div key={link.path} data-nav-item className="group relative flex items-center">
+                  <div
+                    key={link.path}
+                    data-nav-item
+                    className="group relative flex items-center"
+                    onPointerEnter={
+                      link.children && canHover ? () => setOpenMenu(link.path) : undefined
+                    }
+                    onPointerLeave={
+                      link.children && canHover ? () => setOpenMenu(null) : undefined
+                    }
+                    /* Tab out of the item and the panel goes with you. */
+                    onBlur={
+                      link.children
+                        ? (e) => {
+                            if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                              setOpenMenu(null);
+                            }
+                          }
+                        : undefined
+                    }
+                  >
+                    {/* The name goes to its own page. The caret beside it is
+                        a control of its own, so it can be pressed a second
+                        time to put the panel away: while the two were one
+                        link, the first tap opened the panel and the second
+                        had nowhere to go but the page, which left no way to
+                        close it and no way to reach About on a tablet. */}
                     <Link
                       href={href}
-                      aria-expanded={link.children ? isOpen : undefined}
-                      onClick={(e) => {
-                        /* A tablet gets no hover, so the panel had no way to
-                           open: tapping About simply went to About and the page
-                           under it was unreachable from the bar. Where the
-                           pointer cannot hover, the first tap opens the panel
-                           and the second one follows the link. */
-                        if (!link.children || isOpen) return;
-                        if (window.matchMedia("(hover: none)").matches) {
-                          e.preventDefault();
-                          setOpenMenu(link.path);
-                        }
-                      }}
-                      className={`font-sans text-[11px] uppercase whitespace-nowrap tracking-[0.15em] xl:tracking-[0.2em] font-semibold transition-colors py-2 flex items-center gap-1 ${
+                      className={`font-sans text-[11px] uppercase whitespace-nowrap tracking-[0.15em] xl:tracking-[0.2em] font-semibold transition-colors py-2 ${
                         isActive ? "text-brand-gold" : "text-text-muted hover:text-white"
                       }`}
                     >
                       {link.name}
-                      {link.children && (
+                    </Link>
+                    {link.children && (
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-label={`${ui.nav.toggleSubmenu[locale]} ${link.name}`}
+                        onClick={() => setOpenMenu(isOpen ? null : link.path)}
+                        className={`pl-1.5 pr-1 py-2 -my-0 transition-colors ${
+                          isActive ? "text-brand-gold" : "text-text-muted hover:text-white"
+                        }`}
+                      >
                         <ChevronDown
                           size={12}
                           strokeWidth={2.5}
@@ -197,20 +233,24 @@ export default function Nav() {
                           }`}
                           aria-hidden
                         />
-                      )}
-                    </Link>
+                      </button>
+                    )}
 
                     {link.children ? (
-                      /* The pages under this one. Held open on hover and on
-                         keyboard focus, so it is reachable by tab as well as
-                         by pointer. The gap between the link and the panel is
-                         padded rather than empty, or the pointer crossing it
-                         closes the panel. */
+                      /* The pages under this one. One piece of state decides
+                         whether it is up, set by hover on a pointer that can
+                         hover and by the caret everywhere. It used to be a
+                         CSS hover rule as well, and that rule meant pressing
+                         the caret to close did nothing a mouse user could
+                         see: the pointer was still on the item, so hover held
+                         the panel open. The gap between the link and the
+                         panel is padded rather than empty, or the pointer
+                         crossing it would leave the item. */
                       <div
                         className={`absolute left-1/2 top-full -translate-x-1/2 pt-3 transition-all duration-200 ${
                           isOpen
                             ? "opacity-100 translate-y-0 pointer-events-auto"
-                            : "opacity-0 translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto"
+                            : "opacity-0 translate-y-1 pointer-events-none"
                         }`}
                       >
                         <div className="min-w-[200px] rounded-2xl border border-white/10 bg-bg-card/95 backdrop-blur-md p-2 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.9)]">

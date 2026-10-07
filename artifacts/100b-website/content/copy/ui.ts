@@ -13,6 +13,8 @@ export const ui = {
   nav: {
     cta: { en: "Start a Conversation", vi: "Bắt đầu trò chuyện" },
     toggleMenu: { en: "Toggle menu", vi: "Mở menu" },
+    /** The caret beside a nav item that has pages under it. */
+    toggleSubmenu: { en: "Show pages under", vi: "Xem các mục trong" },
     /** The switcher announces what it will switch to, not where you are. */
     switchTo: { en: "Xem bản tiếng Việt", vi: "View in English" },
   },
