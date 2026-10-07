@@ -4,6 +4,8 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { socialLinks } from "@/content/site";
+import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
 /* The three faces, self-hosted. Loading them from fonts.googleapis.com with an
@@ -124,7 +126,12 @@ const organizationSchema = {
     { "@type": "Person", name: "Tung Cao", jobTitle: "Co-Founder & Head of International Trade" },
     { "@type": "Person", name: "Tu Mac", jobTitle: "Co-Founder & Head of Factory Ops" },
   ],
-  sameAs: ["https://100b.co"],
+  /* The profiles that are this organisation somewhere else, which is what
+     sameAs is for: the site's own address is already in `url` above. Read
+     off the footer's channels, so a new one flows through here too. Both
+     Facebook pages are listed, since the two are one organisation writing
+     in two languages. */
+  sameAs: [...new Set(socialLinks.flatMap((s) => [s.href.en, s.href.vi]))],
   address: [
     {
       "@type": "PostalAddress",
@@ -169,14 +176,11 @@ export default function RootLayout({
         />
 
 
-        {/* Organization structured data for search engines / AI crawlers */}
-        <Script
-          id="ld-organization"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
-        />
+        {/* Organization structured data for search engines and AI crawlers.
+            Rendered with the page rather than injected by next/script after
+            hydration: a crawler that does not run JavaScript was being served
+            none of this, which is the whole point of publishing it. */}
+        <JsonLd data={organizationSchema} />
       </body>
     </html>
   );
