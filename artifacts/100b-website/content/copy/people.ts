@@ -66,8 +66,8 @@ const minhMac: Person = {
   },
   intro: [
     t(
-      "Minh left Vietnam for the United States alone at seventeen. A Finance valedictorian at Kansas State University, he spent four years in private equity at Neuberger Berman, one of the world’s largest investment management firms, before becoming an entrepreneur. He co-founded LocaMos, a marketing technology platform that reached 1.6 million users in ten months, and helped grow a café chain to 36 locations across 17 provinces in just four and a half months.",
-      "Minh rời Việt Nam sang Mỹ một mình năm 17 tuổi. Tốt nghiệp thủ khoa đầu ra ngành Tài chính tại Đại học Kansas State, anh có bốn năm làm private equity tại Neuberger Berman, một trong những công ty quản lý đầu tư lớn nhất thế giới, trước khi chuyển sang khởi nghiệp. Anh đồng sáng lập LocaMos, nền tảng marketing công nghệ đạt 1,6 triệu người dùng trong mười tháng, và góp phần đưa một chuỗi cà phê lên 36 điểm bán tại 17 tỉnh thành chỉ trong bốn tháng rưỡi.",
+      "Minh left Vietnam for the United States alone at seventeen. A Finance valedictorian at Kansas State University, he spent four years in private equity at Neuberger Berman, one of the world’s largest investment management firms, before becoming an entrepreneur. He co-founded a marketing technology platform that reached 1.6 million users in ten months, and helped grow a café chain to 36 locations across 17 provinces in just four and a half months.",
+      "Minh rời Việt Nam sang Mỹ một mình năm 17 tuổi. Tốt nghiệp thủ khoa đầu ra ngành Tài chính tại Đại học Kansas State, anh có bốn năm làm private equity tại Neuberger Berman, một trong những công ty quản lý đầu tư lớn nhất thế giới, trước khi chuyển sang khởi nghiệp. Anh đồng sáng lập một nền tảng marketing công nghệ đạt 1,6 triệu người dùng trong mười tháng, và góp phần đưa một chuỗi cà phê lên 36 điểm bán tại 17 tỉnh thành chỉ trong bốn tháng rưỡi.",
     ),
     t(
       "Today, Minh leads 100B from Hanoi and Austin, helping Vietnamese brands expand internationally and global businesses enter Vietnam. He brings an investor\u2019s discipline, a founder\u2019s practical experience and a personal understanding of both markets. Through 100B\u2019s equity partnerships in the US, he puts that experience behind a shared commitment: to succeed alongside the businesses he helps build.",
@@ -90,7 +90,6 @@ const minhMac: Person = {
     ),
     t("LT Commercial Group", "LT Commercial Group"),
     t("Cỏ Cây Hoa Lá", "Cỏ Cây Hoa Lá"),
-    t("LocaMos · Loca Cafe", "LocaMos · Loca Cafe"),
   ],
   expertIn: [
     t("Vietnam–US market entry", "Mở thị trường Việt Nam – Mỹ"),
