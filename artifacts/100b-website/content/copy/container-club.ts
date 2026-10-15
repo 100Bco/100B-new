@@ -115,7 +115,6 @@ export const containerClubCopy = {
       t("BM Windows", "BM Windows"),
       t("Phu Tai and Vina G7", "Phú Tài và Vina G7"),
       t("Dai Dung", "Đại Dũng"),
-      t("AA Corporation", "AA Corporation"),
       t("Eurowindow", "Eurowindow"),
       t("An Phat Holdings", "An Phát Holdings"),
       t("Woodsland", "Woodsland"),

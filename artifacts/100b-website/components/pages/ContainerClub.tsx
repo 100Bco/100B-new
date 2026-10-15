@@ -18,7 +18,6 @@ import { localePath, type Locale } from "@/content/locale";
 import vdAnCuong from "@assets/vietnam-direct/an-cuong.jpg";
 import vdBmWindows from "@assets/vietnam-direct/bm-windows.jpg";
 import vdDaiDung from "@assets/vietnam-direct/dai-dung.jpg";
-import vdAaCorporation from "@assets/vietnam-direct/aa-corporation.jpg";
 import vdEurowindow from "@assets/vietnam-direct/eurowindow.jpg";
 import vdWoodsland from "@assets/vietnam-direct/woodsland.jpg";
 import vdAmyGrupo from "@assets/vietnam-direct/amy-grupo.jpg";
@@ -38,7 +37,6 @@ const vietnamDirectPhotos: TripPhoto[] = [
   { src: vdAnCuong.src, label: "An Cuong", caption: "Vietnam Direct 2026" },
   { src: vdBmWindows.src, label: "BM Windows", caption: "Vietnam Direct 2026" },
   { src: vdDaiDung.src, label: "Dai Dung", caption: "Vietnam Direct 2026" },
-  { src: vdAaCorporation.src, label: "AA Corporation", caption: "Vietnam Direct 2026" },
   { src: vdEurowindow.src, label: "Eurowindow", caption: "Vietnam Direct 2026" },
   { src: vdWoodsland.src, label: "Woodsland", caption: "Vietnam Direct 2026" },
   { src: vdAmyGrupo.src, label: "Amy Grupo", caption: "Vietnam Direct 2026" },
@@ -226,7 +224,9 @@ export function ContainerClubPage({ locale }: { locale: Locale }) {
                 </div>
                 <div className="grid grid-cols-2 gap-6 border-t border-border-subtle pt-6">
                   <div className="flex flex-col items-center text-center gap-1">
-                    <span className="font-display text-4xl text-gradient-gold leading-none">14</span>
+                    <span className="font-display text-4xl text-gradient-gold leading-none">
+                      {factories.length}
+                    </span>
                     <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">
                       {cc.trip.factoriesStat[locale]}
                     </span>
